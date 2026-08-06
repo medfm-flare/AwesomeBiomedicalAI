@@ -10,6 +10,7 @@ Agentic, autonomous and tool-using AI systems.
 | --- | --- | --- |
 | 202607 | Capable language models can outgrow the benefits of collaboration (Nat. Mach. Intell.) [[paper]](https://www.nature.com/articles/s42256-026-01268-y) | [Yubin Kim](https://scholar.google.com/citations?user=tYK2WmQAAAAJ&hl=en) & [Xin Liu](https://scholar.google.com/citations?user=p9F83HoAAAAJ&hl=en) |
 | 202606 | Towards autonomous medical artificial intelligence agents (Nature) [[paper]](https://www.nature.com/articles/s41586-026-10675-5) [[code]](https://github.com/Dyke-F/MIRA/tree/main/src) [[replication]](https://github.com/weimengmeng1999/MIRA) | [Dyke Ferber](https://scholar.google.com/citations?user=r7JtdUcAAAAJ&hl=en) & [Jakob Nikolas Kather](https://scholar.google.com/citations?user=w6-uFdEAAAAJ&hl=en) |
+| 202605 | Accelerating scientific discovery with Co-Scientist (Nature) [[paper]](https://www.nature.com/articles/s41586-026-10644-y) | [Juraj Gottweis](https://scholar.google.com/citations?user=jVRSR5AAAAAJ&hl=en) & [Vivek Natarajan](https://scholar.google.com/citations?user=gZiW7IAAAAAJ&hl=en) |
 | 202605 | An AI system to help scientists write expert-level empirical software (Nature) [[paper]](https://www.nature.com/articles/s41586-026-10658-6) [[code]](https://github.com/google-research/era) | [Eser Aygün (Google DeepMind)](https://scholar.google.com/citations?user=mogd5nkAAAAJ&hl=en) & [Michael Brenner (Google DeepMind)](https://scholar.google.com/citations?user=ZDL6ITwAAAAJ&hl=en) |
 | 202604 | AlphaLab: Autonomous Multi-Agent Research Across Optimization Domains with Frontier LLMs (Preprint) [[paper]](https://brendanhogan.github.io/alphalab-paper/) [[code]](https://github.com/morganstanley/MSML/tree/main/projects/alpha-lab) | [Brendan R. Hogan](https://scholar.google.com/citations?user=7Ha1788AAAAJ&hl=en) & [Yuriy Nevmyvaka](https://scholar.google.com/citations?user=Hui4EIcAAAAJ&hl=en) |
 | 202604 | An agentic framework for autonomous scientific discovery in cancer pathology (Nat. Med.) [[paper]](https://www.nature.com/articles/s41591-026-04357-y) [[code]](https://github.com/cpath-ukk/SPARK) | [Florian Trost](https://scholar.google.com/citations?user=GQnzSMoAAAAJ&hl=de), co-first with Bide Zhang & [Yuri Tolkach](https://scholar.google.com/citations?hl=en&user=bshxyrcAAAAJ&utm_source=chatgpt.com) |
@@ -43,6 +44,17 @@ Click a title below for model/backbone/training/task details.
 - **Pre-training Method:** N/A (training-free agent; no new model trained)
 - **Training Data:** N/A; evaluated on >500 MIMIC-IV emergency department cases spanning 8 diagnoses
 - **Downstream Tasks:** Autonomous EHR-integrated clinical decision-making: history-taking via patient-agent dialogue, ordering/interpreting labs, imaging and microbiology tests, differential diagnosis generation, treatment planning, medication prescribing, procedure scheduling, and admission decisions
+
+</details>
+
+<details>
+<summary><b>Accelerating scientific discovery with Co-Scientist</b> — 202605, Nature</summary>
+
+- **Model:** Co-Scientist
+- **Network Backbone:** Multi-agent system built on Gemini; specialized agents (Generation, Reflection, Ranking, Evolution, Proximity, Meta-review) coordinated by a Supervisor agent with an asynchronous task-execution framework
+- **Pre-training Method:** N/A; built on pretrained Gemini, uses tournament-based self-improving hypothesis evolution (test-time compute scaling) rather than additional model training
+- **Training Data:** N/A; grounded via literature search, simulation review, and web/tool use; no fine-tuning dataset
+- **Downstream Tasks:** Automated scientific hypothesis generation and research-proposal formulation; validated with in vitro experiments in drug-repurposing candidate discovery for AML, synergistic combination-therapy discovery, epigenetic target identification for liver fibrosis, and explaining bacterial gene-transfer mechanisms relevant to antimicrobial resistance
 
 </details>
 
