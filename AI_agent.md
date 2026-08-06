@@ -9,6 +9,7 @@ Agentic, autonomous and tool-using AI systems.
 | Date | Title & Links | First & Last Authors |
 | --- | --- | --- |
 | 202607 | Capable language models can outgrow the benefits of collaboration (Nat. Mach. Intell.) [[paper]](https://www.nature.com/articles/s42256-026-01268-y) | [Yubin Kim](https://scholar.google.com/citations?user=tYK2WmQAAAAJ&hl=en) & [Xin Liu](https://scholar.google.com/citations?user=p9F83HoAAAAJ&hl=en) |
+| 202607 | Autonomous biomedical research with an artificial intelligence agent (Science) [[paper]](https://www.science.org/doi/10.1126/science.adz4351) [[code]](https://github.com/snap-stanford/biomni) | [Kexin Huang](https://scholar.google.com/citations?user=ogEXTOgAAAAJ&hl=en) & [Jure Leskovec](https://scholar.google.com/citations?hl=en&user=Q_kKkIUAAAAJ) |
 | 202606 | Towards autonomous medical artificial intelligence agents (Nature) [[paper]](https://www.nature.com/articles/s41586-026-10675-5) [[code]](https://github.com/Dyke-F/MIRA/tree/main/src) [[replication]](https://github.com/weimengmeng1999/MIRA) | [Dyke Ferber](https://scholar.google.com/citations?user=r7JtdUcAAAAJ&hl=en) & [Jakob Nikolas Kather](https://scholar.google.com/citations?user=w6-uFdEAAAAJ&hl=en) |
 | 202605 | Accelerating scientific discovery with Co-Scientist (Nature) [[paper]](https://www.nature.com/articles/s41586-026-10644-y) | [Juraj Gottweis](https://scholar.google.com/citations?user=jVRSR5AAAAAJ&hl=en) & [Vivek Natarajan](https://scholar.google.com/citations?user=gZiW7IAAAAAJ&hl=en) |
 | 202605 | A multi-agent system for automating scientific discovery (Nature) [[paper]](https://www.nature.com/articles/s41586-026-10652-y) [[code]](https://github.com/Future-House/robin) | [Ali E. Ghareeb](https://scholar.google.com/citations?hl=en&user=dlWmbncAAAAJ) & [Samuel G. Rodriques](https://scholar.google.com/citations?user=yGKwWGEAAAAJ&hl=en) |
@@ -34,6 +35,17 @@ Click a title below for model/backbone/training/task details.
 - **Pre-training Method:** N/A; no new models trained
 - **Training Data:** N/A; evaluated on six agentic benchmarks: BrowseComp-Plus, Finance Agent, PlanCraft, WorkBench, SWE-bench Verified, Terminal-Bench
 - **Downstream Tasks:** Shows that multi-agent collaboration's benefit is task-contingent and shrinks as base-model capability grows: large gains on parallelizable tasks (e.g., finance) but degraded performance on sequential tasks (e.g., planning) once models are sufficiently capable
+
+</details>
+
+<details>
+<summary><b>Autonomous biomedical research with an artificial intelligence agent</b> — 202607, Science</summary>
+
+- **Model:** Biomni, plus Biomni-R0 (a dedicated reasoning model for biology)
+- **Network Backbone:** Configurable LLM agent (supports Claude, GPT, Gemini, and other providers); Biomni-R0 is built on Qwen-32B
+- **Pre-training Method:** Biomni-R0 is fine-tuned via reinforcement learning from agent interaction data; the base Biomni agent is training-free tool use over a configurable LLM backbone
+- **Training Data:** RL training data from agent interaction trajectories; evaluated on Biomni-Eval1 (433 instances spanning 10 biological reasoning tasks)
+- **Downstream Tasks:** CRISPR screen planning and gene identification, scRNA-seq annotation and hypothesis generation, ADMET property prediction, GWAS analysis and variant prioritization, rare disease diagnosis, and lab-bench Q&A
 
 </details>
 
