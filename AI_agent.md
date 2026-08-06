@@ -36,7 +36,7 @@ Click a title below for model/backbone/training/task details.
 <details>
 <summary><b>Towards autonomous medical artificial intelligence agents</b> — 202606, Nature</summary>
 
-- **Model:** MIRA (Medical Intelligence for Reasoning and Action)
+- **Model:** MIRA (Medical Intelligence for Reasoning and Action) — [official code](https://github.com/Dyke-F/MIRA/tree/main/src), [replication](https://github.com/weimengmeng1999/MIRA)
 - **Network Backbone:** LLM-based autonomous agent with 11 tools, operating in a sandboxed, FHIR-compliant EHR environment (ICD, LOINC, ATC, NDC, RxNorm, SNOMED-CT coding)
 - **Pre-training Method:** N/A (training-free agent; no new model trained)
 - **Training Data:** N/A; evaluated on >500 MIMIC-IV emergency department cases spanning 8 diagnoses
