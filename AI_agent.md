@@ -1,5 +1,7 @@
 **Maintainer:** @Meng Wei
 
+**Notebook:** [NotebookLM](https://notebook.google.com/notebook/b25c668a-4926-45b8-bca3-329885628a36)
+
 # AI Agents
 
 Agentic, autonomous and tool-using AI systems.
