@@ -4,6 +4,8 @@
 
 Genomics, transcriptomics, proteomics, omics and biological modeling.
 
+Explore the papers and their supplementary PDFs in the public [AI for Biology NotebookLM](https://notebook.google.com/notebook/c82ebf1a-7c1c-41a0-89bc-6ed2b33130fe).
+
 | Date | Title & Links | First & Last Authors |
 | --- | --- | --- |
 | 202606 | Zero-shot design of drug-binding proteins via neural iterative selection–expansion (Nature) [[paper]](https://www.nature.com/articles/s41586-026-10670-w) [[code]](https://github.com/polizzilab/LASErMPNN) | [Benjamin Fry](https://scholar.google.com/citations?user=2TE2_OkAAAAJ&hl=en) & [Nicholas F. Polizzi](https://scholar.google.com/citations?hl=en&user=CgZvDJkAAAAJ&view_op=list_works&sortby=pubdate) |
