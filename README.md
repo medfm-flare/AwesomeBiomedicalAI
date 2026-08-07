@@ -5,7 +5,7 @@ A curated catalogue of biomedical artificial intelligence models and systems pub
 
 ## Browse by domain
 
-| Domain | Scope | Maintainer | NotebookLM |
+| Domain | Scope | Maintainer | Summary |
 | --- | --- | --- | ---: |
 | [Pathology](pathology.md) | Histopathology, whole-slide imaging and computational pathology | @Leo Yin |  |
 | [Radiology](radiology.md) | CT, MRI, PET, X-ray and fMRI | @Judy Lyu @ Sumin Kim |  |
