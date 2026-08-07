@@ -1,0 +1,85 @@
+name: weekly-discovery
+
+# Scans the high-impact journal allowlist plus bioRxiv/medRxiv for biomedical
+# AI papers we do not have, and opens one triage issue with a checklist.
+#
+# It proposes; it never commits. A maintainer decides what actually lands.
+
+on:
+  schedule:
+    # 07:00 UTC every Monday.
+    - cron: "0 7 * * 1"
+  workflow_dispatch:
+    inputs:
+      days:
+        description: How many days back to scan
+        required: false
+        default: "7"
+      include_preprints:
+        description: Also scan bioRxiv and medRxiv (roughly 5x the candidates)
+        type: boolean
+        required: false
+        default: false
+      include_arxiv:
+        description: Also scan arXiv (high volume)
+        type: boolean
+        required: false
+        default: false
+
+permissions:
+  issues: write
+  contents: read
+
+jobs:
+  discover:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - run: pip install -r requirements.txt
+
+      - name: Scan for new papers
+        env:
+          # Optional. Without it the scan still runs; candidates just arrive
+          # unrouted instead of grouped by domain page.
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: |
+          python scripts/discover.py \
+            --days "${{ github.event.inputs.days || '7' }}" \
+            ${{ github.event.inputs.include_preprints == 'true' && '--include-preprints' || '' }} \
+            ${{ github.event.inputs.include_arxiv == 'true' && '--include-arxiv' || '' }} \
+            --out issue.md \
+            --json candidates.json
+
+      - name: Open the triage issue
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_REPO: ${{ github.repository }}
+        run: |
+          # Nothing new: say so in the log and stop. An empty weekly issue is
+          # noise, and noise is how a bot gets muted.
+          if grep -q "^Nothing new this week." issue.md; then
+            echo "No new candidates; not opening an issue."
+            exit 0
+          fi
+          # --label fails outright on an unknown label, so make it exist first.
+          gh label create paper-triage \
+            --description "Candidate papers awaiting maintainer triage" \
+            --color BFD4F2 2>/dev/null || true
+          gh issue create \
+            --title "Weekly paper scan — $(date -u +%Y-%m-%d)" \
+            --body-file issue.md \
+            --label "paper-triage"
+
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: discovery-${{ github.run_id }}
+          path: |
+            issue.md
+            candidates.json
+          retention-days: 30

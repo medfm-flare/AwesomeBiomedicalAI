@@ -1,0 +1,12 @@
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+
+# Discovery bot scratch output
+issue.md
+candidates.json
+
+# Paper PDFs belong in NotebookLM or a shared drive, never in this repo --
+# most are under publisher copyright and this repository is public.
+*.pdf

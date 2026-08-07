@@ -1,0 +1,503 @@
+# Pathology -- histopathology, whole-slide imaging and computational pathology.
+#
+# Source of truth for pathology.md. After editing, run:
+#     python scripts/build.py
+# CI will reject the PR if the generated markdown is out of date.
+#
+# Field reference: CONTRIBUTING.md
+
+- date: 2026-07
+  title: End-to-end multimodal pathology foundation model with clinical dialogue
+  url: https://www.nature.com/articles/s41591-026-04521-4
+  doi: 10.1038/s41591-026-04521-4
+  venue: Nat. Med.
+  authors:
+    first:
+      name: Eugene Vorontsov
+      scholar: https://scholar.google.com/citations?user=5o1gS_sAAAAJ&hl=en
+    last:
+      name: Siqi Liu
+      scholar: https://scholar.google.com/citations?hl=en&user=ADyo_cAAAAAJ
+  model:
+    name: PRISM2
+    weights: https://huggingface.co/paige-ai/Prism2
+  params: 4.6B
+  backbone: >-
+    Virchow2 tile encoder, Perceiver slide encoder, BioGPT language encoder and a
+    Phi-3 Mini 3.8B decoder-only LLM
+  pretraining: [contrastive, next-token prediction]
+  pretraining_detail: >-
+    Two-stage language-supervised multimodal pre-training: contrastive slide-report
+    alignment, then autoregressive clinical-dialogue learning. The slide encoder is
+    frozen while Phi-3 Mini is fine-tuned in stage 2.
+  data:
+    description: H&E whole-slide images with paired clinical reports, converted into question-answer pairs
+    scale:
+      whole_slide_images: 2350518
+      specimens: 685507
+      patients: 200692
+      qa_pairs: 14000000
+  tasks: [detection, subtyping, biomarker prediction, survival prediction, report generation]
+  tasks_detail: >-
+    Prompt-based cancer detection and subtyping; diagnostic, biomarker and survival
+    prediction; pathology report completion.
+  modalities: [histopathology, text]
+  added: {date: 2026-08, by: Leo Yin}
+
+- date: 2026-04
+  title: PRET is a few-shot system for pan-cancer recognition without example training
+  url: https://www.nature.com/articles/s43018-026-01141-2
+  doi: 10.1038/s43018-026-01141-2
+  venue: Nat. Cancer
+  authors:
+    first:
+      name: Yi Li
+      scholar: https://scholar.google.com/citations?user=qGsK180AAAAJ&hl=en
+    last:
+      name: Xiaomeng Li
+      scholar: https://scholar.google.com/citations?user=uVTzPpoAAAAJ&hl=en
+  model:
+    name: PRET
+    repo: https://github.com/xmed-lab/PRET
+  backbone: >-
+    Default feature extractor is a DINO-pretrained ViT-S/8 pathology encoder; PRET adds
+    an in-context tagger, in-context classifier, instance miner, attention aggregator
+    and postprocessor
+  pretraining: [DINO, self-supervised]
+  pretraining_detail: >-
+    Training-free for downstream tasks. The default encoder was pretrained
+    self-supervised on unlabeled TCGA pathology images.
+  data:
+    description: >-
+      No task-specific training images for PRET itself. Evaluated on 4,484 WSIs across
+      23 benchmarks. The paper does not state a numeric TCGA pretraining image count for
+      the default encoder.
+    scale:
+      evaluation_wsi: 4484
+      benchmarks: 23
+  tasks: [detection, subtyping, segmentation, classification]
+  tasks_detail: Cancer screening, cancer subtyping, tumour segmentation, lymph node metastasis detection.
+  modalities: [histopathology]
+  added: {date: 2026-08, by: Leo Yin}
+
+- date: 2026-03
+  title: Confounding factors and biases abound when predicting molecular biomarkers from histological images
+  url: https://www.nature.com/articles/s41551-026-01616-8
+  doi: 10.1038/s41551-026-01616-8
+  venue: Nat. Biomed. Eng.
+  authors:
+    first:
+      name: Muhammad Dawood
+      scholar: https://scholar.google.com/citations?hl=en&user=a-szm64AAAAJ
+    last:
+      name: Fayyaz ul Amir Afsar Minhas
+      scholar: https://scholar.google.com/citations?hl=en&user=cQ6eO_kAAAAJ
+  model:
+    name: HistBiases
+    repo: https://github.com/imuhdawood/HistBiases
+  backbone: >-
+    Benchmarking study rather than a new model. Evaluates CLAM, SlideGraph-infinity and
+    TITAN, with CTransPath and ShuffleNet patch encoders.
+  pretraining: [self-supervised, weakly supervised]
+  pretraining_detail: >-
+    CTransPath pretrained on histology via self-supervised learning; ShuffleNet
+    pretrained on ImageNet; TITAN trained on 330,000 image-text pairs.
+  data:
+    description: >-
+      H&E WSIs from TCGA, METABRIC, MSK and DFCI. Weakly supervised models trained on
+      TCGA and validated on CPTAC and ABCTB.
+    scale:
+      patients: 8221
+  tasks: [biomarker prediction, mutation prediction, benchmarking]
+  tasks_detail: >-
+    Molecular biomarker and gene mutation prediction from WSIs, plus a
+    confounding/stratification analysis against biomarker interdependency, grade and TMB.
+  modalities: [histopathology]
+  note: Benchmarking and bias study, not a new foundation model.
+  added: {date: 2026-08, by: Leo Yin}
+
+- date: 2026-02
+  title: >-
+    Classification accuracy of a hierarchical molecular inference-based deep-learning
+    system for CNS tumour diagnosis: a multi-institutional, retrospective study
+  url: https://www.thelancet.com/journals/lanonc/article/PIIS1470-2045(25)00661-8/abstract
+  doi: 10.1016/S1470-2045(25)00661-8
+  venue: Lancet Oncol.
+  authors:
+    first: {name: H. Lalchungnunga}
+    last: {name: Kenneth Aldape}
+  model:
+    name: Neuropath-AI
+    weights: https://methylscape.ccr.cancer.gov/
+  backbone: >-
+    UNI large vision transformer plus hierarchical submodules using MLPs and ensemble
+    classifiers (random forest, SVM, KNN, logistic regression)
+  pretraining: [self-supervised]
+  pretraining_detail: >-
+    WSI-pretrained UNI encoder followed by molecular inference-based hierarchical
+    classification.
+  data:
+    description: Multi-institutional retrospective CNS tumour cohort
+    scale:
+      whole_slide_images: 5835
+  tasks: [classification, mutation prediction, gene expression prediction]
+  tasks_detail: >-
+    CNS tumour family-level classification, 52 terminal CNS tumour types, IDH mutation
+    prediction, inferred gene expression and DNA methylation.
+  modalities: [histopathology]
+  added: {date: 2026-08, by: Leo Yin}
+
+- date: 2026-02
+  title: >-
+    Development and validation of a computational histology artificial
+    intelligence-powered predictive biomarker for selection of chemotherapy in advanced
+    pancreatic cancer
+  url: https://ascopubs.org/doi/10.1200/JCO-25-02199
+  doi: 10.1200/JCO-25-02199
+  venue: J. Clin. Oncol.
+  authors:
+    first:
+      name: Andrew Hendifar
+      scholar: https://scholar.google.com/citations?hl=en&user=XwWT-TMAAAAJ
+    last:
+      name: Jennifer J. Knox
+      scholar: https://scholar.google.com/citations?user=6aEaHzcAAAAJ&hl=en
+  model:
+    name: CHAI
+  backbone: Not stated in the paper
+  pretraining: [supervised]
+  pretraining_detail: >-
+    Pan-cancer H&E slides are patched and merged with indication labels to form a base
+    model for cell and tissue classification.
+  data:
+    description: Pan-cancer H&E-stained slides
+    scale:
+      whole_slide_images: 25000
+  tasks: [biomarker prediction, treatment response]
+  tasks_detail: >-
+    Quantifies histomorphologic features of the cancer and its microenvironment along
+    dimensions defined by the hallmarks of cancer, used to select chemotherapy.
+  modalities: [histopathology]
+  added: {date: 2026-08, by: Leo Yin}
+
+- date: 2026-02
+  title: Knowledge-enhanced pretraining for vision-language pathology foundation model on cancer diagnosis
+  url: https://www.cell.com/cancer-cell/fulltext/S1535-6108(26)00058-9
+  venue: Cancer Cell
+  authors:
+    first: {name: Xiao Zhou}
+    last:
+      name: Weidi Xie
+      scholar: https://scholar.google.com/citations?user=Vtrqj4gAAAAJ&hl=zh-CN
+  model:
+    name: KEEP
+    repo: https://github.com/MAGIC-AI4Med/KEEP
+  backbone: ViT-L/16 vision encoder with a BERT text encoder
+  pretraining: [contrastive, CLIP]
+  pretraining_detail: >-
+    Knowledge-enhanced vision-language pretraining using semantic-level alignment via
+    metric learning within semantic groups guided by a disease knowledge graph.
+  data:
+    description: >-
+      Pathology image-text pairs from OpenPath and Quilt-1M, reorganized into
+      semantically structured groups
+    scale:
+      semantic_groups: 143000
+  tasks: [segmentation, detection, subtyping, retrieval, classification]
+  tasks_detail: >-
+    Zero-shot slide-level cancer region segmentation, cancer detection and subtyping;
+    tile-level cross-modal retrieval and zero-shot image classification.
+  modalities: [histopathology, text]
+  verify:
+    - Cell Press DOI not yet recorded -- add it so dedup keys on DOI rather than title.
+  added: {date: 2026-08, by: Leo Yin}
+
+- date: 2025-11
+  title: SMMILe enables accurate spatial quantification in digital pathology using multiple-instance learning
+  url: https://www.nature.com/articles/s43018-025-01060-8
+  doi: 10.1038/s43018-025-01060-8
+  venue: Nat. Cancer
+  authors:
+    first:
+      name: Zeyu Gao
+      scholar: https://scholar.google.com/citations?hl=zh-CN&user=CeP6dkcAAAAJ
+    last:
+      name: Mireia Crispin-Ortuzar
+      scholar: https://scholar.google.com/citations?hl=en&user=TRZzLJgAAAAJ
+  model:
+    name: SMMILe
+    repo: https://github.com/ZeyuGaoAi/SMMILe
+  backbone: >-
+    ResNet-50 and CONCH patch encoders with an instance-based multiple-instance-learning
+    architecture using superpatch and refinement modules
+  pretraining: [weakly supervised]
+  pretraining_detail: >-
+    Feature extraction with pretrained encoders (ImageNet ResNet-50, pathology
+    foundation model CONCH), then weakly supervised MIL training with slide-level labels.
+  data:
+    description: 8 datasets covering 6 cancer types
+    scale:
+      whole_slide_images: 3850
+      datasets: 8
+      cancer_types: 6
+  tasks: [classification, detection, subtyping, grading]
+  tasks_detail: >-
+    WSI-level classification and patch-level spatial quantification, including metastasis
+    detection, subtype prediction and grading.
+  modalities: [histopathology]
+  added: {date: 2026-08, by: Leo Yin}
+
+- date: 2025-11
+  title: A multimodal whole-slide foundation model for pathology
+  url: https://www.nature.com/articles/s41591-025-03982-3
+  doi: 10.1038/s41591-025-03982-3
+  venue: Nat. Med.
+  authors:
+    first:
+      name: Tong Ding
+      scholar: https://scholar.google.com/citations?user=Vwt2ZVYAAAAJ&hl=en
+    last:
+      name: Faisal Mahmood
+      scholar: https://scholar.google.com/citations?user=9MsdbKoAAAAJ&hl=en
+  model:
+    name: TITAN
+    repo: https://github.com/mahmoodlab/TITAN
+    weights: https://huggingface.co/MahmoodLab/TITAN
+  backbone: ViT slide encoder (Transformer-based Image and Text Alignment Network) over CONCH v1.5 patch features
+  pretraining: [self-supervised, contrastive, CLIP]
+  pretraining_detail: >-
+    Visual self-supervised pretraining followed by vision-language alignment against
+    pathology reports and synthetic captions generated by a pathology multimodal copilot.
+  data:
+    description: Whole-slide images with paired pathology reports and synthetic captions
+    scale:
+      whole_slide_images: 335645
+      synthetic_captions: 423122
+  tasks: [classification, subtyping, retrieval, report generation, survival prediction]
+  tasks_detail: >-
+    Slide-level representation without fine-tuning, rare disease recognition, cancer
+    outcome prediction and pathology report generation.
+  modalities: [histopathology, text]
+  added: {date: 2026-08, by: Leo Yin}
+
+- date: 2025-01
+  title: A vision-language foundation model for precision oncology
+  url: https://www.nature.com/articles/s41586-024-08378-w
+  doi: 10.1038/s41586-024-08378-w
+  venue: Nature
+  authors:
+    first:
+      name: Jinxi Xiang
+      scholar: https://scholar.google.com/citations?user=Zn-0LioAAAAJ&hl=en
+    last:
+      name: Ruijiang Li
+      scholar: https://scholar.google.com/citations?user=Y89JnCYAAAAJ&hl=en
+  model:
+    name: MUSK
+    repo: https://github.com/lilab-stanford/MUSK
+  backbone: BEiT-3
+  pretraining: [MIM, contrastive]
+  pretraining_detail: Masked image modelling followed by vision-language contrastive alignment.
+  data:
+    description: WSIs plus the QUILT-1M and PathAsst image-text corpora
+    scale:
+      whole_slide_images: 33000
+  tasks: [prognosis, treatment response, survival prediction]
+  tasks_detail: >-
+    Predicting clinical outcomes -- melanoma relapse, pan-cancer prognosis and
+    immunotherapy response.
+  modalities: [histopathology, text]
+  added: {date: 2026-08, by: Leo Yin}
+
+- date: 2024-09
+  title: A pathology foundation model for cancer diagnosis and prognosis prediction
+  url: https://www.nature.com/articles/s41586-024-07894-z
+  doi: 10.1038/s41586-024-07894-z
+  venue: Nature
+  authors:
+    first:
+      name: Xiyue Wang
+      scholar: https://scholar.google.com/citations?user=NHt3fUcAAAAJ&hl=en
+    last:
+      name: Kun-Hsing Yu
+      scholar: https://scholar.google.com/citations?user=1ZCJvkgAAAAJ&hl=en
+  model:
+    name: CHIEF
+    repo: https://github.com/hms-dbmi/CHIEF
+  backbone: CTransPath tile encoder with a weakly supervised whole-slide aggregation module
+  pretraining: [self-supervised, weakly supervised]
+  pretraining_detail: >-
+    Two complementary pretraining strategies: unsupervised pretraining for tile-level
+    features and weakly supervised pretraining for whole-slide pattern recognition.
+  data:
+    description: Tile-level and slide-level pretraining across many cancer types and institutions
+  tasks: [classification, detection, subtyping, prognosis, mutation prediction]
+  tasks_detail: >-
+    Cancer cell detection, tumour origin identification, molecular profile prediction and
+    survival outcome prediction across cancer types.
+  modalities: [histopathology]
+  verify:
+    - Pretraining data scale (tiles / WSIs) not yet filled in from the paper.
+  added: {date: 2026-08, by: Leo Yin}
+
+- date: 2024-07
+  title: A foundation model for clinical-grade computational pathology and rare cancers detection
+  url: https://www.nature.com/articles/s41591-024-03141-0
+  doi: 10.1038/s41591-024-03141-0
+  venue: Nat. Med.
+  authors:
+    first:
+      name: Eugene Vorontsov
+      scholar: https://scholar.google.com/citations?user=5o1gS_sAAAAJ&hl=en
+    last:
+      name: Thomas J. Fuchs
+      scholar: https://scholar.google.ch/citations?user=zh0Raz8AAAAJ&hl=en
+  model:
+    name: Virchow
+    repo: https://github.com/Paige-AI/paige-ml-sdk
+    weights: https://huggingface.co/paige-ai/Virchow
+  params: 632M
+  backbone: ViT-H/14
+  pretraining: [DINOv2]
+  pretraining_detail: Self-supervised DINOv2 pretraining on H&E whole-slide images.
+  data:
+    description: H&E-stained whole-slide images from a clinical archive
+    scale:
+      whole_slide_images: 1500000
+  tasks: [detection, biomarker prediction, classification]
+  tasks_detail: Pan-cancer detection including rare cancers, and biomarker prediction.
+  modalities: [histopathology]
+  verify:
+    - >-
+      Previously catalogued as "Virchow2". This Nat. Med. paper introduces Virchow;
+      Virchow2 is the separate arXiv follow-up (2408.00738). Confirm and, if the team
+      wants Virchow2 listed too, add it as its own entry.
+    - params 632M is the standard ViT-H/14 configuration, not a figure quoted in the paper.
+  added: {date: 2026-08, by: Leo Yin}
+
+- date: 2024-05
+  title: A whole-slide foundation model for digital pathology from real-world data
+  url: https://www.nature.com/articles/s41586-024-07441-w
+  doi: 10.1038/s41586-024-07441-w
+  venue: Nature
+  authors:
+    first:
+      name: Hanwen Xu
+      scholar: https://scholar.google.com/citations?user=HwO7L5sAAAAJ&hl=zh-CN
+    last:
+      name: Hoifung Poon
+      scholar: https://scholar.google.com/citations?user=yqqmVbkAAAAJ&hl=en
+  model:
+    name: Prov-GigaPath
+    repo: https://github.com/prov-gigapath/prov-gigapath
+    weights: https://huggingface.co/prov-gigapath/prov-gigapath
+  backbone: ViT tile encoder with a LongNet slide-level encoder
+  pretraining: [DINOv2, MAE]
+  pretraining_detail: >-
+    DINOv2 tile-level pretraining followed by masked autoencoder pretraining with LongNet
+    over whole slides.
+  data:
+    description: Real-world H&E slides from the Providence health network
+    scale:
+      whole_slide_images: 171189
+  tasks: [classification, subtyping, mutation prediction, biomarker prediction]
+  tasks_detail: 26 prediction tasks spanning pathomics and cancer subtyping.
+  modalities: [histopathology]
+  added: {date: 2026-08, by: Leo Yin}
+
+- date: 2024-03
+  title: A visual-language foundation model for computational pathology
+  url: https://www.nature.com/articles/s41591-024-02856-4
+  doi: 10.1038/s41591-024-02856-4
+  venue: Nat. Med.
+  authors:
+    first:
+      name: Ming Y. Lu
+      scholar: https://scholar.google.com/citations?user=GhzAXmIAAAAJ&hl=en
+    last:
+      name: Faisal Mahmood
+      scholar: https://scholar.google.com/citations?user=9MsdbKoAAAAJ&hl=en
+  model:
+    name: CONCH
+    repo: https://github.com/mahmoodlab/CONCH
+    weights: https://huggingface.co/MahmoodLab/CONCH
+  params: 86M
+  backbone: ViT-B/16
+  pretraining: [iBOT, CoCa]
+  pretraining_detail: iBOT visual pretraining followed by CoCa image-text pretraining.
+  data:
+    description: Pathology image-caption pairs curated from educational sources and PubMed
+    scale:
+      image_caption_pairs: 1170000
+  tasks: [classification, retrieval, segmentation, captioning]
+  tasks_detail: >-
+    Tile- and slide-level classification, cross-modal image-to-text and text-to-image
+    retrieval, image segmentation and captioning.
+  modalities: [histopathology, text]
+  verify:
+    - params 86M is the standard ViT-B/16 configuration, not a figure quoted in the paper.
+  added: {date: 2026-08, by: Leo Yin}
+
+- date: 2024-03
+  title: Towards a general-purpose foundation model for computational pathology
+  url: https://www.nature.com/articles/s41591-024-02857-3
+  doi: 10.1038/s41591-024-02857-3
+  venue: Nat. Med.
+  authors:
+    first:
+      name: Richard J. Chen
+      scholar: https://scholar.google.com/citations?user=yhGqdMgAAAAJ&hl=en
+    last:
+      name: Faisal Mahmood
+      scholar: https://scholar.google.com/citations?user=9MsdbKoAAAAJ&hl=en
+  model:
+    name: UNI
+    repo: https://github.com/mahmoodlab/UNI
+    weights: https://huggingface.co/MahmoodLab/UNI2-h
+  params: 307M
+  backbone: ViT-L/16
+  pretraining: [DINOv2]
+  pretraining_detail: Self-supervised DINOv2 pretraining on the Mass-100K slide corpus.
+  data:
+    description: Mass-100K, H&E whole-slide images from Massachusetts General Brigham
+    scale:
+      whole_slide_images: 100426
+  tasks: [segmentation, detection, grading, subtyping, biomarker prediction, classification]
+  tasks_detail: >-
+    34 tasks including nuclear segmentation, primary and metastatic cancer detection,
+    cancer grading and subtyping, biomarker screening, molecular subtyping, organ
+    transplant assessment and pan-cancer classification.
+  modalities: [histopathology]
+  verify:
+    - params 307M is the standard ViT-L/16 configuration, not a figure quoted in the paper.
+  added: {date: 2026-08, by: Leo Yin}
+
+- date: 2023-08
+  title: A visual-language foundation model for pathology image analysis using medical Twitter
+  url: https://www.nature.com/articles/s41591-023-02504-3
+  doi: 10.1038/s41591-023-02504-3
+  venue: Nat. Med.
+  authors:
+    first:
+      name: Zhi Huang
+      scholar: https://scholar.google.com/citations?user=Sh6TgyQAAAAJ&hl=en
+    last:
+      name: James Zou
+      scholar: https://scholar.google.com/citations?user=23ZXZvEAAAAJ&hl=en
+  model:
+    name: PLIP
+    repo: https://github.com/PathologyFoundation/plip
+    weights: https://huggingface.co/vinid/plip
+  backbone: CLIP ViT-B/32 with a Transformer text encoder
+  pretraining: [CLIP, contrastive]
+  pretraining_detail: CLIP fine-tuned on the OpenPath image-text corpus.
+  data:
+    description: OpenPath, pathology images paired with natural-language descriptions sourced from medical Twitter
+    scale:
+      image_text_pairs: 208414
+  tasks: [classification, retrieval]
+  tasks_detail: >-
+    Zero-shot and transfer-learning classification of pathology images, and cross-modal
+    image-to-text retrieval.
+  modalities: [histopathology, text]
+  added: {date: 2026-08, by: Leo Yin}

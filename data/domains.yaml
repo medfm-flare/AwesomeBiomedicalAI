@@ -1,0 +1,101 @@
+# The nine catalogue pages.
+#
+# `file` is generated from `data/<slug>.yaml` once that file exists. Until then
+# the page stays hand-maintained and the build script only counts its rows for
+# the README table -- so pages can migrate one at a time.
+#
+# MAINTAINERS: fill in your own profile links. Every field is optional; the
+# first one present becomes the link on your name and the rest are listed after
+# it. Nothing is filled in speculatively -- a wrong profile link is worse than
+# no link. Example:
+#
+#   - name: Jane Doe
+#     homepage: https://janedoe.dev
+#     scholar: https://scholar.google.com/citations?user=XXXXXXX
+#     linkedin: https://www.linkedin.com/in/janedoe
+#     twitter: https://x.com/janedoe
+#     github: janedoe            # username, not a URL
+#
+# `notebooklm` is the shared notebook link for the page -- it fills the last
+# column of the README table. Do not commit the PDFs themselves; see
+# CONTRIBUTING.md.
+
+- slug: pathology
+  name: Pathology
+  file: pathology.md
+  scope: Histopathology, whole-slide imaging and computational pathology
+  maintainers:
+    - name: Leo Yin
+      homepage: https://shuolinyin.com
+      scholar: null
+      linkedin: null      # TODO Leo
+      twitter: null       # TODO Leo
+      github: leoyin1127
+  notebooklm: null
+
+- slug: radiology
+  name: Radiology
+  file: radiology.md
+  scope: CT, MRI, PET, X-ray and fMRI
+  maintainers:
+    - {name: Judy Lyu, github: null, homepage: null, linkedin: null, scholar: null, twitter: null}
+    - {name: Sumin Kim, github: null, homepage: null, linkedin: null, scholar: null, twitter: null}
+  notebooklm: null
+
+- slug: biomedical_images
+  name: Biomedical Images — Other
+  file: biomedical_images.md
+  scope: Ultrasound, microscopy, retinal imaging, OCT, dermatology, endoscopy and other imaging
+  maintainers:
+    - {name: Terry Fu, github: null, homepage: null, linkedin: null, scholar: null, twitter: null}
+    - {name: Zaiyou He, github: null, homepage: null, linkedin: null, scholar: null, twitter: null}
+  notebooklm: null
+
+- slug: longitudinal
+  name: Longitudinal Health Data
+  file: longitudinal.md
+  scope: Longitudinal EHR, physiological signals, wearables and temporal clinical records
+  maintainers:
+    - {name: Evan Su, github: null, homepage: null, linkedin: null, scholar: null, twitter: null}
+  notebooklm: null
+
+- slug: multimodal
+  name: Multimodal AI
+  file: multimodal.md
+  scope: Cross-modal health models without a single dominant biomedical domain
+  maintainers:
+    - {name: Yeonwoo Seo, github: null, homepage: null, linkedin: null, scholar: null, twitter: null}
+  notebooklm: null
+
+- slug: AI_agent
+  name: AI Agents
+  file: AI_agent.md
+  scope: Agentic, autonomous and tool-using AI systems
+  maintainers:
+    - {name: Meng Wei, github: null, homepage: null, linkedin: null, scholar: null, twitter: null}
+    - {name: Lan Feng, github: null, homepage: null, linkedin: null, scholar: null, twitter: null}
+  notebooklm: null
+
+- slug: AI4biology
+  name: AI for Biology
+  file: AI4biology.md
+  scope: Genomics, transcriptomics, proteomics, omics and biological modeling
+  maintainers:
+    - {name: Keishi Suzuki, github: null, homepage: null, linkedin: null, scholar: null, twitter: null}
+  notebooklm: null
+
+- slug: LLM
+  name: Large Language Models
+  file: LLM.md
+  scope: Benchmarks of LLMs, medical language models and clinical NLP
+  maintainers:
+    - {name: Leo Chen, github: null, homepage: null, linkedin: null, scholar: null, twitter: null}
+  notebooklm: null
+
+- slug: AI4Science
+  name: AI for Science
+  file: AI4Science.md
+  scope: Scientific discovery, research assistance, chemistry and drug design
+  maintainers:
+    - {name: Ryan Khalloqi, github: null, homepage: null, linkedin: null, scholar: null, twitter: null}
+  notebooklm: null

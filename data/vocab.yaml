@@ -1,0 +1,190 @@
+# Controlled vocabularies for the catalogue.
+#
+# Everything here is a shared contract: the build script, the validator and the
+# weekly discovery bot all read this file. Adding a term here is how you extend
+# the schema -- no Python changes needed.
+
+# ---------------------------------------------------------------------------
+# Venues
+#
+#   short       -> used in the NotebookLM PDF name (202607-NatMed-PRISM2.pdf)
+#                  and in the compact index table
+#   type        -> journal | preprint | conference
+#   high_impact -> the venues the weekly discovery bot scans. Set false for
+#                  venues we catalogue but do not auto-scan.
+#   pubmed      -> NLM title abbreviation, used to build the PubMed query.
+#                  Must match PubMed exactly or the journal is silently skipped;
+#                  `python scripts/discover.py --check-journals` verifies them.
+#   aliases     -> other spellings seen in the wild. Crossref returns full
+#                  journal titles, PubMed returns abbreviations, and both feed
+#                  scripts/fetch_meta.py -- aliases keep either from guessing.
+# ---------------------------------------------------------------------------
+venues:
+  Nature:             {short: Nat,        type: journal,    high_impact: true,  pubmed: "Nature"}
+  Science:            {short: Sci,        type: journal,    high_impact: true,  pubmed: "Science"}
+  Cell:               {short: Cell,       type: journal,    high_impact: true,  pubmed: "Cell"}
+  "Nat. Med.":        {short: NatMed,     type: journal,    high_impact: true,  pubmed: "Nat Med",        aliases: ["Nature Medicine"]}
+  "Nat. Biomed. Eng.": {short: NatBME,    type: journal,    high_impact: true,  pubmed: "Nat Biomed Eng", aliases: ["Nature Biomedical Engineering"]}
+  "Nat. Methods":     {short: NatMethods, type: journal,    high_impact: true,  pubmed: "Nat Methods",    aliases: ["Nature Methods"]}
+  "Nat. Mach. Intell.": {short: NatMI,    type: journal,    high_impact: true,  pubmed: "Nat Mach Intell", aliases: ["Nature Machine Intelligence"]}
+  "Nat. Cancer":      {short: NatCancer,  type: journal,    high_impact: true,  pubmed: "Nat Cancer",     aliases: ["Nature Cancer"]}
+  "Nat. Aging":       {short: NatAging,   type: journal,    high_impact: true,  pubmed: "Nat Aging",      aliases: ["Nature Aging"]}
+  "Nat. Neurosci.":   {short: NatNeuro,   type: journal,    high_impact: true,  pubmed: "Nat Neurosci",   aliases: ["Nature Neuroscience"]}
+  "Nat. Comput. Sci.": {short: NatCompSci, type: journal,   high_impact: true,  pubmed: "Nat Comput Sci", aliases: ["Nature Computational Science"]}
+  "Nat. Commun.":     {short: NatComms,   type: journal,    high_impact: true,  pubmed: "Nat Commun",     aliases: ["Nature Communications"]}
+  "Nat. Genet.":      {short: NatGenet,   type: journal,    high_impact: true,  pubmed: "Nat Genet",      aliases: ["Nature Genetics"]}
+  "Nat. Biotechnol.": {short: NatBiotech, type: journal,    high_impact: true,  pubmed: "Nat Biotechnol", aliases: ["Nature Biotechnology"]}
+  "Cancer Cell":      {short: CancerCell, type: journal,    high_impact: true,  pubmed: "Cancer Cell"}
+  "Cell Rep. Med.":   {short: CellRepMed, type: journal,    high_impact: true,  pubmed: "Cell Rep Med",   aliases: ["Cell Reports Medicine"]}
+  "Cell Metab.":      {short: CellMetab,  type: journal,    high_impact: true,  pubmed: "Cell Metab",     aliases: ["Cell Metabolism"]}
+  "Cell Syst.":       {short: CellSyst,   type: journal,    high_impact: true,  pubmed: "Cell Syst",      aliases: ["Cell Systems"]}
+  NEJM:               {short: NEJM,       type: journal,    high_impact: true,  pubmed: "N Engl J Med",   aliases: ["New England Journal of Medicine", "The New England Journal of Medicine"]}
+  "NEJM AI":          {short: NEJMAI,     type: journal,    high_impact: true,  pubmed: "NEJM AI"}
+  Lancet:             {short: Lancet,     type: journal,    high_impact: true,  pubmed: "Lancet",         aliases: ["The Lancet"]}
+  "Lancet Oncol.":    {short: LancetOnc,  type: journal,    high_impact: true,  pubmed: "Lancet Oncol",   aliases: ["The Lancet Oncology"]}
+  "Lancet Digit. Health": {short: LancetDH, type: journal,  high_impact: true,  pubmed: "Lancet Digit Health", aliases: ["The Lancet Digital Health"]}
+  "J. Clin. Oncol.":  {short: JCO,        type: journal,    high_impact: true,  pubmed: "J Clin Oncol",   aliases: ["Journal of Clinical Oncology"]}
+  JAMA:               {short: JAMA,       type: journal,    high_impact: true,  pubmed: "JAMA"}
+  PNAS:               {short: PNAS,       type: journal,    high_impact: true,  pubmed: "Proc Natl Acad Sci U S A", aliases: ["Proceedings of the National Academy of Sciences"]}
+  "Sci. Transl. Med.": {short: SciTM,     type: journal,    high_impact: true,  pubmed: "Sci Transl Med", aliases: ["Science Translational Medicine"]}
+  "Med. Image Anal.": {short: MedIA,      type: journal,    high_impact: false, pubmed: "Med Image Anal", aliases: ["Medical Image Analysis"]}
+  "IEEE Trans. Med. Imaging": {short: TMI, type: journal,   high_impact: false, pubmed: "IEEE Trans Med Imaging", aliases: ["IEEE Transactions on Medical Imaging"]}
+
+  arXiv:              {short: arXiv,      type: preprint,   high_impact: false}
+  bioRxiv:            {short: bioRxiv,    type: preprint,   high_impact: false}
+  medRxiv:            {short: medRxiv,    type: preprint,   high_impact: false}
+
+  MICCAI:             {short: MICCAI,     type: conference, high_impact: false}
+  CVPR:               {short: CVPR,       type: conference, high_impact: false}
+  ICCV:               {short: ICCV,       type: conference, high_impact: false}
+  NeurIPS:            {short: NeurIPS,    type: conference, high_impact: false}
+  ICLR:               {short: ICLR,       type: conference, high_impact: false}
+
+# ---------------------------------------------------------------------------
+# Topic filter for the weekly discovery bot.
+#
+# A journal hit needs one `ai` term. A preprint needs one `ai` AND one
+# `biomedical` term, because bioRxiv/medRxiv/arXiv are far noisier than a
+# curated journal list.
+# ---------------------------------------------------------------------------
+discovery_keywords:
+  ai:
+    - foundation model
+    - large language model
+    - vision-language
+    - vision language
+    - self-supervised
+    - deep learning
+    - machine learning
+    - artificial intelligence
+    - neural network
+    - transformer
+    - generative model
+    - diffusion model
+    - multimodal model
+    - AI agent
+    - LLM
+  biomedical:
+    - pathology
+    - histopathology
+    - radiology
+    - whole-slide
+    - medical imaging
+    - clinical
+    - biomedical
+    - diagnosis
+    - prognosis
+    - patient
+    - cancer
+    - tumour
+    - tumor
+    - genomic
+    - transcriptom
+    - proteom
+    - protein
+    - electronic health record
+    - biomarker
+    - drug discovery
+
+# ---------------------------------------------------------------------------
+# Downstream task vocabulary.
+#
+# Keep these coarse. The point is filtering and cross-page consistency, not a
+# faithful description -- per-paper nuance belongs in `tasks_detail`.
+# ---------------------------------------------------------------------------
+tasks:
+  - classification
+  - detection
+  - segmentation
+  - registration
+  - retrieval
+  - report generation
+  - captioning
+  - visual question answering
+  - survival prediction
+  - prognosis
+  - biomarker prediction
+  - mutation prediction
+  - subtyping
+  - grading
+  - risk prediction
+  - diagnosis
+  - treatment response
+  - drug discovery
+  - protein structure prediction
+  - gene expression prediction
+  - variant effect prediction
+  - cell type annotation
+  - forecasting
+  - generation
+  - reasoning
+  - planning
+  - benchmarking
+
+# ---------------------------------------------------------------------------
+# Imaging / data modalities.
+# ---------------------------------------------------------------------------
+modalities:
+  - histopathology
+  - CT
+  - MRI
+  - PET
+  - X-ray
+  - ultrasound
+  - fMRI
+  - OCT
+  - fundus
+  - dermoscopy
+  - endoscopy
+  - microscopy
+  - EHR
+  - ECG
+  - EEG
+  - genomics
+  - transcriptomics
+  - proteomics
+  - text
+  - multimodal
+
+# ---------------------------------------------------------------------------
+# Pre-training / training paradigms.
+# ---------------------------------------------------------------------------
+pretraining:
+  - DINOv2
+  - DINO
+  - iBOT
+  - MAE
+  - MIM
+  - SimCLR
+  - MoCo
+  - CLIP
+  - CoCa
+  - contrastive
+  - masked language modeling
+  - next-token prediction
+  - supervised
+  - weakly supervised
+  - self-supervised
+  - reinforcement learning
+  - instruction tuning
+  - none

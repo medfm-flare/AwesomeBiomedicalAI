@@ -1,0 +1,3 @@
+# The tooling is deliberately close to stdlib so CI stays fast and a new
+# maintainer can run it without a virtualenv dance.
+PyYAML>=6.0

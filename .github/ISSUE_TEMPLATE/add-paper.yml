@@ -1,0 +1,61 @@
+name: Suggest a paper
+description: Propose a paper for the catalogue. A link is enough.
+title: "[paper] "
+labels: ["paper-suggestion"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        You only need the link. A maintainer will run the add-paper pipeline
+        against it, which pulls the bibliographic metadata from Crossref and
+        fills in the rest from the paper.
+
+        If you would rather do it yourself, see
+        [CONTRIBUTING.md](../blob/main/CONTRIBUTING.md) — it is one command
+        plus a YAML block.
+
+  - type: input
+    id: link
+    attributes:
+      label: Paper link
+      description: A DOI, publisher URL, or arXiv id.
+      placeholder: "10.1038/s41591-024-02857-3"
+    validations:
+      required: true
+
+  - type: dropdown
+    id: domain
+    attributes:
+      label: Which page does it belong on?
+      description: Best guess is fine; the maintainer will confirm.
+      options:
+        - not sure
+        - Pathology
+        - Radiology
+        - Biomedical Images — Other
+        - Longitudinal Health Data
+        - Multimodal AI
+        - AI Agents
+        - AI for Biology
+        - Large Language Models
+        - AI for Science
+    validations:
+      required: true
+
+  - type: input
+    id: code
+    attributes:
+      label: Code or weights
+      description: GitHub or Hugging Face link, if there is one.
+    validations:
+      required: false
+
+  - type: textarea
+    id: why
+    attributes:
+      label: Why this one?
+      description: >
+        One or two lines. What the model is, and why it belongs in a list that
+        is trying to stay high-signal rather than exhaustive.
+    validations:
+      required: false

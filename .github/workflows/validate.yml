@@ -1,0 +1,40 @@
+name: validate
+
+on:
+  pull_request:
+  push:
+    branches: [main, master]
+  workflow_dispatch:
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - run: pip install -r requirements.txt
+
+      - name: Schema, vocabulary and duplicate check
+        run: python scripts/validate.py --report
+
+      # The markdown is generated. If someone edited a .md by hand, or edited
+      # the YAML without rebuilding, the two are out of sync and the diff on
+      # main would be wrong -- so fail here with the exact command to run.
+      - name: Generated markdown is up to date
+        run: python scripts/build.py --check
+
+  links:
+    # Publishers rate-limit, so this runs on a schedule rather than per-PR.
+    if: github.event_name == 'workflow_dispatch'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - run: pip install -r requirements.txt
+      - run: python scripts/validate.py --links
