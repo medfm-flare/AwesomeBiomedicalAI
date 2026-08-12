@@ -1,0 +1,514 @@
+{
+  "domain": "AI for Science",
+  "scope": "Scientific discovery, research assistance, chemistry and drug design.",
+  "maintainer": {
+    "name": "Ryan Khalloqi",
+    "homepage": "https://github.com/ryanwangk",
+    "github": null
+  },
+  "categories": [
+    {
+      "id": "drug-design",
+      "title": "Drug & Molecule Design",
+      "entries": [
+        {
+          "id": "deepdrugdiscovery",
+          "date": "2026-04",
+          "model": "DeepDrugDiscovery",
+          "title": "DeepDrugDiscovery identifies blood–brain barrier permeable autophagy enhancers for Alzheimer’s disease",
+          "url": "https://www.nature.com/articles/s41551-026-01667-x",
+          "doi": "10.1038/s41551-026-01667-x",
+          "venue": "Nat. Biomed. Eng.",
+          "authors": [
+            {"name": "Yu Dong", "url": "https://scholar.google.com/citations?hl=zh-CN&user=9lXsixYAAAAJ&view_op=list_works"},
+            {"name": "Jia-Hong Lu", "url": "https://scholar.google.com/citations?hl=en&user=DluFD2sAAAAJ&view_op=list_works"}
+          ],
+          "params": null,
+          "backbone": "Hybrid variational autoencoder (VAE) fused with a Gated Recurrent Unit (GRU) that combines structural fingerprints with auxiliary molecular descriptors",
+          "pretraining": {
+            "tags": ["β-VAE", "unsupervised"],
+            "text": "Unsupervised β-variational autoencoder with progressive Kullback–Leibler annealing, learning a latent compound space without labelled data."
+          },
+          "training_data": {
+            "text": "A library of unique small-molecule compounds screened computationally for BBB permeability and ADMET properties.",
+            "stat": "1,155,606 compounds"
+          },
+          "downstream_tasks": {
+            "tags": ["virtual screening", "ADMET prediction", "diversity analysis"],
+            "text": "Ligand-based virtual screening, ADMET property prediction, diversity analysis, and identification of BBB-permeable, mTOR-independent autophagy enhancers."
+          },
+          "modalities": ["small molecules"],
+          "code": "https://github.com/XiangLuXiao/DeepDrugDiscovery",
+          "weights": null,
+          "license": null,
+          "open": true,
+          "key_results": [
+            "Identified multiple novel autophagy enhancers acting outside the broad mTOR pathway; two lead compounds cross the blood–brain barrier.",
+            "Lead compounds cleared amyloid-β and tau aggregates and restored memory function in worm and mouse Alzheimer's disease models."
+          ],
+          "note": "Nature and the bioengineer.org writeup describe the validation qualitatively; neither states a numeric hit rate or screening funnel size, so none is given here."
+        },
+        {
+          "id": "lnp-spatial-ai",
+          "date": "2026-03",
+          "model": "AI-guided LNP design (unnamed in paper)",
+          "title": "Artificial intelligence-guided design of LNPs for in vivo targeted mRNA delivery via analysis of the spatial conformation of ionizable lipids",
+          "url": "https://www.nature.com/articles/s41551-026-01640-8",
+          "doi": "10.1038/s41551-026-01640-8",
+          "venue": "Nat. Biomed. Eng.",
+          "authors": [
+            {"name": "Lin-Jia Su", "url": "https://scholar.google.co.uk/citations?user=omc7JboAAAAJ&hl=en&oi=sra"},
+            {"name": "Yao-Xin Lin", "url": "https://scholar.google.co.uk/citations?user=KXEbGR0AAAAJ&hl=en&oi=ao"}
+          ],
+          "params": null,
+          "backbone": "Sure Independence Screening and Sparsifying Operator (SISSO) symbolic regression over 3D spatial-conformation descriptors, not a neural network",
+          "pretraining": {
+            "tags": ["symbolic regression", "compressed sensing"],
+            "text": "No pretraining stage; molecular-dynamics simulations generate 3D conformation descriptors that SISSO regresses against measured delivery efficacy."
+          },
+          "training_data": {
+            "text": "Representative ionizable lipids with spatial and chemical descriptors and matched experimental mRNA delivery efficacy.",
+            "stat": "100 lipids · 28 features"
+          },
+          "downstream_tasks": {
+            "tags": ["property prediction", "candidate screening"],
+            "text": "Predicting mRNA delivery efficiency of ionizable lipid nanoparticles and screening untested lipid candidates for organ-targeted delivery."
+          },
+          "modalities": ["molecular structure"],
+          "code": null,
+          "weights": null,
+          "license": null,
+          "open": false,
+          "key_results": [
+            "Lead lipid P1 gave a 14.8-fold improvement in mRNA delivery efficiency over the clinical-standard lipid ALC-0315.",
+            "P1's 3D structure binds IgM, giving spleen-targeted delivery; in a mouse melanoma model this produced strong T-cell activation and tumour regression."
+          ],
+          "note": "Numbers are from the CAS English-language press release (english.cas.cn); the full text is paywalled and was not independently checked. No code or model repository was found."
+        },
+        {
+          "id": "lasermpnn",
+          "date": "2026-06",
+          "model": "LASErMPNN",
+          "title": "Zero-shot design of drug-binding proteins via neural iterative selection−expansion",
+          "url": "https://www.nature.com/articles/s41586-026-10670-w",
+          "doi": "10.1038/s41586-026-10670-w",
+          "venue": "Nature",
+          "authors": [
+            {"name": "Benjamin Fry", "url": "https://scholar.google.com/citations?user=2TE2_OkAAAAJ&hl=en"},
+            {"name": "Nicholas F. Polizzi", "url": "https://scholar.google.com/citations?hl=en&user=CgZvDJkAAAAJ&view_op=list_works&sortby=pubdate"}
+          ],
+          "params": null,
+          "backbone": "Ligand-Aware Sequence Engineering Message-Passing Neural Network (a graph/heterograph neural network) for sequence design, paired with a structure predictor that models the 3D protein–ligand complex",
+          "pretraining": {
+            "tags": ["graph neural network", "structure-conditioned"],
+            "text": "Trained to predict atom-level properties; used in an iterative selection-expansion design loop rather than single-shot generation."
+          },
+          "training_data": {
+            "text": "Protein–ligand co-crystal structures from the Protein Data Bank (PDB).",
+            "stat": null
+          },
+          "downstream_tasks": {
+            "tags": ["de novo binder design", "side-chain packing", "proofreading"],
+            "text": "Zero-shot de novo design of high-affinity small-molecule binding proteins, side-chain packing and dihedral-angle prediction, neural proofreading, and designing proteins that protect labile ligands from hydrolysis."
+          },
+          "modalities": ["protein structure", "small molecules"],
+          "code": "https://github.com/polizzilab/LASErMPNN",
+          "weights": null,
+          "license": null,
+          "open": true,
+          "key_results": [
+            "Hit rate and highest-affinity design each surpassed the prior state-of-the-art method by 5-fold and 70-fold respectively.",
+            "Without any experimental input, LASErMPNN suggested two mutations that increased binding affinity by more than two orders of magnitude (Kd = 1.2 ± 0.2 nM)."
+          ],
+          "note": "Also catalogued on AI4biology.md (Keishi's page) — kept here too since drug-binding protein design sits squarely in this page's chemistry/drug-design scope; duplicates across pages are fine for now per team discussion."
+        }
+      ]
+    },
+    {
+      "id": "materials-science",
+      "title": "Materials & Physical Science",
+      "entries": [
+        {
+          "id": "discovery-learning",
+          "date": "2026-02",
+          "model": "Discovery Learning",
+          "title": "Discovery Learning predicts battery cycle life from minimal experiments",
+          "url": "https://www.nature.com/articles/s41586-025-09951-7",
+          "doi": "10.1038/s41586-025-09951-7",
+          "venue": "Nature",
+          "authors": [
+            {"name": "Jiawei Zhang", "url": "https://scholar.google.com/citations?user=tbtanasAAAAJ"},
+            {"name": "Ziyou Song", "url": "https://scholar.google.com/citations?user=CWEeVz4AAAAJ"}
+          ],
+          "params": null,
+          "backbone": "Closed reasoning loop of a “learner” (active-learning cycle-life predictor), an “interpreter” (physics-based battery simulator plus historical data) and an “oracle” (final prediction), not a single neural network",
+          "pretraining": {
+            "tags": ["active learning", "physics-guided", "zero-shot"],
+            "text": "Active learning selects a few battery candidates to run for ~50 cycles; physics-guided simulation and zero-shot transfer extrapolate to full cycle life."
+          },
+          "training_data": {
+            "text": "Large-format lithium-ion pouch cells; the model generalised to pouch cells after training only on cylindrical-cell data.",
+            "stat": "123 pouch cells"
+          },
+          "downstream_tasks": {
+            "tags": ["cycle-life prediction"],
+            "text": "Predicting the number of charge–discharge cycles before capacity drops below 90% of design capacity, from ~50 cycles of data."
+          },
+          "modalities": ["battery cycling time series"],
+          "code": "https://zenodo.org/records/17654407",
+          "weights": null,
+          "license": null,
+          "open": true,
+          "key_results": [
+            "Predicts cycle life from ~50 cycles using an estimated 5% of the energy and 2% of the time of conventional full-life testing (days–weeks vs. months–years).",
+            "Generalised across cell geometry: trained on cylindrical cells, validated on larger pouch cells."
+          ],
+          "note": "Coverage (EurekAlert, Newswise) gives resource savings, not a numeric prediction-error figure (e.g. MAPE); left blank rather than guessed."
+        },
+        {
+          "id": "mattergen",
+          "date": "2025-01",
+          "model": "MatterGen",
+          "title": "A generative model for inorganic materials design",
+          "url": "https://www.nature.com/articles/s41586-025-08628-5",
+          "doi": "10.1038/s41586-025-08628-5",
+          "venue": "Nature",
+          "authors": [
+            {"name": "Claudio Zeni", "url": null},
+            {"name": "Tian Xie", "url": null}
+          ],
+          "params": null,
+          "backbone": "Diffusion model that jointly denoises atomic positions, element types and lattice parameters under periodicity constraints",
+          "pretraining": {
+            "tags": ["diffusion"],
+            "text": "Denoising diffusion trained end-to-end on crystal structures; can be fine-tuned toward property constraints (bulk modulus, band gap, chemical system, magnetic density)."
+          },
+          "training_data": {
+            "text": "Stable inorganic materials from the Materials Project and Alexandria databases.",
+            "stat": "~608,000 structures"
+          },
+          "downstream_tasks": {
+            "tags": ["generative design", "property-guided generation"],
+            "text": "Property-guided generation of novel, stable inorganic crystals across the periodic table; one generated structure (TaCr₂O₆) was synthesised experimentally."
+          },
+          "modalities": ["crystal structure"],
+          "code": "https://github.com/microsoft/mattergen",
+          "weights": "https://huggingface.co/microsoft/mattergen",
+          "license": null,
+          "open": true,
+          "key_results": [
+            "Generated structures are reported as more than twice as likely to be novel and stable, and more than ten times closer to the local energy minimum, than prior generative baselines."
+          ],
+          "note": "License not independently confirmed — check the repo before citing it as permissive."
+        },
+        {
+          "id": "gnome",
+          "date": "2023-11",
+          "model": "GNoME",
+          "title": "Scaling deep learning for materials discovery",
+          "url": "https://www.nature.com/articles/s41586-023-06735-9",
+          "doi": "10.1038/s41586-023-06735-9",
+          "venue": "Nature",
+          "authors": [
+            {"name": "Amil Merchant", "url": null},
+            {"name": "Ekin Dogus Cubuk", "url": null}
+          ],
+          "params": null,
+          "backbone": "Graph neural network over crystal-structure graphs, paired with learned interatomic potentials for molecular-dynamics simulation",
+          "pretraining": {
+            "tags": ["active learning", "DFT-supervised"],
+            "text": "Active-learning loop combining structural and compositional models, bootstrapped from ~48,000 known stable crystals and refined against hundreds of millions of first-principles (DFT) calculations."
+          },
+          "training_data": {
+            "text": "Crystal structures and stability labels from the Materials Project, expanded through the active-learning loop.",
+            "stat": "~48,000 seed crystals"
+          },
+          "downstream_tasks": {
+            "tags": ["stability prediction", "materials discovery"],
+            "text": "Predicting the stability of candidate inorganic crystal structures to find new stable materials; interatomic potentials also support ionic-conductivity prediction."
+          },
+          "modalities": ["crystal structure"],
+          "code": "https://github.com/google-deepmind/materials_discovery",
+          "weights": null,
+          "license": null,
+          "open": true,
+          "key_results": [
+            "Identified 2.2 million candidate structures below the known stability threshold, of which ~380,000 are the most stable — roughly a ten-fold expansion of known stable materials.",
+            "736 of the predicted structures were independently synthesised and confirmed by external groups."
+          ],
+          "note": "Flagged for balance: the discovery-count claims have drawn published pushback over duplicate/near-duplicate structures (see C&EN, “Duplicate structures haunt crystallography databases”, Dec. 2025, and The Register, Apr. 2024). Included as a landmark, heavily-cited result, with that dispute noted rather than omitted."
+        }
+      ]
+    },
+    {
+      "id": "research-agents",
+      "title": "Research Agents & Literature Tools",
+      "entries": [
+        {
+          "id": "openscholar",
+          "date": "2026-02",
+          "model": "OpenScholar",
+          "title": "Synthesizing scientific literature with retrieval-augmented language models",
+          "url": "https://www.nature.com/articles/s41586-025-10072-4",
+          "doi": "10.1038/s41586-025-10072-4",
+          "venue": "Nature",
+          "authors": [
+            {"name": "Akari Asai", "url": "https://scholar.google.com/citations?user=gqB4u_wAAAAJ"},
+            {"name": "Hannaneh Hajishirzi", "url": "https://scholar.google.com/citations?user=LOV6_WIAAAAJ"}
+          ],
+          "params": "8B (OpenScholar-8B generator)",
+          "backbone": "Llama-3.1-8B generator, fine-tuned; Contriever-based retriever continued-pretrained on peS2o; BGE-Large reranker; also runs with GPT-4o as the generator (OpenScholar-GPT4o)",
+          "pretraining": {
+            "tags": ["RAG", "self-feedback", "instruction tuning"],
+            "text": "Retrieval-augmented generation with a self-feedback inference loop; the 8B generator was instruction-tuned on 13,000 examples (modified torchtune, 8×A100 GPUs)."
+          },
+          "training_data": {
+            "text": "peS2o open-access paper datastore (v2/v3), embedded for dense retrieval.",
+            "stat": "45,000,000 papers · 200M+ passage embeddings"
+          },
+          "downstream_tasks": {
+            "tags": ["literature synthesis", "citation-grounded QA"],
+            "text": "Long-form, citation-backed scientific literature synthesis; evaluated on ScholarQABench (2,967 expert queries, 208 long-form answers across 4 domains)."
+          },
+          "modalities": ["text"],
+          "code": "https://github.com/AkariAsai/OpenScholar",
+          "weights": "Hugging Face collection: OpenScholar-v1",
+          "license": "Apache-2.0",
+          "open": true,
+          "key_results": [
+            "OpenScholar-8B beats GPT-4o by 5 points and PaperQA2 by 7 points on ScholarQABench correctness.",
+            "Citation accuracy on par with human experts, versus a 78–90% citation hallucination rate for GPT-4o.",
+            "In blind evaluation, experts preferred OpenScholar-8B / OpenScholar-GPT4o answers over expert-written ones 51% / 70% of the time."
+          ],
+          "note": null
+        },
+        {
+          "id": "sciscigpt",
+          "date": "2025-12",
+          "model": "SciSciGPT",
+          "title": "SciSciGPT: advancing human–AI collaboration in the science of science",
+          "url": "https://www.nature.com/articles/s43588-025-00906-6",
+          "doi": "10.1038/s43588-025-00906-6",
+          "venue": "Nat. Comput. Sci.",
+          "authors": [
+            {"name": "Erzhuo Shao", "url": "https://orcid.org/0000-0003-2440-271X"},
+            {"name": "Dashun Wang", "url": "https://orcid.org/0000-0002-7054-2206"}
+          ],
+          "params": null,
+          "backbone": "Multi-agent LLM orchestration framework; the fetched abstract/arXiv page does not name the underlying base LLM(s), so it is left unconfirmed rather than guessed",
+          "pretraining": {
+            "tags": ["multi-agent", "tool use"],
+            "text": "Agentic orchestration over an existing LLM — no new model is pretrained; agents plan and call bibliometric/analysis tools."
+          },
+          "training_data": {
+            "text": "Operates over science-of-science bibliometric datasets at inference time rather than a fixed training corpus.",
+            "stat": null
+          },
+          "downstream_tasks": {
+            "tags": ["bibliometric analysis", "research automation"],
+            "text": "Automates science-of-science analytical workflows: bibliometric analysis, research prototyping/iteration, and reproducibility support. Proposes an LLM-agent capability maturity model for human–AI collaboration."
+          },
+          "modalities": ["text", "structured bibliometric data"],
+          "code": "https://github.com/Northwestern-CSSI/SciSciGPT",
+          "weights": null,
+          "license": "CC BY-NC-SA 4.0 (arXiv preprint license)",
+          "open": true,
+          "key_results": [],
+          "note": "Nature Computational Science published this 2025-12-09; the arXiv preprint (2504.05559) predates it by several months, which is why the date here differs from the original catalogue entry. No numeric benchmark results were available in the fetched abstract; the full text is paywalled."
+        },
+        {
+          "id": "co-scientist",
+          "date": "2026-07",
+          "model": "Co-Scientist",
+          "title": "Accelerating scientific discovery with Co-Scientist",
+          "url": "https://www.nature.com/articles/s41586-026-10644-y",
+          "doi": "10.1038/s41586-026-10644-y",
+          "venue": "Nature",
+          "authors": [
+            {"name": "Juraj Gottweis", "url": null},
+            {"name": "Vivek Natarajan", "url": null}
+          ],
+          "params": null,
+          "backbone": "Multi-agent AI system built on Gemini; agents generate, critique and refine hypotheses in a tournament-style ranking loop, scaled with test-time compute",
+          "pretraining": {
+            "tags": ["multi-agent", "test-time compute scaling"],
+            "text": "Orchestration layer over Gemini rather than a separately pretrained model; hypothesis quality improves with additional test-time compute."
+          },
+          "training_data": {
+            "text": "Evaluated across 203 open-ended research objectives spanning AML drug repurposing, liver fibrosis and antimicrobial resistance, rather than trained on a fixed corpus.",
+            "stat": "203 research objectives"
+          },
+          "downstream_tasks": {
+            "tags": ["hypothesis generation", "research prioritization"],
+            "text": "Generating and prioritising scientific hypotheses for wet-lab validation."
+          },
+          "modalities": ["text"],
+          "code": null,
+          "weights": null,
+          "license": null,
+          "open": false,
+          "key_results": [
+            "Proposed AML drug-repurposing candidate KIRA6 showed an 18-fold separation between malignant and control cell lines in follow-up validation.",
+            "Independently recapitulated a previously unpublished bacterial gene-transfer resistance mechanism.",
+            "In expert evaluation across 203 objectives, hypothesis quality was rated above both human experts and leading LLM baselines."
+          ],
+          "note": "Closed system — no public code or weights; access is via Google's Gemini for Science research registration, not open source."
+        },
+        {
+          "id": "ai-scientist",
+          "date": "2026-03",
+          "model": "The AI Scientist",
+          "title": "Towards end-to-end automation of AI research",
+          "url": "https://www.nature.com/articles/s41586-026-10265-5",
+          "doi": "10.1038/s41586-026-10265-5",
+          "venue": "Nature",
+          "authors": [
+            {"name": "Yutaro Yamada", "url": null},
+            {"name": "Jeff Clune", "url": "https://scholar.google.com/citations?hl=en&user=5TZ7f5wAAAAJ&view_op=list_works&sortby=pubdate"}
+          ],
+          "params": null,
+          "backbone": "Multi-agent system orchestrating foundation models for idea generation, coding, experimentation, analysis and manuscript writing, run in both a template-based focused mode and a template-free open-ended mode",
+          "pretraining": {
+            "tags": ["multi-agent", "agentic search"],
+            "text": "Orchestration over existing foundation models rather than a newly pretrained model."
+          },
+          "training_data": {
+            "text": "Evaluated across machine-learning research tasks in both modes rather than trained on a fixed corpus.",
+            "stat": null
+          },
+          "downstream_tasks": {
+            "tags": ["idea generation", "experimentation", "manuscript writing", "self-review"],
+            "text": "Autonomous end-to-end research: generating ideas, writing code, running experiments, analysing and plotting results, writing the full manuscript, and performing its own peer review."
+          },
+          "modalities": ["text", "code"],
+          "code": "https://github.com/SakanaAI/AI-Scientist",
+          "weights": null,
+          "license": null,
+          "open": true,
+          "key_results": [
+            "A fully autonomously generated manuscript passed the first round of peer review for a top-tier ML conference workshop with a 70% acceptance rate."
+          ],
+          "note": "Also on AI_agent.md, listed there as Chris Lu & Jeff Clune. The Nature author list (Yamada, Lange, Cong Lu, Chris Lu, Hu, Foerster, Ha, Clune) puts Yutaro Yamada as first author, so that's used here — worth a correction on the AI_agent.md entry too."
+        },
+        {
+          "id": "era",
+          "date": "2026-05",
+          "model": "ERA (Empirical Research Assistance)",
+          "title": "An AI system to help scientists write expert-level empirical software",
+          "url": "https://www.nature.com/articles/s41586-026-10658-6",
+          "doi": "10.1038/s41586-026-10658-6",
+          "venue": "Nature",
+          "authors": [
+            {"name": "Eser Aygün", "url": "https://scholar.google.com/citations?user=mogd5nkAAAAJ&hl=en"},
+            {"name": "Michael Brenner", "url": "https://scholar.google.com/citations?user=ZDL6ITwAAAAJ&hl=en"}
+          ],
+          "params": null,
+          "backbone": "LLM combined with tree search (TS), which systematically improves a quality metric and navigates the space of candidate programs; for some tasks combined with Gemini Deep Think",
+          "pretraining": {
+            "tags": ["tree search", "LLM-guided program search"],
+            "text": "Search/optimization framework over an existing LLM rather than a newly pretrained model."
+          },
+          "training_data": {
+            "text": "Applied per research task rather than trained on a fixed corpus (bioinformatics, epidemiology, geospatial, neuroscience, physics).",
+            "stat": null
+          },
+          "downstream_tasks": {
+            "tags": ["scientific software generation", "method discovery"],
+            "text": "Generating expert-level empirical software across domains: single-cell analysis, epidemiological forecasting, geospatial CO2 monitoring, zebrafish neural-activity prediction, numerical integration, and cosmic-string gravitational-wave theory."
+          },
+          "modalities": ["text", "code", "scientific data"],
+          "code": "https://github.com/google-research/era",
+          "weights": null,
+          "license": null,
+          "open": true,
+          "key_results": [
+            "Discovered 40 novel single-cell data analysis methods that outperformed the top human-developed methods on a public leaderboard.",
+            "Generated 14 COVID-19 hospitalization forecasting models that outperformed the CDC ensemble and every individual model on the public leaderboard.",
+            "Reached state-of-the-art predictive performance on ZAPBench, predicting activity across more than 70,000 zebrafish neurons.",
+            "Derived six new general solutions and a closed-form asymptotic formula for cosmic-string gravitational radiation, extending beyond the previously known simplest case."
+          ],
+          "note": null
+        },
+        {
+          "id": "biomedagent",
+          "date": "2026-03",
+          "model": "BioMedAgent",
+          "title": "Empowering AI data scientists using a multi-agent LLM framework with self-evolving capabilities for autonomous, tool-aware biomedical data analyses",
+          "url": "https://www.nature.com/articles/s41551-026-01634-6",
+          "doi": "10.1038/s41551-026-01634-6",
+          "venue": "Nat. Biomed. Eng.",
+          "authors": [
+            {"name": "Dechao Bu", "url": "https://orcid.org/0000-0002-8833-5432"},
+            {"name": "Yi Zhao", "url": "https://orcid.org/0000-0001-6046-8420"}
+          ],
+          "params": null,
+          "backbone": "Self-evolving multi-agent LLM framework that chains bioinformatics tools into executable workflows via interactive exploration and memory retrieval; evaluated against other agents using the same underlying model (GPT-4o-mini)",
+          "pretraining": {
+            "tags": ["multi-agent", "self-evolving", "tool use"],
+            "text": "Agentic orchestration and self-evolution over an existing LLM rather than a newly pretrained model."
+          },
+          "training_data": {
+            "text": "Tool-use framework operating on user-supplied biomedical datasets rather than a fixed training corpus.",
+            "stat": null
+          },
+          "downstream_tasks": {
+            "tags": ["biomedical data analysis", "workflow automation"],
+            "text": "Autonomous biomedical data analysis from natural-language prompts, with tool chaining and workflow execution requiring no computational expertise from the user."
+          },
+          "modalities": ["text", "biomedical data"],
+          "code": "https://github.com/BOBQWERA/BioMedAgent",
+          "weights": null,
+          "license": null,
+          "open": true,
+          "key_results": [
+            "Outperformed other LLM agents built on the same base model (GPT-4o-mini), with consistent success-rate improvements across multiple task types.",
+            "Reached a 100% analysable scope using local workspace tools, versus a narrower scope for ChatGPT-4o and GPT Assistants run online."
+          ],
+          "note": "Also on AI_agent.md (Meng/Lan's page)."
+        }
+      ]
+    }
+  ],
+  "tools": [
+    {
+      "id": "evoscientist",
+      "name": "EvoScientist",
+      "description": "Full-purpose AI research tool: conducts literature review, hypothesis generation and experimentation refinement, and outputs a full paper.",
+      "code": "https://github.com/EvoScientist/EvoScientist",
+      "homepage": null,
+      "contributor": "Saf"
+    },
+    {
+      "id": "paperorchestra",
+      "name": "PaperOrchestra",
+      "description": "Automated AI research-paper writer, implemented as a skill (benchmark + autoraters) that runs on top of any coding agent (Claude Code, Cursor, Antigravity, Cline, Aider). No API keys or LLM SDKs required.",
+      "code": "https://github.com/Ar9av/PaperOrchestra",
+      "homepage": null,
+      "contributor": "Terry"
+    },
+    {
+      "id": "paperbanana",
+      "name": "PaperBanana",
+      "description": "Automatic figure generation from a method description and caption.",
+      "code": "https://github.com/dwzhu-pku/PaperBanana",
+      "homepage": "https://dwzhu-pku.github.io/PaperBanana/",
+      "contributor": "Yeonwoo"
+    },
+    {
+      "id": "scite",
+      "name": "Scite_",
+      "description": "Conversational AI over 280M full-text papers; good for finding and citing real papers, and for summarizing and learning about academic literature.",
+      "code": null,
+      "homepage": "https://scite.ai/home",
+      "contributor": "Ryan"
+    },
+    {
+      "id": "claude-scholar",
+      "name": "claude scholar",
+      "description": "Agents and skills for tying a codebase to Zotero and Obsidian, for literature-review workflows.",
+      "code": "https://github.com/Galaxy-Dawn/claude-scholar",
+      "homepage": null,
+      "contributor": "Saf"
+    }
+  ]
+}
