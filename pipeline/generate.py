@@ -45,16 +45,6 @@ def training_data_cell(field: dict | None) -> str:
     return stat or text or "—"
 
 
-def summary_task_label(field: dict | None, limit: int = 3) -> str:
-    if not field or not field.get("tags"):
-        return "—"
-    tags = field["tags"]
-    shown = ", ".join(tags[:limit])
-    if len(tags) > limit:
-        shown += f" +{len(tags) - limit}"
-    return shown
-
-
 def render_info_table(entry: dict) -> str:
     rows = []
     if entry.get("params"):
@@ -103,15 +93,14 @@ def render_entry_detail(entry: dict) -> str:
 
 
 def render_category(cat: dict) -> str:
-    header = ["| Date | Model | Venue | Model size | Open | Downstream tasks |", "| --- | --- | --- | --- | --- | --- |"]
+    header = ["| Date | Model | Venue | Model size | Open | Headline result |", "| --- | --- | --- | --- | --- | --- |"]
     rows = []
     for e in cat["entries"]:
         model_link = f"[{e['model']}](#{anchor_id(e)})"
-        size = e.get("params") or "—"
+        size = e.get("params") or "not stated"
         open_badge = "✓" if e.get("open") else "—"
-        rows.append(
-            f"| {e['date']} | {model_link} | {e['venue']} | {size} | {open_badge} | {summary_task_label(e.get('downstream_tasks'))} |"
-        )
+        headline = e.get("headline") or "—"
+        rows.append(f"| {e['date']} | {model_link} | {e['venue']} | {size} | {open_badge} | {headline} |")
     table = "\n".join(header + rows)
 
     details = "\n\n".join(render_entry_detail(e) for e in cat["entries"])
