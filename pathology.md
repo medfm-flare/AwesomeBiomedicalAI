@@ -1,12 +1,12 @@
 <!-- GENERATED FILE - DO NOT EDIT BY HAND -->
-<!-- Generated from data/pathology.yaml in https://github.com/leoyin1127/biomedical-ai-pipeline -->
+<!-- Generated from data/pathology.yaml in https://github.com/1nslyn/biomedical-ai-pipeline -->
 <!-- Edits made here are overwritten by the next build. -->
 
 # Pathology
 
 Histopathology, whole-slide imaging and computational pathology.
 
-**Maintainer:** [Leo Yin](https://shuolinyin.com) ([GitHub](https://github.com/leoyin1127))
+**Maintainer:** [Leo Yin](https://shuolinyin.com) ([GitHub](https://github.com/1nslyn))
 
 **15 entries** · [Back to index](README.md)
 
@@ -487,4 +487,4 @@ Click a model to expand its record.
 
 ---
 
-This page is generated. Add a paper by editing [`data/pathology.yaml`](https://github.com/leoyin1127/biomedical-ai-pipeline/blob/main/data/pathology.yaml) in the [pipeline repository](https://github.com/leoyin1127/biomedical-ai-pipeline) and rebuilding — edits made here are overwritten. The schema and house rules are in [CONTRIBUTING.md](https://github.com/leoyin1127/biomedical-ai-pipeline/blob/main/CONTRIBUTING.md).
+This page is generated. Add a paper by editing [`data/pathology.yaml`](https://github.com/1nslyn/biomedical-ai-pipeline/blob/main/data/pathology.yaml) in the [pipeline repository](https://github.com/1nslyn/biomedical-ai-pipeline) and rebuilding — edits made here are overwritten. The schema and house rules are in [CONTRIBUTING.md](https://github.com/1nslyn/biomedical-ai-pipeline/blob/main/CONTRIBUTING.md).
