@@ -6,7 +6,7 @@ Agentic, autonomous and tool-using AI systems.
 
 **Notebook:** [NotebookLM](https://notebook.google.com/notebook/b25c668a-4926-45b8-bca3-329885628a36)
 
-**16 entries** · [Back to index](README.md)
+**14 entries** · [Back to index](README.md)
 
 | Date | Model | Venue | Model size | Training data | Pre-training | Downstream tasks |
 | --- | --- | --- | --- | --- | --- | --- |
@@ -18,11 +18,9 @@ Agentic, autonomous and tool-using AI systems.
 | 2026-05 | [ERA](#model-era-202605) | Nature | — | — | tree search | bioinformatics method discovery, epidemiological forecasting |
 | 2026-04 | [AlphaLab](#model-alphalab-202604) | Preprint | — | — | N/A | general research automation |
 | 2026-04 | [SPARK](#model-spark-202604) | Nat. Med. | — | 5.4K patients (eval) | training-free (agent); pretrained preprocessing models | biomarker discovery, risk stratification, spatial biology +2 |
-| 2026-04 | [AgentClinic](#model-agentclinic-202604) | npj Digit. Med. | — | 1.3K cases | N/A, zero-shot | diagnostic simulation, bias evaluation |
 | 2026-03 | [BioMedAgent](#model-biomedagent-202603) | Nat. Biomed. Eng. | — | — | N/A | bioinformatics analysis |
 | 2026-03 | [AI Scientist](#model-ai-scientist-202603) | Nature | — | — | N/A | general research automation |
 | 2026-02 | [PantheonOS](#model-pantheonos-202602) | bioRxiv | — | CELLxGENE subset | RL; integrated scFM pretraining (generative, masked gene prediction) | gene panel design, signaling pathway mapping |
-| 2026-02 | [OpenManus / Manus](#model-openmanus-manus-202602) | npj Digit. Med. | — | 3 eval benchmarks | N/A, zero-shot | diagnostic dialog, medical QA, multimodal reasoning |
 | 2026-01 | [PHIA](#model-phia-202601) | Nat. Commun. | — | 30K users (synthetic) | N/A | wearable-data QA, anomaly detection |
 | 2026-01 | [BioDSA](#model-biodsa-202601) | Nat. Biomed. Eng. | — | — | N/A | biomedical data science analysis |
 | 2025-10 | [AILA](#model-aila-202510) | Nat. Commun. | — | 100 AFM tasks | N/A | AFM calibration, mechanical property measurement +2 |
@@ -182,25 +180,6 @@ Click a model to expand its record.
 
 </details>
 
-<a id="model-agentclinic-202604"></a>
-<details>
-<summary><b>AgentClinic</b> — AgentClinic: a multimodal benchmark for tool-using clinical AI agents <i>(npj Digit. Med. 2026-04)</i></summary>
-
-**[AgentClinic: a multimodal benchmark for tool-using clinical AI agents](https://www.nature.com/articles/s41746-026-02674-7)**
-
-*npj Digit. Med.* · 2026-04 · [Samuel Schmidgall](https://scholar.google.com/citations?user=bQDooZEAAAAJ&hl=en) & [Michael Moor](https://scholar.google.com/citations?user=Q_Y5csgAAAAJ&hl=en)
-
-| | |
-| --- | --- |
-| **Backbone** | 11 LLM backbones evaluated: Claude-3.5-Sonnet, GPT-4, GPT-4o, GPT-3.5, Mixtral-8x7B, Llama 3 70B-Instruct, Llama 2 70B-chat, MedLlama3-8B, PMC-Llama-7B, Meditron-70B, OpenBioLLM-70B |
-| **Pre-training** | `N/A`, `zero-shot`<br>No new models trained; existing LLM backbones evaluated as clinical agents. |
-| **Training data** | Cases from USMLE questions, de-identified MIMIC-IV EHRs and NEJM case challenges: 215 language-agent cases, 120 multimodal cases, 260 specialist cases across 9 specialties, 749 multilingual cases across 7 languages. |
-| **Downstream tasks** | `diagnostic simulation`, `bias evaluation`<br>Multimodal, tool-using diagnostic simulation with patient interaction and incomplete-information data collection; evaluates diagnostic accuracy and cognitive/implicit bias across 9 medical specialties and 7 languages. |
-| **Modalities** | `text`, `EHR data`, `image` |
-| **Code** | [github.com/SamuelSchmidgall/AgentClinic](https://github.com/SamuelSchmidgall/AgentClinic) |
-
-</details>
-
 <a id="model-biomedagent-202603"></a>
 <details>
 <summary><b>BioMedAgent</b> — Empowering AI data scientists using a multi-agent LLM framework with self-evolving capabilities for autonomous, tool-aware biomedical data analyses <i>(Nat. Biomed. Eng. 2026-03)</i></summary>
@@ -255,24 +234,6 @@ Click a model to expand its record.
 | **Downstream tasks** | `gene panel design`, `signaling pathway mapping`<br>Gene panel design, mapping molecular and signaling events, such as Cer1–Nodal inhibition, in embryonic development. |
 | **Modalities** | `omics data`, `text` |
 | **Code** | [github.com/aristoteleo/PantheonOS](https://github.com/aristoteleo/PantheonOS) |
-
-</details>
-
-<a id="model-openmanus-manus-202602"></a>
-<details>
-<summary><b>OpenManus / Manus</b> — Benchmarking large language model-based agent systems for clinical decision tasks <i>(npj Digit. Med. 2026-02)</i></summary>
-
-**[Benchmarking large language model-based agent systems for clinical decision tasks](https://www.nature.com/articles/s41746-026-02443-6)**
-
-*npj Digit. Med.* · 2026-02 · [Yunsong Liu](https://scholar.google.com/citations?user=_l_P0EEAAAAJ&hl=en) & [Jakob Nikolas Kather](https://scholar.google.com/citations?user=w6-uFdEAAAAJ&hl=en)
-
-| | |
-| --- | --- |
-| **Backbone** | OpenManus (open-source, planner-executor-verifier) and Manus (proprietary agent system), run over Llama-4, Qwen-3, Gemma-3 / MedGemma and GPT-4.1 |
-| **Pre-training** | `N/A`, `zero-shot`<br>No new models trained; existing models evaluated zero-shot. |
-| **Training data** | AgentClinic (MedQA, MIMIC-IV, NEJM case challenges), MedAgentsBench (862 MCQs), Humanity's Last Exam (222 text + 58 multimodal questions). |
-| **Downstream tasks** | `diagnostic dialog`, `medical QA`, `multimodal reasoning`<br>Stepwise dialog-based diagnostic simulation, knowledge-intensive medical QA, and multimodal diagnostic reasoning; found that agent tool access (web browsing, code execution, file editing) yielded only modest accuracy gains over baseline LLMs. |
-| **Modalities** | `text`, `EHR data`, `image` |
 
 </details>
 
