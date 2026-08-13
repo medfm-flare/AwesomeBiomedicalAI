@@ -5,11 +5,11 @@ A curated catalogue of biomedical artificial intelligence models and systems pub
 
 ## Browse by domain
 
-| Domain | Scope | Maintainer | NotebookLM |
+| Domain | Scope | Maintainer | Summary |
 | --- | --- | --- | ---: |
-| [Pathology](pathology.md) | Histopathology, whole-slide imaging and computational pathology | @Leo Yin |  |
+| [Pathology](pathology.md) | Histopathology, whole-slide imaging and computational pathology | [Leo Yin](https://shuolinyin.com) ([GitHub](https://github.com/leoyin1127)) | — |
 | [Radiology](radiology.md) | CT, MRI, PET, X-ray and fMRI | @Judy Lyu @ Sumin Kim |  |
-| [Biomedical Images — Other](biomedical_images.md) | Ultrasound, microscopy images, retinal imaging, OCT, dermatology, endoscopy and other imaging | @Terry |  |
+| [Biomedical Images — Other](biomedical_images.md) | Ultrasound, microscopy images, retinal imaging, OCT, dermatology, endoscopy and other imaging | @Terry Fu @Zaiyou He |  |
 | [Longitudinal Health Data](longitudinal.md) | Longitudinal EHR, physiological signals, wearables and temporal clinical records | @Evan Su |  |
 | [Multimodal AI](multimodal.md) | Cross-modal health models without a single dominant biomedical domain | @Yeonwoo Seo |  |
 | [AI Agents](AI_agent.md) | Agentic, autonomous and tool-using AI systems | @Meng Wei @Lan Feng |  |
