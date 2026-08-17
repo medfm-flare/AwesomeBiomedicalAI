@@ -4,7 +4,7 @@
 
 # Large Language Models
 
-High-impact medical LLM research: clinical systems, benchmarks, and trials for diagnosis, decision support, communication, and safety evaluation.
+High-impact research on medical large language models (LLMs): clinical LLM systems, benchmarks, and randomized trials.
 
 **Maintainer:** [Leo Chen](https://github.com/leochenmd)
 
