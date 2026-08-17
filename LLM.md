@@ -4,7 +4,7 @@
 
 # Large Language Models
 
-Top foundational and recent research papers on medical large language models (LLMs) focusing on clinical knowledge encoding, multi-modal integration, reasoning benchmarks, and expert-level question-answering alignment.
+High-impact medical LLM research: clinical systems, benchmarks, and trials for diagnosis, decision support, communication, and safety evaluation.
 
 **Maintainer:** [Leo Chen](https://github.com/leochenmd)
 
