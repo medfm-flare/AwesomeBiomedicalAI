@@ -8,22 +8,22 @@ Agentic, autonomous and tool-using AI systems.
 
 **14 entries** · [Back to index](README.md)
 
-| Date | Model | Venue | Model size | Training data | Pre-training | Downstream tasks |
-| --- | --- | --- | --- | --- | --- | --- |
-| 2026-07 | [Multi-Agent Architectures](#model-multi-agent-architectures-202607) | Nat. Mach. Intell. | — | 6 benchmarks (eval) | N/A | benchmarking, agent coordination |
-| 2026-07 | [Biomni](#model-biomni-202607) | Science | — | 433 instances (eval) | RL fine-tuning, training-free tool use | CRISPR planning, scRNA-seq annotation, ADMET prediction +2 |
-| 2026-06 | [MIRA](#model-mira-202606) | Nature | — | 500+ ED cases (eval) | training-free | history-taking, diagnosis, treatment planning +2 |
-| 2026-05 | [Co-Scientist](#model-co-scientist-202605) | Nature | — | — | test-time compute scaling | hypothesis generation, research proposals |
-| 2026-05 | [Robin](#model-robin-202605) | Nature | — | — | training-free | hypothesis generation, assay selection, candidate proposal +1 |
-| 2026-05 | [ERA](#model-era-202605) | Nature | — | — | tree search | bioinformatics method discovery, epidemiological forecasting |
-| 2026-04 | [AlphaLab](#model-alphalab-202604) | Preprint | — | — | N/A | general research automation |
-| 2026-04 | [SPARK](#model-spark-202604) | Nat. Med. | — | 5.4K patients (eval) | training-free (agent); pretrained preprocessing models | biomarker discovery, risk stratification, spatial biology +2 |
-| 2026-03 | [BioMedAgent](#model-biomedagent-202603) | Nat. Biomed. Eng. | — | — | N/A | bioinformatics analysis |
-| 2026-03 | [AI Scientist](#model-ai-scientist-202603) | Nature | — | — | N/A | general research automation |
-| 2026-02 | [PantheonOS](#model-pantheonos-202602) | bioRxiv | — | CELLxGENE subset | RL; integrated scFM pretraining (generative, masked gene prediction) | gene panel design, signaling pathway mapping |
-| 2026-01 | [PHIA](#model-phia-202601) | Nat. Commun. | — | 30K users (synthetic) | N/A | wearable-data QA, anomaly detection |
-| 2026-01 | [BioDSA](#model-biodsa-202601) | Nat. Biomed. Eng. | — | — | N/A | biomedical data science analysis |
-| 2025-10 | [AILA](#model-aila-202510) | Nat. Commun. | — | 100 AFM tasks | N/A | AFM calibration, mechanical property measurement +2 |
+| Date | Model | Venue | Pre-training | Data usage | Downstream tasks |
+| --- | --- | --- | --- | --- | --- |
+| 2026-07 | [Multi-Agent Architectures](#model-multi-agent-architectures-202607) | Nat. Mach. Intell. | N/A | 6 benchmarks (eval) | benchmarking, agent coordination |
+| 2026-07 | [Biomni](#model-biomni-202607) | Science | RL fine-tuning, training-free tool use | agent trajectories (train); 433 instances (eval) | CRISPR planning, scRNA-seq annotation, ADMET prediction +2 |
+| 2026-06 | [MIRA](#model-mira-202606) | Nature | training-free | 500+ ED cases (eval) | history-taking, diagnosis, treatment planning +2 |
+| 2026-05 | [Co-Scientist](#model-co-scientist-202605) | Nature | test-time compute scaling | — | hypothesis generation, research proposals |
+| 2026-05 | [Robin](#model-robin-202605) | Nature | training-free | — | hypothesis generation, assay selection, candidate proposal +1 |
+| 2026-05 | [ERA](#model-era-202605) | Nature | tree search | — | bioinformatics method discovery, epidemiological forecasting |
+| 2026-04 | [AlphaLab](#model-alphalab-202604) | Preprint | N/A | — | general research automation |
+| 2026-04 | [SPARK](#model-spark-202604) | Nat. Med. | training-free (agent); pretrained preprocessing models | 5.4K patients (eval) | biomarker discovery, risk stratification, spatial biology +2 |
+| 2026-03 | [BioMedAgent](#model-biomedagent-202603) | Nat. Biomed. Eng. | N/A | — | bioinformatics analysis |
+| 2026-03 | [AI Scientist](#model-ai-scientist-202603) | Nature | N/A | — | general research automation |
+| 2026-02 | [PantheonOS](#model-pantheonos-202602) | bioRxiv | RL; integrated scFM pretraining (generative, masked gene prediction) | CELLxGENE subset (train) | gene panel design, signaling pathway mapping |
+| 2026-01 | [PHIA](#model-phia-202601) | Nat. Commun. | N/A | 30K users, synthetic (eval) | wearable-data QA, anomaly detection |
+| 2026-01 | [BioDSA](#model-biodsa-202601) | Nat. Biomed. Eng. | N/A | — | biomedical data science analysis |
+| 2025-10 | [AILA](#model-aila-202510) | Nat. Commun. | N/A | 100 AFM tasks (eval) | AFM calibration, mechanical property measurement +2 |
 
 ## Details
 
@@ -41,7 +41,7 @@ Click a model to expand its record.
 | --- | --- |
 | **Backbone** | Single-agent vs. multi-agent architectures (independent, centralized, decentralized and hybrid coordination), instantiated with OpenAI, Google Gemini and Anthropic frontier LLMs across capability tiers |
 | **Pre-training** | `N/A`<br>No new models trained; a comparative study of coordination architectures across LLM capability tiers. |
-| **Training data** | N/A; evaluated on six agentic benchmarks: BrowseComp-Plus, Finance Agent, PlanCraft, WorkBench, SWE-bench Verified, Terminal-Bench. |
+| **Data usage** | N/A; evaluated on six agentic benchmarks: BrowseComp-Plus, Finance Agent, PlanCraft, WorkBench, SWE-bench Verified, Terminal-Bench. |
 | **Downstream tasks** | `benchmarking`, `agent coordination`<br>Shows that multi-agent collaboration's benefit is task-contingent and shrinks as base-model capability grows: large gains on parallelizable tasks (e.g., finance) but degraded performance on sequential tasks (e.g., planning) once models are sufficiently capable. |
 | **Modalities** | `text` |
 
@@ -59,7 +59,7 @@ Click a model to expand its record.
 | --- | --- |
 | **Backbone** | Configurable LLM agent (supports Claude, GPT, Gemini and other providers); Biomni-R0, a dedicated reasoning model for biology, is built on Qwen-32B |
 | **Pre-training** | `RL fine-tuning`, `training-free tool use`<br>Biomni-R0 is fine-tuned via reinforcement learning from agent interaction data; the base Biomni agent is training-free tool use over a configurable LLM backbone. |
-| **Training data** | RL training data from agent interaction trajectories; evaluated on Biomni-Eval1 (433 instances spanning 10 biological reasoning tasks). |
+| **Data usage** | RL training data from agent interaction trajectories; evaluated on Biomni-Eval1 (433 instances spanning 10 biological reasoning tasks). |
 | **Downstream tasks** | `CRISPR screen planning`, `scRNA-seq annotation`, `ADMET prediction`, `GWAS analysis`, `rare disease diagnosis`, `lab-bench QA`<br>CRISPR screen planning and gene identification, scRNA-seq annotation and hypothesis generation, ADMET property prediction, GWAS analysis and variant prioritization, rare disease diagnosis, and lab-bench Q&A. |
 | **Modalities** | `text`, `omics data` |
 | **Code** | [github.com/snap-stanford/biomni](https://github.com/snap-stanford/biomni) |
@@ -78,7 +78,7 @@ Click a model to expand its record.
 | --- | --- |
 | **Backbone** | LLM-based autonomous agent with 11 tools, operating in a sandboxed, FHIR-compliant EHR environment (ICD, LOINC, ATC, NDC, RxNorm, SNOMED-CT coding) |
 | **Pre-training** | `training-free`<br>No new model trained; MIRA (Medical Intelligence for Reasoning and Action) is an agent framework over an existing LLM backbone. |
-| **Training data** | N/A; evaluated on >500 MIMIC-IV emergency department cases spanning 8 diagnoses. |
+| **Data usage** | N/A; evaluated on >500 MIMIC-IV emergency department cases spanning 8 diagnoses. |
 | **Downstream tasks** | `history-taking`, `diagnosis`, `treatment planning`, `medication prescribing`, `admission decisions`<br>Autonomous EHR-integrated clinical decision-making: history-taking via patient-agent dialogue, ordering/interpreting labs, imaging and microbiology tests, differential diagnosis generation, treatment planning, medication prescribing, procedure scheduling and admission decisions. |
 | **Modalities** | `text`, `EHR data` |
 | **Code** | [github.com/Dyke-F/MIRA](https://github.com/Dyke-F/MIRA/tree/main/src) |
@@ -98,7 +98,7 @@ Click a model to expand its record.
 | --- | --- |
 | **Backbone** | Multi-agent system built on Gemini; specialized agents (Generation, Reflection, Ranking, Evolution, Proximity, Meta-review) coordinated by a Supervisor agent with an asynchronous task-execution framework |
 | **Pre-training** | `test-time compute scaling`<br>Built on pretrained Gemini; uses tournament-based self-improving hypothesis evolution rather than additional model training. |
-| **Training data** | N/A; grounded via literature search, simulation review and web/tool use — no fine-tuning dataset. |
+| **Data usage** | N/A; grounded via literature search, simulation review and web/tool use — no fine-tuning dataset. |
 | **Downstream tasks** | `hypothesis generation`, `research proposals`<br>Automated scientific hypothesis generation and research-proposal formulation; validated with in vitro experiments in drug-repurposing candidate discovery for AML, synergistic combination-therapy discovery, epigenetic target identification for liver fibrosis, and explaining bacterial gene-transfer mechanisms relevant to antimicrobial resistance. |
 | **Modalities** | `text` |
 
@@ -116,7 +116,7 @@ Click a model to expand its record.
 | --- | --- |
 | **Backbone** | Multi-agent LLM system orchestrating Crow (concise literature review), Falcon (deep literature synthesis for candidate evaluation) and Finch (autonomous bioinformatic data analysis) sub-agents |
 | **Pre-training** | `training-free`<br>Agents use LLM reasoning and tool use rather than new model training. |
-| **Training data** | N/A; validated via a lab-in-the-loop experimental workflow on dry age-related macular degeneration (dAMD). |
+| **Data usage** | N/A; validated via a lab-in-the-loop experimental workflow on dry age-related macular degeneration (dAMD). |
 | **Downstream tasks** | `hypothesis generation`, `assay selection`, `candidate proposal`, `data interpretation`<br>Autonomous hypothesis generation, experimental assay selection, therapeutic candidate proposal, interpretation of experimental (RNA-seq) data, and iterative hypothesis refinement; identified and validated ripasudil and KL001 as RPE-phagocytosis-enhancing dAMD candidates and discovered ABCA1 upregulation as a follow-on target. |
 | **Modalities** | `text`, `omics data` |
 | **Code** | [github.com/Future-House/robin](https://github.com/Future-House/robin) |
@@ -135,7 +135,7 @@ Click a model to expand its record.
 | --- | --- |
 | **Backbone** | LLM agent (ERA, Empirical Research Assistance) |
 | **Pre-training** | `tree search`<br>Uses tree search over generated programs rather than additional model training. |
-| **Training data** | N/A |
+| **Data usage** | N/A |
 | **Downstream tasks** | `bioinformatics method discovery`, `epidemiological forecasting`<br>In bioinformatics, ERA discovered 40 novel methods for single-cell data analysis that outperformed the top human-developed methods on a public leaderboard. In epidemiology, ERA generated 14 models that outperformed the CDC ensemble and all other individual models for forecasting COVID-19 hospitalizations. |
 | **Modalities** | `text`, `code` |
 | **Code** | [github.com/google-research/era](https://github.com/google-research/era) |
@@ -154,7 +154,7 @@ Click a model to expand its record.
 | --- | --- |
 | **Backbone** | Multiagent LLM |
 | **Pre-training** | `N/A` |
-| **Training data** | N/A |
+| **Data usage** | N/A |
 | **Downstream tasks** | `general research automation`<br>General research across optimization domains. |
 | **Modalities** | `text` |
 | **Code** | [github.com/morganstanley/MSML](https://github.com/morganstanley/MSML/tree/main/projects/alpha-lab) |
@@ -173,7 +173,7 @@ Click a model to expand its record.
 | --- | --- |
 | **Backbone** | Agentic LLM workflow using OpenAI o1 for idea generation, OpenAI o3-mini for review / duplicate detection, and Claude Sonnet 3.5 for coding. WSI preprocessing uses GrandQC, organ-specific UNet++ / EfficientNet tissue segmentation, and HoverNext with convnextv2_large for single-cell detection and classification. |
 | **Pre-training** | `training-free` (agent), `pretrained preprocessing models`<br>SPARK (System of Pathology Agents for Research and Knowledge) itself is training-free for pathology concept generation and parameter coding, using LLM reasoning and tool-building rather than training a new image model. The preprocessing models were previously trained, including a single-cell model trained on 1,272,506 manually annotated cells. |
-| **Training data** | No SPARK-specific image training set. Evaluation used >5,400 patients across 18 H&E histopathology cohorts and a METABRIC spatial biology breast cancer dataset with 625 primary tumors. |
+| **Data usage** | No SPARK-specific image training set. Evaluation used >5,400 patients across 18 H&E histopathology cohorts and a METABRIC spatial biology breast cancer dataset with 625 primary tumors. |
 | **Downstream tasks** | `biomarker discovery`, `risk stratification`, `spatial biology analysis`, `hypothesis generation`<br>Autonomous pathology concept generation, coded parameter generation, prognostic biomarker discovery, predictive biomarker analysis, risk stratification, PD-L1 / MSI / HPV / ER-related analyses, spatial biology analysis, tumor progression / temporal evolution hypothesis generation. |
 | **Modalities** | `histopathology`, `text` |
 | **Code** | [github.com/cpath-ukk/SPARK](https://github.com/cpath-ukk/SPARK) |
@@ -192,7 +192,7 @@ Click a model to expand its record.
 | --- | --- |
 | **Backbone** | Multiagent LLM |
 | **Pre-training** | `N/A` |
-| **Training data** | N/A |
+| **Data usage** | N/A |
 | **Downstream tasks** | `bioinformatics analysis`<br>Self-evolving, tool-aware biomedical data analysis. |
 | **Modalities** | `text`, `omics data` |
 | **Code** | [github.com/BOBQWERA/BioMedAgent](https://github.com/BOBQWERA/BioMedAgent) |
@@ -211,7 +211,7 @@ Click a model to expand its record.
 | --- | --- |
 | **Backbone** | Multiagent LLM |
 | **Pre-training** | `N/A` |
-| **Training data** | N/A |
+| **Data usage** | N/A |
 | **Downstream tasks** | `general research automation`<br>End-to-end automation of the AI research pipeline. |
 | **Modalities** | `text`, `code` |
 | **Code** | [github.com/SakanaAI/AI-Scientist](https://github.com/SakanaAI/AI-Scientist?tab=readme-ov-file) |
@@ -230,7 +230,7 @@ Click a model to expand its record.
 | --- | --- |
 | **Backbone** | LLM with a reinforcement-learning module routing to 22 integrated single-cell foundation models (scFMs) |
 | **Pre-training** | `RL`, `generative pre-training (scGPT)`, `masked gene prediction (scBERT)`<br>The router's LLM/RL layer is trained via reinforcement learning; the 22 integrated scFMs use diverse pretraining methods, including generative pre-training (scGPT), BERT-style masked gene prediction (scBERT), and tabular self-supervised learning. |
-| **Training data** | Subsets of the CELLxGENE dataset. |
+| **Data usage** | Subsets of the CELLxGENE dataset. |
 | **Downstream tasks** | `gene panel design`, `signaling pathway mapping`<br>Gene panel design, mapping molecular and signaling events, such as Cer1–Nodal inhibition, in embryonic development. |
 | **Modalities** | `omics data`, `text` |
 | **Code** | [github.com/aristoteleo/PantheonOS](https://github.com/aristoteleo/PantheonOS) |
@@ -249,7 +249,7 @@ Click a model to expand its record.
 | --- | --- |
 | **Backbone** | PHIA (Personal Health Insights Agent) built on Gemini 1.0 Ultra |
 | **Pre-training** | `N/A`<br>No fine-tuning; agent framework uses code generation plus information retrieval over the base model. |
-| **Training data** | 4,000 objective health queries, 172 open-ended queries, synthetic wearable data from 30,000 real Fitbit/Pixel Watch users. |
+| **Data usage** | 4,000 objective health queries, 172 open-ended queries, synthetic wearable data from 30,000 real Fitbit/Pixel Watch users. |
 | **Downstream tasks** | `wearable-data QA`, `anomaly detection`<br>Answers questions on physical activity, sleep patterns, health correlations, anomaly detection, and population comparisons from wearable data; 84% accuracy on objective queries, 83% favorable rating on open-ended queries. |
 | **Modalities** | `wearable sensor data`, `text` |
 
@@ -267,7 +267,7 @@ Click a model to expand its record.
 | --- | --- |
 | **Backbone** | Model-agnostic agent framework |
 | **Pre-training** | `N/A` |
-| **Training data** | N/A |
+| **Data usage** | N/A |
 | **Downstream tasks** | `biomedical data science analysis`<br>Reliable data science programming copilot for biomedical research. |
 | **Modalities** | `text`, `code` |
 | **Code** | [github.com/RyanWangZf/BioDSA](https://github.com/RyanWangZf/BioDSA) |
@@ -286,7 +286,7 @@ Click a model to expand its record.
 | --- | --- |
 | **Backbone** | AILA (Artificially Intelligent Lab Assistant), evaluated with GPT-4o, GPT-3.5-turbo, Claude-3.5-Sonnet and Llama-3.3-70B |
 | **Pre-training** | `N/A`<br>No new models trained. |
-| **Training data** | AFMBench: 100 expertly curated atomic force microscopy experimental tasks. |
+| **Data usage** | AFMBench: 100 expertly curated atomic force microscopy experimental tasks. |
 | **Downstream tasks** | `AFM calibration`, `graphene layer analysis`, `mechanical property measurement`, `friction characterization`<br>Autonomous AFM calibration, graphene layer analysis, mechanical property measurement, indentation-mark detection, and load-dependent friction characterization. |
 | **Modalities** | `text`, `instrument control` |
 | **Code** | [github.com/M3RG-IITD/AILA](https://github.com/M3RG-IITD/AILA) |
