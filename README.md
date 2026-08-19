@@ -12,7 +12,7 @@ A curated catalogue of biomedical artificial intelligence models and systems pub
 | [Biomedical Images — Other](biomedical_images.md) | Ultrasound, microscopy images, retinal imaging, OCT, dermatology, endoscopy and other imaging | @Terry Fu @Zaiyou He |  |
 | [Longitudinal Health Data](longitudinal.md) | Longitudinal EHR, physiological signals, wearables and temporal clinical records | @Evan Su |  |
 | [Multimodal AI](multimodal.md) | Cross-modal health models without a single dominant biomedical domain | @Yeonwoo Seo |  |
-| [AI Agents](AI_agent.md) | Agentic, autonomous and tool-using AI systems | @Meng Wei @Lan Feng |  |
+| [AI Agents](AI_agent.md) | Agentic, autonomous and tool-using AI systems | @[Meng Wei](https://weimengmeng1999.github.io/meng-wei.github.io/) @[ Feng Lan](https://ai-healthcare-portfolio.hushed-dove-3131.chatgpt.site) |  |
 | [AI for Biology](AI4biology.md) | Genomics, transcriptomics, proteomics, omics and biological modeling | @Keishi Suzuki |  |
 | [Large Language Models](LLM.md) | Benchmarks of LLMs, medical language models and clinical NLP | @Leo Chen |  |
 | [AI for Science](AI4Science.md) | Scientific discovery, research assistance, chemistry and drug design | @Ryan Khalloqi |  |
