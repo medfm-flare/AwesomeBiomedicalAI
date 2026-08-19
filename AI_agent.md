@@ -2,7 +2,7 @@
 
 Agentic, autonomous and tool-using AI systems.
 
-**Maintainer:** @[Meng Wei](https://weimengmeng1999.github.io/meng-wei.github.io/)
+**Maintainer:** @[Meng Wei](https://weimengmeng1999.github.io/meng-wei.github.io/) @[ Feng Lan](https://ai-healthcare-portfolio.hushed-dove-3131.chatgpt.site)
 
 **Notebook:** [NotebookLM](https://notebook.google.com/notebook/b25c668a-4926-45b8-bca3-329885628a36)
 
