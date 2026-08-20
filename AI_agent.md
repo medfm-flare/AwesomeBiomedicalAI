@@ -4,7 +4,7 @@ Agentic, autonomous and tool-using AI systems.
 
 **Maintainer:** @[Meng Wei](https://weimengmeng1999.github.io/meng-wei.github.io/) @[ Feng Lan](https://ai-healthcare-portfolio.hushed-dove-3131.chatgpt.site)
 
-**Deep-read Paper Cards:** [Nature-style English cards for all 27 entries](https://github.com/medfm-flare/AwesomeBiomedicalAI/tree/add-ai-agent-paper-cards/paper_cards)
+**Deep-read Paper Cards:** [Nature-style English cards for all 27 entries](https://github.com/Lan-Feng-1010/AwesomeBiomedicalAI/tree/add-ai-agent-paper-cards/paper_cards)
 
 **27 entries** · [Back to index](README.md)
 
