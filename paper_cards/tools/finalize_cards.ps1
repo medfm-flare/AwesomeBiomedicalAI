@@ -13,27 +13,19 @@ function Write-Utf8([string]$Path, [string]$Content) {
 }
 
 $mapping = [ordered]@{
-    '03_2026-07_AI_X-ray_Scientist'='AI_X-ray_Scientist'
-    '04_2026-06_MIRA'='MIRA'
-    '05_2026-06_AMIE'='AMIE'
-    '06_2026-05_Co-Scientist'='Co-Scientist'
-    '07_2026-05_Robin'='Robin'
-    '08_2026-05_ERA'='ERA'
-    '09_2026-05_CIPHER'='CIPHER'
-    '10_2026-05_Autonomous_Interaction'='Autonomous_Interaction'
-    '11_2026-04_AlphaLab'='AlphaLab'
-    '12_2026-04_SPARK'='SPARK'
-    '13_2026-04_PhenoAssistant'='PhenoAssistant'
-    '15_2026-03_AI_Scientist'='AI_Scientist'
-    '16_2026-02_PantheonOS'='PantheonOS'
-    '17_2026-02_DeepRare'='DeepRare'
-    '19_2026-01_BioDSA'='BioDSA'
-    '20_2025-12_SciSciGPT'='SciSciGPT'
-    '21_2025-12_CASSIA'='CASSIA'
-    '23_2025-10_AgentMD'='AgentMD'
-    '24_2025-09_MAP'='MAP'
-    '25_2025-08_SciToolAgent'='SciToolAgent'
-    '27_2025-06_Oncology_AI_Agent'='Oncology_AI_Agent'
+    '01_2026-07_Pathology-CoT'='Pathology-CoT'
+    '06_2026-06_Genomics-Aware_Clinical_Agent'='GenomicsClinicalAgent'
+    '11_2026-04_Pharmacogenomic_Recommendation_Agent'='PharmacogenomicAgent'
+    '12_2026-04_EcoRxAgent'='EcoRxAgent'
+    '17_2026-03_CellVoyager'='CellVoyager'
+    '18_2026-03_Orchestrated_Clinical_Agents'='OrchestratedClinicalAgents'
+    '22_2026-01_CellAtria'='CellAtria'
+    '25_2025-12_AIPatient'='AIPatient'
+    '26_2025-11_BioAgents'='BioAgents'
+    '28_2025-07_PrimeGen'='PrimeGen'
+    '29_2025-07_CRISPR-GPT'='CRISPR-GPT'
+    '31_2025-07_GeneAgent'='GeneAgent'
+    '32_2023-12_Coscientist'='Coscientist'
 }
 
 foreach ($folder in $mapping.Keys) {
@@ -79,4 +71,4 @@ foreach ($folder in $mapping.Keys) {
     Write-Utf8 $bundlePath ($bundle | ConvertTo-Json -Depth 20)
 }
 
-"Finalized $($mapping.Count) page-grounded publication cards."
+"Finalized $($mapping.Count) newly built page-grounded publication cards."

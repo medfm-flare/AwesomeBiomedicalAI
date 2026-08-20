@@ -8,7 +8,7 @@ $errors = New-Object System.Collections.Generic.List[string]
 $warnings = New-Object System.Collections.Generic.List[string]
 $folders = @(Get-ChildItem -LiteralPath $CardsRoot -Directory | Where-Object { $_.Name -match '^\d{2}_' } | Sort-Object Name)
 
-if ($folders.Count -ne 27) { $errors.Add("Expected 27 paper folders; found $($folders.Count).") }
+if ($folders.Count -ne 32) { $errors.Add("Expected 32 paper folders; found $($folders.Count).") }
 
 foreach ($folder in $folders) {
     foreach ($required in @('paper-card.md','figure-analysis.md','audit-report.json','source_article_access.md')) {
@@ -38,7 +38,7 @@ foreach ($folder in $folders) {
         $audit = Get-Content -LiteralPath $auditPath -Raw | ConvertFrom-Json
         if ([int]$audit.summary.errors -ne 0) { $errors.Add("$($folder.Name): audit has $($audit.summary.errors) error(s)") }
         if ([int]$audit.summary.warnings -ne 0) {
-            if ($folder.Name -in @('02_2026-07_Biomni','26_2025-07_Virtual_Lab') -and [int]$audit.summary.warnings -eq 1) {
+            if ($folder.Name -in @('03_2026-07_Biomni','30_2025-07_Virtual_Lab') -and [int]$audit.summary.warnings -eq 1) {
                 $warnings.Add("$($folder.Name): expected fallback warning because no PDF source bundle was supplied")
             } else {
                 $errors.Add("$($folder.Name): audit has unresolved warning(s)")

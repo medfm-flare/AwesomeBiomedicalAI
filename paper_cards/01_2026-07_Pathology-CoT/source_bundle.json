@@ -1,0 +1,276 @@
+{
+  "schema_version": "1.1",
+  "source_type": "pdf",
+  "source_path": "source_article.pdf (local processing only; see source_article_access.md)",
+  "source_sha256": "5754429de17e8c286f9378c732cc685306c06a858ade36b0bbd40cdff5093eec",
+  "metadata": {
+    "format": "HTML5",
+    "title": "Pathology-CoT: learning visual chain-of-thought agents from expert whole-slide image diagnosis behaviour | Nature Biomedical Engineering | Springer Nature Link"
+  },
+  "page_count": 25,
+  "pages": [
+    {
+      "pdf_page": 1,
+      "printed_page": null,
+      "text": "Skip to main content\nAdvertisement\n[image]\n[image]\nLog in\nMenu\nFind a journal Publish with us Track your research\nSearch\n Saved research\n Cart\n1. Home\n2. Nature Biomedical Engineering\n3. Article\nPathology-CoT: learning visual\nchain-of-thought agents from\nexpert whole-slide image\ndiagnosis behaviour\n•  Article",
+      "character_count": 310,
+      "rendered_image": null
+    },
+    {
+      "pdf_page": 2,
+      "printed_page": null,
+      "text": "•  Published: 24 July 2026\n•  (2026)\n•  Cite this article\nSave article\nView saved research\nFrom [image] [image]\nView current issue\n Submit your manuscript\n•  Sheng Wang1 na1,\n•  Ruiming Wu  ORCID: orcid.org/0009-0006-6685-14592 na1,\n•  Charles Herndon3,\n•  Songhao Li  ORCID: orcid.org/0009-0000-3142-28291,4,\n•  Yihang Liu4,\n•  Shunsuke Koga  ORCID: orcid.org/0000-0001-8868-97001,\n•  Xiaowei Xu  ORCID: orcid.org/0000-0003-4098-76901,\n•  David E. Elder1,\n•  Jonathan Alex Miles1,\n•  Annie Jin1,\n•  Ikuko Hirai1,\n•  Meaghan Dougher  ORCID: orcid.org/0009-0007-3014-63251,\n•  Jeanne Shen  ORCID: orcid.org/0000-0002-1519-03085 &\n•  …\n•  Zhi Huang\n  ORCID: orcid.org/0000-0001-6982-82851,2\nShow authors",
+      "character_count": 701,
+      "rendered_image": null
+    },
+    {
+      "pdf_page": 3,
+      "printed_page": null,
+      "text": "•\n1705 Accesses\n•\n3 Altmetric\n•  Explore all metrics\nAbstract\nDiagnosing a whole-slide image is an interactive, multistage process, yet\npractical agentic systems that navigate fields, adjust magnification and\ndeliver explainable diagnoses remain lacking, largely because the tacit,\nexperience-based viewing behaviour of expert pathologists is absent\nfrom model training data. Here we introduce Pathology-CoT, a\nframework that converts expert viewing chain-of-thought behaviour into\nscalable agent supervision through three contributions. First, an artificial\nintelligence session recorder unobtrusively captures routine navigation in\nstandard whole-slide image viewers and converts raw logs into\nstandardized behavioural commands and bounding boxes. Second, a\nhuman-in-the-loop review pipeline turns artificial intelligence-drafted\nrationales into paired ‘where to look’ and ‘why it matters’ supervision,\nenabling sixfold faster labelling. Third, using these data, we built\nPathology-o3, a two-stage agent that proposes regions of interest and\nperforms behaviour-guided reasoning. On gastrointestinal lymph node\nmetastasis detection, Pathology-o3 outperformed state-of-the-art vision–\nlanguage models, showed consistent gains across multiple vision–\nlanguage model backbones and maintained strong performance on an\nindependent external validation cohort.",
+      "character_count": 1354,
+      "rendered_image": null
+    },
+    {
+      "pdf_page": 4,
+      "printed_page": null,
+      "text": "This is a preview of subscription content, log in via an institution\nto check access.\nAccess this article\nLog in via an institution\nBuy article PDF USD 39.95\nPrice includes VAT (Canada)\nInstant access to the full article PDF.\nInstitutional subscriptions\nFig. 1: Framework for converting expert viewing behaviour into\nagent-ready training data.\n[image]\nFig. 2: Overview of Pathology-o3 and its performance.\n[image]\nFig. 3: Quantitative and qualitative results on the external LNCO2\nvalidation cohort.\n[image]\nFig. 4: Analysis of reasoning length and order.\n[image]\nFig. 5: Comparison of different ‘thinking’ modes and cost–benefit\nanalysis.\n[image]\nFig. 6: Performance evaluation on the external dermatopathology\ncohort.",
+      "character_count": 719,
+      "rendered_image": "figures/page-004.png"
+    },
+    {
+      "pdf_page": 5,
+      "printed_page": null,
+      "text": "[image]\nSimilar content being viewed by others\n[image]\nA multimodal whole-slide foundation model for pathology\nArticle Open access 05 November 2025\n[image]\nDigital Pathology and Artificial Intelligence: A Narrative\nReview of Whole Slide Image Analysis\nChapter © 2027\n[image]\nExploring General-purpose Autonomous Multimodal\nAgents for Pathology Report Generation\nChapter © 2026\nExplore related subjects\nDiscover the latest articles, books and news in related subjects,\nsuggested using machine learning.\n•  Histology\n•  Immunohistochemistry",
+      "character_count": 538,
+      "rendered_image": null
+    },
+    {
+      "pdf_page": 6,
+      "printed_page": null,
+      "text": "•  Object vision\n•  Pattern vision\n•  Pathogenesis\n•  Pathology\n•  Artificial Intelligence Applications in Healthcare Decision Support\nData availability\nThe Pathology-CoT Chain-of-Thought dataset for the skin cancer cohort,\ntogether with the trained behaviour predictors for both the Stanford CRC\nlymph node and skin cancer cohorts, is publicly available via GitHub at\nhttps://github.com/zhihuanglab/Pathology-CoT. WSIs and expert\nannotations from the LNCO2 dataset are available via the AIDA Data\nHub at https://datahub.aida.scilifelab.se/10.23698/aida/lnco2 upon\napplication and approval. WSIs and expert annotations from the DROID\nskin dataset are available via the AIDA Data Hub at https://\ndatahub.aida.scilifelab.se/10.23698/aida/drsk upon application and\napproval. Source data are provided with this paper.\nCode availability\nSource code is publicly available via GitHub at https://github.com/\nzhihuanglab/Pathology-CoT.\nReferences\n1. Gurcan, M. N. et al. Histopathological image analysis: a review.",
+      "character_count": 1005,
+      "rendered_image": null
+    },
+    {
+      "pdf_page": 7,
+      "printed_page": null,
+      "text": "IEEE Rev. Biomed. Eng. 2, 147–171 (2009).\nArticle  PubMed  PubMed Central  Google Scholar\n2. Echle, A. et al. Deep learning in cancer pathology: a new\ngeneration of clinical biomarkers. Br. J. Cancer 124, 686–696\n(2021).\nArticle  PubMed  Google Scholar\n3. Campanella, G. et al. Clinical-grade computational pathology using\nweakly supervised deep learning on whole slide images. Nat. Med.\n25, 1301–1309 (2019).\nArticle  CAS  PubMed  PubMed Central  Google Scholar\n4. Ehteshami Bejnordi, B. et al. Diagnostic assessment of deep\nlearning algorithms for detection of lymph node metastases in\nwomen with breast cancer. JAMA 318, 2199–2210 (2017).\nArticle  PubMed  PubMed Central  Google Scholar\n5. Coudray, N. et al. Classification and mutation prediction from non–\nsmall cell lung cancer histopathology images using deep learning.\nNat. Med. 24, 1559–1567 (2018).\nArticle  CAS  PubMed  PubMed Central  Google Scholar\n6. Veta, M. et al. Assessment of algorithms for mitosis detection in\nbreast cancer histopathology images. Med. Image Anal. 20, 237–\n248 (2015).",
+      "character_count": 1055,
+      "rendered_image": null
+    },
+    {
+      "pdf_page": 8,
+      "printed_page": null,
+      "text": "Article  PubMed  Google Scholar\n7. Xu, H. et al. A whole-slide foundation model for digital pathology\nfrom real-world data. Nature 630, 181–188 (2024).\nArticle  CAS  PubMed  PubMed Central  Google Scholar\n8. Vorontsov, E. et al. A foundation model for clinical-grade\ncomputational pathology and rare cancers detection. Nat. Med. 30,\n2924–2935 (2024).\nArticle  CAS  PubMed  PubMed Central  Google Scholar\n9. Chen, R. J. et al. Towards a general-purpose foundation model for\ncomputational pathology. Nat. Med. 30, 850–862 (2024).\nArticle  CAS  PubMed  PubMed Central  Google Scholar\n10. Qu, Y. et al. CRISPR-GPT for agentic automation of gene-editing\nexperiments. Nat. Biomed. Eng. 10, 245–258 (2026).\nArticle  PubMed  Google Scholar\n11. Chen, X. et al. Enhancing diagnostic capability with multi-agents\nconversational large language models. npj Digit. Med. 8, 159\n(2025).\nArticle  PubMed  PubMed Central  Google Scholar\n12. Roohani, Y. et al. BioDiscoveryAgent: an AI agent for designing\ngenetic perturbation experiments. In Proc. International",
+      "character_count": 1043,
+      "rendered_image": null
+    },
+    {
+      "pdf_page": 9,
+      "printed_page": null,
+      "text": "Conference on Learning Representations (2025).\n13. Sun, Y. et al. CPathAgent: an agent-based foundation model for\ninterpretable high-resolution pathology image analysis mimicking\npathologists’ diagnostic logic. In Advances in Neural Information\nProcessing Systems (2025).\n14. o3 and o4-mini system card (OpenAI, 2025).\n15. Zheng, Z. et al. DeepEyes: incentivizing ‘thinking with images’ via\nreinforcement learning. In Proc. International Conference on\nLearning Representations (2026).\n16. Lai, X. et al. Mini-o3: scaling up reasoning patterns and interaction\nturns for visual search. In Proc. International Conference on\nLearning Representations (2026).\n17. Yu, C., Liu, J., Nemati, S. & Yin, G. Reinforcement learning in\nhealthcare: a survey. ACM Comput. Surv. 55, 1–36 (2021).\nArticle  Google Scholar\n18. Ross, S., Gordon, G. & Bagnell, D. A reduction of imitation\nlearning and structured prediction to no-regret online learning. In\nProc. Fourteenth International Conference on Artificial Intelligence\nand Statistics (eds Gordon, G., Dunson, D. & Dudík, M.) 627–635\n(PMLR, 2011).\n19. Huang, Z., Bianchi, F., Yuksekgonul, M., Montine, T. J. & Zou, J. A\nvisual–language foundation model for pathology image analysis",
+      "character_count": 1215,
+      "rendered_image": null
+    },
+    {
+      "pdf_page": 10,
+      "printed_page": null,
+      "text": "using medical Twitter. Nat. Med. 29, 2307–2316 (2023).\nArticle  CAS  PubMed  Google Scholar\n20. Ding, T. et al. A multimodal whole-slide foundation model for\npathology. Nat. Med. 31, 3749–3761 (2025).\nArticle  CAS  PubMed  PubMed Central  Google Scholar\n21. Bankhead, P. et al. QuPath: open source software for digital\npathology image analysis. Sci. Rep. 7, 16878 (2017).\nArticle  PubMed  PubMed Central  Google Scholar\n22. Niazi, M. K. K., Parwani, A. V. & Gurcan, M. N. Digital pathology\nand artificial intelligence. Lancet Oncol. 20, 253–261 (2019).\nArticle  Google Scholar\n23. Brunyé, T. T., Mercan, E., Weaver, D. L. & Elmore, J. G. Accuracy\nis in the eyes of the pathologist: the visual interpretive process and\ndiagnostic accuracy with digital whole slide images. J. Biomed.\nInform. 66, 171–179 (2017).\nArticle  PubMed  PubMed Central  Google Scholar\n24. Huang, Z. et al. A pathologist–AI collaboration framework for\nenhancing diagnostic accuracies and efficiencies. Nat. Biomed.\nEng. 9, 455–470 (2025).\nArticle  CAS  PubMed  Google Scholar",
+      "character_count": 1047,
+      "rendered_image": null
+    },
+    {
+      "pdf_page": 11,
+      "printed_page": null,
+      "text": "25. Stadler, C. B. et al. Proactive construction of an annotated imaging\ndatabase for artificial intelligence training. J. Digit. Imaging 34,\n105–115 (2021).\nArticle  PubMed  PubMed Central  Google Scholar\n26. Lindman, K., Rose, J. F., Lindvall, M. & Stadler, C. B. Skin data\nfrom the Visual Sweden project DROID. AIDA Data Hub https://\ndoi.org/10.23698/aida/drsk (2019).\n27. Chen, C. et al. Evidence-based diagnostic reasoning with multi-\nagent copilot for human pathology. Preprint at https://arxiv.org/\nabs/2506.20964 (2025).\n28. Maras, G., Lindvall, M. & Lundstrom, C. Regional lymph node\nmetastasis in colon adenocarcinoma, second collection series.\nAIDA Data Hub https://doi.org/10.23698/aida/lnco2 (2020).\n29. Li, S. et al. A co-evolving agentic AI system for medical imaging\nanalysis. Preprint at https://arxiv.org/abs/2509.20279 (2025).\n30. Su, Z. et al. Thinking with images for multimodal reasoning:\nfoundations, methods, and future frontiers. Preprint at https://\narxiv.org/abs/2506.23918 (2025).\n31. Jocher, G., Qiu, J. & Chaurasia, A. Ultralytics YOLO (2023).\nDownload references\nAcknowledgements",
+      "character_count": 1110,
+      "rendered_image": null
+    },
+    {
+      "pdf_page": 12,
+      "printed_page": null,
+      "text": "This project was supported by the startup funding from the Perelman\nSchool of Medicine, University of Pennsylvania (Z.H.). The funders had\nno role in study design, data collection and analysis, decision to publish\nor preparation of the manuscript.\nAuthor information\nAuthor notes\n1. These authors contributed equally: Sheng Wang, Ruiming Wu.\nAuthors and Affiliations\n1. Department of Pathology and Laboratory Medicine, University of\nPennsylvania, Philadelphia, PA, USA\nSheng Wang, Songhao Li, Shunsuke Koga, Xiaowei Xu, David E.\nElder, Jonathan Alex Miles, Annie Jin, Ikuko Hirai, Meaghan\nDougher & Zhi Huang\n2. Department of Biostatistics, Epidemiology and Informatics,\nUniversity of Pennsylvania, Philadelphia, PA, USA\nRuiming Wu & Zhi Huang\n3. Department of Pathology, University of California, San Francisco,\nCA, USA\nCharles Herndon",
+      "character_count": 836,
+      "rendered_image": null
+    },
+    {
+      "pdf_page": 13,
+      "printed_page": null,
+      "text": "4. Department of Electrical and Systems Engineering, University of\nPennsylvania, Philadelphia, PA, USA\nSonghao Li & Yihang Liu\n5. Department of Pathology, Stanford University, Stanford, CA, USA\nJeanne Shen\nAuthors\n1. Sheng Wang\nView author publications\nSearch author on:PubMed Google Scholar\n2. Ruiming Wu\nView author publications\nSearch author on:PubMed Google Scholar\n3. Charles Herndon\nView author publications\nSearch author on:PubMed Google Scholar\n4. Songhao Li\nView author publications\nSearch author on:PubMed Google Scholar\n5. Yihang Liu",
+      "character_count": 544,
+      "rendered_image": null
+    },
+    {
+      "pdf_page": 14,
+      "printed_page": null,
+      "text": "View author publications\nSearch author on:PubMed Google Scholar\n6. Shunsuke Koga\nView author publications\nSearch author on:PubMed Google Scholar\n7. Xiaowei Xu\nView author publications\nSearch author on:PubMed Google Scholar\n8. David E. Elder\nView author publications\nSearch author on:PubMed Google Scholar\n9. Jonathan Alex Miles\nView author publications\nSearch author on:PubMed Google Scholar\n10. Annie Jin\nView author publications\nSearch author on:PubMed Google Scholar\n11. Ikuko Hirai\nView author publications",
+      "character_count": 510,
+      "rendered_image": null
+    },
+    {
+      "pdf_page": 15,
+      "printed_page": null,
+      "text": "Search author on:PubMed Google Scholar\n12. Meaghan Dougher\nView author publications\nSearch author on:PubMed Google Scholar\n13. Jeanne Shen\nView author publications\nSearch author on:PubMed Google Scholar\n14. Zhi Huang\nView author publications\nSearch author on:PubMed Google Scholar\nContributions\nS.W. and Z.H. conceived the study. S.W., R.W., S.L. and Y.L. developed\nthe methodology. S.W. and R.W. performed the experiments. S.W., J.S.,\nS.L. and Z.H. curated and acquired the data. C.H., S.K., X.X., D.E.E.,\nJ.A.M., A.J., I.H., M.D. and J.S. provided expert pathology annotation\nand feedback. S.W. and Z.H. wrote the manuscript. Z.H. supervised the\nstudy. All authors discussed the results and approved the final\nmanuscript.\nCorresponding author\nCorrespondence to Zhi Huang.",
+      "character_count": 773,
+      "rendered_image": null
+    },
+    {
+      "pdf_page": 16,
+      "printed_page": null,
+      "text": "Ethics declarations\nCompeting interests\nThe authors declare no competing interests.\nPeer review\nPeer review information\nNature Biomedical Engineering thanks Narayan Hegde, Hamid R.\nTizhoosh and the other, anonymous, reviewer(s) for their contribution to\nthe peer review of this work. Peer reviewer reports are available.\nAdditional information\nPublisher’s note Springer Nature remains neutral with regard to\njurisdictional claims in published maps and institutional affiliations.\nExtended data\nExtended Data Fig. 1 The Behaviour Analysis Pipeline for\nPreprocessing Pathologist Navigation.\nThe process transforms raw, high-frequency viewport data into a clean\nset of actions. From left to right: (1) Raw Behaviour: The initial noisy",
+      "character_count": 731,
+      "rendered_image": null
+    },
+    {
+      "pdf_page": 17,
+      "printed_page": null,
+      "text": "data with many overlapping viewports. (2) Initial Action Segmentation:\nRaw events are grouped into StayInspect (blue) and PanInspect (red)\nactions based on temporal heuristics. (3) Filtering Overview Actions:\nVery large, low-magnification bounding boxes corresponding to non-\ndiagnostic overviews are removed. (4) Merging Overlapping Actions:\nSpatially-proximal actions with high IoU are merged into single,\nconsolidated actions. (5) Pruning Containing Actions: Larger,\nredundant actions that fully contain smaller, more specific inspection\nactions are pruned. (6) Normalizing Action Bounding Boxes: The final\nset of actions is resized to standard dimensions corresponding to\ndiscrete magnification levels (for example, 5 × , 10 ×), creating a\nconsistent input format for the VLM.\nExtended Data Fig. 2 Validation of AI Session Recorder\nagainst biological eye-tracking data.\n(Top Row) Visualization of raw behavioural signals from a first-year\nresident (left, exhibiting exploratory navigation) and a senior attending\npathologist with 30 years of experience (right, exhibiting targeted\nnavigation). Red dots indicate ground-truth eye fixation points recorded\nby an eye-tracker; yellow and blue outlines represent raw mouse and\nviewport movements, respectively. (Bottom Row) The corresponding\ndiscrete output generated by the AI Session Recorder.\nExtended Data Fig. 3 Comparison of AI Session Recorder-\ngenerated Inspect ROI results from two sessions from the\nsame attending pathologist.",
+      "character_count": 1485,
+      "rendered_image": null
+    },
+    {
+      "pdf_page": 18,
+      "printed_page": null,
+      "text": "The same pathologist generates very similar results across different\nsessions, showing the stability and reliability of AI Session Recorder.\nExtended Data Fig. 4 Performance stratification by tumor\nburden on colorectal cancer lymph node metastasis.\na Stratified performance analysis on colorectal cancer lymph node\nmetastasis cases sorted by difficulty. Isolated Tumor Cells (ITCs, ≤0.2\nmm, n=5), Micrometastasis (0.2–2 mm, n=13), and Macrometastasis (> 2\nmm, n=29). We compare Pathology-o3 against the best proprietary\nmodel (GPT-4.1), best open-source model (InternVL3), and a baseline\nmodel (Llama-4). b Visualization of zoom-in behaviours on\nMicrometastasis and ITCs across Claude, Gemini, GPT-4o, GPT-4o-\nmini, Pathology-o3, and an attending pathologist. Pathology-o3\ndemonstrates navigation patterns highly aligned with the attending\npathologist, successfully locating tumor clusters that lack desmoplastic\nreaction (typically absent in ITCs), whereas other models often fail to\nfocus on diagnostic regions.\nSource data\nExtended Data Fig. 5 Quantitative attribution of Behaviour\nPredictor attention drivers.\na Illustration of the automated classification logic used to distinguish\n“Structure” from “Pathology” based on spatial intersection with ground\ntruth masks. Green contours delineate normal physiological structures\n(for example, healthy dermis/epidermis), while red dotted contours mark",
+      "character_count": 1399,
+      "rendered_image": null
+    },
+    {
+      "pdf_page": 19,
+      "printed_page": null,
+      "text": "pathological regions (for example, tumor nests, inflammation). Predicted\nROIs are classified strictly based on their overlap: blue bounding boxes\nindicate model attention on confirmed normal anatomy (\"Structure”),\nwhereas red bounding boxes indicate attention on confirmed\nabnormalities (\"Pathology”). This protocol ensures objective\ncategorization of the model’s viewing behaviour. b Quantitative\nattribution of model attention drivers using the DROID segmentation\nontology. Left: Distribution of the 960 highest-confidence ROIs predicted\nby the YOLOv8-Large model. The majority of attention (62.9%) is\nallocated to normal anatomical structures (for example, epidermis, skin\nappendages) rather than explicit pathology, reflecting a screening-like\nbehaviour pattern. Right: Granular breakdown of the ROIs classified as\n“Pathology” (N=340). Notably, the model identifies not only frank\nneoplasms (BCC, Melanocytic Neoplasm, SCC) but also subtle non-\nneoplastic findings (33.5%), which include inflammation, scarring, and\nother cellular responses. “Non-informative” refers to background, ink, or\nblur.\nSource data\nExtended Data Fig. 6 Localization of suspicious regions\nacross different VLMs on DROID skin dataset.\nComparison of region-of-interest (ROI) identification among a Gemini-3-\nPro, b Gemini-2.5-Pro, c GPT-5.2, and d our specialized Pathology-o3.\nExtended Data Fig. 7 Ablation study of Behaviour",
+      "character_count": 1403,
+      "rendered_image": null
+    },
+    {
+      "pdf_page": 20,
+      "printed_page": null,
+      "text": "Predictor scale on Dermatopathology ROI prediction.\nWe compared predictions from YOLOv8 architectures of increasing\ncapacity (Nano to Large) on the same slides. The comparison illustrates\nthat while smaller models (Nano/Small) are easily misled by local\nartifacts (for example, incorrectly identifying ink or blood as ROIs,\nmarked with green question marks), larger models (Medium/Large)\ndemonstrate a superior understanding of global tissue structure, correctly\nfocusing on anatomical context while ignoring distractors.\nSupplementary information\nSupplementary Information (download PDF\n)\nSupplementary Sections 1–10, Figs. 1–4 and Tables 1–7.\nReporting summary (download PDF\n)\nPeer Review File (download PDF\n)\nSource data\nSource Data Fig. 1 (download XLSX\n)\nStatistical source data.\nSource Data Fig. 2 (download XLSX\n)",
+      "character_count": 820,
+      "rendered_image": null
+    },
+    {
+      "pdf_page": 21,
+      "printed_page": null,
+      "text": "Statistical source data.\nSource Data Fig. 3 (download XLSX\n)\nStatistical source data.\nSource Data Fig. 4 (download XLSX\n)\nStatistical source data.\nSource Data Fig. 5 (download XLSX\n)\nStatistical source data.\nSource Data Fig. 6 (download XLSX\n)\nStatistical source data.\nSource Data Extended Data Fig. 4 (download XLSX\n)\nStatistical source data.\nSource Data Extended Data Fig. 5 (download XLSX\n)\nStatistical source data.\nRights and permissions\nSpringer Nature or its licensor (e.g. a society or other partner) holds\nexclusive rights to this article under a publishing agreement with the",
+      "character_count": 584,
+      "rendered_image": null
+    },
+    {
+      "pdf_page": 22,
+      "printed_page": null,
+      "text": "author(s) or other rightsholder(s); author self-archiving of the accepted\nmanuscript version of this article is solely governed by the terms of such\npublishing agreement and applicable law.\nReprints and permissions\nAbout this article\n[image]\nCite this article\nWang, S., Wu, R., Herndon, C. et al. Pathology-CoT: learning visual\nchain-of-thought agents from expert whole-slide image diagnosis\nbehaviour. Nat. Biomed. Eng (2026). https://doi.org/10.1038/\ns41551-026-01739-y\nDownload citation\n•  Received: 13 October 2025\n•  Accepted: 08 June 2026\n•  Published: 24 July 2026\n•  Version of record: 24 July 2026\n•  DOI: https://doi.org/10.1038/s41551-026-01739-y\n•  Springer Nature Limited",
+      "character_count": 684,
+      "rendered_image": null
+    },
+    {
+      "pdf_page": 23,
+      "printed_page": null,
+      "text": "Profiles\n1. Shunsuke Koga\nView author profile\n2. Zhi Huang\nView author profile\nAccess this article\nLog in via an institution\nBuy article PDF USD 39.95\nPrice includes VAT (Canada)\nInstant access to the full article PDF.\nInstitutional subscriptions\nAdvertisement\nSearch\nSearch by keyword or author\n Search\nNavigation\n•  Find a journal\n•  Publish with us\n•  Track your research",
+      "character_count": 374,
+      "rendered_image": null
+    },
+    {
+      "pdf_page": 24,
+      "printed_page": null,
+      "text": "Footer Navigation\nDiscover content\n•  Journals A-Z\n•  Books A-Z\n•  Subjects A-Z\nPublish with us\n•  Journal finder\n•  Publish your research\n•  Language editing\n•  Open access publishing\nProducts and services\n•  Our products\n•  Librarians\n•  Societies\n•  Partners and advertisers\nOur brands\n•  Springer\n•  Nature Portfolio\n•  BMC\n•  Palgrave Macmillan",
+      "character_count": 349,
+      "rendered_image": null
+    },
+    {
+      "pdf_page": 25,
+      "printed_page": null,
+      "text": "•  Apress\n•  Discover\nCorporate Navigation\n•  Your privacy choices/Manage cookies\n•  Your US state privacy rights\n•  Accessibility statement\n•  Terms and conditions\n•  Privacy policy\n•  Help and support\n•  Legal notice\n•  Cancel contracts here\n173.35.231.181\nNot affiliated\n[image]\n© 2026 Springer Nature",
+      "character_count": 304,
+      "rendered_image": null
+    }
+  ],
+  "sections": [
+    {
+      "title": "1705 Accesses",
+      "pdf_page": 3,
+      "printed_page": null
+    },
+    {
+      "title": "3 Altmetric",
+      "pdf_page": 3,
+      "printed_page": null
+    },
+    {
+      "title": "Abstract",
+      "pdf_page": 3,
+      "printed_page": null
+    },
+    {
+      "title": "References",
+      "pdf_page": 6,
+      "printed_page": null
+    },
+    {
+      "title": "Acknowledgements",
+      "pdf_page": 11,
+      "printed_page": null
+    }
+  ],
+  "evidence_inventory": {
+    "figures": [
+      {
+        "id": "Figure 1",
+        "caption": "Framework for converting expert viewing behaviour into agent-ready training data. [image]",
+        "pdf_page": 4,
+        "printed_page": null,
+        "page_image": "figures/page-004.png"
+      },
+      {
+        "id": "Figure 2",
+        "caption": "Overview of Pathology-o3 and its performance. [image]",
+        "pdf_page": 4,
+        "printed_page": null,
+        "page_image": "figures/page-004.png"
+      },
+      {
+        "id": "Figure 3",
+        "caption": "Quantitative and qualitative results on the external LNCO2 validation cohort. [image]",
+        "pdf_page": 4,
+        "printed_page": null,
+        "page_image": "figures/page-004.png"
+      },
+      {
+        "id": "Figure 4",
+        "caption": "Analysis of reasoning length and order. [image]",
+        "pdf_page": 4,
+        "printed_page": null,
+        "page_image": "figures/page-004.png"
+      },
+      {
+        "id": "Figure 5",
+        "caption": "Comparison of different ‘thinking’ modes and cost–benefit analysis. [image]",
+        "pdf_page": 4,
+        "printed_page": null,
+        "page_image": "figures/page-004.png"
+      },
+      {
+        "id": "Figure 6",
+        "caption": "Performance evaluation on the external dermatopathology cohort.",
+        "pdf_page": 4,
+        "printed_page": null,
+        "page_image": "figures/page-004.png"
+      }
+    ],
+    "tables": [],
+    "equations": []
+  },
+  "rendered_pages_dir": "figures",
+  "extraction": {
+    "engine": "PyMuPDF",
+    "visual_pages_rendered": true,
+    "confidence": "high"
+  },
+  "validation": {
+    "status": "valid",
+    "errors": [],
+    "warnings": [],
+    "recommended_locator_mode": "page-grounded",
+    "printed_page_labels_required": false
+  }
+}

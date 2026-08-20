@@ -4,7 +4,9 @@ param(
     [Parameter(Mandatory = $true)]
     [string]$WorkRoot,
     [Parameter(Mandatory = $true)]
-    [string]$ReferenceRoot
+    [string]$ReferenceRoot,
+    [Parameter(Mandatory = $true)]
+    [string]$ExistingRoot
 )
 
 $ErrorActionPreference = 'Stop'
@@ -28,39 +30,58 @@ function Clean-Field([string]$Text) {
 }
 
 function Parse-Catalogue([string]$Path) {
-    $raw = Get-Content -LiteralPath $Path -Raw
+    $raw = Get-Content -LiteralPath $Path -Raw -Encoding UTF8
+    $overview = @{}
+    foreach ($line in ($raw -split "`r?`n")) {
+        $row = [regex]::Match($line, '^\s*\|?\s*(?<date>20\d{4})\s*\|\s*(?<title>.*?)\s+\((?<venue>[^)]+)\)\s+\[\[paper\]\]\((?<url>https?://[^)]+)\)(?<links>.*?)\|')
+        if (-not $row.Success) { continue }
+        $code = [regex]::Match($row.Groups['links'].Value, '\[\[code\]\]\((?<url>https?://[^)]+)\)')
+        $replication = [regex]::Match($row.Groups['links'].Value, '\[\[replication\]\]\((?<url>https?://[^)]+)\)')
+        $overview[$row.Groups['title'].Value.Trim()] = [pscustomobject]@{
+            Date = $row.Groups['date'].Value
+            Venue = $row.Groups['venue'].Value
+            Url = $row.Groups['url'].Value
+            Code = if ($code.Success) { $code.Groups['url'].Value } else { 'Not reported in the catalogue entry.' }
+            Replication = if ($replication.Success) { $replication.Groups['url'].Value } else { $null }
+        }
+    }
     $blocks = [regex]::Matches($raw, '(?s)<details>(.*?)</details>')
     $result = @{}
     foreach ($m in $blocks) {
         $block = $m.Groups[1].Value
-        $summary = [regex]::Match($block, '<summary><b>(?<model>[^<]+)</b>\s+—\s+(?<title>.*?)\s+<i>\((?<venueDate>[^)]+)\)</i></summary>')
-        $paper = [regex]::Match($block, '\*\*\[(?<title>[^]]+)\]\((?<url>[^)]+)\)\*\*')
-        if (-not $summary.Success -or -not $paper.Success) { continue }
+        $summary = [regex]::Match($block, '<summary><b>(?<title>.*?)</b>\s+—\s+(?<date>20\d{4}),\s*(?<venue>[^<]+)</summary>')
+        if (-not $summary.Success) { continue }
+        $title = [System.Net.WebUtility]::HtmlDecode($summary.Groups['title'].Value.Trim())
+        if (-not $overview.ContainsKey($title)) { throw "Overview entry not found for detail title: $title" }
+        $meta = $overview[$title]
         $fields = @{}
         foreach ($line in ($block -split "`r?`n")) {
-            $fm = [regex]::Match($line, '^\| \*\*(?<name>[^*]+)\*\* \| (?<value>.*) \|$')
+            $fm = [regex]::Match($line, '^- \*\*(?<name>[^*]+):\*\*\s*(?<value>.*)$')
             if ($fm.Success) { $fields[$fm.Groups['name'].Value] = Clean-Field $fm.Groups['value'].Value }
         }
-        $result[$summary.Groups['model'].Value] = [pscustomobject]@{
-            Model = $summary.Groups['model'].Value
-            Title = $paper.Groups['title'].Value
-            Url = $paper.Groups['url'].Value
-            VenueDate = $summary.Groups['venueDate'].Value
-            Backbone = $fields['Backbone']
-            Pretraining = $fields['Pre-training']
-            DataUsage = $fields['Data usage']
-            Tasks = $fields['Downstream tasks']
-            Modalities = $fields['Modalities']
-            Code = $fields['Code']
+        $month = $meta.Date.Substring(4, 2)
+        $year = $meta.Date.Substring(0, 4)
+        $codeText = if ($meta.Replication) { "$($meta.Code); replication: $($meta.Replication)" } else { $meta.Code }
+        $result[$title] = [pscustomobject]@{
+            Model = $fields['Model']
+            Title = $title
+            Url = $meta.Url
+            VenueDate = "$($meta.Venue) $year-$month"
+            Backbone = $fields['Network Backbone']
+            Pretraining = $fields['Pre-training Method']
+            DataUsage = $fields['Training Data']
+            Tasks = $fields['Downstream Tasks']
+            Modalities = 'See the paper for task-specific modalities.'
+            Code = $codeText
         }
     }
     return $result
 }
 
 function Get-Lenses([string]$Model) {
-    $clinical = @('MIRA','AMIE','DeepRare','AgentMD','Oncology AI Agent','PHIA')
-    $resource = @('Multi-Agent Architectures','Biomni','AlphaLab','SPARK','BioMedAgent','PantheonOS','BioDSA','AILA','MAP','SciToolAgent')
-    $materials = @('AI X-ray Scientist','CIPHER','Autonomous Interaction','PhenoAssistant')
+    $clinical = @('Pathology-CoT','AMIE','MIRA','Genomics-aware Clinical Agent','Pharmacogenomic Recommendation Agent','EcoRxAgent','SPARK','AgentClinic','Orchestrated Clinical Agents','DeepRare','Clinical Agent Benchmark','PHIA','AIPatient')
+    $resource = @('Multi-Agent Architectures','Biomni','AlphaLab','BioMedAgent','CellVoyager','PantheonOS','CellAtria','BioDSA','BioAgents','AILA','PrimeGen','CRISPR-GPT','Virtual Lab','GeneAgent','Coscientist')
+    $materials = @()
     if ($clinical -contains $Model) { return @('Methods','Clinical') }
     if ($materials -contains $Model) { return @('Methods','Materials / engineering') }
     if ($resource -contains $Model) { return @('Methods','Resource / benchmark') }
@@ -363,58 +384,75 @@ function Copy-ReusedCard($Entry, [string]$ReferenceFolder, [string]$FolderName) 
     Write-Utf8 (Join-Path $dest 'source_article_access.md') $access
 }
 
+function Copy-ExistingCard([string]$ExistingFolder, [string]$FolderName) {
+    $src = Join-Path $ExistingRoot $ExistingFolder
+    $dest = Join-Path $cardsRoot $FolderName
+    if (-not (Test-Path -LiteralPath $src)) { throw "Existing card folder not found: $src" }
+    Copy-Item -LiteralPath $src -Destination $dest -Recurse -Force
+}
+
 $catalogue = Parse-Catalogue (Join-Path $RepositoryRoot 'AI_agent.md')
 
 $ordered = @(
-    @{Model='Multi-Agent Architectures'; Folder='01_2026-07_Multi-Agent_Architectures'; Reuse='01_2026-07-24_Capable_language_models_can_outgrow_the_benefits_of_collaboration'},
-    @{Model='Biomni'; Folder='02_2026-07_Biomni'; Fallback='source-limited'},
-    @{Model='AI X-ray Scientist'; Folder='03_2026-07_AI_X-ray_Scientist'; Work='AI_X-ray_Scientist'},
-    @{Model='MIRA'; Folder='04_2026-06_MIRA'; Work='MIRA'},
-    @{Model='AMIE'; Folder='05_2026-06_AMIE'; Work='AMIE'},
-    @{Model='Co-Scientist'; Folder='06_2026-05_Co-Scientist'; Work='Co-Scientist'},
-    @{Model='Robin'; Folder='07_2026-05_Robin'; Work='Robin'},
-    @{Model='ERA'; Folder='08_2026-05_ERA'; Work='ERA'},
-    @{Model='CIPHER'; Folder='09_2026-05_CIPHER'; Work='CIPHER'},
-    @{Model='Autonomous Interaction'; Folder='10_2026-05_Autonomous_Interaction'; Work='Autonomous_Interaction'},
-    @{Model='AlphaLab'; Folder='11_2026-04_AlphaLab'; Work='AlphaLab'},
-    @{Model='SPARK'; Folder='12_2026-04_SPARK'; Work='SPARK'},
-    @{Model='PhenoAssistant'; Folder='13_2026-04_PhenoAssistant'; Work='PhenoAssistant'},
-    @{Model='BioMedAgent'; Folder='14_2026-03_BioMedAgent'; Reuse='05_2026-03-30_BioMedAgent'},
-    @{Model='AI Scientist'; Folder='15_2026-03_AI_Scientist'; Work='AI_Scientist'},
-    @{Model='PantheonOS'; Folder='16_2026-02_PantheonOS'; Work='PantheonOS'},
-    @{Model='DeepRare'; Folder='17_2026-02_DeepRare'; Work='DeepRare'},
-    @{Model='PHIA'; Folder='18_2026-01_PHIA'; Reuse='07_2026-01-12_PHIA'},
-    @{Model='BioDSA'; Folder='19_2026-01_BioDSA'; Work='BioDSA'},
-    @{Model='SciSciGPT'; Folder='20_2025-12_SciSciGPT'; Work='SciSciGPT'},
-    @{Model='CASSIA'; Folder='21_2025-12_CASSIA'; Work='CASSIA'},
-    @{Model='AILA'; Folder='22_2025-10_AILA'; Reuse='08_2025-10-14_AFMBench'},
-    @{Model='AgentMD'; Folder='23_2025-10_AgentMD'; Work='AgentMD'},
-    @{Model='MAP'; Folder='24_2025-09_MAP'; Work='MAP'},
-    @{Model='SciToolAgent'; Folder='25_2025-08_SciToolAgent'; Work='SciToolAgent'},
-    @{Model='Virtual Lab'; Folder='26_2025-07_Virtual_Lab'; Fallback='structure-grounded'},
-    @{Model='Oncology AI Agent'; Folder='27_2025-06_Oncology_AI_Agent'; Work='Oncology_AI_Agent'}
+    @{Title='Pathology-CoT: learning visual chain-of-thought agents from expert whole-slide image diagnosis behaviour'; Model='Pathology-CoT'; Folder='01_2026-07_Pathology-CoT'; Work='Pathology-CoT'},
+    @{Title='Capable language models can outgrow the benefits of collaboration'; Model='Multi-Agent Architectures'; Folder='02_2026-07_Multi-Agent_Architectures'; Existing='01_2026-07_Multi-Agent_Architectures'},
+    @{Title='Autonomous biomedical research with an artificial intelligence agent'; Model='Biomni'; Folder='03_2026-07_Biomni'; Existing='02_2026-07_Biomni'; Fallback='source-limited'},
+    @{Title='Towards conversational artificial intelligence for disease management'; Model='AMIE'; Folder='04_2026-06_AMIE'; Existing='05_2026-06_AMIE'},
+    @{Title='Towards autonomous medical artificial intelligence agents'; Model='MIRA'; Folder='05_2026-06_MIRA'; Existing='04_2026-06_MIRA'},
+    @{Title='Optimizing genomics-aware clinical agents in precision oncology'; Model='Genomics-aware Clinical Agent'; Folder='06_2026-06_Genomics-Aware_Clinical_Agent'; Work='GenomicsClinicalAgent'},
+    @{Title='Accelerating scientific discovery with Co-Scientist'; Model='Co-Scientist'; Folder='07_2026-05_Co-Scientist'; Existing='06_2026-05_Co-Scientist'},
+    @{Title='A multi-agent system for automating scientific discovery'; Model='Robin'; Folder='08_2026-05_Robin'; Existing='07_2026-05_Robin'},
+    @{Title='An AI system to help scientists write expert-level empirical software'; Model='ERA'; Folder='09_2026-05_ERA'; Existing='08_2026-05_ERA'},
+    @{Title='AlphaLab: Autonomous Multi-Agent Research Across Optimization Domains with Frontier LLMs'; Model='AlphaLab'; Folder='10_2026-04_AlphaLab'; Existing='11_2026-04_AlphaLab'},
+    @{Title='An agentic AI system for automated pharmacogenomic recommendation generation'; Model='Pharmacogenomic Recommendation Agent'; Folder='11_2026-04_Pharmacogenomic_Recommendation_Agent'; Work='PharmacogenomicAgent'},
+    @{Title='EcoRxAgent: an AI agent for generating economically substitutable prescriptions'; Model='EcoRxAgent'; Folder='12_2026-04_EcoRxAgent'; Work='EcoRxAgent'},
+    @{Title='An agentic framework for autonomous scientific discovery in cancer pathology'; Model='SPARK'; Folder='13_2026-04_SPARK'; Existing='12_2026-04_SPARK'},
+    @{Title='AgentClinic: a multimodal benchmark for tool-using clinical AI agents'; Model='AgentClinic'; Folder='14_2026-04_AgentClinic'; Reuse='02_2026-04-27_AgentClinic'},
+    @{Title='Empowering AI data scientists using a multi-agent LLM framework with self-evolving capabilities for autonomous, tool-aware biomedical data analyses'; Model='BioMedAgent'; Folder='15_2026-03_BioMedAgent'; Existing='14_2026-03_BioMedAgent'},
+    @{Title='Towards end-to-end automation of AI research'; Model='AI Scientist'; Folder='16_2026-03_AI_Scientist'; Existing='15_2026-03_AI_Scientist'},
+    @{Title='CellVoyager: AI CompBio agent generates new insights by autonomously analyzing biological data'; Model='CellVoyager'; Folder='17_2026-03_CellVoyager'; Work='CellVoyager'},
+    @{Title='Orchestrated multi agents sustain accuracy under clinical-scale workloads compared to a single agent'; Model='Orchestrated Clinical Agents'; Folder='18_2026-03_Orchestrated_Clinical_Agents'; Work='OrchestratedClinicalAgents'},
+    @{Title='PantheonOS: An Evolvable Multi-Agent Framework for Automatic Genomics Discovery'; Model='PantheonOS'; Folder='19_2026-02_PantheonOS'; Existing='16_2026-02_PantheonOS'},
+    @{Title='An agentic system for rare disease diagnosis with traceable reasoning'; Model='DeepRare'; Folder='20_2026-02_DeepRare'; Existing='17_2026-02_DeepRare'},
+    @{Title='Benchmarking large language model-based agent systems for clinical decision tasks'; Model='Clinical Agent Benchmark'; Folder='21_2026-02_Clinical_Agent_Benchmark'; Reuse='06_2026-02-18_Benchmarking_large_language_model-based_agent_systems_for_clinical_decision_tasks'},
+    @{Title='An agentic AI framework for ingestion and standardization of single-cell RNA-seq data analysis'; Model='CellAtria'; Folder='22_2026-01_CellAtria'; Work='CellAtria'},
+    @{Title='Transforming wearable data into personal health insights using large language model agents'; Model='PHIA'; Folder='23_2026-01_PHIA'; Existing='18_2026-01_PHIA'},
+    @{Title='Making large language models reliable data science programming copilots for biomedical research'; Model='BioDSA'; Folder='24_2026-01_BioDSA'; Existing='19_2026-01_BioDSA'},
+    @{Title='Simulated patient systems powered by large language model-based AI agents offer potential for transforming medical education'; Model='AIPatient'; Folder='25_2025-12_AIPatient'; Work='AIPatient'},
+    @{Title='BioAgents: Bridging the gap in bioinformatics analysis with multi-agent systems'; Model='BioAgents'; Folder='26_2025-11_BioAgents'; Work='BioAgents'},
+    @{Title='Evaluating large language model agents for automation of atomic force microscopy'; Model='AILA'; Folder='27_2025-10_AILA'; Existing='22_2025-10_AILA'},
+    @{Title='Accelerating primer design for amplicon sequencing using large language model-powered agents'; Model='PrimeGen'; Folder='28_2025-07_PrimeGen'; Work='PrimeGen'},
+    @{Title='CRISPR-GPT for agentic automation of gene-editing experiments'; Model='CRISPR-GPT'; Folder='29_2025-07_CRISPR-GPT'; Work='CRISPR-GPT'},
+    @{Title='The Virtual Lab of AI agents designs new SARS-CoV-2 nanobodies'; Model='Virtual Lab'; Folder='30_2025-07_Virtual_Lab'; Existing='26_2025-07_Virtual_Lab'; Fallback='structure-grounded'},
+    @{Title='GeneAgent: self-verification language agent for gene-set analysis using domain databases'; Model='GeneAgent'; Folder='31_2025-07_GeneAgent'; Work='GeneAgent'},
+    @{Title='Autonomous chemical research with large language models'; Model='Coscientist'; Folder='32_2023-12_Coscientist'; Work='Coscientist'}
 )
 
 $built = @()
 foreach ($item in $ordered) {
-    $entry = $catalogue[$item.Model]
-    if (-not $entry) { throw "Catalogue entry not found: $($item.Model)" }
+    $titleKey = [string]$item['Title']
+    $entry = $catalogue[$titleKey]
+    if (-not $entry) { throw "Catalogue entry not found: $titleKey" }
+    $entry.Model = $item.Model
     if ($item.Reuse) {
         Copy-ReusedCard $entry $item.Reuse $item.Folder
+    } elseif ($item.Existing) {
+        Copy-ExistingCard $item.Existing $item.Folder
     } elseif ($item.Work) {
         $built += Build-PageGroundedCard $entry $item.Work $item.Folder
     }
 }
 
 $indexRows = foreach ($item in $ordered) {
-    $entry = $catalogue[$item.Model]
-    $status = if ($item.Fallback -eq 'source-limited') { 'Source-limited: abstract, catalogue, and author code' } elseif ($item.Fallback -eq 'structure-grounded') { 'Structure-grounded: official HTML and source figures' } elseif ($item.Reuse) { 'Reused from prior audited public library' } else { 'New page-grounded card' }
+    $entry = $catalogue[[string]$item['Title']]
+    $entry.Model = $item.Model
+    $status = if ($item.Fallback -eq 'source-limited') { 'Source-limited: abstract, catalogue, and author code' } elseif ($item.Fallback -eq 'structure-grounded') { 'Structure-grounded: official HTML and source figures' } elseif ($item.Reuse) { 'Reused from prior audited public library' } elseif ($item.Existing) { 'Retained from the prior audited collection' } else { 'New page-grounded card' }
     "| [$($entry.Model)]($($item.Folder)/paper-card.md) | $($entry.Title) | $($entry.VenueDate) | $status |"
 }
 $readme = @"
 # AI Agent Deep-Read Paper Cards
 
-English Nature-style deep-reading cards for all 27 papers listed in [`AI_agent.md`](../AI_agent.md). Each card preserves the fixed Sections 01–16 structure, provenance labels, claim boundaries, source-access notice, figure analysis, and audit artifact where the source mode permits it.
+English Nature-style deep-reading cards for all 32 papers listed in [`AI_agent.md`](../AI_agent.md). Each card preserves the fixed Sections 01–16 structure, provenance labels, claim boundaries, source-access notice, figure analysis, and audit artifact where the source mode permits it.
 
 ## Source modes
 
@@ -422,6 +460,7 @@ English Nature-style deep-reading cards for all 27 papers listed in [`AI_agent.m
 - **Structure-grounded:** official full HTML and original publisher figures, with structural rather than PDF-page locators.
 - **Source-limited:** full text was not lawfully accessible; unseen methods, figures, and limitations are marked not assessable.
 - **Reused:** English card and audit were copied from the maintainer's previously validated public Nature-style library and adapted to this repository's English-only layout.
+- **Retained:** A previously audited card remains valid for an article shared by the old and corrected catalogues.
 
 | Model | Paper | Venue / date | Card status |
 |---|---|---|---|

@@ -1,0 +1,370 @@
+{
+  "schema_version": "1.1",
+  "source_type": "pdf",
+  "source_path": "source_article.pdf (local processing only; see source_article_access.md)",
+  "source_sha256": "d4f092219bdb1144c8d5f79afd7d09588a5f2f12ce5318676fa9df91a7da7bdf",
+  "metadata": {
+    "format": "HTML5",
+    "title": "Accelerating primer design for amplicon sequencing using large language model-powered agents | Nature Biomedical Engineering | Springer Nature Link"
+  },
+  "page_count": 38,
+  "pages": [
+    {
+      "pdf_page": 1,
+      "printed_page": null,
+      "text": "Skip to main content\nAdvertisement\n[image]\n[image]\nLog in\nMenu\nFind a journal Publish with us Track your research\nSearch\n Saved research\n Cart\n1. Home\n2. Nature Biomedical Engineering\n3. Article\nAccelerating primer design for\namplicon sequencing using large\nlanguage model-powered agents\n•  Article\n•  Published: 30 July 2025\n•  Volume 10, pages 338–353 (2026)",
+      "character_count": 360,
+      "rendered_image": null
+    },
+    {
+      "pdf_page": 2,
+      "printed_page": null,
+      "text": "•  Cite this article\nSave article\nView saved research\nFrom [image] [image]\nView current issue\n Submit your manuscript\n•  Yi Wang  ORCID: orcid.org/0000-0003-3722-11761 na1,\n•  Yuejie Hou1 na1,\n•  Lin Yang1,2 na1,\n•  Shisen Li3 na1,\n•  Weiting Tang1,\n•  Hui Tang1,\n•  Qiushun He1,\n•  Siyuan Lin1,3,\n•  Yanyan Zhang1,\n•  Xingyu Li1,\n•  Shiwen Chen1,\n•  Yusheng Huang1,\n•  Lingsong Kong1,\n•  Huijun Zhang1,\n•  Duncan Yu1,3,\n•  Feng Mu1,\n•  Huanming Yang4,5,6,\n•  Jian Wang1,4,",
+      "character_count": 473,
+      "rendered_image": null
+    },
+    {
+      "pdf_page": 3,
+      "printed_page": null,
+      "text": "•  Nattiya Hirankarn\n7 &\n•  …\n•  Meng Yang\n  ORCID: orcid.org/0000-0001-5630-63571,3,7\nShow authors\n•\n4127 Accesses\n•\n6 Citations\n•\n11 Altmetric\n•\n1 Mention\n•  Explore all metrics\nAbstract\nThe pre-trained knowledge compressed in large language models is\naddressing diverse scientific challenges and catalysing the progression\nof autonomous laboratory systems, synergized with liquid handling\nrobots. Here we introduce PrimeGen, an orchestrated multi-agent\nsystem powered by large language models, designed to streamline\nlabour-intensive primer design tasks for targeted next-generation\nsequencing. PrimeGen uses GPT-4o as a central controller to engage\nwith experimentalists for task planning and decomposition, coordinating\nvarious specialized agents to execute distinct subtasks. These include\nan interactive search agent for retrieving gene targets from databases, a\nprimer agent for designing primer sequences across multiple scenarios,",
+      "character_count": 940,
+      "rendered_image": null
+    },
+    {
+      "pdf_page": 4,
+      "printed_page": null,
+      "text": "a protocol agent for generating executable robot scripts through retrieval-\naugmented generation and prompt engineering, and an experiment\nagent equipped with a vision language model for detecting and reporting\nanomalies. We experimentally demonstrate the effectiveness of\nPrimeGen across a variety of applications. PrimeGen can accommodate\nup to 955 amplicons, ensuring high amplification uniformity and\nminimizing dimer formation. Our development underscores the potential\nof collaborative agents, coordinated by generalist foundation models, as\nintelligent tools for advancing biomedical research.\n This is a preview of subscription content, log in via an institution\nto check access.\nAccess this article\nLog in via an institution\nBuy article PDF USD 39.95\nPrice includes VAT (Canada)\nInstant access to the full article PDF.\nInstitutional subscriptions\nFig. 1: Overview of PrimeGen workflow.\n[image]\nFig. 2: The workflow of the search agent and primer agent.\n[image]\nFig. 3: Experiment result analysis.",
+      "character_count": 1005,
+      "rendered_image": "figures/page-004.png"
+    },
+    {
+      "pdf_page": 5,
+      "printed_page": null,
+      "text": "[image]\nFig. 4: The workflow of the protocol agent.\n[image]\nFig. 5: Overview of the liquid handling system and anomaly\ndetection workflow.\n[image]\nSimilar content being viewed by others\n[image]\nSteps for primer development using open-access\nplatforms\nArticle Open access 14 January 2026\n[image]\nHigh-throughput PCR assay design for targeted\nresequencing using primerXL\nArticle Open access 06 September 2017\n[image]\nAn agentic AI system for automated pharmacogenomic\nrecommendation generation\nArticle Open access 15 April 2026",
+      "character_count": 525,
+      "rendered_image": "figures/page-005.png"
+    },
+    {
+      "pdf_page": 6,
+      "printed_page": null,
+      "text": "Explore related subjects\nDiscover the latest articles, books and news in related subjects,\nsuggested using machine learning.\n•  Computational Intelligence\n•  DNA sequencing\n•  Multiagent Systems\n•  Next-generation sequencing\n•  Sequencing\n•  Whole genome amplification\n•  Prebiotic Chemistry and Origins of Life\nData availability\nPublicly available datasets were used in this study. Global health data\nwere obtained from the World Health Organization (https://apps.who.int/\niris/bitstream/handle/10665/341906/WHO-UCN-GTB-PCI-2021.7-\neng.xlsx). The dataset comprises clinically annotated genetic variants in\nVCF format, and was systematically retrieved from the ClinVar database\n(https://ftp.ncbi.nlm.nih.gov/pub/clinvar/vcf_GRCh38/) and curated95.\nUniProt datasets were dynamically accessed via the UniProt RESTful\nAPI based on search criteria such as gene or protein names (query\nexample, http://rest.uniprot.org/uniprotkb/search?query = (gene:\n{Gene_Names})&format=json). Genome sequences were searched and\nscreened through the NCBI Genome database (https://\nftp.ncbi.nlm.nih.gov/genomes/). Species classification information was",
+      "character_count": 1131,
+      "rendered_image": null
+    },
+    {
+      "pdf_page": 7,
+      "printed_page": null,
+      "text": "sourced from the NCBI Taxonomy database (https://ftp.ncbi.nlm.nih.gov/\npub/taxonomy/) and curated96. Certain datasets, such as those from the\nComprehensive Antibiotic Resistance Database (CARD), were obtained\nupon request (https://card.mcmaster.ca/download). Data from OMIM\n(https://www.omim.org) and COSMIC (https://cancer.sanger.ac.uk/\ncosmic) require independent access requests and are not publicly\nredistributable. The GRCh38 (hg38) reference genome was used for\nexpanded carrier screening (ECS) panel design, with exon regions\nannotated based on Gencode v46. Nucleotide sequences for SARS-\nCoV-2 were retrieved from the NCBI Virus SARS-CoV-2 Data Hub\n(https://www.ncbi.nlm.nih.gov/activ). Multiple sequence alignment of\n20,000 SARS-CoV-2 genomes was performed using MAFFT, with\nNC_045512.2 (Wuhan-Hu-1 isolate) as the reference genome. Source\ndata supporting the findings of this study are provided with the paper97.\nOwing to regulatory and ethical considerations, access to certain\nrestricted datasets may require specific approvals. The main findings of\nthis study can be replicated using the publicly available datasets listed\nabove. Reviewers were provided controlled access to restricted datasets\nfor validation purposes. For further information regarding restricted data\naccess, readers are advised to contact the relevant data repositories\ndirectly. Source data are provided with this paper.\nCode availability\nPrimeGen is written in Python using a Docker container. The source\ncode can be accessed at",
+      "character_count": 1513,
+      "rendered_image": null
+    },
+    {
+      "pdf_page": 8,
+      "printed_page": null,
+      "text": "https://github.com/melobio/PrimeGen under the GPLv3 license. The doi\nof the GitHub repository for PrimeGen is provided by the Zenodo link98.\nReferences\n1. Merchant, A. et al. Scaling deep learning for materials discovery.\nNature 624, 80–85 (2023).\nArticle  CAS  PubMed  PubMed Central  Google Scholar\n2. Bennett, J. A. et al. Autonomous reaction Pareto-front mapping\nwith a self-driving catalysis laboratory. Nat. Chem. Eng. 1, 240–\n250 (2024).\nArticle  Google Scholar\n3. Slattery, A. et al. Automated self-optimization, intensification, and\nscale-up of photocatalysis in flow. Science 383, eadj1817 (2024).\nArticle  CAS  PubMed  Google Scholar\n4. Bryant, J. A. Jr, Kellinger, M., Longmire, C., Miller, R. & Wright, R.\nC. AssemblyTron: flexible automation of DNA assembly with\nOpentrons OT-2 lab robots. Synth. Biol. 8, ysac032 (2023).\nArticle  Google Scholar\n5. Volk, A. A. et al. AlphaFlow: autonomous discovery and\noptimization of multi-step chemistry using a self-driven fluidic lab\nguided by reinforcement learning. Nat. Commun. 14, 1403 (2023).",
+      "character_count": 1050,
+      "rendered_image": null
+    },
+    {
+      "pdf_page": 9,
+      "printed_page": null,
+      "text": "Article  CAS  PubMed  PubMed Central  Google Scholar\n6. Wierenga, R. P., Golas, S. M., Ho, W., Coley, C. W. & Esvelt, K.\nM. PyLabRobot: an open-source, hardware-agnostic interface for\nliquid-handling robots and accessories. Device 1, 100111 (2023).\nArticle  Google Scholar\n7. Liu, L., Huang, Y. & Wang, H. H. Fast and efficient template-\nmediated synthesis of genetic variants. Nat. Methods 20, 841–848\n(2023).\nArticle  CAS  PubMed  PubMed Central  Google Scholar\n8. Huang, Y. et al. High-throughput microbial culturomics using\nautomation and machine learning. Nat. Biotechnol. 41, 1424–1433\n(2023).\nArticle  CAS  PubMed  PubMed Central  Google Scholar\n9. Dama, A. C. et al. BacterAI maps microbial metabolism without\nprior knowledge. Nat. Microbiol. 8, 1018–1025 (2023).\nArticle  CAS  PubMed  Google Scholar\n10. Vemprala, S. H., Bonatti, R., Bucker, A. & Kapoor, A. ChatGPT for\nrobotics: design principles and model abilities. IEEE Access 12,\n55682–55696 (2024).\nArticle  Google Scholar",
+      "character_count": 987,
+      "rendered_image": null
+    },
+    {
+      "pdf_page": 10,
+      "printed_page": null,
+      "text": "11. Achiam, J. et al. GPT-4 technical report. Preprint at https://\narxiv.org/abs/2303.08774 (2023).\n12. Yao, S. et al. ReAct: synergizing reasoning and acting in language\nmodels. In Eleventh International Conference on Learning\nRepresentations (ICLR, 2023).\n13. Wei, J. et al. Chain-of-thought prompting elicits reasoning in large\nlanguage models. Adv. Neural Inf. Process. Syst. 35, 24824–\n24837 (2022).\nGoogle Scholar\n14. Brown, T. et al. Language models are few-shot learners. Adv.\nNeural Inf. Process. Syst. 33, 1877–1901 (2020).\nGoogle Scholar\n15. Romera-Paredes, B. et al. Mathematical discoveries from program\nsearch with large language models. Nature 625, 468–475 (2024).\nArticle  CAS  PubMed  Google Scholar\n16. Yang, C. et al. Large language models as optimizers. In Twelfth\nInternational Conference on Learning Representations (ICLR,\n2024).\n17. Lewis, P. et al. Retrieval-augmented generation for knowledge-\nintensive NLP tasks. Adv. Neural Inf. Process. Syst. 33, 9459–\n9474 (2020).",
+      "character_count": 994,
+      "rendered_image": null
+    },
+    {
+      "pdf_page": 11,
+      "printed_page": null,
+      "text": "Google Scholar\n18. Xi, Z. et al. The rise and potential of large language model based\nagents: a survey. Sci. China Inf. Sci. 68, 121101 (2025).\nArticle  Google Scholar\n19. Zhou, W. et al. Agents: an open-source framework for autonomous\nlanguage agents. In Twelfth International Conference on Learning\nRepresentations (ICLR, 2024).\n20. Shen, Y. et al. HuggingGPT: solving AI tasks with ChatGPT and its\nfriends in hugging face. Adv. Neural Inf. Process. Syst. 36, 38154–\n38180 (2023).\nGoogle Scholar\n21. Qian, C. et al. Communicative agents for software development.\nPreprint at https://arxiv.org/abs/2307.07924 (2023).\n22. Wu, Q. et al. AutoGen: Enabling Next-Gen LLM Applications via\nMulti-Agent Conversations. In First Conference on Language\nModeling (2024).\n23. Ghafarollahi, A. & Buehler, M. J. SciAgents: automating scientific\ndiscovery through bioinspired multi-agent intelligent graph\nreasoning. Adv. Mater. 37, 2413523 (2025).\nArticle  CAS  PubMed  Google Scholar\n24. Yang, Z. et al. MM-REACT: prompting ChatGPT for multimodal",
+      "character_count": 1033,
+      "rendered_image": null
+    },
+    {
+      "pdf_page": 12,
+      "printed_page": null,
+      "text": "reasoning and action. Preprint at https://arxiv.org/abs/2303.11381\n(2023).\n25. Patil, S. G., Zhang, T., Wang, X. & Gonzalez, J. E. Gorilla: large\nlanguage model connected with massive APIs. Adv. Neural Inf.\nProcess. Syst. 37, 126544–126565 (2024).\nGoogle Scholar\n26. Messeri, L. & Crockett, M. J. Artificial intelligence and illusions of\nunderstanding in scientific research. Nature 627, 49–58 (2024).\nArticle  CAS  PubMed  Google Scholar\n27. Krenn, M. et al. On scientific understanding with artificial\nintelligence. Nat. Rev. Phys. 4, 761–769 (2022).\nArticle  PubMed  PubMed Central  Google Scholar\n28. Boiko, D. A., MacKnight, R., Kline, B. & Gomes, G. Autonomous\nchemical research with large language models. Nature 624, 570–\n578 (2023).\nArticle  CAS  PubMed  PubMed Central  Google Scholar\n29. Bran, A. M. et al. Augmenting large language models with\nchemistry tools. Nat. Mach. Intell. 6, 525–535 (2024).\nArticle  Google Scholar\n30. Darvish, K. et al. ORGANA: a robotic assistant for automated",
+      "character_count": 999,
+      "rendered_image": null
+    },
+    {
+      "pdf_page": 13,
+      "printed_page": null,
+      "text": "chemistry experimentation and characterization. Matter 8, 101897\n(2025).\nArticle  Google Scholar\n31. Dai, T. et al. Autonomous mobile robots for exploratory synthetic\nchemistry. Nature 635, 890–897 (2024).\nArticle  PubMed  PubMed Central  Google Scholar\n32. Gao, S. et al. Empowering biomedical discovery with AI agents.\nCell 187, 6125–6151 (2024).\nArticle  CAS  PubMed  Google Scholar\n33. Xiao, M. et al. Multiple approaches for massively parallel\nsequencing of SARS-CoV-2 genomes directly from clinical\nsamples. Genome Med. 12, 57 (2020).\nArticle  CAS  PubMed  PubMed Central  Google Scholar\n34. Kunasol, C. et al. Comparative analysis of targeted next-\ngeneration sequencing for Plasmodium falciparum drug resistance\nmarkers. Sci. Rep. 12, 5563 (2022).\nArticle  CAS  PubMed  PubMed Central  Google Scholar\n35. Nozawa, A. et al. Comprehensive targeted next-generation\nsequencing in patients with slow-flow vascular malformations. J.\nHum. Genet. 67, 721–728 (2022).",
+      "character_count": 966,
+      "rendered_image": null
+    },
+    {
+      "pdf_page": 14,
+      "printed_page": null,
+      "text": "Article  PubMed  Google Scholar\n36. Rawat, A. et al. Utility of targeted next generation sequencing for\ninborn errors of immunity at a tertiary care centre in North India.\nSci. Rep. 12, 10416 (2022).\nArticle  CAS  PubMed  PubMed Central  Google Scholar\n37. Jan, Y.-H. et al. Comprehensive assessment of actionable\ngenomic alterations in primary colorectal carcinoma using targeted\nnext-generation sequencing. Br. J. Cancer 127, 1304–1311\n(2022).\nArticle  CAS  PubMed  PubMed Central  Google Scholar\n38. Xie, N. G. et al. Designing highly multiplex PCR primer sets with\nsimulated annealing design using dimer likelihood estimation\n(SADDLE). Nat. Commun. 13, 1881 (2022).\nArticle  CAS  PubMed  PubMed Central  Google Scholar\n39. Shinn, N., Cassano, F., Gopinath, A., Narasimhan, K. & Yao, S.\nReflexion: language agents with verbal reinforcement learning.\nAdv. Neural Inf. Process. Syst. 36, 8634–8652 (2023).\nGoogle Scholar\n40. Madaan, A. et al. Self-refine: iterative refinement with self-\nfeedback. Adv. Neural Inf. Process. Syst. 36, 46534–46594\n(2023).",
+      "character_count": 1054,
+      "rendered_image": null
+    },
+    {
+      "pdf_page": 15,
+      "printed_page": null,
+      "text": "Google Scholar\n41. Szymanski, N. J. et al. An autonomous laboratory for the\naccelerated synthesis of novel materials. Nature 624, 86–91\n(2023).\nArticle  CAS  PubMed  PubMed Central  Google Scholar\n42. Amberger, J. S., Bocchini, C. A., Schiettecatte, F., Scott, A. F. &\nHamosh, A. OMIM.org: Online Mendelian Inheritance in Man\n(OMIM®), an online catalog of human genes and genetic\ndisorders. Nucleic Acids Res. 43, D789–D798 (2015).\nArticle  PubMed  Google Scholar\n43. Sondka, Z. et al. COSMIC: a curated database of somatic variants\nand clinical data for cancer. Nucleic Acids Res. 52, D1210–D1217\n(2024).\nArticle  CAS  PubMed  PubMed Central  Google Scholar\n44. Landrum, M. J. et al. ClinVar: improvements to accessing data.\nNucleic Acids Res. 48, D835–D844 (2020).\nArticle  CAS  PubMed  PubMed Central  Google Scholar\n45. UniProt Consortium UniProt: a hub for protein information. Nucleic\nAcids Res. 43, D204–D212 (2015).\nArticle  Google Scholar",
+      "character_count": 947,
+      "rendered_image": null
+    },
+    {
+      "pdf_page": 16,
+      "printed_page": null,
+      "text": "46. Federhen, S. The NCBI taxonomy database. Nucleic Acids Res.\n40, D136–D143 (2012).\nArticle  CAS  PubMed  Google Scholar\n47. The WHO Global Tuberculosis Report 2022 (WHO, 2022); https://\nwww.who.int/teams/global-tuberculosis-programme/tb-reports/\nglobal-tuberculosis-report-2022\n48. McArthur, A. G. et al. The comprehensive antibiotic resistance\ndatabase. Antimicrob. Agents Chemother. 57, 3348–3357 (2013).\nArticle  CAS  PubMed  PubMed Central  Google Scholar\n49. Camacho, C. et al. BLAST+: architecture and applications. BMC\nBioinform. 10, 1–9 (2009).\nArticle  Google Scholar\n50. Wang, M. X. et al. Olivar: towards automated variant aware primer\ndesign for multiplex tiled amplicon sequencing of pathogens. Nat.\nCommun. 15, 6306 (2024).\nArticle  CAS  PubMed  PubMed Central  Google Scholar\n51. Xia, H. et al. MultiPrime: a reliable and efficient tool for targeted\nnext-generation sequencing. iMeta 2, e143 (2023).\nArticle  CAS  PubMed  PubMed Central  Google Scholar\n52. Wang, K. et al. MFEprimer-3.0: quality control for PCR primers.",
+      "character_count": 1038,
+      "rendered_image": null
+    },
+    {
+      "pdf_page": 17,
+      "printed_page": null,
+      "text": "Nucleic Acids Res. 47, W610–W613 (2019).\nArticle  CAS  PubMed  PubMed Central  Google Scholar\n53. Dreier, M., Berthoud, H., Shani, N., Wechsler, D. & Junier, P.\nSpeciesPrimer: a bioinformatics pipeline dedicated to the design of\nqPCR primers for the quantification of bacterial species. PeerJ 8,\ne8544 (2020).\nArticle  PubMed  PubMed Central  Google Scholar\n54. Yang, L. et al. A tool to automatically design multiplex PCR primer\npairs for specific targets using diverse templates. Sci. Rep. 13,\n16451 (2023).\nArticle  CAS  PubMed  PubMed Central  Google Scholar\n55. Yuan, J. et al. The web-based multiplex PCR primer design\nsoftware Ultiplex and the associated experimental workflow: up to\n100-plex multiplicity. BMC Genom. 22, 835 (2021).\nArticle  CAS  Google Scholar\n56. Ghezzi, H. et al. PUPpy: a primer design pipeline for substrain-\nlevel microbial detection and absolute quantification. mSphere 9,\ne00360–00324 (2024).\nArticle  PubMed  PubMed Central  Google Scholar\n57. dnasoftware (dnasoftware); https://www.dnasoftware.com/ (2025).",
+      "character_count": 1041,
+      "rendered_image": null
+    },
+    {
+      "pdf_page": 18,
+      "printed_page": null,
+      "text": "58. SantaLucia, J. Jr & Hicks, D. The thermodynamics of DNA\nstructural motifs. Annu. Rev. Biophys. Biomol. Struct. 33, 415–440\n(2004).\nArticle  CAS  PubMed  Google Scholar\n59. Untergasser, A. et al. Primer3—new capabilities and interfaces.\nNucleic Acids Res. 40, e115 (2012).\nArticle  CAS  PubMed  PubMed Central  Google Scholar\n60. Sinai, S. et al. AdaLead: a simple and robust adaptive greedy\nsearch algorithm for sequence design. Preprint at https://arxiv.org/\nabs/2010.02141 (2020).\n61. Goldberg, D. E. Genetic Algorithms in Search, Optimization and\nMachine Learning (Addison Wesley Publishing Company, 1989).\n62. hCoV-2019/nCoV-2019 Version 3 Amplicon Set (ARTIC, 2020);\nhttps://artic.network/resources/ncov/ncov-amplicon-v3.pdf\n63. ARTIC v5.3.2 (ARTIC); https://github.com/quick-lab/SARS-CoV-2/\nblob/main/400/v5.3.2_400/pooling\n64. Quick, J. et al. Multiplex PCR method for MinION and Illumina\nsequencing of Zika and other virus genomes directly from clinical\nsamples. Nat. Protoc. 12, 1261–1276 (2017).\nArticle  CAS  PubMed  PubMed Central  Google Scholar\n65. Edwards, J. G. et al. Expanded carrier screening in reproductive",
+      "character_count": 1131,
+      "rendered_image": null
+    },
+    {
+      "pdf_page": 19,
+      "printed_page": null,
+      "text": "medicine—points to consider: a joint statement of the American\nCollege of Medical Genetics and Genomics, American College of\nObstetricians and Gynecologists, National Society of Genetic\nCounselors, Perinatal Quality Foundation, and Society for\nMaternal-Fetal Medicine. Obstet. Gynecol. 125, 653–662 (2015).\nArticle  PubMed  Google Scholar\n66. Goldberg, J. D., Pierson, S. & Johansen Taber, K. Expanded\ncarrier screening: what conditions should we screen for? Prenat.\nDiagn. 43, 496–505 (2023).\nArticle  PubMed  Google Scholar\n67. Cabibbe, A. M. et al. Application of targeted next-generation\nsequencing assay on a portable sequencing platform for culture-\nfree detection of drug-resistant tuberculosis from clinical samples.\nJ. Clin. Microbiol. 58, 10–1128 (2020).\nArticle  Google Scholar\n68. Dookie, N., Khan, A., Padayatchi, N. & Naidoo, K. Application of\nnext generation sequencing for diagnosis and clinical management\nof drug-resistant tuberculosis: updates on recent developments in\nthe field. Front. Microbiol. 13, 775030 (2022).\nArticle  PubMed  PubMed Central  Google Scholar\n69. Catalogue of Mutations in Mycobacterium tuberculosis Complex\nand Their Association with Drug Resistance (WHO, 2021); https://",
+      "character_count": 1214,
+      "rendered_image": null
+    },
+    {
+      "pdf_page": 20,
+      "printed_page": null,
+      "text": "www.who.int/publications/i/item/9789240028173\n70. Butler, W. R. & Guthertz, L. S. Mycolic acid analysis by high-\nperformance liquid chromatography for identification of\nMycobacterium species. Clin. Microbiol. Rev. 14, 704–726 (2001).\nArticle  CAS  PubMed  PubMed Central  Google Scholar\n71. Ni, G. et al. Novel multiplexed amplicon-based sequencing to\nquantify SARS-CoV-2 RNA from wastewater. Environ. Sci.\nTechnol. Lett. 8, 683–690 (2021).\nArticle  CAS  PubMed  Google Scholar\n72. Vanella, R., Kovacevic, G., Doffini, V., de Santaella, J. F. & Nash,\nM. A. High-throughput screening, next generation sequencing and\nmachine learning: advanced methods in enzyme engineering.\nChem. Commun. 58, 2455–2467 (2022).\nArticle  CAS  Google Scholar\n73. Nakatsu, T. et al. Structural basis for the spectral difference in\nluciferase bioluminescence. Nature 440, 372–376 (2006).\nArticle  CAS  PubMed  Google Scholar\n74. Hashimoto, H. et al. Crystal structure of DNA polymerase from\nhyperthermophilic archaeon Pyrococcus kodakaraensis KOD1. J.\nMol. Biol. 306, 469–477 (2001).\nArticle  CAS  PubMed  Google Scholar",
+      "character_count": 1097,
+      "rendered_image": null
+    },
+    {
+      "pdf_page": 21,
+      "printed_page": null,
+      "text": "75. Lunde, B. M., Magler, I. & Meinhart, A. Crystal structures of the\nCid1 poly (U) polymerase reveal the mechanism for UTP\nselectivity. Nucleic Acids Res. 40, 9815–9824 (2012).\nArticle  CAS  PubMed  PubMed Central  Google Scholar\n76. Lu, X. et al. Enzymatic DNA synthesis by engineering terminal\ndeoxynucleotidyl transferase. ACS Catal. 12, 2988–2997 (2022).\nArticle  CAS  Google Scholar\n77. MGI AlphaTool (MGI); https://www.mgi-tech.com/647 (2024).\n78. Khot, T. et al. Decomposed prompting: a modular approach for\nsolving complex tasks. In Eleventh International Conference on\nLearning Representations (ICLR, 2023).\n79. Li, C. et al. LLaVA-Med: training a large language-and-vision\nassistant for biomedicine in one day. Adv. Neural Inf. Process.\nSyst. 36, 28541–28564 (2023).\nGoogle Scholar\n80. Jetson Nano (NVIDIA); https://developer.nvidia.com/embedded/\njetson-nano (2019).\n81. Taymans, W., Baker, S., Wingo, A., Bultje, R. S. & Kost, S.\nGstreamer application development manual (1.2.3). https://\ngstreamer.freedesktop.org/ (2013).\n82. Hong, Y. et al. 3D-LLM: injecting the 3D world into large language",
+      "character_count": 1106,
+      "rendered_image": null
+    },
+    {
+      "pdf_page": 22,
+      "printed_page": null,
+      "text": "models. Adv. Neural Inf. Process. Syst. 36, 20482–20494 (2023).\nGoogle Scholar\n83. Wang, P. et al. Qwen2-vl: enhancing vision-language model’s\nperception of the world at any resolution. Preprint at https://\narxiv.org/abs/2409.12191 (2024).\n84. Hu, E. J. et al. LoRA: low-rank adaptation of large language\nmodels. In Tenth International Conference on Learning\nRepresentations 1, 3 (ICLR, 2022).\n85. Yao, S. et al. Tree of thoughts: deliberate problem solving with\nlarge language models. Adv. Neural Inf. Process. Syst. 36, 11809–\n11822 (2023).\nGoogle Scholar\n86. Zelikman, E. et al. Quiet-STaR: language models can teach\nthemselves to think before speaking. Preprint at https://arxiv.org/\nabs/2403.09629 (2024).\n87. Liu, Z. et al. Inference-time scaling for generalist reward modeling.\nPreprint at https://arxiv.org/abs/2504.02495 (2025).\n88. Frankish, A. et al. GENCODE: reference annotation for the human\nand mouse genomes in 2023. Nucleic Acids Res. 51, D942–D949\n(2023).\nArticle  CAS  PubMed  PubMed Central  Google Scholar",
+      "character_count": 1026,
+      "rendered_image": null
+    },
+    {
+      "pdf_page": 23,
+      "printed_page": null,
+      "text": "89. Wright, C. F., FitzPatrick, D. R., Ware, J. S., Rehm, H. L. & Firth,\nH. V. Importance of adopting standardized MANE transcripts in\nclinical reporting. Genet. Med. 25, 100331 (2023).\nArticle  CAS  PubMed  Google Scholar\n90. Morales, J. et al. A joint NCBI and EMBL-EBI transcript set for\nclinical genomics and research. Nature 604, 310–315 (2022).\nArticle  CAS  PubMed  PubMed Central  Google Scholar\n91. SARS-CoV-2 Variants Overview (NCBI Virus, 2004–2024); https://\nwww.ncbi.nlm.nih.gov/activ\n92. Katoh, K., Misawa, K., Kuma, K. I. & Miyata, T. MAFFT: a novel\nmethod for rapid multiple sequence alignment based on fast\nFourier transform. Nucleic Acids Res. 30, 3059–3066 (2002).\nArticle  CAS  PubMed  PubMed Central  Google Scholar\n93. Abdin, M. et al. Phi-3 technical report: a highly capable language\nmodel locally on your phone. Preprint at https://arxiv.org/\nabs/2404.14219 (2024).\n94. Yao, Y. et al. MiniCPM-V: a GPT-4V level MLLM on your phone.\nPreprint at https://arxiv.org/abs/2408.01800 (2024).\n95. Hui, T. Gene data from Clinvar. figshare https://doi.org/10.6084/\nm9.figshare.28876808.v4 (2025).\n96. Hui, T. Species identification data from NCBI. figshare https://",
+      "character_count": 1179,
+      "rendered_image": null
+    },
+    {
+      "pdf_page": 24,
+      "printed_page": null,
+      "text": "doi.org/10.6084/m9.figshare.28877087.v1 (2025).\n97. Hui, T. PrimeGen Figs. 2–4 Source Data. figshare https://\ndoi.org/10.6084/m9.figshare.28876844.v1 (2025).\n98. melobio. melobio/PrimeGen: V1.0.1 (V1.0.1). Zenodo https://\ndoi.org/10.5281/zenodo.15279353 (2025).\nDownload references\nAcknowledgements\nThis research is supported by the Ministry of Science and Technology of\nthe People’s Republic of China’s programme titled ‘National Key\nResearch and Development Program of China’ (2022YFF1202200).\nAuthor information\nAuthor notes\n1. These authors contributed equally: Yi Wang, Yuejie Hou, Lin Yang,\nShisen Li.\nAuthors and Affiliations\n1. MGI Tech, Shenzhen, China\nYi Wang, Yuejie Hou, Lin Yang, Weiting Tang, Hui Tang, Qiushun\nHe, Siyuan Lin, Yanyan Zhang, Xingyu Li, Shiwen Chen, Yusheng",
+      "character_count": 786,
+      "rendered_image": null
+    },
+    {
+      "pdf_page": 25,
+      "printed_page": null,
+      "text": "Huang, Lingsong Kong, Huijun Zhang, Duncan Yu, Feng Mu, Jian\nWang & Meng Yang\n2. College of Life Sciences, University of Chinese Academy of\nSciences, Beijing, China\nLin Yang\n3. αLab AI department, MGI Tech R&D, Hongkong, China\nShisen Li, Siyuan Lin, Duncan Yu & Meng Yang\n4. BGI, Shenzhen, China\nHuanming Yang & Jian Wang\n5. Hangzhou Institute of Medicine, Chinese Academy of Sciences,\nHangzhou, China\nHuanming Yang\n6. James D. Watson Institute of Genome Sciences, Hangzhou, China\nHuanming Yang\n7. Graduate Affairs, Faculty of Medicine, Chulalongkorn University,\nBangkok, Thailand\nNattiya Hirankarn & Meng Yang\nAuthors\n1. Yi Wang",
+      "character_count": 629,
+      "rendered_image": null
+    },
+    {
+      "pdf_page": 26,
+      "printed_page": null,
+      "text": "View author publications\nSearch author on:PubMed Google Scholar\n2. Yuejie Hou\nView author publications\nSearch author on:PubMed Google Scholar\n3. Lin Yang\nView author publications\nSearch author on:PubMed Google Scholar\n4. Shisen Li\nView author publications\nSearch author on:PubMed Google Scholar\n5. Weiting Tang\nView author publications\nSearch author on:PubMed Google Scholar\n6. Hui Tang\nView author publications\nSearch author on:PubMed Google Scholar\n7. Qiushun He\nView author publications",
+      "character_count": 489,
+      "rendered_image": null
+    },
+    {
+      "pdf_page": 27,
+      "printed_page": null,
+      "text": "Search author on:PubMed Google Scholar\n8. Siyuan Lin\nView author publications\nSearch author on:PubMed Google Scholar\n9. Yanyan Zhang\nView author publications\nSearch author on:PubMed Google Scholar\n10. Xingyu Li\nView author publications\nSearch author on:PubMed Google Scholar\n11. Shiwen Chen\nView author publications\nSearch author on:PubMed Google Scholar\n12. Yusheng Huang\nView author publications\nSearch author on:PubMed Google Scholar\n13. Lingsong Kong\nView author publications\nSearch author on:PubMed Google Scholar",
+      "character_count": 518,
+      "rendered_image": null
+    },
+    {
+      "pdf_page": 28,
+      "printed_page": null,
+      "text": "14. Huijun Zhang\nView author publications\nSearch author on:PubMed Google Scholar\n15. Duncan Yu\nView author publications\nSearch author on:PubMed Google Scholar\n16. Feng Mu\nView author publications\nSearch author on:PubMed Google Scholar\n17. Huanming Yang\nView author publications\nSearch author on:PubMed Google Scholar\n18. Jian Wang\nView author publications\nSearch author on:PubMed Google Scholar\n19. Nattiya Hirankarn\nView author publications\nSearch author on:PubMed Google Scholar\n20. Meng Yang\nView author publications",
+      "character_count": 519,
+      "rendered_image": null
+    },
+    {
+      "pdf_page": 29,
+      "printed_page": null,
+      "text": "Search author on:PubMed Google Scholar\nContributions\nM.Y. conceived the problem and designed all studies. Y.W. assisted and\noversaw the computational pipeline. Y. Hou and H.T. developed the\n‘search’ and ‘experiment’ agent. H.T., Y. Hou, W.T. and Y.W. developed\nthe ‘protocol’ agent. L.Y., W.T., H.Z. and X.L. planned and executed the\nlibrary construction experiments. Y.W. and H.T. developed the ‘primer’\nagent. S. Li, Y. Hou and S.C. developed the LLM ‘controller’. Y. Huang\nset up the cameras for video collection in VLM supervision. L.K. and Y.\nHou implemented the anomaly detection module in the ‘experiment’\nagent. Q.H. assisted in developing the ‘search’ and ‘primer’ agent. J.W.,\nH.Y., D.Y. and F.M. provided strategic guidance. N.H. provided\nsuggestions for biomedical applications. S. Lin provided suggestions for\nautomation systems. Y.Z. provided suggestions for PCR experiment\ndesign. M.Y. and Y.W. wrote the paper, and others made modifications.\nCorresponding authors\nCorrespondence to Nattiya Hirankarn or Meng Yang.\nEthics declarations\nCompeting interests\nJ.W., D.Y. and F.M. declare stock holdings in MGI. The remaining\nauthors declare no competing interests.",
+      "character_count": 1174,
+      "rendered_image": null
+    },
+    {
+      "pdf_page": 30,
+      "printed_page": null,
+      "text": "Peer review\nPeer review information\nNature Biomedical Engineering thanks Wei Chen and the other,\nanonymous, reviewer(s) for their contribution to the peer review of this\nwork.\nAdditional information\nPublisher’s note Springer Nature remains neutral with regard to\njurisdictional claims in published maps and institutional affiliations.\nExtended data\nExtended Data Fig. 1 The dialog example for pathogen\ndetection.\nProfile picture: Pink: controller, Blue: The Search Agent, White: The\nPrimer Agent, the user is on the right.\nExtended Data Fig. 2 The dialog example for protein\nmutation analysis.\nProfile picture: Pink: controller, Blue: The Search Agent, White: The\nPrimer Agent, the user is on the right.",
+      "character_count": 703,
+      "rendered_image": null
+    },
+    {
+      "pdf_page": 31,
+      "printed_page": null,
+      "text": "Extended Data Fig. 3 The dialog example for genetic\ndisorder.\nProfile picture: Pink: controller, Blue: The Search Agent, White: The\nPrimer Agent, the user is on the right.\nExtended Data Fig. 4 The dialog example for SNP with\nreference.\nProfile picture: Pink: controller, Blue: The Search Agent, White: The\nPrimer Agent, the user is on the right.\nExtended Data Fig. 5 The dialog example for cancer drug\ntarget.\nProfile picture: Pink: controller, Blue: The Search Agent, White: The\nPrimer Agent, the user is on the right.\nExtended Data Fig. 6 The dialog example for Whole\ngenome detection.\nProfile picture: Pink: controller, Blue: The Search Agent, White: The\nPrimer Agent, the user is on the right.\nExtended Data Fig. 7 The dialog example for redesign\nprimers.\nProfile picture: Pink: controller, Blue: The Search Agent, White: The",
+      "character_count": 829,
+      "rendered_image": null
+    },
+    {
+      "pdf_page": 32,
+      "printed_page": null,
+      "text": "Primer Agent, the user is on the right.\nSupplementary information\nSupplementary Information (download PDF\n)\nSupplementary Notes, Figs. 1–5, Tables 1–8 and references.\nReporting Summary (download PDF\n)\nSupplementary Data 1 (download XLSX\n)\nThe examples of typical queries and the corresponding retrieved links for\nthe five primer design scenarios.\nSupplementary Data 2 (download XLSX\n)\nThe primer pool files and the sequencing analysis data for the four\nbenchmarking approaches for the SARS-CoV-2 task.\nSupplementary Data 3 (download XLSX\n)\nThe primer pool file, the 35 associated genes and the sequencing results\ndata for the ECS panel design task.\nSupplementary Data 4 (download XLSX\n)\nThe primer pool files for the task of detecting drug resistance mutations\nin MTB.",
+      "character_count": 768,
+      "rendered_image": null
+    },
+    {
+      "pdf_page": 33,
+      "printed_page": null,
+      "text": "Supplementary Data 5 (download XLSX\n)\nThe primer pool files for Gluc, KOD, Cid1 and TdT in the protein mutation\ndetection task.\nSupplementary Data 6 (download XLSX\n)\nThe expert-provided seed data and LLM prompts for generating training\ndata for the two-stage fine-tuning of the VLM for detecting abnormal\nevents.\nSource data\nSource Data Fig. 2 (download XLSX\n)\nThe loss values for each iteration of the panel optimization process\nacross the four benchmarking approaches (LLM, GA, AdaLead and\nGreedy) in Fig. 2e(i) and Fig. 2e(ii).\nSource Data Fig. 3 (download XLSX\n)\nStatistical source data in Fig. 3.\nSource Data Fig. 3 (download ZIP\n)\nUncropped gel images of PCR products from SARS-CoV-2 panels for\nARTIC, PrimalScheme, PrimeGen and PrimeGen-Primer3; uncropped\ngel image of PCR products from PrimeGen ECS panel; uncropped gel\nimages of PCR products from PrimeGen MTB panels for round 1 and",
+      "character_count": 891,
+      "rendered_image": null
+    },
+    {
+      "pdf_page": 34,
+      "printed_page": null,
+      "text": "round 2 design; uncropped gel image of PCR products from PrimeGen\nmixing (Gluc KODm Cid1 TdT) plasmid panel for round 1 design;\nuncropped gel image of PCR products from PrimeGen TdT plasmid\npanel for round 2 design.\nSource Data Fig. 4 (download XLSX\n)\nBenchmarking of the LLM base model for three scenarios: target\nsequence retrieval, LLM panel optimization and protocol code\nmodification (Fig. 4e).\nRights and permissions\nSpringer Nature or its licensor (e.g. a society or other partner) holds\nexclusive rights to this article under a publishing agreement with the\nauthor(s) or other rightsholder(s); author self-archiving of the accepted\nmanuscript version of this article is solely governed by the terms of such\npublishing agreement and applicable law.\nReprints and permissions\nAbout this article\n[image]\nCite this article\nWang, Y., Hou, Y., Yang, L. et al. Accelerating primer design for",
+      "character_count": 891,
+      "rendered_image": null
+    },
+    {
+      "pdf_page": 35,
+      "printed_page": null,
+      "text": "amplicon sequencing using large language model-powered agents. Nat.\nBiomed. Eng 10, 338–353 (2026). https://doi.org/10.1038/\ns41551-025-01455-z\nDownload citation\n•  Received: 08 April 2024\n•  Accepted: 09 June 2025\n•  Published: 30 July 2025\n•  Version of record: 30 July 2025\n•  Issue date: February 2026\n•  DOI: https://doi.org/10.1038/s41551-025-01455-z\n•  Springer Nature Limited\nProfiles\n1. Yi Wang\nView author profile\n2. Nattiya Hirankarn\nView author profile\n3. Meng Yang\nView author profile\nAccess this article\nLog in via an institution\nBuy article PDF USD 39.95",
+      "character_count": 569,
+      "rendered_image": null
+    },
+    {
+      "pdf_page": 36,
+      "printed_page": null,
+      "text": "Price includes VAT (Canada)\nInstant access to the full article PDF.\nInstitutional subscriptions\nAdvertisement\nSearch\nSearch by keyword or author\n Search\nNavigation\n•  Find a journal\n•  Publish with us\n•  Track your research\nFooter Navigation\nDiscover content\n•  Journals A-Z\n•  Books A-Z\n•  Subjects A-Z\nPublish with us",
+      "character_count": 319,
+      "rendered_image": null
+    },
+    {
+      "pdf_page": 37,
+      "printed_page": null,
+      "text": "•  Journal finder\n•  Publish your research\n•  Language editing\n•  Open access publishing\nProducts and services\n•  Our products\n•  Librarians\n•  Societies\n•  Partners and advertisers\nOur brands\n•  Springer\n•  Nature Portfolio\n•  BMC\n•  Palgrave Macmillan\n•  Apress\n•  Discover\nCorporate Navigation\n•  Your privacy choices/Manage cookies\n•  Your US state privacy rights\n•  Accessibility statement\n•  Terms and conditions\n•  Privacy policy",
+      "character_count": 436,
+      "rendered_image": null
+    },
+    {
+      "pdf_page": 38,
+      "printed_page": null,
+      "text": "•  Help and support\n•  Legal notice\n•  Cancel contracts here\n173.35.231.181\nNot affiliated\n[image]\n© 2026 Springer Nature",
+      "character_count": 121,
+      "rendered_image": null
+    }
+  ],
+  "sections": [
+    {
+      "title": "4127 Accesses",
+      "pdf_page": 3,
+      "printed_page": null
+    },
+    {
+      "title": "6 Citations",
+      "pdf_page": 3,
+      "printed_page": null
+    },
+    {
+      "title": "11 Altmetric",
+      "pdf_page": 3,
+      "printed_page": null
+    },
+    {
+      "title": "1 Mention",
+      "pdf_page": 3,
+      "printed_page": null
+    },
+    {
+      "title": "Abstract",
+      "pdf_page": 3,
+      "printed_page": null
+    },
+    {
+      "title": "References",
+      "pdf_page": 8,
+      "printed_page": null
+    },
+    {
+      "title": "Acknowledgements",
+      "pdf_page": 24,
+      "printed_page": null
+    }
+  ],
+  "evidence_inventory": {
+    "figures": [
+      {
+        "id": "Figure 1",
+        "caption": "Overview of PrimeGen workflow. [image]",
+        "pdf_page": 4,
+        "printed_page": null,
+        "page_image": "figures/page-004.png"
+      },
+      {
+        "id": "Figure 2",
+        "caption": "The workflow of the search agent and primer agent. [image]",
+        "pdf_page": 4,
+        "printed_page": null,
+        "page_image": "figures/page-004.png"
+      },
+      {
+        "id": "Figure 3",
+        "caption": "Experiment result analysis.",
+        "pdf_page": 4,
+        "printed_page": null,
+        "page_image": "figures/page-004.png"
+      },
+      {
+        "id": "Figure 4",
+        "caption": "The workflow of the protocol agent. [image]",
+        "pdf_page": 5,
+        "printed_page": null,
+        "page_image": "figures/page-005.png"
+      },
+      {
+        "id": "Figure 5",
+        "caption": "Overview of the liquid handling system and anomaly detection workflow. [image]",
+        "pdf_page": 5,
+        "printed_page": null,
+        "page_image": "figures/page-005.png"
+      }
+    ],
+    "tables": [],
+    "equations": []
+  },
+  "rendered_pages_dir": "figures",
+  "extraction": {
+    "engine": "PyMuPDF",
+    "visual_pages_rendered": true,
+    "confidence": "high"
+  },
+  "validation": {
+    "status": "valid",
+    "errors": [],
+    "warnings": [],
+    "recommended_locator_mode": "page-grounded",
+    "printed_page_labels_required": false
+  }
+}
