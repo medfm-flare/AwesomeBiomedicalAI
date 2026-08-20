@@ -1,13 +1,12 @@
 # AI Agent Deep-Read Paper Cards
 
-English Nature-style deep-reading cards for all 27 papers listed in [AI_agent.md](../AI_agent.md). Each card preserves the fixed Sections 01–16 structure, provenance labels, claim boundaries, source-access notice, figure analysis, and audit artifact where the source mode permits it.
+Deep-reading cards for all 27 papers listed in [AI_agent.md](../AI_agent.md). Each card preserves the fixed Sections 01–16 structure, provenance labels, claim boundaries, source-access notice, figure analysis, and audit artifact where the source mode permits it.
 
 ## Source modes
 
 - **Page-grounded:** official PDF or author-posted preprint processed with the installed Nature Paper Card parser; main figures are embedded as faithful page views.
 - **Structure-grounded:** official full HTML and original publisher figures, with structural rather than PDF-page locators.
 - **Source-limited:** full text was not lawfully accessible; unseen methods, figures, and limitations are marked not assessable.
-- **Reused:** English card and audit were copied from the maintainer's previously validated public Nature-style library and adapted to this repository's English-only layout.
 
 | Model | Paper | Venue / date | Card status |
 |---|---|---|---|
