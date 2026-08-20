@@ -1,6 +1,6 @@
-**Maintainer:** @Meng Wei
+**Maintainer:** @[Meng Wei](https://weimengmeng1999.github.io/meng-wei.github.io/) @[ Feng Lan](https://ai-healthcare-portfolio.hushed-dove-3131.chatgpt.site)
 
-**Deep-read Paper Cards:** [Nature-style English cards for all 32 entries](paper_cards)
+**Deep-read Paper Cards:** [Nature Paper cards for all 32 entries](paper_cards)
 
 # AI Agents
 
