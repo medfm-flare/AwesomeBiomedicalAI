@@ -38,7 +38,7 @@ foreach ($folder in $folders) {
         $audit = Get-Content -LiteralPath $auditPath -Raw | ConvertFrom-Json
         if ([int]$audit.summary.errors -ne 0) { $errors.Add("$($folder.Name): audit has $($audit.summary.errors) error(s)") }
         if ([int]$audit.summary.warnings -ne 0) {
-            if ($folder.Name -in @('02_Biomni','26_Virtual_Lab') -and [int]$audit.summary.warnings -eq 1) {
+            if ($folder.Name -in @('02_2026-07_Biomni','26_2025-07_Virtual_Lab') -and [int]$audit.summary.warnings -eq 1) {
                 $warnings.Add("$($folder.Name): expected fallback warning because no PDF source bundle was supplied")
             } else {
                 $errors.Add("$($folder.Name): audit has unresolved warning(s)")
