@@ -10,33 +10,33 @@ Agentic, autonomous and tool-using AI systems.
 
 | Date | Model | Venue | Pre-training | Data usage | Downstream tasks |
 | --- | --- | --- | --- | --- | --- |
-| 2026-07 | [Multi-Agent Architectures](#model-multi-agent-architectures-202607) | Nat. Mach. Intell. | N/A | 6 benchmarks (eval) | benchmarking, agent coordination |
-| 2026-07 | [Biomni](#model-biomni-202607) | Science | RL fine-tuning, training-free tool use | agent trajectories (train); 433 instances (eval) | CRISPR planning, scRNA-seq annotation, ADMET prediction +2 |
-| 2026-07 | [AI X-ray Scientist](#model-ai-x-ray-scientist-202607) | Nat. Mach. Intell. | training-free | — | X-ray sample alignment, closed-loop experimentation |
-| 2026-06 | [MIRA](#model-mira-202606) | Nature | training-free | 500+ ED cases (eval) | history-taking, diagnosis, treatment planning +2 |
-| 2026-06 | [AMIE](#model-amie-202606) | Nature | training-free | RxQA + 100 cases (eval) | disease management reasoning, medication selection |
-| 2026-05 | [Co-Scientist](#model-co-scientist-202605) | Nature | test-time compute scaling | — | hypothesis generation, research proposals |
-| 2026-05 | [Robin](#model-robin-202605) | Nature | training-free | — | hypothesis generation, assay selection, candidate proposal +1 |
-| 2026-05 | [ERA](#model-era-202605) | Nature | tree search | — | bioinformatics method discovery, epidemiological forecasting |
-| 2026-05 | [CIPHER](#model-cipher-202605) | Nat. Commun. | N/A | — | process monitoring, autonomous machine control |
-| 2026-05 | [Autonomous Interaction](#model-autonomous-interaction-202605) | Nat. Commun. | N/A | — | multi-robot task negotiation, dynamic team coordination |
-| 2026-04 | [AlphaLab](#model-alphalab-202604) | Preprint | N/A | — | general research automation |
-| 2026-04 | [SPARK](#model-spark-202604) | Nat. Med. | training-free (agent); pretrained preprocessing models | 5.4K patients (eval) | biomarker discovery, risk stratification, spatial biology +2 |
-| 2026-04 | [PhenoAssistant](#model-phenoassistant-202604) | Nat. Commun. | training-free | — | phenotype extraction, data visualization, model training |
-| 2026-03 | [BioMedAgent](#model-biomedagent-202603) | Nat. Biomed. Eng. | N/A | — | bioinformatics analysis |
-| 2026-03 | [AI Scientist](#model-ai-scientist-202603) | Nature | N/A | — | general research automation |
-| 2026-02 | [PantheonOS](#model-pantheonos-202602) | bioRxiv | RL; integrated scFM pretraining (generative, masked gene prediction) | CELLxGENE subset (train) | gene panel design, signaling pathway mapping |
-| 2026-02 | [DeepRare](#model-deeprare-202602) | Nature | training-free | 9 datasets, 2.9K diseases (eval) | rare disease diagnosis, traceable reasoning |
-| 2026-01 | [PHIA](#model-phia-202601) | Nat. Commun. | N/A | 30K users, synthetic (eval) | wearable-data QA, anomaly detection |
-| 2026-01 | [BioDSA](#model-biodsa-202601) | Nat. Biomed. Eng. | N/A | — | biomedical data science analysis |
-| 2025-12 | [SciSciGPT](#model-sciscigpt-202512) | Nat. Comput. Sci. | training-free | — | literature analysis, science-of-science workflows |
-| 2025-12 | [CASSIA](#model-cassia-202512) | Nat. Commun. | training-free | 970+ cell populations (eval) | cell type annotation, quality control |
-| 2025-10 | [AILA](#model-aila-202510) | Nat. Commun. | N/A | 100 AFM tasks (eval) | AFM calibration, mechanical property measurement +2 |
-| 2025-10 | [AgentMD](#model-agentmd-202510) | Nat. Commun. | training-free | RiskQA + 698 ED notes (eval) | clinical risk calculator curation, risk prediction |
-| 2025-09 | [MAP](#model-map-202509) | Nat. Commun. | training-free | PlanBench + planning tasks (eval) | multi-step planning, task decomposition |
-| 2025-08 | [SciToolAgent](#model-scitoolagent-202508) | Nat. Comput. Sci. | training-free | — | multi-tool scientific workflow orchestration |
-| 2025-07 | [Virtual Lab](#model-virtual-lab-202507) | Nature | training-free | — | nanobody design, binding-profile evaluation |
-| 2025-06 | [Oncology AI Agent](#model-oncology-ai-agent-202506) | Nat. Cancer | training-free (agent); pretrained tool models | 20 patient cases (eval) | oncology decision support, tool selection +1 |
+| 2026-07 | [Multi-Agent Architectures](#model-multi-agent-architectures-202607) · [Paper Card](https://github.com/Lan-Feng-1010/AwesomeBiomedicalAI/tree/add-ai-agent-paper-cards/paper_cards/01_2026-07_Multi-Agent_Architectures) | Nat. Mach. Intell. | N/A | 6 benchmarks (eval) | benchmarking, agent coordination |
+| 2026-07 | [Biomni](#model-biomni-202607) · [Paper Card](https://github.com/Lan-Feng-1010/AwesomeBiomedicalAI/tree/add-ai-agent-paper-cards/paper_cards/02_2026-07_Biomni) | Science | RL fine-tuning, training-free tool use | agent trajectories (train); 433 instances (eval) | CRISPR planning, scRNA-seq annotation, ADMET prediction +2 |
+| 2026-07 | [AI X-ray Scientist](#model-ai-x-ray-scientist-202607) · [Paper Card](https://github.com/Lan-Feng-1010/AwesomeBiomedicalAI/tree/add-ai-agent-paper-cards/paper_cards/03_2026-07_AI_X-ray_Scientist) | Nat. Mach. Intell. | training-free | — | X-ray sample alignment, closed-loop experimentation |
+| 2026-06 | [MIRA](#model-mira-202606) · [Paper Card](https://github.com/Lan-Feng-1010/AwesomeBiomedicalAI/tree/add-ai-agent-paper-cards/paper_cards/04_2026-06_MIRA) | Nature | training-free | 500+ ED cases (eval) | history-taking, diagnosis, treatment planning +2 |
+| 2026-06 | [AMIE](#model-amie-202606) · [Paper Card](https://github.com/Lan-Feng-1010/AwesomeBiomedicalAI/tree/add-ai-agent-paper-cards/paper_cards/05_2026-06_AMIE) | Nature | training-free | RxQA + 100 cases (eval) | disease management reasoning, medication selection |
+| 2026-05 | [Co-Scientist](#model-co-scientist-202605) · [Paper Card](https://github.com/Lan-Feng-1010/AwesomeBiomedicalAI/tree/add-ai-agent-paper-cards/paper_cards/06_2026-05_Co-Scientist) | Nature | test-time compute scaling | — | hypothesis generation, research proposals |
+| 2026-05 | [Robin](#model-robin-202605) · [Paper Card](https://github.com/Lan-Feng-1010/AwesomeBiomedicalAI/tree/add-ai-agent-paper-cards/paper_cards/07_2026-05_Robin) | Nature | training-free | — | hypothesis generation, assay selection, candidate proposal +1 |
+| 2026-05 | [ERA](#model-era-202605) · [Paper Card](https://github.com/Lan-Feng-1010/AwesomeBiomedicalAI/tree/add-ai-agent-paper-cards/paper_cards/08_2026-05_ERA) | Nature | tree search | — | bioinformatics method discovery, epidemiological forecasting |
+| 2026-05 | [CIPHER](#model-cipher-202605) · [Paper Card](https://github.com/Lan-Feng-1010/AwesomeBiomedicalAI/tree/add-ai-agent-paper-cards/paper_cards/09_2026-05_CIPHER) | Nat. Commun. | N/A | — | process monitoring, autonomous machine control |
+| 2026-05 | [Autonomous Interaction](#model-autonomous-interaction-202605) · [Paper Card](https://github.com/Lan-Feng-1010/AwesomeBiomedicalAI/tree/add-ai-agent-paper-cards/paper_cards/10_2026-05_Autonomous_Interaction) | Nat. Commun. | N/A | — | multi-robot task negotiation, dynamic team coordination |
+| 2026-04 | [AlphaLab](#model-alphalab-202604) · [Paper Card](https://github.com/Lan-Feng-1010/AwesomeBiomedicalAI/tree/add-ai-agent-paper-cards/paper_cards/11_2026-04_AlphaLab) | Preprint | N/A | — | general research automation |
+| 2026-04 | [SPARK](#model-spark-202604) · [Paper Card](https://github.com/Lan-Feng-1010/AwesomeBiomedicalAI/tree/add-ai-agent-paper-cards/paper_cards/12_2026-04_SPARK) | Nat. Med. | training-free (agent); pretrained preprocessing models | 5.4K patients (eval) | biomarker discovery, risk stratification, spatial biology +2 |
+| 2026-04 | [PhenoAssistant](#model-phenoassistant-202604) · [Paper Card](https://github.com/Lan-Feng-1010/AwesomeBiomedicalAI/tree/add-ai-agent-paper-cards/paper_cards/13_2026-04_PhenoAssistant) | Nat. Commun. | training-free | — | phenotype extraction, data visualization, model training |
+| 2026-03 | [BioMedAgent](#model-biomedagent-202603) · [Paper Card](https://github.com/Lan-Feng-1010/AwesomeBiomedicalAI/tree/add-ai-agent-paper-cards/paper_cards/14_2026-03_BioMedAgent) | Nat. Biomed. Eng. | N/A | — | bioinformatics analysis |
+| 2026-03 | [AI Scientist](#model-ai-scientist-202603) · [Paper Card](https://github.com/Lan-Feng-1010/AwesomeBiomedicalAI/tree/add-ai-agent-paper-cards/paper_cards/15_2026-03_AI_Scientist) | Nature | N/A | — | general research automation |
+| 2026-02 | [PantheonOS](#model-pantheonos-202602) · [Paper Card](https://github.com/Lan-Feng-1010/AwesomeBiomedicalAI/tree/add-ai-agent-paper-cards/paper_cards/16_2026-02_PantheonOS) | bioRxiv | RL; integrated scFM pretraining (generative, masked gene prediction) | CELLxGENE subset (train) | gene panel design, signaling pathway mapping |
+| 2026-02 | [DeepRare](#model-deeprare-202602) · [Paper Card](https://github.com/Lan-Feng-1010/AwesomeBiomedicalAI/tree/add-ai-agent-paper-cards/paper_cards/17_2026-02_DeepRare) | Nature | training-free | 9 datasets, 2.9K diseases (eval) | rare disease diagnosis, traceable reasoning |
+| 2026-01 | [PHIA](#model-phia-202601) · [Paper Card](https://github.com/Lan-Feng-1010/AwesomeBiomedicalAI/tree/add-ai-agent-paper-cards/paper_cards/18_2026-01_PHIA) | Nat. Commun. | N/A | 30K users, synthetic (eval) | wearable-data QA, anomaly detection |
+| 2026-01 | [BioDSA](#model-biodsa-202601) · [Paper Card](https://github.com/Lan-Feng-1010/AwesomeBiomedicalAI/tree/add-ai-agent-paper-cards/paper_cards/19_2026-01_BioDSA) | Nat. Biomed. Eng. | N/A | — | biomedical data science analysis |
+| 2025-12 | [SciSciGPT](#model-sciscigpt-202512) · [Paper Card](https://github.com/Lan-Feng-1010/AwesomeBiomedicalAI/tree/add-ai-agent-paper-cards/paper_cards/20_2025-12_SciSciGPT) | Nat. Comput. Sci. | training-free | — | literature analysis, science-of-science workflows |
+| 2025-12 | [CASSIA](#model-cassia-202512) · [Paper Card](https://github.com/Lan-Feng-1010/AwesomeBiomedicalAI/tree/add-ai-agent-paper-cards/paper_cards/21_2025-12_CASSIA) | Nat. Commun. | training-free | 970+ cell populations (eval) | cell type annotation, quality control |
+| 2025-10 | [AILA](#model-aila-202510) · [Paper Card](https://github.com/Lan-Feng-1010/AwesomeBiomedicalAI/tree/add-ai-agent-paper-cards/paper_cards/22_2025-10_AILA) | Nat. Commun. | N/A | 100 AFM tasks (eval) | AFM calibration, mechanical property measurement +2 |
+| 2025-10 | [AgentMD](#model-agentmd-202510) · [Paper Card](https://github.com/Lan-Feng-1010/AwesomeBiomedicalAI/tree/add-ai-agent-paper-cards/paper_cards/23_2025-10_AgentMD) | Nat. Commun. | training-free | RiskQA + 698 ED notes (eval) | clinical risk calculator curation, risk prediction |
+| 2025-09 | [MAP](#model-map-202509) · [Paper Card](https://github.com/Lan-Feng-1010/AwesomeBiomedicalAI/tree/add-ai-agent-paper-cards/paper_cards/24_2025-09_MAP) | Nat. Commun. | training-free | PlanBench + planning tasks (eval) | multi-step planning, task decomposition |
+| 2025-08 | [SciToolAgent](#model-scitoolagent-202508) · [Paper Card](https://github.com/Lan-Feng-1010/AwesomeBiomedicalAI/tree/add-ai-agent-paper-cards/paper_cards/25_2025-08_SciToolAgent) | Nat. Comput. Sci. | training-free | — | multi-tool scientific workflow orchestration |
+| 2025-07 | [Virtual Lab](#model-virtual-lab-202507) · [Paper Card](https://github.com/Lan-Feng-1010/AwesomeBiomedicalAI/tree/add-ai-agent-paper-cards/paper_cards/26_2025-07_Virtual_Lab) | Nature | training-free | — | nanobody design, binding-profile evaluation |
+| 2025-06 | [Oncology AI Agent](#model-oncology-ai-agent-202506) · [Paper Card](https://github.com/Lan-Feng-1010/AwesomeBiomedicalAI/tree/add-ai-agent-paper-cards/paper_cards/27_2025-06_Oncology_AI_Agent) | Nat. Cancer | training-free (agent); pretrained tool models | 20 patient cases (eval) | oncology decision support, tool selection +1 |
 
 ## Details
 
@@ -47,6 +47,8 @@ Click a model to expand its record.
 <summary><b>Multi-Agent Architectures</b> — Capable language models can outgrow the benefits of collaboration <i>(Nat. Mach. Intell. 2026-07)</i></summary>
 
 **[Capable language models can outgrow the benefits of collaboration](https://www.nature.com/articles/s42256-026-01268-y)**
+
+**Paper Card:** [Open the deep-read folder](https://github.com/Lan-Feng-1010/AwesomeBiomedicalAI/tree/add-ai-agent-paper-cards/paper_cards/01_2026-07_Multi-Agent_Architectures)
 
 *Nat. Mach. Intell.* · 2026-07 · [Yubin Kim](https://scholar.google.com/citations?user=tYK2WmQAAAAJ&hl=en) & [Xin Liu](https://scholar.google.com/citations?user=p9F83HoAAAAJ&hl=en)
 
@@ -65,6 +67,8 @@ Click a model to expand its record.
 <summary><b>Biomni</b> — Autonomous biomedical research with an artificial intelligence agent <i>(Science 2026-07)</i></summary>
 
 **[Autonomous biomedical research with an artificial intelligence agent](https://www.science.org/doi/10.1126/science.adz4351)**
+
+**Paper Card:** [Open the deep-read folder](https://github.com/Lan-Feng-1010/AwesomeBiomedicalAI/tree/add-ai-agent-paper-cards/paper_cards/02_2026-07_Biomni)
 
 *Science* · 2026-07 · [Kexin Huang](https://scholar.google.com/citations?user=ogEXTOgAAAAJ&hl=en) & [Jure Leskovec](https://scholar.google.com/citations?hl=en&user=Q_kKkIUAAAAJ)
 
@@ -85,6 +89,8 @@ Click a model to expand its record.
 
 **[An agentic artificially intelligent X-ray scientist](https://www.nature.com/articles/s42256-026-01261-5)**
 
+**Paper Card:** [Open the deep-read folder](https://github.com/Lan-Feng-1010/AwesomeBiomedicalAI/tree/add-ai-agent-paper-cards/paper_cards/03_2026-07_AI_X-ray_Scientist)
+
 *Nat. Mach. Intell.* · 2026-07 · [Zhantao Chen](https://scholar.google.com/citations?user=s_qynKoAAAAJ&hl=en) & [Arun Bansil](https://scholar.google.com/citations?user=SM8HyJ8AAAAJ&hl=en)
 
 | | |
@@ -102,6 +108,8 @@ Click a model to expand its record.
 <summary><b>MIRA</b> — Towards autonomous medical artificial intelligence agents <i>(Nature 2026-06)</i></summary>
 
 **[Towards autonomous medical artificial intelligence agents](https://www.nature.com/articles/s41586-026-10675-5)**
+
+**Paper Card:** [Open the deep-read folder](https://github.com/Lan-Feng-1010/AwesomeBiomedicalAI/tree/add-ai-agent-paper-cards/paper_cards/04_2026-06_MIRA)
 
 *Nature* · 2026-06 · [Dyke Ferber](https://scholar.google.com/citations?user=r7JtdUcAAAAJ&hl=en) & [Jakob Nikolas Kather](https://scholar.google.com/citations?user=w6-uFdEAAAAJ&hl=en)
 
@@ -123,6 +131,8 @@ Click a model to expand its record.
 
 **[Towards conversational artificial intelligence for disease management](https://www.nature.com/articles/s41586-026-10764-5)**
 
+**Paper Card:** [Open the deep-read folder](https://github.com/Lan-Feng-1010/AwesomeBiomedicalAI/tree/add-ai-agent-paper-cards/paper_cards/05_2026-06_AMIE)
+
 *Nature* · 2026-06 · [Anil Palepu](https://research.google/people/anilpalepu/) & [Mike Schaekermann](https://scholar.google.com/citations?hl=en&user=mwj_ldQAAAAJ)
 
 | | |
@@ -141,6 +151,8 @@ Click a model to expand its record.
 
 **[Accelerating scientific discovery with Co-Scientist](https://www.nature.com/articles/s41586-026-10644-y)**
 
+**Paper Card:** [Open the deep-read folder](https://github.com/Lan-Feng-1010/AwesomeBiomedicalAI/tree/add-ai-agent-paper-cards/paper_cards/06_2026-05_Co-Scientist)
+
 *Nature* · 2026-05 · [Juraj Gottweis](https://scholar.google.com/citations?user=jVRSR5AAAAAJ&hl=en) & [Vivek Natarajan](https://scholar.google.com/citations?user=gZiW7IAAAAAJ&hl=en)
 
 | | |
@@ -158,6 +170,8 @@ Click a model to expand its record.
 <summary><b>Robin</b> — A multi-agent system for automating scientific discovery <i>(Nature 2026-05)</i></summary>
 
 **[A multi-agent system for automating scientific discovery](https://www.nature.com/articles/s41586-026-10652-y)**
+
+**Paper Card:** [Open the deep-read folder](https://github.com/Lan-Feng-1010/AwesomeBiomedicalAI/tree/add-ai-agent-paper-cards/paper_cards/07_2026-05_Robin)
 
 *Nature* · 2026-05 · [Ali E. Ghareeb](https://scholar.google.com/citations?hl=en&user=dlWmbncAAAAJ) & [Samuel G. Rodriques](https://scholar.google.com/citations?user=yGKwWGEAAAAJ&hl=en)
 
@@ -178,6 +192,8 @@ Click a model to expand its record.
 
 **[An AI system to help scientists write expert-level empirical software](https://www.nature.com/articles/s41586-026-10658-6)**
 
+**Paper Card:** [Open the deep-read folder](https://github.com/Lan-Feng-1010/AwesomeBiomedicalAI/tree/add-ai-agent-paper-cards/paper_cards/08_2026-05_ERA)
+
 *Nature* · 2026-05 · [Eser Aygün (Google DeepMind)](https://scholar.google.com/citations?user=mogd5nkAAAAJ&hl=en) & [Michael Brenner (Google DeepMind)](https://scholar.google.com/citations?user=ZDL6ITwAAAAJ&hl=en)
 
 | | |
@@ -197,6 +213,8 @@ Click a model to expand its record.
 
 **[Hybrid reasoning for perception, explanation, and autonomous action in manufacturing](https://www.nature.com/articles/s41467-026-72378-9)**
 
+**Paper Card:** [Open the deep-read folder](https://github.com/Lan-Feng-1010/AwesomeBiomedicalAI/tree/add-ai-agent-paper-cards/paper_cards/09_2026-05_CIPHER)
+
 *Nat. Commun.* · 2026-05 · Christos Margadji & [Sebastian W. Pattinson](https://scholar.google.com/citations?user=I8dpTJMAAAAJ&hl=en)
 
 | | |
@@ -215,6 +233,8 @@ Click a model to expand its record.
 
 **[Proactive collaboration via autonomous interaction](https://www.nature.com/articles/s41467-026-72797-8)**
 
+**Paper Card:** [Open the deep-read folder](https://github.com/Lan-Feng-1010/AwesomeBiomedicalAI/tree/add-ai-agent-paper-cards/paper_cards/10_2026-05_Autonomous_Interaction)
+
 *Nat. Commun.* · 2026-05 · Author list not accessible (paywalled article; no preprint or press coverage naming authors was found)
 
 | | |
@@ -232,6 +252,8 @@ Click a model to expand its record.
 <summary><b>AlphaLab</b> — AlphaLab: Autonomous Multi-Agent Research Across Optimization Domains with Frontier LLMs <i>(Preprint 2026-04)</i></summary>
 
 **[AlphaLab: Autonomous Multi-Agent Research Across Optimization Domains with Frontier LLMs](https://brendanhogan.github.io/alphalab-paper/)**
+
+**Paper Card:** [Open the deep-read folder](https://github.com/Lan-Feng-1010/AwesomeBiomedicalAI/tree/add-ai-agent-paper-cards/paper_cards/11_2026-04_AlphaLab)
 
 *Preprint* · 2026-04 · [Brendan R. Hogan](https://scholar.google.com/citations?user=7Ha1788AAAAJ&hl=en) & [Yuriy Nevmyvaka](https://scholar.google.com/citations?user=Hui4EIcAAAAJ&hl=en)
 
@@ -252,6 +274,8 @@ Click a model to expand its record.
 
 **[An agentic framework for autonomous scientific discovery in cancer pathology](https://www.nature.com/articles/s41591-026-04357-y)**
 
+**Paper Card:** [Open the deep-read folder](https://github.com/Lan-Feng-1010/AwesomeBiomedicalAI/tree/add-ai-agent-paper-cards/paper_cards/12_2026-04_SPARK)
+
 *Nat. Med.* · 2026-04 · [Florian Trost](https://scholar.google.com/citations?user=GQnzSMoAAAAJ&hl=de), co-first with Bide Zhang & [Yuri Tolkach](https://scholar.google.com/citations?hl=en&user=bshxyrcAAAAJ&utm_source=chatgpt.com)
 
 | | |
@@ -270,6 +294,8 @@ Click a model to expand its record.
 <summary><b>PhenoAssistant</b> — A conversational multi-agent AI system for automated plant phenotyping <i>(Nat. Commun. 2026-04)</i></summary>
 
 **[A conversational multi-agent AI system for automated plant phenotyping](https://www.nature.com/articles/s41467-026-71090-y)**
+
+**Paper Card:** [Open the deep-read folder](https://github.com/Lan-Feng-1010/AwesomeBiomedicalAI/tree/add-ai-agent-paper-cards/paper_cards/13_2026-04_PhenoAssistant)
 
 *Nat. Commun.* · 2026-04 · Feng Chen & [Sotirios A. Tsaftaris](https://scholar.google.com/citations?user=jC1uFnYAAAAJ&hl=en)
 
@@ -290,6 +316,8 @@ Click a model to expand its record.
 
 **[Empowering AI data scientists using a multi-agent LLM framework with self-evolving capabilities for autonomous, tool-aware biomedical data analyses](https://www.nature.com/articles/s41551-026-01634-6)**
 
+**Paper Card:** [Open the deep-read folder](https://github.com/Lan-Feng-1010/AwesomeBiomedicalAI/tree/add-ai-agent-paper-cards/paper_cards/14_2026-03_BioMedAgent)
+
 *Nat. Biomed. Eng.* · 2026-03 · [Dechao Bu](https://orcid.org/0000-0002-8833-5432) & [Yi Zhao](https://orcid.org/0000-0001-6046-8420)
 
 | | |
@@ -308,6 +336,8 @@ Click a model to expand its record.
 <summary><b>AI Scientist</b> — Towards end-to-end automation of AI research <i>(Nature 2026-03)</i></summary>
 
 **[Towards end-to-end automation of AI research](https://www.nature.com/articles/s41586-026-10265-5)**
+
+**Paper Card:** [Open the deep-read folder](https://github.com/Lan-Feng-1010/AwesomeBiomedicalAI/tree/add-ai-agent-paper-cards/paper_cards/15_2026-03_AI_Scientist)
 
 *Nature* · 2026-03 · [Chris Lu](https://scholar.google.com/citations?user=4WLoIRsAAAAJ&hl=en) & [Jeff Clune](https://scholar.google.com/citations?hl=en&user=5TZ7f5wAAAAJ&view_op=list_works&sortby=pubdate)
 
@@ -328,6 +358,8 @@ Click a model to expand its record.
 
 **[PantheonOS: An Evolvable Multi-Agent Framework for Automatic Genomics Discovery](https://www.biorxiv.org/content/10.64898/2026.02.26.707870v1.full.pdf)**
 
+**Paper Card:** [Open the deep-read folder](https://github.com/Lan-Feng-1010/AwesomeBiomedicalAI/tree/add-ai-agent-paper-cards/paper_cards/16_2026-02_PantheonOS)
+
 *bioRxiv* · 2026-02 · [Weize Xu](https://scholar.google.com/citations?user=rHdkQ-cAAAAJ&hl=en) & [Xiaojie Qiu](https://scholar.google.com/citations?user=XlMd8TAAAAAJ&hl=en)
 
 | | |
@@ -346,6 +378,8 @@ Click a model to expand its record.
 <summary><b>DeepRare</b> — An agentic system for rare disease diagnosis with traceable reasoning <i>(Nature 2026-02)</i></summary>
 
 **[An agentic system for rare disease diagnosis with traceable reasoning](https://www.nature.com/articles/s41586-025-10097-9)**
+
+**Paper Card:** [Open the deep-read folder](https://github.com/Lan-Feng-1010/AwesomeBiomedicalAI/tree/add-ai-agent-paper-cards/paper_cards/17_2026-02_DeepRare)
 
 *Nature* · 2026-02 · [Weike Zhao](https://scholar.google.com/citations?user=yFSlxpwAAAAJ&hl=en) & [Weidi Xie](https://scholar.google.com/citations?user=Vtrqj4gAAAAJ&hl=en)
 
@@ -366,6 +400,8 @@ Click a model to expand its record.
 
 **[Transforming wearable data into personal health insights using large language model agents](https://www.nature.com/articles/s41467-025-67922-y)**
 
+**Paper Card:** [Open the deep-read folder](https://github.com/Lan-Feng-1010/AwesomeBiomedicalAI/tree/add-ai-agent-paper-cards/paper_cards/18_2026-01_PHIA)
+
 *Nat. Commun.* · 2026-01 · [Mike A. Merrill](https://scholar.google.com/citations?user=UtBcznsAAAAJ&hl=en) & [Xin Liu](https://scholar.google.com/citations?user=p9F83HoAAAAJ&hl=en)
 
 | | |
@@ -383,6 +419,8 @@ Click a model to expand its record.
 <summary><b>BioDSA</b> — Making large language models reliable data science programming copilots for biomedical research <i>(Nat. Biomed. Eng. 2026-01)</i></summary>
 
 **[Making large language models reliable data science programming copilots for biomedical research](https://www.nature.com/articles/s41551-025-01587-2)**
+
+**Paper Card:** [Open the deep-read folder](https://github.com/Lan-Feng-1010/AwesomeBiomedicalAI/tree/add-ai-agent-paper-cards/paper_cards/19_2026-01_BioDSA)
 
 *Nat. Biomed. Eng.* · 2026-01 · [Zifeng Wang](https://scholar.google.co.uk/citations?user=kMlWwTAAAAAJ&hl=en&oi=sra) & [Jimeng Sun](https://scholar.google.co.uk/citations?user=9jmmp5sAAAAJ&hl=en&oi=ao)
 
@@ -403,6 +441,8 @@ Click a model to expand its record.
 
 **[Evaluating large language model agents for automation of atomic force microscopy](https://www.nature.com/articles/s41467-025-64105-7)**
 
+**Paper Card:** [Open the deep-read folder](https://github.com/Lan-Feng-1010/AwesomeBiomedicalAI/tree/add-ai-agent-paper-cards/paper_cards/22_2025-10_AILA)
+
 *Nat. Commun.* · 2025-10 · [Indrajeet Mandal](https://scholar.google.com/citations?user=v_747TcAAAAJ&hl=en) & [N. M. Anoop Krishnan](https://scholar.google.com/citations?user=fGnjHcEAAAAJ&hl=en)
 
 | | |
@@ -421,6 +461,8 @@ Click a model to expand its record.
 <summary><b>SciSciGPT</b> — SciSciGPT: advancing human–AI collaboration in the science of science <i>(Nat. Comput. Sci. 2025-12)</i></summary>
 
 **[SciSciGPT: advancing human–AI collaboration in the science of science](https://www.nature.com/articles/s43588-025-00906-6)**
+
+**Paper Card:** [Open the deep-read folder](https://github.com/Lan-Feng-1010/AwesomeBiomedicalAI/tree/add-ai-agent-paper-cards/paper_cards/20_2025-12_SciSciGPT)
 
 *Nat. Comput. Sci.* · 2025-12 · Erzhuo Shao & [Dashun Wang](https://scholar.google.com/citations?user=uQJAkBoAAAAJ&hl=en)
 
@@ -441,6 +483,8 @@ Click a model to expand its record.
 
 **[CASSIA: a multi-agent large language model for automated and interpretable cell annotation](https://www.nature.com/articles/s41467-025-67084-x)**
 
+**Paper Card:** [Open the deep-read folder](https://github.com/Lan-Feng-1010/AwesomeBiomedicalAI/tree/add-ai-agent-paper-cards/paper_cards/21_2025-12_CASSIA)
+
 *Nat. Commun.* · 2025-12 · Elliot Xie & [Christina Kendziorski](https://scholar.google.com/citations?user=KRVBkHsAAAAJ&hl=en)
 
 | | |
@@ -460,6 +504,8 @@ Click a model to expand its record.
 
 **[AgentMD: Empowering language agents for risk prediction with large-scale clinical tool learning](https://www.nature.com/articles/s41467-025-64430-x)**
 
+**Paper Card:** [Open the deep-read folder](https://github.com/Lan-Feng-1010/AwesomeBiomedicalAI/tree/add-ai-agent-paper-cards/paper_cards/23_2025-10_AgentMD)
+
 *Nat. Commun.* · 2025-10 · [Qiao Jin](https://scholar.google.com/citations?user=tYy-bzgAAAAJ&hl=en) & [Zhiyong Lu](https://scholar.google.com/citations?user=lJAkLo8AAAAJ&hl=en)
 
 | | |
@@ -478,6 +524,8 @@ Click a model to expand its record.
 
 **[A brain-inspired agentic architecture to improve planning with LLMs](https://www.nature.com/articles/s41467-025-63804-5)**
 
+**Paper Card:** [Open the deep-read folder](https://github.com/Lan-Feng-1010/AwesomeBiomedicalAI/tree/add-ai-agent-paper-cards/paper_cards/24_2025-09_MAP)
+
 *Nat. Commun.* · 2025-09 · [Taylor Webb](https://scholar.google.com/citations?user=WCmrJoQAAAAJ&hl=en) & [Ida Momennejad](https://scholar.google.com/citations?user=OFdUAJwAAAAJ&hl=en)
 
 | | |
@@ -495,6 +543,8 @@ Click a model to expand its record.
 <summary><b>SciToolAgent</b> — SciToolAgent: a knowledge-graph-driven scientific agent for multitool integration <i>(Nat. Comput. Sci. 2025-08)</i></summary>
 
 **[SciToolAgent: a knowledge-graph-driven scientific agent for multitool integration](https://www.nature.com/articles/s43588-025-00849-y)**
+
+**Paper Card:** [Open the deep-read folder](https://github.com/Lan-Feng-1010/AwesomeBiomedicalAI/tree/add-ai-agent-paper-cards/paper_cards/25_2025-08_SciToolAgent)
 
 *Nat. Comput. Sci.* · 2025-08 · Keyan Ding & Huajun Chen
 
@@ -515,6 +565,8 @@ Click a model to expand its record.
 
 **[The Virtual Lab of AI agents designs new SARS-CoV-2 nanobodies](https://www.nature.com/articles/s41586-025-09442-9)**
 
+**Paper Card:** [Open the deep-read folder](https://github.com/Lan-Feng-1010/AwesomeBiomedicalAI/tree/add-ai-agent-paper-cards/paper_cards/26_2025-07_Virtual_Lab)
+
 *Nature* · 2025-07 · [Kyle Swanson](https://scholar.google.com/citations?user=seqcYSUAAAAJ&hl=en) & [James Zou](https://scholar.google.com/citations?user=23ZXZvEAAAAJ&hl=en)
 
 | | |
@@ -533,6 +585,8 @@ Click a model to expand its record.
 <summary><b>Oncology AI Agent</b> — Development and validation of an autonomous artificial intelligence agent for clinical decision-making in oncology <i>(Nat. Cancer 2025-06)</i></summary>
 
 **[Development and validation of an autonomous artificial intelligence agent for clinical decision-making in oncology](https://www.nature.com/articles/s43018-025-00991-6)**
+
+**Paper Card:** [Open the deep-read folder](https://github.com/Lan-Feng-1010/AwesomeBiomedicalAI/tree/add-ai-agent-paper-cards/paper_cards/27_2025-06_Oncology_AI_Agent)
 
 *Nat. Cancer* · 2025-06 · [Dyke Ferber](https://scholar.google.com/citations?user=r7JtdUcAAAAJ&hl=en) & [Jakob Nikolas Kather](https://scholar.google.com/citations?user=w6-uFdEAAAAJ&hl=en)
 
