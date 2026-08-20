@@ -1,0 +1,84 @@
+{
+  "schema_version": "1.1",
+  "source_type": "official_publisher_preview_and_metadata",
+  "source_path": null,
+  "source_url": "https://www.nature.com/articles/s41551-026-01634-6",
+  "source_sha256": null,
+  "metadata": {
+    "title": "Empowering AI data scientists using a multi-agent LLM framework with self-evolving capabilities for autonomous, tool-aware biomedical data analyses",
+    "authors_short": "Bu D, Sun J, Li K, et al.",
+    "journal": "Nature Biomedical Engineering",
+    "publication_date": "2026-03-30",
+    "doi": "10.1038/s41551-026-01634-6",
+    "pmid": "41912700"
+  },
+  "access": {
+    "status": "subscription_content",
+    "version_of_record_redistributable": false,
+    "rights_statement": "Springer Nature or its licensor holds exclusive rights; accepted-manuscript self-archiving is governed by the publishing agreement and applicable law.",
+    "access_note": "source_article_access.md"
+  },
+  "locator_mode": "structure-grounded",
+  "coverage": {
+    "abstract": true,
+    "main_figure_titles_and_images": true,
+    "data_and_code_availability": true,
+    "full_results_and_methods_text": false,
+    "author_limitations": false
+  },
+  "evidence_inventory": {
+    "figures": [
+      {
+        "id": "Figure 1",
+        "title": "Framework and benchmark",
+        "local_asset": "figures/biomedagent_fig1.png"
+      },
+      {
+        "id": "Figure 2",
+        "title": "Performance of BioMedAgent",
+        "local_asset": "figures/biomedagent_fig2.png"
+      },
+      {
+        "id": "Figure 3",
+        "title": "Evaluation of the IE algorithm",
+        "local_asset": null
+      },
+      {
+        "id": "Figure 4",
+        "title": "Self-evolving through the MR algorithm",
+        "local_asset": null
+      },
+      {
+        "id": "Figure 5",
+        "title": "Evaluation on external benchmark BixBench and agent comparison",
+        "local_asset": "figures/biomedagent_fig5.png"
+      },
+      {
+        "id": "Figure 6",
+        "title": "Applying BioMedAgent to accelerate diverse biomedical data research",
+        "local_asset": null
+      }
+    ],
+    "datasets": [
+      {
+        "id": "BioMed-AQA",
+        "n": 327,
+        "url": "https://huggingface.co/datasets/BOBQWERA/biomed-aqa-dataset"
+      },
+      {
+        "id": "BioMed-AQA-MCQ",
+        "n": 172,
+        "url": "https://huggingface.co/datasets/BOBQWERA/biomed-mcq-dataset"
+      }
+    ]
+  },
+  "validation": {
+    "status": "partial_source_boundary",
+    "recommended_locator_mode": "structure-grounded",
+    "errors": [],
+    "warnings": [
+      "The Version-of-Record PDF is not redistributed because the article is subscription content with exclusive-rights language.",
+      "Author-stated limitations and full methods are not assessable from the public publisher preview."
+    ]
+  }
+}

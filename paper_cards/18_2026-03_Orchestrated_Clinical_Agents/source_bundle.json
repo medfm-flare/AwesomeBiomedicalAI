@@ -1,0 +1,97 @@
+{
+  "schema_version": "1.1",
+  "source_type": "pdf",
+  "source_path": "source_article.pdf (local processing only; see source_article_access.md)",
+  "source_sha256": "e374aa4fc90867c22ee2c75b9d9229c264e057c10f122ec4ada3a3b31f4c57f9",
+  "metadata": {
+    "format": "PDF 1.4",
+    "title": "Orchestrated multi agents sustain accuracy under clinical-scale workloads compared to a single agent",
+    "author": "Eyal Klang",
+    "subject": "npj Health Systems, doi:10.1038/s44401-026-00077-0",
+    "creator": "Springer",
+    "producer": "iText® 5.5.13.4 ©2000-2024 iText Group NV (SPRINGER SBM; licensed version)",
+    "creationDate": "D:20260209110346+05'30'",
+    "modDate": "D:20260309061030+01'00'"
+  },
+  "page_count": 4,
+  "pages": [
+    {
+      "pdf_page": 1,
+      "printed_page": null,
+      "text": "npj | health systems\nBrief communication\nhttps://doi.org/10.1038/s44401-026-00077-0\nOrchestrated multi agents sustain\naccuracy under clinical-scale workloads\ncompared to a single agent\nCheck for updates\nEyal Klang1,2,3,6, Mahmud Omar1,2,3,6\n, Ganesh Raut1, Reem Agbareia4, Prem Timsina1, Robert Freeman1,\nNicholas Gavin1, Lisa Stump1, Alexander W. Charney1, Benjamin S. Glicksberg1,5 & Girish N. Nadkarni1,2,3\nWe tested state-of-the-art LLMs under clinical-scale workloads using two designs: a single agent\nhandling all tasks and a multi-agent orchestrator assigning each task to a dedicated worker. Across\nretrieval, extraction, and dosing tasks, batch sizes ranged from 5–80. Multi-agent accuracy remained\nhigh (90.6% at 5 tasks; 65.3% at 80), while single-agent accuracy collapsed (73.1% to 16.6%;\np < 0.01). Multi-agent runs used up to 65-fold fewer tokens and limited latency growth. These ﬁndings\nshow that lightweight orchestration preserves accuracy and efﬁciency under mixed-task\nclinical loads.\nLarge-language models (LLMs) are already used in clinical research and\npractice because they can read freetext, reason over symptoms and generate\nﬂuent advice1. Recent work wraps these models in autonomous “agents”\nthat decide, for example, which database query or dose calculator to invoke\nat each step, reﬂecting the multi-step structure of clinical problem-solving2.\nAMIE, published in Nature, showed that a single dialogue‑optimised LLM\ncan match physicians in simulated consultations3. DRAGON introduced a\nmulti‑task clinical NLP benchmark with per‑task evaluation4, and Liu et al.\ndocumented long‑context degradation, including the “lost‑in‑the‑middle”\neffect5. These studies assess one case or one task at a time and do not vary\nconcurrent batch size, task heterogeneity, or tool diversity. We test how\nmixed clinical batches may amplify these effects and whether lightweight\norchestration preserves accuracy and cost under load.\nWe conduct a study that tests state-of-the-art LLM agents in two\nexecution modes to examine scalability under mixed-task clinical work-\nloads. In the single-agent baseline one agent receives an entire batch of\nheterogeneous tasks. In the orchestrated mode with multiple agents a\nlightweight orchestrator sends each task to a dedicated worker agent, which\ncallsonedomaintoolbeforereturningitsanswerforaggregation.Batchsizes\nranged from 5 to 80 tasks to mimic clinical trafﬁc. Tasks fell into three\ncategories: Retrieval (ﬁnd PubMed abstracts), Extraction (pull ﬁelds from a\ndischarge note), and Dosing (solve a medication‑math calculation) (tasks\nare detailed in Supplement Section 1). These tasks are not intended to\nrepresent the full scope of clinical work such as free-form summarization or\nmedical reasoning. Rather, they serve as common workﬂow primitives-\nretrieve evidence, extract key ﬁelds, and compute deterministic values- that\nare oftenembedded inside broader end-to-end clinical applications. This let\nus test whether task‑level delegation preserves accuracy and limits latency\nand token cost as conversational agents scale, while keeping every reasoning\nstep transparent and traceable (Fig. 1).\nIn our tests, accuracy diverged once batch size passed ten tasks (Fig. 2).\nWhen results were pooled, multi‑agent runs held 90.6% at batches of ﬁve\ntasks and 65.3% at eighty (95% CI 56–74%), whereas single‑agent accuracy\nfell from 73.1% to 16.6%. GPT‑4.1‑mini illustrates the gap: its multi‑agent\naccuracy stayed between 96% and 91.4% across all batch sizes, while the\nsingle agent declined from 96% to 33.9%. GPT‑4.1‑nano, Llama‑2‑70B and\nQwen‑3‑8B showed the same pattern, with single‑agent accuracy dropping\nfar below their multi‑agent counterparts. All differences between topologies\nbeyond ten tasks were signiﬁcant (Welch t‑test, FDR‑adjusted p < 0.01).\nDetailed values are listed in Supplementary Section 1.\nTokengrowth differed sharply(SupplementaryFigure S2 and Table S3)\nbetween agent types. For GPT‑4.1‑mini the multi‑agent batch rose only\nfrom 3.7 k tokens at ﬁve tasks to 60 k at eighty, whereas the single agent\nexpanded from 25 k to 3.9 M—a 65‑fold gap at the highest load.\nGPT‑4.1‑nano showed the same direction but at higher totals. Llama‑2‑70B\nand Qwen‑3‑8B were less consistent; many large single‑agent batches for\nthese models failed early and returned no JSON, confounding direct\ncomparison.\nTotal latency rose with batch size in both modes (Supplementary\nFigure S3 and Table S2), but the single‑agent curve climbed faster. For\n1The Windreich Department of Artiﬁcial Intelligence and Human Health, Mount Sinai Medical Center, New York, NY, USA. 2The Division of Data-Driven and Digital\nMedicine (D3M), Icahn School of Medicine at Mount Sinai, New York, NY, USA. 3The Hasso Plattner Institute of Digital Health, Icahn School of Medicine at Mount\nSinai, New York, NY, USA. 4Ophthalmology Department, Hadassah Medical Center, Jerusalem, Israel. 5Mindich Child Health and Development Institute and the\nDepartments of Pediatrics and Genetics & Genomic Sciences, Icahn School of Medicine at Mount Sinai, New York, NY, USA. 6These authors contributed equally:\nEyal Klang, Mahmud Omar.\ne-mail: Mahmudomar70@gmail.com\nnpj Health Systems | (2026) 3:23\n1\n1234567890():,;\n1234567890():,;",
+      "character_count": 5246,
+      "rendered_image": null
+    },
+    {
+      "pdf_page": 2,
+      "printed_page": null,
+      "text": "GPT‑4.1‑mini, multi‑agent batches grew from 9 728 s at ﬁve tasks to 131\n603 s at eighty, whereas single‑agent batches rose from 3 258 s to 361 864 s.\nThe other models showed the same direction: multi‑agent latency increased\npredictably, while single‑agent runs jumped higher and displayed wider\nconﬁdence intervals; several large single‑agent batches for Qwen‑3‑8B and\nLlama‑2‑70B failed and returned no JSON.\nDelegating each task to its own worker appears to insulate the LLM\nfromcontextinterference,soaccuracyremainshighevenwhenmany\nunrelated prompts arrive at once. This insulation likely stems from\ntwo linked mechanisms. First, each worker receives only the tokens\nthat matter for a single decision, so attention is not diluted across\nirrelevant material6. Second, the orchestrator re-assembles answers\nwithout expanding the prompt seen by any one model call, keeping\nthe effective context well within the range the model was tuned to\nhandle7. Orchestration introduces a ﬁxed overhead (orchestrator +\nworker calls and repeated prompts), which can increase total tokens\nand latency at smaller batch sizes for some checkpoints; however, as\nbatch size grows, task partitioning prevents context-driven degrada-\ntion and yields more predictable scaling under load.\nModel scale in this pipeline appears to drive stability. The larger the\ncheckpoint, the longeraccuracy persists under multi-agent load. GPT-mini,\nlikely the most parameter-rich model in the ensemble, is by far the best\nperformer and barely drifts from its initial high accuracy. GPT-nano,\nconsistent with its smaller size, begins to erode once batch size rises. Llama-\n2-70Bfollowsthesamepatternandshedsmoreaccuracyasbatchesgrow.As\nexpected from this trend, Qwen-3-8B, with the smallest parameter budget\nand limited exposure to mixed-tool prompts, degrades fastest.\nThis is the ﬁrst study to show that a lightweight orchestrator can turn\nexisting LLMs into reliable, token-efﬁcient teams for complex clinical\nworkﬂows. By dividing labour into single-tool subtasks, the architecture\nkeeps accuracy high even when many requests arrive simultaneously- an\nessential property for automated, large-scale use. Recent agent studies in\nmedicine, AMIE for diagnostic dialogue3, DRAGON for radiology\nreporting4, and a handful of retrieval-augmented chart summarizers, each\nFig. 1 | Overview of the pipeline design.\nFig. 2 | Accuracy and token usage. A Accuracy of GPT-4.1 across batch sizes, B latecny of the same pipeline across batch sizes and C total token usage across batch sizes.\nhttps://doi.org/10.1038/s44401-026-00077-0\nBrief communication\nnpj Health Systems | (2026) 3:23\n2",
+      "character_count": 2637,
+      "rendered_image": "figures/page-002.png"
+    },
+    {
+      "pdf_page": 3,
+      "printed_page": null,
+      "text": "examined one model, one patient at a time, and did not examine perfor-\nmance,costor latencyunder clinicalscale loads8. Our experimentsaddress a\ndifferent but linked and practical aspect: context overload when dozens of\nheterogeneoustasksarrivetogether.Theﬁndingsshowthatanorchestrator-\nworker layout sustains accuracy, tokens, and latency in a regime where\nsingle-prompt agents collapse. This beneﬁt holds across four checkpoints\nwith widely different sizes and pre-training recipes, suggesting the gain\ncomes from task partitioning rather than from any model-speciﬁc optimi-\nsation. By constraining each worker to a single tool and a short prompt, the\ndesign also produces a transparent audit trail, as every intermediate call can\nbeloggedandreplayed,addressingakeyregulatoryconcernthatearlierend-\nto-end agents leave unresolved.\nThis study uses curated retrieval and extraction sets, which allow\ncontrolled batch evaluation but do not replace testing on real EHR data;\nfuture work may assess the same orchestration approach directly on live\nclinical notes. Our evaluation focuses on pipeline scalability using tasks with\ndeterministic ground truth, rather than on clinical decision-making.\nApplying this orchestration approach to real clinical workﬂows will require\nfurther validation, including clinician review, which we plan to explore in\nfuture work. We also required structured JSON outputs for automated\nevaluation; future work should assess whether the same scalability trends\nhold under free-form (plain-text) outputs that may reduce overhead for\nsome models\nOur multi-agent approach therefore offers a practical and auditable\nway to scale agentic execution for mixed-task pipelines under increasing\nload. Future studies should test similar orchestration on end-to-end appli-\ncations (including summarization and medical reasoning) and on real\nclinical notes, with appropriate clinician review, to assess external validity.\nMethods\nExperimental protocol and agentic pipelines\nWe tested two agent layouts on three task classes: retrieving oncology\nabstracts, extracting ﬁelds from discharge notes and solving numeric dosing\nproblems. The retrieval set is a FAISS index of 234,650 PubMed records on\nneoplasms (2020-01-01 to 2025-05-30) embedded with GIST-large. The\nextraction set contains 331,793 electronic health record (EHR) summaries\nwith admission and discharge dates jittered across 2005-20199. The calcu-\nlation set is generated by 20 templates that cover routine weight-, surface-\nand clearance-based dosing. Ground truth is a single canonical string per\nitem; accuracy is the proportion of exact matches after case- and whitespace\nnormalisation (More detailed description is provided in the Supplementary\nSections 2 and 3). Evaluation was fully automated (exact-match after nor-\nmalization); no manual scoring was used in the reported experiments. The\nfull dataset construction and evaluation pipeline—data sources, inclusion\nrules, task prompts, target/label deﬁnitions, normalization, and scoring—is\ndetailed inSupplementSections2–3.Inbrief,eachtaskinstanceisgenerated\nfromitssourcecorpusortemplate,pairedwithadeterministictargetoutput,\nexecuted under the speciﬁed agent topology, and scored via exact-match\nafter normalization.\nIn this study, an orchestrator is a controller that receives a list of tasks,\nselects the relevant tool for each task, and dispatches the task to a worker. A\nworker agent is a model instance conﬁgured to handle one task at a time\nusing one speciﬁc tool. In the single-agent condition, one model receives the\nfull batch and may call all tools; in the multi-agent condition, the orches-\ntrator routes each task to one worker that uses only its assigned tool.\nAgents could call a k-NN retriever, a sandboxed calculator and a note\nfetcher. In the single-agent condition one language model received the full\nbatch of N tasks and up to 10 × N turns. In the multi-agent condition an\norchestrator dispatched each task to one worker, each worker handled one\ntool, and the orchestrator merged the replies. Four instruction-tuned\ncheckpoints ran under both topologies with random seed 42.\nBatch sizes were 5, 10, 20, 40 and 80; ten non-overlapping batcheswere\ngenerated for every model-topology pair. Open-weight models used an\n8 × H100-80 GB node; hostedmodels were called through vendor APIs. We\nrecorded wall-clock latency from the ﬁrst call to receipt of a valid ﬁnal JSON\nresponse and counted total input + output tokens across all calls. Both\ntopologies were evaluated under the same machine-readable JSON output\nrequirement to enable automated scoring and consistent batching; this\nconstraint is an evaluation harness choice and does not imply that clinical\nuser-facing outputs must be JSON. Representative examples are provided in\nSupplementary Section 4.\nStatistical analysis\nAccuracy was evaluated with two-sided Welch t-tests; latency and token\ntotals with Wilcoxon rank-sum tests. P values were Benjamini–Hochberg\ncorrected within each metric family. Analyses ran in R 4.3 and full code and\nlogs are supplied in the Supplementary Section 3.\nEthical approval\nThis work was conducted under an institutional review board approval.\nData availability\nAlldatageneratedinthereportedstudycanbeprovidedtoresearchrequests\nfrom other individuals or institutions upon a reasonable request from the\ncorresponding author within a month.\nReceived: 29 August 2025; Accepted: 2 February 2026;\nReferences\n1.\nOmar, M. et al. Sociodemographic biases in medical decision making\nby large language models. Nat. Med. 1–9. https://doi.org/10.1038/\ns41591-025-03626-6 (2025).\n2.\nMehandru, N. et al. Evaluating large language models as agents in the\nclinic. npj Digit. Med. 7, 84 (2024).\n3.\nTu, T. et al. Towards conversational diagnostic artiﬁcial intelligence.\nNature 642, 442–450 (2025).\n4.\nBosma, J. S. et al. The DRAGON benchmark for clinical NLP. npj Digit.\nMed. 8, 289 (2025).\n5.\nLiu, N. F. et al. Lost in the middle: how language models use long\ncontexts. Preprint at. https://doi.org/10.48550/arXiv.2307.03172\n(2023).\n6.\nKlang, E. et al. A strategy for cost-effective large language model use at\nhealth system-scale. npj Digit. Med. 7, 320 (2024).\n7.\nSinghal, K. et al. Large language models encode clinical knowledge.\nNature 620, 172–180 (2023).\n8.\nAmugongo, L. M., Mascheroni, P., Brooks, S., Doering, S. & Seidel, J.\nRetrieval augmented generation for large language models in\nhealthcare:a systematicreview.PLoSDigit.Health4,e0000877(2025).\n9.\nJohnson, A. E. W. et al. MIMIC-IV, a freely accessible electronic health\nrecord dataset. Sci. Data 10, 1 (2023).\nAcknowledgements\nSupported by Scientiﬁc Computing and Data at the Icahn School of\nMedicine at Mount Sinai, CTSA grant UL1TR004419, and NIH awards\nS10OD026880 and S10OD030463. The funders had no role in the study\ndesign, data collection, analysis, or manuscript preparation.\nAuthor contributions\nE.K. and M.O. designed the study and contributed to the runs, writing and\nediting. G.R. helped with designing and writing the code. R.A., P.T., R.F.,\nN.G.,L.S.,A.W.C.,B.S.G.andG.N.N.allhelpedinwritingandeditingtheﬁnal\nmanuscript and validating the results.\nCompeting interests\nThe authors declare no competing interests.\nhttps://doi.org/10.1038/s44401-026-00077-0\nBrief communication\nnpj Health Systems | (2026) 3:23\n3",
+      "character_count": 7305,
+      "rendered_image": null
+    },
+    {
+      "pdf_page": 4,
+      "printed_page": null,
+      "text": "Additional information\nSupplementary information The online version contains\nsupplementary material available at\nhttps://doi.org/10.1038/s44401-026-00077-0.\nCorrespondence and requests for materials should be addressed to\nMahmud Omar.\nReprints and permissions information is available at\nhttp://www.nature.com/reprints\nPublisher’s note Springer Nature remains neutral with regard to\njurisdictional claims in published maps and institutional afﬁliations.\nOpen Access This article is licensed under a Creative Commons\nAttribution 4.0 International License, which permits use, sharing,\nadaptation, distribution and reproduction in any medium or format, as long\nas you give appropriate credit to the original author(s) and the source,\nprovide a link to the Creative Commons licence, and indicate if changes\nwere made. The images or other third party material in this article are\nincluded in the article’s Creative Commons licence, unless indicated\notherwise in a credit line to the material. If material is not included in the\narticle’s Creative Commons licence and your intended use is not permitted\nby statutory regulation or exceeds the permitted use, you will need to\nobtain permission directly from the copyright holder. To view a copy of this\nlicence, visit http://creativecommons.org/licenses/by/4.0/.\n© The Author(s) 2026\nhttps://doi.org/10.1038/s44401-026-00077-0\nBrief communication\nnpj Health Systems | (2026) 3:23\n4",
+      "character_count": 1423,
+      "rendered_image": null
+    }
+  ],
+  "sections": [
+    {
+      "title": "Methods",
+      "pdf_page": 3,
+      "printed_page": null
+    },
+    {
+      "title": "References",
+      "pdf_page": 3,
+      "printed_page": null
+    },
+    {
+      "title": "Acknowledgements",
+      "pdf_page": 3,
+      "printed_page": null
+    }
+  ],
+  "evidence_inventory": {
+    "figures": [
+      {
+        "id": "Figure 1",
+        "caption": "Overview of the pipeline design.",
+        "pdf_page": 2,
+        "printed_page": null,
+        "page_image": "figures/page-002.png"
+      },
+      {
+        "id": "Figure 2",
+        "caption": "Accuracy and token usage. A Accuracy of GPT-4.1 across batch sizes, B latecny of the same pipeline across batch sizes and C total token usage across batch sizes. https://doi.org/10.1038/s44401-026-00077-0",
+        "pdf_page": 2,
+        "printed_page": null,
+        "page_image": "figures/page-002.png"
+      }
+    ],
+    "tables": [],
+    "equations": []
+  },
+  "rendered_pages_dir": "figures",
+  "extraction": {
+    "engine": "PyMuPDF",
+    "visual_pages_rendered": true,
+    "confidence": "high"
+  },
+  "validation": {
+    "status": "valid",
+    "errors": [],
+    "warnings": [],
+    "recommended_locator_mode": "page-grounded",
+    "printed_page_labels_required": false
+  }
+}

@@ -1,0 +1,267 @@
+{
+  "schema_version": "1.1",
+  "source_type": "pdf",
+  "source_path": "source_article.pdf (local processing only; see source_article_access.md)",
+  "source_sha256": "bbeec26e63e9f57f9c64aba525a6f02b7ceb52cb6d6fe7e2f5908446de4638c6",
+  "metadata": {
+    "format": "HTML5",
+    "title": "CellVoyager: AI CompBio agent generates new insights by autonomously analyzing biological data | Nature Methods | Springer Nature Link"
+  },
+  "page_count": 23,
+  "pages": [
+    {
+      "pdf_page": 1,
+      "printed_page": null,
+      "text": "Skip to main content\nAdvertisement\n[image]\n[image]\nLog in\nMenu\nFind a journal Publish with us Track your research\nSearch\n Saved research\n Cart\n1. Home\n2. Nature Methods\n3. Article\nCellVoyager: AI CompBio agent\ngenerates new insights by\nautonomously analyzing\nbiological data\n•  Article",
+      "character_count": 285,
+      "rendered_image": null
+    },
+    {
+      "pdf_page": 2,
+      "printed_page": null,
+      "text": "•  Published: 17 March 2026\n•  Volume 23, pages 749–759 (2026)\n•  Cite this article\nSave article\nView saved research\nFrom [image] [image]\nView current issue\n Submit your manuscript\n•  Samuel Alber1,\n•  Bowen Chen2,\n•  Eric Sun  ORCID: orcid.org/0000-0001-8805-98642,3,\n•  Alina Isakova  ORCID: orcid.org/0000-0003-1113-68894,\n•  Aaron J. Wilk  ORCID: orcid.org/0000-0003-1430-58525 &\n•  …\n•  James Zou\n  ORCID: orcid.org/0000-0001-8880-47641,2\nShow authors\n•\n18k Accesses\n•\n15 Citations\n•\n58 Altmetric\n•\n1 Mention\n•  Explore all metrics",
+      "character_count": 536,
+      "rendered_image": null
+    },
+    {
+      "pdf_page": 3,
+      "printed_page": null,
+      "text": "Abstract\nModern biology increasingly relies on complex, high-dimensional\ndatasets such as single-cell RNA sequencing (scRNA-seq), which\npresent a vast space of potential hypotheses. Systematically exploring\nthis space is often impractical, as scRNA-seq analyses are time-\nconsuming and require substantial computational and domain expertise.\nTo address this challenge, we introduce CellVoyager, an AI agent built\non large language models that autonomously generates and implements\nscRNA-seq analyses within a Jupyter notebook environment. We\nevaluate CellVoyager on CellBench, a benchmark of 76 published\nscRNA-seq studies, where it outperforms GPT-4o and o3-mini by up to\n23% in predicting which analyses authors ultimately conducted, given\nonly the papers’ background sections. Across three in-depth case\nstudies, CellVoyager generated novel findings in COVID-19, cell–cell\ncommunication and aging that experts consistently rated as creative and\nscientifically sound. These results demonstrate CellVoyager’s potential to\naccelerate computational biology and uncover missing insights by\nautonomously analyzing biological data at scale.\n This is a preview of subscription content, log in via an institution\nto check access.\nAccess this article\nLog in via an institution\nBuy article PDF USD 39.95",
+      "character_count": 1295,
+      "rendered_image": null
+    },
+    {
+      "pdf_page": 4,
+      "printed_page": null,
+      "text": "Price includes VAT (Canada)\nInstant access to the full article PDF.\nInstitutional subscriptions\nFig. 1: Schematic of the CellVoyager agentic framework.\n[image]\nFig. 2: CellBench evaluation.\n[image]\nFig. 3: Human expert evaluations.\n[image]\nFig. 4: Agent-generated analysis from the COVID-19 PBMCs case\nstudy.\n[image]\nFig. 5: Agent-generated analysis for the human endometrium case\nstudy.\n[image]\nFig. 6: Agent generated analysis for the aging in the brain paper.\n[image]\nSimilar content being viewed by others\n[image]\nSingle-Cell RNA Sequencing\nChapter © 2026\n[image]",
+      "character_count": 567,
+      "rendered_image": "figures/page-004.png"
+    },
+    {
+      "pdf_page": 5,
+      "printed_page": null,
+      "text": "CellHeap: A Workflow for Optimizing COVID-19 Single-\nCell RNA-Seq Data Processing in the Santos Dumont\nSupercomputer\nChapter © 2021\n[image]\nSingle-Cell RNA Sequencing Analysis: A Step-by-Step\nOverview\nChapter © 2021\nExplore related subjects\nDiscover the latest articles, books and news in related subjects,\nsuggested using machine learning.\n•  Cell fate\n•  Cellular Neuroscience\n•  Computational Intelligence\n•  Transcriptomics\n•  Artificial Intelligence\n•  High-throughput Cell Screening\n•  Gene Expression Analysis in Cancer Genomics\nData availability\nPublished papers used in the case studies can be found in previous",
+      "character_count": 620,
+      "rendered_image": null
+    },
+    {
+      "pdf_page": 6,
+      "printed_page": null,
+      "text": "studies for COVID-19 data4, aging data5 and endometrium data6. The\nassociated datasets can also be found in the respective publications.\nThe CellBench evaluation dataset is available from GitHub (https://\ngithub.com/zou-group/CellVoyager).\nCode availability\nCode for running the agent on case studies and for CellBench evaluation\nis available in the CellVoyager GitHub repository (https://github.com/zou-\ngroup/CellVoyager) and at Zenodo via https://doi.org/10.5281/\nzenodo.1794569652.\nReferences\n1. Asp, M., Bergenstråhle, J. & Lundeberg, J. Spatially resolved\ntranscriptomes-next generation tools for tissue exploration.\nBioEssays 42, 1900221 (2020).\nArticle  Google Scholar\n2. Rao, A., Barkley, D., França, G. S. & Yanai, I. Exploring tissue\narchitecture using spatial transcriptomics. Nature 596, 211–220\n(2021).\nArticle  CAS  PubMed  PubMed Central  Google Scholar\n3. Li, X. & Wang, C.-Y. From bulk, single-cell to spatial RNA\nsequencing. Int. J. Oral Sci. 13, 36 (2021).",
+      "character_count": 976,
+      "rendered_image": null
+    },
+    {
+      "pdf_page": 7,
+      "printed_page": null,
+      "text": "Article  PubMed  PubMed Central  Google Scholar\n4. Wilk, A. J. et al. A single-cell atlas of the peripheral immune\nresponse in patients with severe COVID-19. Nat. Med. 26, 1070–\n1076 (2020).\nArticle  CAS  PubMed  PubMed Central  Google Scholar\n5. Buckley, M. T. et al. Cell-type-specific aging clocks to quantify\naging and rejuvenation in neurogenic regions of the brain. Nat.\nAging 3, 121–137 (2023).\nArticle  PubMed  Google Scholar\n6. Wang, W. et al. Single-cell transcriptomic atlas of the human\nendometrium during the menstrual cycle. Nat. Med. 26, 1644–1653\n(2020).\nArticle  CAS  PubMed  Google Scholar\n7. Stribling, D. et al. The model student: GPT-4 performance on\ngraduate biomedical science exams. Sci. Rep. 14, 5670 (2024).\nArticle  CAS  PubMed  PubMed Central  Google Scholar\n8. Justen, L. LLMs outperform experts on challenging biology\nbenchmarks. Preprint at https://doi.org/10.48550/arXiv.2505.06108\n(2025).\n9. Guo, D. et al. Deepseek-Coder: when the large language model\nmeets programming—the rise of code intelligence. Preprint at",
+      "character_count": 1046,
+      "rendered_image": null
+    },
+    {
+      "pdf_page": 8,
+      "printed_page": null,
+      "text": "https://doi.org/10.48550/arXiv.2401.14196 (2024).\n10. Xia, C. S., Deng, Y., Dunn, S. & Zhang, L. Demystifying LLM-\nbased software engineering agents. Proc. ACM Softw. Eng. 2,\n801–824 (2025).\nArticle  Google Scholar\n11. Zhang, Y., Ruan, H., Fan, Z. & Roychoudhury, A. AutoCodeRover:\nautonomous program improvement. In Proc. 33rd ACM SIGSOFT\nInternational Symposium on Software Testing and Analysis. 1592–\n1604 (ACM, 2024).\n12. Yang, J. et al. SWE-agent: agent–computer interfaces enable\nautomated software engineering. In Advances in Neural\nInformation Processing Systems 37, 50528–50652 (NeurIPS,\n2024).\n13. Gottweis, J. et al. Towards an AI co-scientist. Preprint at https://\ndoi.org/10.48550/arXiv.2502.18864 (2025).\n14. Liu, Y. et al. Researchbench: Benchmarking LLMs in scientific\ndiscovery via inspiration-based task decomposition. Preprint at\nhttps://doi.org/10.48550/arXiv.2503.21248 (2025).\n15. Luo, Z., Yang, Z., Xu, Z., Yang, W. & Du, X. LLM4SR: a survey on\nlarge language models for scientific research. Preprint at https://\ndoi.org/10.48550/arXiv.2501.04306 (2025).\n16. Huang, K. et al. Automated hypothesis validation with agentic",
+      "character_count": 1143,
+      "rendered_image": null
+    },
+    {
+      "pdf_page": 9,
+      "printed_page": null,
+      "text": "sequential falsifications. In Proc. 42nd International Conference of\nMachine Learning 25372–25437 (ICML, 2025).\n17. Wang, H. et al. SpatialAgent: an autonomous ai agent for spatial\nbiology. Preprint at bioRxiv https://\ndoi.org/10.1101/2025.04.03.646459 (2025).\n18. Nagarajan, V. et al. SCassist: an AI based workflow assistant for\nsingle-cell analysis. Bioinformatics 41, btaf402 (2025).\nArticle  CAS  PubMed  PubMed Central  Google Scholar\n19. Xiao, Y. et al. CellAgent: an LLM-driven multi-agent framework for\nautomated single-cell data analysis. In Proc. 14th International\nConference on Learning Representations VsA2GNkJhz (ICLR,\n2026).\n20. Buettner, F. et al. Computational analysis of cell-to-cell\nheterogeneity in single-cell RNA-sequencing data reveals hidden\nsubpopulations of cells. Nat. Biotechnol. 33, 155–160 (2015).\nArticle  CAS  PubMed  Google Scholar\n21. Butler, A., Hoffman, P., Smibert, P., Papalexi, E. & Satija, R.\nIntegrating single-cell transcriptomic data across different\nconditions, technologies, and species. Nat. Biotechnol. 36, 411–\n420 (2018).\nArticle  CAS  PubMed  PubMed Central  Google Scholar",
+      "character_count": 1125,
+      "rendered_image": null
+    },
+    {
+      "pdf_page": 10,
+      "printed_page": null,
+      "text": "22. Bergen, V., Lange, M., Peidli, S., Wolf, F. A. & Theis, F. J.\nGeneralizing RNA velocity to transient cell states through\ndynamical modeling. Nat. Biotechnol. 38, 1408–1414 (2020).\nArticle  CAS  PubMed  Google Scholar\n23. Lähnemann, D. et al. Eleven grand challenges in single-cell data\nscience. Genome Biol. 21, 1–35 (2020).\nArticle  Google Scholar\n24. Zappia, L., Phipson, B. & Oshlack, A. Exploring the single-cell\nRNA-seq analysis landscape with the scRNA-tools database.\nPLoS Comput. Biol. 14, e1006245 (2018).\nArticle  PubMed  PubMed Central  Google Scholar\n25. Roberts, J., Han, K., Houlsby, N. & Albanie, S. SciFIBench:\nbenchmarking large multimodal models for scientific figure\ninterpretation. In Proc. 37th International Conference on Neural\nInformation Processing Systems (eds Oh, A. et al.) (ACM, 2024).\n26. Kluyver, T. et al. Jupyter Notebooks—a publishing format for\nreproducible computational workflows. In Positioning and Power in\nAcademic Publishing: Players, Agents and Agendas (eds Loizides,\nF. & Schmidt, B.) (IOS Press, 2016).\n27. Virshup, I. et al. The scverse project provides a computational\necosystem for single-cell omics data analysis. Nat. Biotechnol. 41,\n604–606 (2023).",
+      "character_count": 1202,
+      "rendered_image": null
+    },
+    {
+      "pdf_page": 11,
+      "printed_page": null,
+      "text": "Article  CAS  PubMed  Google Scholar\n28. Wolf, F. A., Angerer, P. & Theis, F. J. SCANPY: large-scale single-\ncell gene expression data analysis. Genome Biol. 19, 1–5 (2018).\nArticle  Google Scholar\n29. Gayoso, A. et al. A Python library for probabilistic analysis of\nsingle-cell omics data. Nat. Biotechnol. 40, 163–166 (2022).\nArticle  CAS  PubMed  Google Scholar\n30. Waskom, M. L. Seaborn: statistical data visualization. J. Open\nSource Softw. 6, 3021 (2021).\nArticle  Google Scholar\n31. Jimenez, C. E. et al. SWE-bench: can language models resolve\nreal-world GitHub issues? In Proc. International Conference on\nLearning Representations VTF8yNQM66 (ICLR, 2024).\n32. White, C. et al. LiveBench: a challenging, contamination-limited\nLLM benchmark. In Proc. International Conference on Learning\nRepresentations sKYHBTAxV (ICLR, 2025).\n33. Fine, J., Kolla, M. & Soloducho, I. Data Science Agent in Colab:\nthe future of data analysis with Gemini. Google for Developers\nhttps://developers.googleblog.com/en/data-science-agent-in-colab-\nwith-gemini/ (2024).\n34. Stephenson, E. et al. Single-cell multi-omics analysis of the",
+      "character_count": 1118,
+      "rendered_image": null
+    },
+    {
+      "pdf_page": 12,
+      "printed_page": null,
+      "text": "immune response in COVID-19. Nat. Med. 27, 904–916 (2021).\nArticle  CAS  PubMed  PubMed Central  Google Scholar\n35. Ren, X. et al. COVID-19 immune features revealed by a large-\nscale single-cell transcriptome atlas. Cell 184, 1895–1913 (2021).\nArticle  CAS  PubMed  PubMed Central  Google Scholar\n36. Junqueira, C. et al. FcγR-mediated SARS-CoV-2 infection of\nmonocytes activates inflammation. Nature 606, 576–584 (2022).\nArticle  CAS  PubMed  PubMed Central  Google Scholar\n37. Sefik, E. et al. Inflammasome activation in infected macrophages\ndrives COVID-19 pathology. Nature 606, 585–593 (2022).\nArticle  CAS  PubMed  PubMed Central  Google Scholar\n38. Ferreira, A. C. et al. SARS-CoV-2 engages inflammasome and\npyroptosis in human primary monocytes. Cell Death Discov. 7, 43\n(2021).\nArticle  CAS  PubMed  PubMed Central  Google Scholar\n39. Massagué, J. & Sheppard, D. TGF-β signaling in health and\ndisease. Cell 186, 4007–4037 (2023).\nArticle  PubMed  PubMed Central  Google Scholar\n40. Xie, Y. et al. FGF/FGFR signaling in health and disease. Signal\nTransduct. Target. Ther. 5, 181 (2020).",
+      "character_count": 1094,
+      "rendered_image": null
+    },
+    {
+      "pdf_page": 13,
+      "printed_page": null,
+      "text": "Article  CAS  PubMed  PubMed Central  Google Scholar\n41. Nikopoulou, C., Parekh, S. & Tessarz, P. Ageing and sources of\ntranscriptional heterogeneity. Biol. Chem. 400, 867–878 (2019).\nArticle  CAS  PubMed  Google Scholar\n42. Bahar, R. et al. Increased cell-to-cell variation in gene expression\nin ageing mouse heart. Nature 441, 1011–1014 (2006).\nArticle  CAS  PubMed  Google Scholar\n43. Uyar, B. et al. Single-cell analyses of aging, inflammation and\nsenescence. Ageing Res. Rev. 64, 101156 (2020).\nArticle  CAS  PubMed  PubMed Central  Google Scholar\n44. Sun, E. D., Nagvekar, R., Pogson, A. N. & Brunet, A. Brain aging\nand rejuvenation at single-cell resolution. Neuron 113, 82–108\n(2025).\nArticle  CAS  PubMed  PubMed Central  Google Scholar\n45. Enge, M. et al. Single-cell analysis of human pancreas reveals\ntranscriptional signatures of aging and somatic mutation patterns.\nCell 171, 321–330 (2017).\nArticle  Google Scholar\n46. Kimmel, J. C. et al. Murine single-cell RNA-seq reveals cell-\nidentity- and tissue-specific trajectories of aging. Genome Res. 29,",
+      "character_count": 1064,
+      "rendered_image": null
+    },
+    {
+      "pdf_page": 14,
+      "printed_page": null,
+      "text": "2088–2103 (2019).\nArticle  CAS  PubMed  PubMed Central  Google Scholar\n47. Angelidis, I. et al. An atlas of the aging lung mapped by single cell\ntranscriptomics and deep tissue proteomics. Nat. Commun. 10,\n963 (2019).\nArticle  PubMed  PubMed Central  Google Scholar\n48. Ibáñez-Solé, O., Ascensión, A. M., Araúzo-Bravo, M. J. & Izeta, A.\nLack of evidence for increased transcriptional noise in aged\ntissues. eLife 11, e80380 (2022).\nArticle  PubMed  PubMed Central  Google Scholar\n49. Dulken, B. W. et al. Single-cell analysis reveals T cell infiltration in\nold neurogenic niches. Nature 571, 205–210 (2019).\nArticle  CAS  PubMed  PubMed Central  Google Scholar\n50. Ximerakis, M. et al. Single-cell transcriptomic profiling of the aging\nmouse brain. Nat. Neurosci. 22, 1696–1708 (2019).\nArticle  CAS  PubMed  Google Scholar\n51. Lu, P. et al. OctoTools: an agentic framework with extensible tools\nfor complex reasoning. Preprint at https://doi.org/10.48550/\narXiv.2502.11271 (2025).\n52. Alber, S. CellVoyager code. Zenodo https://doi.org/10.5281/",
+      "character_count": 1044,
+      "rendered_image": null
+    },
+    {
+      "pdf_page": 15,
+      "printed_page": null,
+      "text": "zenodo.17945696 (2025).\n53. Qiu, X. et al. Reversed graph embedding resolves complex single-\ncell trajectories. Nat. Methods 14, 979–982 (2017).\nArticle  CAS  PubMed  PubMed Central  Google Scholar\nDownload references\nAcknowledgements\nWe thank C. Blish for helpful feedback during the project. J.Z. is\nsupported by funding from the Chan-Zuckerberg Biohub. This work was\nsupported by the National Science Foundation graduate research\nfellowship under grant no. DGE-2146755 (S.A.).\nAuthor information\nAuthors and Affiliations\n1. Department of Computer Science, Stanford University, Stanford,\nCA, USA\nSamuel Alber & James Zou\n2. Department of Biomedical Data Science, Stanford University,\nStanford, CA, USA\nBowen Chen, Eric Sun & James Zou",
+      "character_count": 736,
+      "rendered_image": null
+    },
+    {
+      "pdf_page": 16,
+      "printed_page": null,
+      "text": "3. Department of Genetics, Stanford University, Stanford, CA, USA\nEric Sun\n4. The Phil and Penny Knight Initiative for Brain Resilience, Stanford\nUniversity, Stanford, CA, USA\nAlina Isakova\n5. Department of Medicine, Stanford University, Stanford, CA, USA\nAaron J. Wilk\nAuthors\n1. Samuel Alber\nView author publications\nSearch author on:PubMed Google Scholar\n2. Bowen Chen\nView author publications\nSearch author on:PubMed Google Scholar\n3. Eric Sun\nView author publications\nSearch author on:PubMed Google Scholar\n4. Alina Isakova\nView author publications",
+      "character_count": 553,
+      "rendered_image": null
+    },
+    {
+      "pdf_page": 17,
+      "printed_page": null,
+      "text": "Search author on:PubMed Google Scholar\n5. Aaron J. Wilk\nView author publications\nSearch author on:PubMed Google Scholar\n6. James Zou\nView author publications\nSearch author on:PubMed Google Scholar\nContributions\nS.A. and J.Z. conceptualized the study. S.A. implemented CellVoyager\nand ran it on the case studies. S.A. and B.C. developed CellBench and\nbenchmarked CellVoyager against the base LLMs. E.S., A.I. and A.J.W.\nevaluated the agent’s case study results. J.Z. supervised the study. All\nauthors contributed to writing the paper.\nCorresponding author\nCorrespondence to James Zou.\nEthics declarations\nCompeting interests\nThe authors declare no competing interests.",
+      "character_count": 667,
+      "rendered_image": null
+    },
+    {
+      "pdf_page": 18,
+      "printed_page": null,
+      "text": "Peer review\nPeer review information\nNature Methods thanks Xin Gao, Juexiao Zhoum, Jun Ding and the\nother, anonymous reviewer(s) for their contribution to the peer review of\nthis work. Peer reviewer reports are available. Primary Handling Editor:\nLin Tang, in collaboration with the Nature Methods team.\nAdditional information\nPublisher’s note Springer Nature remains neutral with regard to\njurisdictional claims in published maps and institutional affiliations.\nSupplementary information\nSupplementary Information (download PDF\n)\nSupplementary Figs. 1–19 and Tables 1–3.\nReporting Summary (download PDF\n)\nPeer Review File (download PDF\n)\nRights and permissions\nSpringer Nature or its licensor (e.g. a society or other partner) holds",
+      "character_count": 732,
+      "rendered_image": null
+    },
+    {
+      "pdf_page": 19,
+      "printed_page": null,
+      "text": "exclusive rights to this article under a publishing agreement with the\nauthor(s) or other rightsholder(s); author self-archiving of the accepted\nmanuscript version of this article is solely governed by the terms of such\npublishing agreement and applicable law.\nReprints and permissions\nAbout this article\n[image]\nCite this article\nAlber, S., Chen, B., Sun, E. et al. CellVoyager: AI CompBio agent\ngenerates new insights by autonomously analyzing biological data. Nat\nMethods 23, 749–759 (2026). https://doi.org/10.1038/\ns41592-026-03029-6\nDownload citation\n•  Received: 02 June 2025\n•  Accepted: 12 February 2026\n•  Published: 17 March 2026\n•  Version of record: 17 March 2026\n•  Issue date: April 2026\n•  DOI: https://doi.org/10.1038/s41592-026-03029-6",
+      "character_count": 753,
+      "rendered_image": null
+    },
+    {
+      "pdf_page": 20,
+      "printed_page": null,
+      "text": "•  Springer Nature America, Inc.\nProfiles\n1. Eric Sun\nView author profile\n2. Alina Isakova\nView author profile\n3. Aaron J. Wilk\nView author profile\n4. James Zou\nView author profile\nAssociated content\n•\nPushing the boundaries of autonomous biological\ndiscovery\nNews & Views Nature Methods 17 March 2026\nAccess this article\nLog in via an institution\nBuy article PDF USD 39.95\nPrice includes VAT (Canada)\nInstant access to the full article PDF.\nInstitutional subscriptions\nAdvertisement",
+      "character_count": 483,
+      "rendered_image": null
+    },
+    {
+      "pdf_page": 21,
+      "printed_page": null,
+      "text": "Search\nSearch by keyword or author\n Search\nNavigation\n•  Find a journal\n•  Publish with us\n•  Track your research\nFooter Navigation\nDiscover content\n•  Journals A-Z\n•  Books A-Z\n•  Subjects A-Z\nPublish with us\n•  Journal finder\n•  Publish your research\n•  Language editing\n•  Open access publishing\nProducts and services",
+      "character_count": 320,
+      "rendered_image": null
+    },
+    {
+      "pdf_page": 22,
+      "printed_page": null,
+      "text": "•  Our products\n•  Librarians\n•  Societies\n•  Partners and advertisers\nOur brands\n•  Springer\n•  Nature Portfolio\n•  BMC\n•  Palgrave Macmillan\n•  Apress\n•  Discover\nCorporate Navigation\n•  Your privacy choices/Manage cookies\n•  Your US state privacy rights\n•  Accessibility statement\n•  Terms and conditions\n•  Privacy policy\n•  Help and support\n•  Legal notice\n•  Cancel contracts here\n173.35.231.181\nNot affiliated",
+      "character_count": 416,
+      "rendered_image": null
+    },
+    {
+      "pdf_page": 23,
+      "printed_page": null,
+      "text": "[image]\n© 2026 Springer Nature",
+      "character_count": 30,
+      "rendered_image": null
+    }
+  ],
+  "sections": [
+    {
+      "title": "15 Citations",
+      "pdf_page": 2,
+      "printed_page": null
+    },
+    {
+      "title": "58 Altmetric",
+      "pdf_page": 2,
+      "printed_page": null
+    },
+    {
+      "title": "1 Mention",
+      "pdf_page": 2,
+      "printed_page": null
+    },
+    {
+      "title": "Abstract",
+      "pdf_page": 3,
+      "printed_page": null
+    },
+    {
+      "title": "References",
+      "pdf_page": 6,
+      "printed_page": null
+    },
+    {
+      "title": "Acknowledgements",
+      "pdf_page": 15,
+      "printed_page": null
+    }
+  ],
+  "evidence_inventory": {
+    "figures": [
+      {
+        "id": "Figure 1",
+        "caption": "Schematic of the CellVoyager agentic framework. [image]",
+        "pdf_page": 4,
+        "printed_page": null,
+        "page_image": "figures/page-004.png"
+      },
+      {
+        "id": "Figure 2",
+        "caption": "CellBench evaluation. [image]",
+        "pdf_page": 4,
+        "printed_page": null,
+        "page_image": "figures/page-004.png"
+      },
+      {
+        "id": "Figure 3",
+        "caption": "Human expert evaluations. [image]",
+        "pdf_page": 4,
+        "printed_page": null,
+        "page_image": "figures/page-004.png"
+      },
+      {
+        "id": "Figure 4",
+        "caption": "Agent-generated analysis from the COVID-19 PBMCs case study. [image]",
+        "pdf_page": 4,
+        "printed_page": null,
+        "page_image": "figures/page-004.png"
+      },
+      {
+        "id": "Figure 5",
+        "caption": "Agent-generated analysis for the human endometrium case study. [image]",
+        "pdf_page": 4,
+        "printed_page": null,
+        "page_image": "figures/page-004.png"
+      },
+      {
+        "id": "Figure 6",
+        "caption": "Agent generated analysis for the aging in the brain paper. [image]",
+        "pdf_page": 4,
+        "printed_page": null,
+        "page_image": "figures/page-004.png"
+      }
+    ],
+    "tables": [],
+    "equations": []
+  },
+  "rendered_pages_dir": "figures",
+  "extraction": {
+    "engine": "PyMuPDF",
+    "visual_pages_rendered": true,
+    "confidence": "mixed"
+  },
+  "validation": {
+    "status": "valid",
+    "errors": [],
+    "warnings": [],
+    "recommended_locator_mode": "page-grounded",
+    "printed_page_labels_required": false
+  }
+}

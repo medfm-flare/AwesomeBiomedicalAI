@@ -1,0 +1,122 @@
+{
+  "schema_version": "1.0",
+  "summary": {
+    "status": "pass",
+    "passes": 17,
+    "warnings": 0,
+    "errors": 0
+  },
+  "metrics": {
+    "locator_mode": "page-grounded",
+    "sections_found": [
+      "01",
+      "02",
+      "03",
+      "04",
+      "05",
+      "06",
+      "07",
+      "08",
+      "09",
+      "10",
+      "11",
+      "12",
+      "13",
+      "14",
+      "15",
+      "16"
+    ],
+    "paper_pointer_count": 35,
+    "figures_in_bundle": 3,
+    "tables_in_bundle": 3,
+    "equations_in_bundle": 1,
+    "embedded_image_count": 3
+  },
+  "findings": [
+    {
+      "level": "pass",
+      "code": "sections",
+      "message": "Sections 01-16 are present in order."
+    },
+    {
+      "level": "pass",
+      "code": "forbidden_sections",
+      "message": "No Sections 17 or 18 found."
+    },
+    {
+      "level": "pass",
+      "code": "status_header",
+      "message": "The evidence-status header has at least seven fields."
+    },
+    {
+      "level": "pass",
+      "code": "locator_mode_declaration",
+      "message": "The card declares locator mode: page-grounded."
+    },
+    {
+      "level": "pass",
+      "code": "paper_pointers",
+      "message": "Found 35 paper source pointers."
+    },
+    {
+      "level": "pass",
+      "code": "page_grounding",
+      "message": "PDF page pointers are explicit and unambiguous."
+    },
+    {
+      "level": "pass",
+      "code": "figures_coverage",
+      "message": "All 3 inventoried figures appear in the card."
+    },
+    {
+      "level": "pass",
+      "code": "tables_coverage",
+      "message": "All 3 inventoried tables appear in the card."
+    },
+    {
+      "level": "pass",
+      "code": "equations_coverage",
+      "message": "All 1 inventoried equations appear in the card."
+    },
+    {
+      "level": "pass",
+      "code": "embedded_visuals",
+      "message": "Found 3 embedded image(s)."
+    },
+    {
+      "level": "pass",
+      "code": "figure_image_coverage",
+      "message": "All 3 inventoried figures have embedded images."
+    },
+    {
+      "level": "pass",
+      "code": "embedded_image_paths",
+      "message": "All embedded image paths are existing absolute local files."
+    },
+    {
+      "level": "pass",
+      "code": "limitations_split",
+      "message": "Sections 12 and 13 are both present."
+    },
+    {
+      "level": "pass",
+      "code": "idea_status",
+      "message": "Section 16 includes the required status field."
+    },
+    {
+      "level": "pass",
+      "code": "idea_validation",
+      "message": "Section 16 includes the required validation field."
+    },
+    {
+      "level": "pass",
+      "code": "idea_failure",
+      "message": "Section 16 includes the required failure field."
+    },
+    {
+      "level": "pass",
+      "code": "out_of_scope",
+      "message": "No excluded content detected."
+    }
+  ]
+}

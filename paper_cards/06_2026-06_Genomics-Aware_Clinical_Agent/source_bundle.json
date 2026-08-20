@@ -1,0 +1,157 @@
+{
+  "schema_version": "1.1",
+  "source_type": "pdf",
+  "source_path": "source_article.pdf (local processing only; see source_article_access.md)",
+  "source_sha256": "88708ebfad020d9eb03a4a0fa0d2c1d9bed8753bc956d931742861cd9fb06d4d",
+  "metadata": {
+    "format": "HTML5",
+    "title": "Optimizing genomics-aware clinical agents in precision oncology | npj Systems Biology and Applications"
+  },
+  "page_count": 16,
+  "pages": [
+    {
+      "pdf_page": 1,
+      "printed_page": null,
+      "text": "Skip to main content\nThank you for visiting nature.com. You are using a browser version\nwith limited support for CSS. To obtain the best experience, we\nrecommend you use a more up to date browser (or turn off\ncompatibility mode in Internet Explorer). In the meantime, to\nensure continued support, we are displaying the site without styles\nand JavaScript.\nAdvertisement\n[image]\n[image]\n•  View all journals\n•\nSaved research\n•\nSearch\n•\nAccount\n•  Content Explore content\n•  About the journal\n•  Publish with us\n•  Sign up for alerts\n•  RSS feed\n1. nature\n2. npj systems biology and applications\n3. articles\n4. article\nOptimizing genomics-aware clinical agents in precision oncology\nDownload PDF\nDownload PDF\n•  Article",
+      "character_count": 716,
+      "rendered_image": "figures/page-001.png"
+    },
+    {
+      "pdf_page": 2,
+      "printed_page": null,
+      "text": "•  Open access\n•  Published: 05 June 2026\nOptimizing genomics-aware\nclinical agents in precision\noncology\n•  Rangan Das1,2 na1,\n•  K. Maheswari1,\n•  Shaheen Siddiqui1 na1,\n•  Jeet Nanshi1 na1,\n•  Nikita Arora1 na1,\n•  Ankush Paul1 na1,\n•  Pavan Kumar1,\n•  Varun Udbalkar1,\n•  Apoorva Sarvade1,\n•  Harsha Chaturvedi1,\n•  Tammy Shvartsman1,\n•  Shet Masih1,\n•  Krishna Prasad1,\n•  Vindhya Vasini Andra3,\n•  Ravi Thippeswamy4,\n•  Shekar Patil4,\n•  S. S. Nirni3,\n•  Ujjwal Maulik1,2,\n•  Sanghamitra Bandyopadhyay5,\n•  Brian Garsson1,\n•  Mohammed Farooq1 &\n•  …\n•  Debarka Sengupta\n1,6,7,8 na1\nShow authors\nnpj Systems Biology and Applications (2026) Cite this article\nSave article",
+      "character_count": 675,
+      "rendered_image": null
+    },
+    {
+      "pdf_page": 3,
+      "printed_page": null,
+      "text": "View saved research\n•  2353 Accesses\n•  Metrics details\n We are providing an unedited version of this manuscript to\ngive early access to its findings. Before final publication, the\nmanuscript will undergo further editing. Please note there may be\nerrors present which affect the content, and all legal disclaimers\napply.\nAbstract\nAgentic systems are proposed for clinical decision support, yet\nunrestricted tool access can undermine accountability and safety in\nprecision oncology, where recommendations must be grounded in\nevolving guidelines, regulatory labels, and patient-specific\nmolecular evidence. We compare four architectures: (i) a standalone\nLLM, (ii) an unconstrained function-calling agent with over 200\nbiomedical tools, (iii) a ReAct agent over the same broad tool\nsurface, and (iv) gSage, a workflow-orchestrated agent restricted to\n20 curated domain tools backed by a versioned knowledge stack.\nWe evaluate 375 clinician-authored questions across 41 cases\nspanning breast, non–small cell lung, prostate, ovarian, and\ncolorectal/GI tract cancers using multiple frontier LLM backbones.\nA two-pillar evaluation, combining LLM-based rubric scoring with\nexpert adjudication and an independent embedding-based content\nconcordance analysis, yields convergent results. The workflow-\norchestrated agent outperforms all alternatives on five rubric axes\n(guideline concordance, correctness, patient centricity, reasoning\ntransparency, and safety) and achieves the highest embedding recall\nunder both a biomedical (MedCPT, R = 0.877) and general-purpose\n(Snowflake Arctic, R = 0.803) model, significantly exceeding all\nfull-sample arms (p < 0.05, Bonferroni-corrected). These findings\nshow that principled workflow orchestration with constrained,\ncurated tools, rather than maximal tool breadth, is what drives\nreliability and safety in genomics-aware oncology decision support.",
+      "character_count": 1883,
+      "rendered_image": null
+    },
+    {
+      "pdf_page": 4,
+      "printed_page": null,
+      "text": "Similar content being viewed by others\n[image]\nStructured reasoning failures compromise LLM\ninterpretation of clinical oncology notes\nArticle Open access 30 June 2026\n[image]\nReal-world validation of a multimodal LLM-powered\npipeline for high-accuracy clinical trial patient\nmatching\nArticle Open access 22 November 2025\n[image]\nReal-world deployment of a fine-tuned pathology\nfoundation model for lung cancer biomarker\ndetection\nArticle Open access 09 July 2025\nExplore related subjects\nDiscover the latest articles and news in related subjects.\n•  Cancer\n•  Computational biology and bioinformatics\n•  Oncology\nAcknowledgements\nThis study was funded by GeneSilico, Inc. We gratefully\nacknowledge Dr. C. Sairam (Radiation Oncologist and Consultant,\nMNJ Cancer Hospital, Hyderabad; Director and Consultant\nOncologist, Swarna Sai Hospital, Hyderabad) and Dr. V. S. Sai",
+      "character_count": 867,
+      "rendered_image": null
+    },
+    {
+      "pdf_page": 5,
+      "printed_page": null,
+      "text": "Sankalp Naidu (Radiation Oncologist and Consultant, MNJ Cancer\nHospital, Hyderabad) for generously providing formalin-fixed\nparaffin-embedded (FFPE) breast tumor blocks at no cost and for\ntheir clinical coordination. We also thank Dr. Ravi Thippeswamy\n(Department of Medical Oncology, HCG Cancer Centre, Bangalore,\nKarnataka, India) for contributing FFPE specimens and expert input.\nTheir collaborative support and commitment to advancing cancer\nresearch was instrumental to the successful completion of this\nstudy. The KHPL team consisting of Rahul Bhoyar, Aarti Darra,\nPooja Mahesh Kulkarni, Radhika Venkatakrishnan helped with\nsample processing, library preparation, and sequencing at KHPL\nunder the supervision of Dr. Paras Sehgal, Dr. Sridhar Sivasubbu\nand Dr. Vinod Scaria. The authors would also like to express their\nsincere gratitude to the following individuals for their invaluable\ncontributions to this work: Claire Cohan from GeneSilico India Pvt.\nLtd., Ruhani Bhatia from Indraprastha Institute of Information\nTechnology–Delhi (IIIT-D), Aaren Vedangi from GeneSilico India\nPvt. Ltd., Prasenjit Banerjee from GeneSilico India Pvt. Ltd., and\nSarah from Shubhdisha Business Solutions (SBS). Their support\nthroughout technical development, data curation, research\noperations, and clinical coordination was instrumental in the\nsuccessful execution of this study.\nAuthor information\nAuthor notes\n1. These authors contributed equally: Rangan Das, Shaheen\nSiddiqui, Jeet Nanshi, Nikita Arora, Ankush Paul, Debarka\nSengupta.\nAuthors and Affiliations\n1. GeneSilico Inc., Austin, Texas, USA\nRangan Das, K. Maheswari, Shaheen Siddiqui, Jeet\nNanshi, Nikita Arora, Ankush Paul, Pavan Kumar, Varun\nUdbalkar, Apoorva Sarvade, Harsha Chaturvedi, Tammy\nShvartsman, Shet Masih, Krishna Prasad, Ujjwal Maulik, Brian\nGarsson, Mohammed Farooq & Debarka Sengupta",
+      "character_count": 1853,
+      "rendered_image": null
+    },
+    {
+      "pdf_page": 6,
+      "printed_page": null,
+      "text": "2. Department of Computer Science and Engineering, Jadavpur\nUniversity, Kolkata, India\nRangan Das & Ujjwal Maulik\n3. Department of Medical Oncology, Omega Hospitals and Indo-\nAmerican Cancer Institute and Research Centre, Hyderabad,\nAndhra Pradesh, India\nVindhya Vasini Andra & S. S. Nirni\n4. Department of Medical Oncology, HCG Cancer Centre,\nBangalore, Karnataka, India\nRavi Thippeswamy & Shekar Patil\n5. Indian Statistical Institute, Kolkata, India\nSanghamitra Bandyopadhyay\n6. Department of Computational Biology, Indraprastha Institute\nof Information Technology-Delhi (IIIT-Delhi), New Delhi,\nIndia\nDebarka Sengupta\n7. Department of Computer Science and Engineering,\nIndraprastha Institute of Information Technology-Delhi (IIIT-\nDelhi), New Delhi, India\nDebarka Sengupta\n8. Centre for Artificial Intelligence, Indraprastha Institute of\nInformation Technology-Delhi (IIIT-Delhi), New Delhi, India\nDebarka Sengupta\nAuthors\n1. Rangan Das\nView author publications\nSearch author on:PubMed Google Scholar",
+      "character_count": 1003,
+      "rendered_image": null
+    },
+    {
+      "pdf_page": 7,
+      "printed_page": null,
+      "text": "2. K. Maheswari\nView author publications\nSearch author on:PubMed Google Scholar\n3. Shaheen Siddiqui\nView author publications\nSearch author on:PubMed Google Scholar\n4. Jeet Nanshi\nView author publications\nSearch author on:PubMed Google Scholar\n5. Nikita Arora\nView author publications\nSearch author on:PubMed Google Scholar\n6. Ankush Paul\nView author publications\nSearch author on:PubMed Google Scholar\n7. Pavan Kumar\nView author publications\nSearch author on:PubMed Google Scholar\n8. Varun Udbalkar\nView author publications\nSearch author on:PubMed Google Scholar\n9. Apoorva Sarvade\nView author publications\nSearch author on:PubMed Google Scholar\n10. Harsha Chaturvedi\nView author publications",
+      "character_count": 692,
+      "rendered_image": null
+    },
+    {
+      "pdf_page": 8,
+      "printed_page": null,
+      "text": "Search author on:PubMed Google Scholar\n11. Tammy Shvartsman\nView author publications\nSearch author on:PubMed Google Scholar\n12. Shet Masih\nView author publications\nSearch author on:PubMed Google Scholar\n13. Krishna Prasad\nView author publications\nSearch author on:PubMed Google Scholar\n14. Vindhya Vasini Andra\nView author publications\nSearch author on:PubMed Google Scholar\n15. Ravi Thippeswamy\nView author publications\nSearch author on:PubMed Google Scholar\n16. Shekar Patil\nView author publications\nSearch author on:PubMed Google Scholar\n17. S. S. Nirni\nView author publications\nSearch author on:PubMed Google Scholar\n18. Ujjwal Maulik\nView author publications\nSearch author on:PubMed Google Scholar\n19. Sanghamitra Bandyopadhyay",
+      "character_count": 732,
+      "rendered_image": null
+    },
+    {
+      "pdf_page": 9,
+      "printed_page": null,
+      "text": "View author publications\nSearch author on:PubMed Google Scholar\n20. Brian Garsson\nView author publications\nSearch author on:PubMed Google Scholar\n21. Mohammed Farooq\nView author publications\nSearch author on:PubMed Google Scholar\n22. Debarka Sengupta\nView author publications\nSearch author on:PubMed Google Scholar\nCorresponding author\nCorrespondence to Debarka Sengupta.\nEthics declarations\nCompeting interests\nMost authors of this manuscript are employees of GeneSilico, and\nseveral hold shares in the company. A provisional patent\napplication (US Serial No. 63/788,478) has been filed based on the\nwork reported in this manuscript; the applicant is GeneSilico, Inc.,\nand the inventors include the authors of this study. The patent\napplication is currently pending and covers the system and method\nfor personalized cancer treatment decision support using a retrieval-\naugmented generation enriched large language model. The other\nauthors declare no competing financial or non-financial interests.\nAdditional information\nPublisher’s note Springer Nature remains neutral with regard to",
+      "character_count": 1085,
+      "rendered_image": null
+    },
+    {
+      "pdf_page": 10,
+      "printed_page": null,
+      "text": "jurisdictional claims in published maps and institutional affiliations.\nSupplementary information\nSupplementary Information (download PDF\n)\nSupplementary Data 1\nSupplementary Data 2 (download ZIP\n)\nRights and permissions\nOpen Access This article is licensed under a Creative Commons\nAttribution-NonCommercial-NoDerivatives 4.0 International\nLicense, which permits any non-commercial use, sharing,\ndistribution and reproduction in any medium or format, as long as\nyou give appropriate credit to the original author(s) and the source,\nprovide a link to the Creative Commons licence, and indicate if you\nmodified the licensed material. You do not have permission under\nthis licence to share adapted material derived from this article or\nparts of it. The images or other third party material in this article\nare included in the article’s Creative Commons licence, unless\nindicated otherwise in a credit line to the material. If material is not\nincluded in the article’s Creative Commons licence and your\nintended use is not permitted by statutory regulation or exceeds the\npermitted use, you will need to obtain permission directly from the\ncopyright holder. To view a copy of this licence, visit http://\ncreativecommons.org/licenses/by-nc-nd/4.0/.\nReprints and permissions\nAbout this article\n[image]\nCite this article",
+      "character_count": 1314,
+      "rendered_image": null
+    },
+    {
+      "pdf_page": 11,
+      "printed_page": null,
+      "text": "Das, R., Maheswari, K., Siddiqui, S. et al. Optimizing genomics-\naware clinical agents in precision oncology. npj Syst Biol Appl\n(2026). https://doi.org/10.1038/s41540-026-00753-9\nDownload citation\n•  Received: 24 October 2025\n•  Accepted: 23 May 2026\n•  Published: 05 June 2026\n•  DOI: https://doi.org/10.1038/s41540-026-00753-9\nShare this article\nAnyone you share the following link with will be able to read this\ncontent:\nGet shareable link\nSorry, a shareable link is not currently available for this article.\nCopy shareable link to clipboard\nProvided by the Springer Nature SharedIt content-sharing initiative\nDownload PDF\nAdvertisement\n[image]\nExplore content\n•  Research articles\n•  Reviews & Analysis\n•  News & Comment\n•  Collections",
+      "character_count": 740,
+      "rendered_image": null
+    },
+    {
+      "pdf_page": 12,
+      "printed_page": null,
+      "text": "•  Follow us on X\n•  Sign up for alerts\n•  RSS feed\nAbout the journal\n•  Aims & Scope\n•  Content types\n•  Journal Information\n•  About the Editors\n•  Contact\n•  Open Access\n•  Calls for Papers\n•  Article Processing Charges\n•  Editorial policies\n•  Journal Metrics\n•  About the Partner\nPublish with us\n•  For Authors and Referees\n•  Language editing services\n•  Open access funding\n•  Submit manuscript\nSearch\nSearch articles by subject, keyword or author\nShow results from All journals This journal\nSearch\nAdvanced search\nQuick links\n•  Explore articles by subject\n•  Find a job\n•  Guide to authors",
+      "character_count": 598,
+      "rendered_image": null
+    },
+    {
+      "pdf_page": 13,
+      "printed_page": null,
+      "text": "•  Editorial policies\nnpj Systems Biology and Applications (npj Syst Biol Appl)\nISSN 2056-7189 (online)\nnature.com footer links\nAbout Nature Portfolio\n•  About us\n•  Press releases\n•  Press office\n•  Contact us\nDiscover content\n•  Journals A-Z\n•  Articles by subject\n•  protocols.io\n•  Nature Index\nPublishing policies\n•  Nature portfolio policies\n•  Open access\nAuthor & Researcher services\n•  Reprints & permissions\n•  Research data\n•  Language editing\n•  Scientific editing\n•  Nature Masterclasses\n•  Research Solutions\nLibraries & institutions",
+      "character_count": 547,
+      "rendered_image": null
+    },
+    {
+      "pdf_page": 14,
+      "printed_page": null,
+      "text": "•  Librarian service & tools\n•  Librarian portal\n•  Open research\n•  Recommend to library\nAdvertising & partnerships\n•  Advertising\n•  Partnerships & Services\n•  Media kits\n•  Branded content\nProfessional development\n•  Nature Awards\n•  Nature Careers\n•  Nature Conferences\nRegional websites\n•  Nature Africa\n•  Nature China\n•  Nature India\n•  Nature Japan\n•  Nature Middle East\n•  Privacy Policy\n•  Use of cookies\n•  Your privacy choices/Manage cookies\n•  Legal notice\n•  Accessibility statement\n•  Terms & Conditions\n•  Your US state privacy rights\n[image]\n© 2026 Springer Nature Limited",
+      "character_count": 589,
+      "rendered_image": null
+    },
+    {
+      "pdf_page": 15,
+      "printed_page": null,
+      "text": "Close\n[image]\nSign up for the Nature Briefing: Cancer newsletter — what matters in\ncancer research, free to your inbox weekly.\nEmail address",
+      "character_count": 140,
+      "rendered_image": null
+    },
+    {
+      "pdf_page": 16,
+      "printed_page": null,
+      "text": "Sign up\n☐ I agree my information will be processed in accordance with the\nNature and Springer Nature Limited Privacy Policy.\n Close\nGet what matters in cancer research, free to your inbox weekly.\nSign up for Nature Briefing: Cancer",
+      "character_count": 231,
+      "rendered_image": null
+    }
+  ],
+  "sections": [
+    {
+      "title": "Abstract",
+      "pdf_page": 3,
+      "printed_page": null
+    },
+    {
+      "title": "Acknowledgements",
+      "pdf_page": 4,
+      "printed_page": null
+    }
+  ],
+  "evidence_inventory": {
+    "figures": [],
+    "tables": [],
+    "equations": []
+  },
+  "rendered_pages_dir": "figures",
+  "extraction": {
+    "engine": "PyMuPDF",
+    "visual_pages_rendered": true,
+    "confidence": "high"
+  },
+  "validation": {
+    "status": "valid_with_warnings",
+    "errors": [],
+    "warnings": [
+      "no figures, tables, or equations were detected"
+    ],
+    "recommended_locator_mode": "page-grounded",
+    "printed_page_labels_required": false
+  }
+}
