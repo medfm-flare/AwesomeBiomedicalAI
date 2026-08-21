@@ -41,7 +41,7 @@ Click a model to expand its record.
 
 **[Histological aging signatures for monitoring tissue-specific aging and disease](https://www.nature.com/articles/s41591-026-04566-5)**
 
-*Nat. Med.* · 2026-08 · Ernesto Abila & André F. Rendeiro · [doi:10.1038/s41591-026-04566-5](https://doi.org/10.1038/s41591-026-04566-5)
+*Nat. Med.* · 2026-08 · [Ernesto Abila](https://scholar.google.com/citations?user=EaXz-AIAAAAJ&hl=en) & [André F. Rendeiro](https://scholar.google.at/citations?user=lj17pqEAAAAJ&hl=en) · [doi:10.1038/s41591-026-04566-5](https://doi.org/10.1038/s41591-026-04566-5)
 
 | | |
 | --- | --- |
@@ -159,7 +159,7 @@ Click a model to expand its record.
 
 **[Classification accuracy of a hierarchical molecular inference-based deep-learning system for CNS tumour diagnosis: a multi-institutional, retrospective study](https://www.thelancet.com/journals/lanonc/article/PIIS1470-2045%2825%2900661-8/abstract)**
 
-*Lancet Oncol.* · 2026-02 · H. Lalchungnunga & Kenneth Aldape · [doi:10.1016/S1470-2045(25)00661-8](https://doi.org/10.1016/S1470-2045%2825%2900661-8)
+*Lancet Oncol.* · 2026-02 · H. Lalchungnunga & [Kenneth Aldape](https://scholar.google.com/citations?user=vZM9E_AAAAAJ&hl=en) · [doi:10.1016/S1470-2045(25)00661-8](https://doi.org/10.1016/S1470-2045%2825%2900661-8)
 
 | | |
 | --- | --- |
