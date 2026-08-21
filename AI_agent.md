@@ -1,547 +1,460 @@
+**Maintainer:** @[Meng Wei](https://weimengmeng1999.github.io/meng-wei.github.io/) @[ Feng Lan](https://ai-healthcare-portfolio.hushed-dove-3131.chatgpt.site)
+
+**Deep-read Paper Cards:** [Nature Paper cards for all 32 entries](https://github.com/medfm-flare/AwesomeBiomedicalAI/tree/ai_agent/paper_cards)
+
 # AI Agents
 
 Agentic, autonomous and tool-using AI systems.
 
-**Maintainer:** @[Meng Wei](https://weimengmeng1999.github.io/meng-wei.github.io/) @[ Feng Lan](https://ai-healthcare-portfolio.hushed-dove-3131.chatgpt.site)
+| Date | Title & Links | First & Last Authors |
+| --- | --- | --- |
+| 202607 | Pathology-CoT: learning visual chain-of-thought agents from expert whole-slide image diagnosis behaviour (Nat. Biomed. Eng.) [[paper]](https://www.nature.com/articles/s41551-026-01739-y) [[code]](https://github.com/zhihuanglab/Pathology-CoT) [[Paper Card]](https://github.com/medfm-flare/AwesomeBiomedicalAI/tree/ai_agent/paper_cards/01_2026-07_Pathology-CoT) | [Sheng Wang](https://scholar.google.com/scholar?q=%22Sheng+Wang%22+Pathology-CoT) & [Zhi Huang](https://orcid.org/0000-0001-6982-8285) |
+| 202607 | Capable language models can outgrow the benefits of collaboration (Nat. Mach. Intell.) [[paper]](https://www.nature.com/articles/s42256-026-01268-y) [[Paper Card]](https://github.com/medfm-flare/AwesomeBiomedicalAI/tree/ai_agent/paper_cards/02_2026-07_Multi-Agent_Architectures) | [Yubin Kim](https://scholar.google.com/citations?user=tYK2WmQAAAAJ&hl=en) & [Xin Liu](https://scholar.google.com/citations?user=p9F83HoAAAAJ&hl=en) |
+| 202607 | Autonomous biomedical research with an artificial intelligence agent (Science) [[paper]](https://www.science.org/doi/10.1126/science.adz4351) [[code]](https://github.com/snap-stanford/biomni) [[Paper Card]](https://github.com/medfm-flare/AwesomeBiomedicalAI/tree/ai_agent/paper_cards/03_2026-07_Biomni) | [Kexin Huang](https://scholar.google.com/citations?user=ogEXTOgAAAAJ&hl=en) & [Jure Leskovec](https://scholar.google.com/citations?hl=en&user=Q_kKkIUAAAAJ) |
+| 202606 | Towards conversational artificial intelligence for disease management (Nature) [[paper]](https://www.nature.com/articles/s41586-026-10764-5) [[Paper Card]](https://github.com/medfm-flare/AwesomeBiomedicalAI/tree/ai_agent/paper_cards/04_2026-06_AMIE) | [Valentin Liévin](https://orcid.org/0000-0002-6096-9564) & [Mike Schaekermann](https://orcid.org/0000-0002-1735-9680) |
+| 202606 | Towards autonomous medical artificial intelligence agents (Nature) [[paper]](https://www.nature.com/articles/s41586-026-10675-5) [[code]](https://github.com/Dyke-F/MIRA/tree/main/src) [[replication]](https://github.com/weimengmeng1999/MIRA) [[Paper Card]](https://github.com/medfm-flare/AwesomeBiomedicalAI/tree/ai_agent/paper_cards/05_2026-06_MIRA) | [Dyke Ferber](https://scholar.google.com/citations?user=r7JtdUcAAAAJ&hl=en) & [Jakob Nikolas Kather](https://scholar.google.com/citations?user=w6-uFdEAAAAJ&hl=en) |
+| 202606 | Optimizing genomics-aware clinical agents in precision oncology (npj Syst. Biol. Appl.) [[paper]](https://www.nature.com/articles/s41540-026-00753-9) [[Paper Card]](https://github.com/medfm-flare/AwesomeBiomedicalAI/tree/ai_agent/paper_cards/06_2026-06_Genomics-Aware_Clinical_Agent) | [Rangan Das](https://scholar.google.com/scholar?q=%22Rangan+Das%22+genomics+oncology) & [Debarka Sengupta](https://scholar.google.com/scholar?q=%22Debarka+Sengupta%22) |
+| 202605 | Accelerating scientific discovery with Co-Scientist (Nature) [[paper]](https://www.nature.com/articles/s41586-026-10644-y) [[Paper Card]](https://github.com/medfm-flare/AwesomeBiomedicalAI/tree/ai_agent/paper_cards/07_2026-05_Co-Scientist) | [Juraj Gottweis](https://scholar.google.com/citations?user=jVRSR5AAAAAJ&hl=en) & [Vivek Natarajan](https://scholar.google.com/citations?user=gZiW7IAAAAAJ&hl=en) |
+| 202605 | A multi-agent system for automating scientific discovery (Nature) [[paper]](https://www.nature.com/articles/s41586-026-10652-y) [[code]](https://github.com/Future-House/robin) [[Paper Card]](https://github.com/medfm-flare/AwesomeBiomedicalAI/tree/ai_agent/paper_cards/08_2026-05_Robin) | [Ali E. Ghareeb](https://scholar.google.com/citations?hl=en&user=dlWmbncAAAAJ) & [Samuel G. Rodriques](https://scholar.google.com/citations?user=yGKwWGEAAAAJ&hl=en) |
+| 202605 | An AI system to help scientists write expert-level empirical software (Nature) [[paper]](https://www.nature.com/articles/s41586-026-10658-6) [[code]](https://github.com/google-research/era) [[Paper Card]](https://github.com/medfm-flare/AwesomeBiomedicalAI/tree/ai_agent/paper_cards/09_2026-05_ERA) | [Eser Aygün (Google DeepMind)](https://scholar.google.com/citations?user=mogd5nkAAAAJ&hl=en) & [Michael Brenner (Google DeepMind)](https://scholar.google.com/citations?user=ZDL6ITwAAAAJ&hl=en) |
+| 202604 | AlphaLab: Autonomous Multi-Agent Research Across Optimization Domains with Frontier LLMs (Preprint) [[paper]](https://brendanhogan.github.io/alphalab-paper/) [[code]](https://github.com/morganstanley/MSML/tree/main/projects/alpha-lab) [[Paper Card]](https://github.com/medfm-flare/AwesomeBiomedicalAI/tree/ai_agent/paper_cards/10_2026-04_AlphaLab) | [Brendan R. Hogan](https://scholar.google.com/citations?user=7Ha1788AAAAJ&hl=en) & [Yuriy Nevmyvaka](https://scholar.google.com/citations?user=Hui4EIcAAAAJ&hl=en) |
+| 202604 | An agentic AI system for automated pharmacogenomic recommendation generation (npj Digit. Med.) [[paper]](https://www.nature.com/articles/s41746-026-02590-w) [[Paper Card]](https://github.com/medfm-flare/AwesomeBiomedicalAI/tree/ai_agent/paper_cards/11_2026-04_Pharmacogenomic_Recommendation_Agent) | [Mike Zack](https://scholar.google.com/scholar?q=%22Mike+Zack%22+pharmacogenomic) & [Allan Gobbs](https://scholar.google.com/scholar?q=%22Allan+Gobbs%22) |
+| 202604 | EcoRxAgent: an AI agent for generating economically substitutable prescriptions (npj Digit. Med.) [[paper]](https://www.nature.com/articles/s41746-026-02612-7) [[code]](https://github.com/AllminerLab/EcoRxAgent) [[Paper Card]](https://github.com/medfm-flare/AwesomeBiomedicalAI/tree/ai_agent/paper_cards/12_2026-04_EcoRxAgent) | [Cheng Li](https://scholar.google.com/scholar?q=%22Cheng+Li%22+EcoRxAgent) & [Tao Yu](https://scholar.google.com/scholar?q=%22Tao+Yu%22+EcoRxAgent) |
+| 202604 | An agentic framework for autonomous scientific discovery in cancer pathology (Nat. Med.) [[paper]](https://www.nature.com/articles/s41591-026-04357-y) [[code]](https://github.com/cpath-ukk/SPARK) [[Paper Card]](https://github.com/medfm-flare/AwesomeBiomedicalAI/tree/ai_agent/paper_cards/13_2026-04_SPARK) | [Florian Trost](https://scholar.google.com/citations?user=GQnzSMoAAAAJ&hl=de), co-first with Bide Zhang & [Yuri Tolkach](https://scholar.google.com/citations?hl=en&user=bshxyrcAAAAJ&utm_source=chatgpt.com) |
+| 202604 | AgentClinic: a multimodal benchmark for tool-using clinical AI agents (npj Digit. Med.) [[paper]](https://www.nature.com/articles/s41746-026-02674-7) [[code]](https://github.com/SamuelSchmidgall/AgentClinic) [[Paper Card]](https://github.com/medfm-flare/AwesomeBiomedicalAI/tree/ai_agent/paper_cards/14_2026-04_AgentClinic) | [Samuel Schmidgall](https://scholar.google.com/citations?user=bQDooZEAAAAJ&hl=en) & [Michael Moor](https://scholar.google.com/citations?user=Q_Y5csgAAAAJ&hl=en) |
+| 202603 | Empowering AI data scientists using a multi-agent LLM framework with self-evolving capabilities for autonomous, tool-aware biomedical data analyses (Nat. Biomed. Eng.) [[paper]](https://www.nature.com/articles/s41551-026-01634-6) [[code]](https://github.com/BOBQWERA/BioMedAgent) [[Paper Card]](https://github.com/medfm-flare/AwesomeBiomedicalAI/tree/ai_agent/paper_cards/15_2026-03_BioMedAgent) | [Dechao Bu](https://orcid.org/0000-0002-8833-5432) & [Yi Zhao](https://orcid.org/0000-0001-6046-8420) |
+| 202603 | Towards end-to-end automation of AI research (Nature) [[paper]](https://www.nature.com/articles/s41586-026-10265-5) [[code]](https://github.com/SakanaAI/AI-Scientist?tab=readme-ov-file) [[Paper Card]](https://github.com/medfm-flare/AwesomeBiomedicalAI/tree/ai_agent/paper_cards/16_2026-03_AI_Scientist) | [Chris Lu](https://scholar.google.com/citations?user=4WLoIRsAAAAJ&hl=en) & [Jeff Clune](https://scholar.google.com/citations?hl=en&user=5TZ7f5wAAAAJ&view_op=list_works&sortby=pubdate) |
+| 202603 | CellVoyager: AI CompBio agent generates new insights by autonomously analyzing biological data (Nat. Methods) [[paper]](https://www.nature.com/articles/s41592-026-03029-6) [[code]](https://github.com/zou-group/CellVoyager) [[Paper Card]](https://github.com/medfm-flare/AwesomeBiomedicalAI/tree/ai_agent/paper_cards/17_2026-03_CellVoyager) | [Samuel Alber](https://scholar.google.com/scholar?q=%22Samuel+Alber%22+CellVoyager) & [James Zou](https://orcid.org/0000-0001-8880-4764) |
+| 202603 | Orchestrated multi agents sustain accuracy under clinical-scale workloads compared to a single agent (npj Health Syst.) [[paper]](https://www.nature.com/articles/s44401-026-00077-0) [[Paper Card]](https://github.com/medfm-flare/AwesomeBiomedicalAI/tree/ai_agent/paper_cards/18_2026-03_Orchestrated_Clinical_Agents) | [Eyal Klang](https://scholar.google.com/scholar?q=%22Eyal+Klang%22) & [Girish N. Nadkarni](https://scholar.google.com/scholar?q=%22Girish+N.+Nadkarni%22) |
+| 202602 | PantheonOS: An Evolvable Multi-Agent Framework for Automatic Genomics Discovery (bioRxiv) [[paper]](https://www.biorxiv.org/content/10.64898/2026.02.26.707870v1.full.pdf) [[code]](https://github.com/aristoteleo/PantheonOS) [[Paper Card]](https://github.com/medfm-flare/AwesomeBiomedicalAI/tree/ai_agent/paper_cards/19_2026-02_PantheonOS) | [Weize Xu](https://scholar.google.com/citations?user=rHdkQ-cAAAAJ&hl=en) & [Xiaojie Qiu](https://scholar.google.com/citations?user=XlMd8TAAAAAJ&hl=en) |
+| 202602 | An agentic system for rare disease diagnosis with traceable reasoning (Nature) [[paper]](https://www.nature.com/articles/s41586-025-10097-9) [[code]](https://github.com/MAGIC-AI4Med/DeepRare) [[Paper Card]](https://github.com/medfm-flare/AwesomeBiomedicalAI/tree/ai_agent/paper_cards/20_2026-02_DeepRare) | [Weike Zhao](https://orcid.org/0009-0001-2954-1797) & [Weidi Xie](https://orcid.org/0009-0002-8609-6826) |
+| 202602 | Benchmarking large language model-based agent systems for clinical decision tasks (npj Digit. Med.) [[paper]](https://www.nature.com/articles/s41746-026-02443-6) [[Paper Card]](https://github.com/medfm-flare/AwesomeBiomedicalAI/tree/ai_agent/paper_cards/21_2026-02_Clinical_Agent_Benchmark) | [Yunsong Liu](https://scholar.google.com/citations?user=_l_P0EEAAAAJ&hl=en) & [Jakob Nikolas Kather](https://scholar.google.com/citations?user=w6-uFdEAAAAJ&hl=en) |
+| 202601 | An agentic AI framework for ingestion and standardization of single-cell RNA-seq data analysis (npj Artif. Intell.) [[paper]](https://www.nature.com/articles/s44387-025-00064-0) [[code]](https://github.com/AstraZeneca/cellatria) [[Paper Card]](https://github.com/medfm-flare/AwesomeBiomedicalAI/tree/ai_agent/paper_cards/22_2026-01_CellAtria) | [Nima Nouri](https://scholar.google.com/scholar?q=%22Nima+Nouri%22+CellAtria) & [Virginia Savova](https://scholar.google.com/scholar?q=%22Virginia+Savova%22) |
+| 202601 | Transforming wearable data into personal health insights using large language model agents (Nat. Commun.) [[paper]](https://www.nature.com/articles/s41467-025-67922-y) [[Paper Card]](https://github.com/medfm-flare/AwesomeBiomedicalAI/tree/ai_agent/paper_cards/23_2026-01_PHIA) | [Mike A. Merrill](https://scholar.google.com/citations?user=UtBcznsAAAAJ&hl=en) & [Xin Liu](https://scholar.google.com/citations?user=p9F83HoAAAAJ&hl=en) |
+| 202601 | Making large language models reliable data science programming copilots for biomedical research (Nat. Biomed. Eng.) [[paper]](https://www.nature.com/articles/s41551-025-01587-2) [[code]](https://github.com/RyanWangZf/BioDSA) [[Paper Card]](https://github.com/medfm-flare/AwesomeBiomedicalAI/tree/ai_agent/paper_cards/24_2026-01_BioDSA) | [Zifeng Wang](https://scholar.google.co.uk/citations?user=kMlWwTAAAAAJ&hl=en&oi=sra) & [Jimeng Sun](https://scholar.google.co.uk/citations?user=9jmmp5sAAAAJ&hl=en&oi=ao) |
+| 202512 | Simulated patient systems powered by large language model-based AI agents offer potential for transforming medical education (Commun. Med.) [[paper]](https://www.nature.com/articles/s43856-025-01283-x) [[code]](https://github.com/huiziy/AIPatient) [[Paper Card]](https://github.com/medfm-flare/AwesomeBiomedicalAI/tree/ai_agent/paper_cards/25_2025-12_AIPatient) | [Huizi Yu](https://scholar.google.com/scholar?q=%22Huizi+Yu%22+AIPatient) & [Lizhou Fan](https://orcid.org/0000-0002-7962-9113) |
+| 202511 | BioAgents: Bridging the gap in bioinformatics analysis with multi-agent systems (Sci. Rep.) [[paper]](https://www.nature.com/articles/s41598-025-25919-z) [[code]](https://github.com/microsoft/bioinformagus) [[Paper Card]](https://github.com/medfm-flare/AwesomeBiomedicalAI/tree/ai_agent/paper_cards/26_2025-11_BioAgents) | [Nikita Mehandru](https://scholar.google.com/scholar?q=%22Nikita+Mehandru%22) & [Venkat S. Malladi](https://scholar.google.com/scholar?q=%22Venkat+S.+Malladi%22) |
+| 202510 | Evaluating large language model agents for automation of atomic force microscopy (Nat. Commun.) [[paper]](https://www.nature.com/articles/s41467-025-64105-7) [[code]](https://github.com/M3RG-IITD/AILA) [[Paper Card]](https://github.com/medfm-flare/AwesomeBiomedicalAI/tree/ai_agent/paper_cards/27_2025-10_AILA) | [Indrajeet Mandal](https://scholar.google.com/citations?user=v_747TcAAAAJ&hl=en) & [N. M. Anoop Krishnan](https://scholar.google.com/citations?user=fGnjHcEAAAAJ&hl=en) |
+| 202507 | Accelerating primer design for amplicon sequencing using large language model-powered agents (Nat. Biomed. Eng.) [[paper]](https://www.nature.com/articles/s41551-025-01455-z) [[code]](https://github.com/melobio/PrimeGen) [[Paper Card]](https://github.com/medfm-flare/AwesomeBiomedicalAI/tree/ai_agent/paper_cards/28_2025-07_PrimeGen) | [Yi Wang](https://orcid.org/0000-0003-3722-1176) & [Meng Yang](https://orcid.org/0000-0001-5630-6357) |
+| 202507 | CRISPR-GPT for agentic automation of gene-editing experiments (Nat. Biomed. Eng.) [[paper]](https://www.nature.com/articles/s41551-025-01463-z) [[code]](https://github.com/cong-lab/crispr-gpt-pub) [[Paper Card]](https://github.com/medfm-flare/AwesomeBiomedicalAI/tree/ai_agent/paper_cards/29_2025-07_CRISPR-GPT) | [Yuanhao Qu](https://orcid.org/0000-0002-7574-259X) & [Le Cong](https://orcid.org/0000-0003-4725-8714) |
+| 202507 | The Virtual Lab of AI agents designs new SARS-CoV-2 nanobodies (Nature) [[paper]](https://www.nature.com/articles/s41586-025-09442-9) [[code]](https://github.com/zou-group/virtual_lab) [[Paper Card]](https://github.com/medfm-flare/AwesomeBiomedicalAI/tree/ai_agent/paper_cards/30_2025-07_Virtual_Lab) | [Kyle Swanson](https://orcid.org/0000-0002-7385-7844) & [James Zou](https://orcid.org/0000-0001-8880-4764) |
+| 202507 | GeneAgent: self-verification language agent for gene-set analysis using domain databases (Nat. Methods) [[paper]](https://www.nature.com/articles/s41592-025-02748-6) [[code]](https://github.com/ncbi-nlp/GeneAgent) [[Paper Card]](https://github.com/medfm-flare/AwesomeBiomedicalAI/tree/ai_agent/paper_cards/31_2025-07_GeneAgent) | [Zhizheng Wang](https://orcid.org/0000-0003-2584-136X) & [Zhiyong Lu](https://orcid.org/0000-0001-9998-916X) |
+| 202312 | Autonomous chemical research with large language models (Nature) [[paper]](https://www.nature.com/articles/s41586-023-06792-0) [[code]](https://github.com/gomesgroup/coscientist) [[Paper Card]](https://github.com/medfm-flare/AwesomeBiomedicalAI/tree/ai_agent/paper_cards/32_2023-12_Coscientist) | [Daniil A. Boiko](https://orcid.org/0000-0003-4140-4645) & [Gabe Gomes](https://orcid.org/0000-0002-8235-5969) |
 
-**Notebook:** [NotebookLM](https://notebook.google.com/notebook/b25c668a-4926-45b8-bca3-329885628a36)
+Click a title below for model/backbone/training/task details.
 
-**27 entries** · [Back to index](README.md)
-
-| Date | Model | Venue | Pre-training | Data usage | Downstream tasks |
-| --- | --- | --- | --- | --- | --- |
-| 2026-07 | [Multi-Agent Architectures](#model-multi-agent-architectures-202607) | Nat. Mach. Intell. | N/A | 6 benchmarks (eval) | benchmarking, agent coordination |
-| 2026-07 | [Biomni](#model-biomni-202607) | Science | RL fine-tuning, training-free tool use | agent trajectories (train); 433 instances (eval) | CRISPR planning, scRNA-seq annotation, ADMET prediction +2 |
-| 2026-07 | [AI X-ray Scientist](#model-ai-x-ray-scientist-202607) | Nat. Mach. Intell. | training-free | — | X-ray sample alignment, closed-loop experimentation |
-| 2026-06 | [MIRA](#model-mira-202606) | Nature | training-free | 500+ ED cases (eval) | history-taking, diagnosis, treatment planning +2 |
-| 2026-06 | [AMIE](#model-amie-202606) | Nature | training-free | RxQA + 100 cases (eval) | disease management reasoning, medication selection |
-| 2026-05 | [Co-Scientist](#model-co-scientist-202605) | Nature | test-time compute scaling | — | hypothesis generation, research proposals |
-| 2026-05 | [Robin](#model-robin-202605) | Nature | training-free | — | hypothesis generation, assay selection, candidate proposal +1 |
-| 2026-05 | [ERA](#model-era-202605) | Nature | tree search | — | bioinformatics method discovery, epidemiological forecasting |
-| 2026-05 | [CIPHER](#model-cipher-202605) | Nat. Commun. | N/A | — | process monitoring, autonomous machine control |
-| 2026-05 | [Autonomous Interaction](#model-autonomous-interaction-202605) | Nat. Commun. | N/A | — | multi-robot task negotiation, dynamic team coordination |
-| 2026-04 | [AlphaLab](#model-alphalab-202604) | Preprint | N/A | — | general research automation |
-| 2026-04 | [SPARK](#model-spark-202604) | Nat. Med. | training-free (agent); pretrained preprocessing models | 5.4K patients (eval) | biomarker discovery, risk stratification, spatial biology +2 |
-| 2026-04 | [PhenoAssistant](#model-phenoassistant-202604) | Nat. Commun. | training-free | — | phenotype extraction, data visualization, model training |
-| 2026-03 | [BioMedAgent](#model-biomedagent-202603) | Nat. Biomed. Eng. | N/A | — | bioinformatics analysis |
-| 2026-03 | [AI Scientist](#model-ai-scientist-202603) | Nature | N/A | — | general research automation |
-| 2026-02 | [PantheonOS](#model-pantheonos-202602) | bioRxiv | RL; integrated scFM pretraining (generative, masked gene prediction) | CELLxGENE subset (train) | gene panel design, signaling pathway mapping |
-| 2026-02 | [DeepRare](#model-deeprare-202602) | Nature | training-free | 9 datasets, 2.9K diseases (eval) | rare disease diagnosis, traceable reasoning |
-| 2026-01 | [PHIA](#model-phia-202601) | Nat. Commun. | N/A | 30K users, synthetic (eval) | wearable-data QA, anomaly detection |
-| 2026-01 | [BioDSA](#model-biodsa-202601) | Nat. Biomed. Eng. | N/A | — | biomedical data science analysis |
-| 2025-12 | [SciSciGPT](#model-sciscigpt-202512) | Nat. Comput. Sci. | training-free | — | literature analysis, science-of-science workflows |
-| 2025-12 | [CASSIA](#model-cassia-202512) | Nat. Commun. | training-free | 970+ cell populations (eval) | cell type annotation, quality control |
-| 2025-10 | [AILA](#model-aila-202510) | Nat. Commun. | N/A | 100 AFM tasks (eval) | AFM calibration, mechanical property measurement +2 |
-| 2025-10 | [AgentMD](#model-agentmd-202510) | Nat. Commun. | training-free | RiskQA + 698 ED notes (eval) | clinical risk calculator curation, risk prediction |
-| 2025-09 | [MAP](#model-map-202509) | Nat. Commun. | training-free | PlanBench + planning tasks (eval) | multi-step planning, task decomposition |
-| 2025-08 | [SciToolAgent](#model-scitoolagent-202508) | Nat. Comput. Sci. | training-free | — | multi-tool scientific workflow orchestration |
-| 2025-07 | [Virtual Lab](#model-virtual-lab-202507) | Nature | training-free | — | nanobody design, binding-profile evaluation |
-| 2025-06 | [Oncology AI Agent](#model-oncology-ai-agent-202506) | Nat. Cancer | training-free (agent); pretrained tool models | 20 patient cases (eval) | oncology decision support, tool selection +1 |
-
-## Details
-
-Click a model to expand its record.
-
-<a id="model-multi-agent-architectures-202607"></a>
 <details>
-<summary><b>Multi-Agent Architectures</b> — Capable language models can outgrow the benefits of collaboration <i>(Nat. Mach. Intell. 2026-07)</i></summary>
+<summary><b>Pathology-CoT: learning visual chain-of-thought agents from expert whole-slide image diagnosis behaviour</b> — 202607, Nat. Biomed. Eng.</summary>
 
-**[Capable language models can outgrow the benefits of collaboration](https://www.nature.com/articles/s42256-026-01268-y)**
+**Paper Card:** [Open the deep-read folder](https://github.com/medfm-flare/AwesomeBiomedicalAI/tree/ai_agent/paper_cards/01_2026-07_Pathology-CoT)
 
-*Nat. Mach. Intell.* · 2026-07 · [Yubin Kim](https://scholar.google.com/citations?user=tYK2WmQAAAAJ&hl=en) & [Xin Liu](https://scholar.google.com/citations?user=p9F83HoAAAAJ&hl=en)
-
-| | |
-| --- | --- |
-| **Backbone** | Single-agent vs. multi-agent architectures (independent, centralized, decentralized and hybrid coordination), instantiated with OpenAI, Google Gemini and Anthropic frontier LLMs across capability tiers |
-| **Pre-training** | `N/A`<br>No new models trained; a comparative study of coordination architectures across LLM capability tiers. |
-| **Data usage** | N/A; evaluated on six agentic benchmarks: BrowseComp-Plus, Finance Agent, PlanCraft, WorkBench, SWE-bench Verified, Terminal-Bench. |
-| **Downstream tasks** | `benchmarking`, `agent coordination`<br>Shows that multi-agent collaboration's benefit is task-contingent and shrinks as base-model capability grows: large gains on parallelizable tasks (e.g., finance) but degraded performance on sequential tasks (e.g., planning) once models are sufficiently capable. |
-| **Modalities** | `text` |
+- **Model:** Pathology-CoT framework and Pathology-o3
+- **Network Backbone:** Two-stage visual agent combining a learned behaviour predictor for region-of-interest navigation with vision-language-model reasoning
+- **Pre-training Method:** Supervised training of the behaviour predictor from expert whole-slide-image viewing trajectories and reviewed visual rationales
+- **Training Data:** Expert pathologist navigation logs, inspection regions and human-reviewed rationales from colorectal lymph-node and dermatopathology whole-slide-image cohorts
+- **Downstream Tasks:** Autonomous whole-slide-image navigation, suspicious-region localization, behaviour-guided diagnostic reasoning and explainable cancer diagnosis
 
 </details>
 
-<a id="model-biomni-202607"></a>
 <details>
-<summary><b>Biomni</b> — Autonomous biomedical research with an artificial intelligence agent <i>(Science 2026-07)</i></summary>
+<summary><b>Capable language models can outgrow the benefits of collaboration</b> — 202607, Nat. Mach. Intell.</summary>
 
-**[Autonomous biomedical research with an artificial intelligence agent](https://www.science.org/doi/10.1126/science.adz4351)**
+**Paper Card:** [Open the deep-read folder](https://github.com/medfm-flare/AwesomeBiomedicalAI/tree/ai_agent/paper_cards/02_2026-07_Multi-Agent_Architectures)
 
-*Science* · 2026-07 · [Kexin Huang](https://scholar.google.com/citations?user=ogEXTOgAAAAJ&hl=en) & [Jure Leskovec](https://scholar.google.com/citations?hl=en&user=Q_kKkIUAAAAJ)
-
-| | |
-| --- | --- |
-| **Backbone** | Configurable LLM agent (supports Claude, GPT, Gemini and other providers); Biomni-R0, a dedicated reasoning model for biology, is built on Qwen-32B |
-| **Pre-training** | `RL fine-tuning`, `training-free tool use`<br>Biomni-R0 is fine-tuned via reinforcement learning from agent interaction data; the base Biomni agent is training-free tool use over a configurable LLM backbone. |
-| **Data usage** | RL training data from agent interaction trajectories; evaluated on Biomni-Eval1 (433 instances spanning 10 biological reasoning tasks). |
-| **Downstream tasks** | `CRISPR screen planning`, `scRNA-seq annotation`, `ADMET prediction`, `GWAS analysis`, `rare disease diagnosis`, `lab-bench QA`<br>CRISPR screen planning and gene identification, scRNA-seq annotation and hypothesis generation, ADMET property prediction, GWAS analysis and variant prioritization, rare disease diagnosis, and lab-bench Q&A. |
-| **Modalities** | `text`, `omics data` |
-| **Code** | [github.com/snap-stanford/biomni](https://github.com/snap-stanford/biomni) |
+- **Model:** Single-agent vs. multi-agent architectures (independent, centralized, decentralized, and hybrid coordination)
+- **Network Backbone:** OpenAI, Google Gemini, and Anthropic frontier LLMs across capability tiers
+- **Pre-training Method:** N/A; no new models trained
+- **Training Data:** N/A; evaluated on six agentic benchmarks: BrowseComp-Plus, Finance Agent, PlanCraft, WorkBench, SWE-bench Verified, Terminal-Bench
+- **Downstream Tasks:** Shows that multi-agent collaboration's benefit is task-contingent and shrinks as base-model capability grows: large gains on parallelizable tasks (e.g., finance) but degraded performance on sequential tasks (e.g., planning) once models are sufficiently capable
 
 </details>
 
-<a id="model-ai-x-ray-scientist-202607"></a>
 <details>
-<summary><b>AI X-ray Scientist</b> — An agentic artificially intelligent X-ray scientist <i>(Nat. Mach. Intell. 2026-07)</i></summary>
+<summary><b>Autonomous biomedical research with an artificial intelligence agent</b> — 202607, Science</summary>
 
-**[An agentic artificially intelligent X-ray scientist](https://www.nature.com/articles/s42256-026-01261-5)**
+**Paper Card:** [Open the deep-read folder](https://github.com/medfm-flare/AwesomeBiomedicalAI/tree/ai_agent/paper_cards/03_2026-07_Biomni)
 
-*Nat. Mach. Intell.* · 2026-07 · [Zhantao Chen](https://scholar.google.com/citations?user=s_qynKoAAAAJ&hl=en) & [Arun Bansil](https://scholar.google.com/citations?user=SM8HyJ8AAAAJ&hl=en)
-
-| | |
-| --- | --- |
-| **Backbone** | LLM-based agent using structured tool use via the Model Context Protocol (MCP), developed on a virtual six-circle-diffractometer beamline simulator before deployment on a real synchrotron beamline |
-| **Pre-training** | `training-free`<br>No new model trained; existing LLM guided via MCP tool-calling over experimental-control tools. |
-| **Data usage** | —; validated via the virtual beamline simulator and real-beamline deployment rather than a training dataset. |
-| **Downstream tasks** | `X-ray sample alignment`, `closed-loop experimentation`<br>Autonomously plans actions, executes instrument commands (motor scans, detector capture), interprets observations and iterates to align single-crystal samples at an operational synchrotron beamline — a first step toward self-driving labs. |
-| **Modalities** | `text`, `detector images`, `instrument control` |
+- **Model:** Biomni, plus Biomni-R0 (a dedicated reasoning model for biology)
+- **Network Backbone:** Configurable LLM agent (supports Claude, GPT, Gemini, and other providers); Biomni-R0 is built on Qwen-32B
+- **Pre-training Method:** Biomni-R0 is fine-tuned via reinforcement learning from agent interaction data; the base Biomni agent is training-free tool use over a configurable LLM backbone
+- **Training Data:** RL training data from agent interaction trajectories; evaluated on Biomni-Eval1 (433 instances spanning 10 biological reasoning tasks)
+- **Downstream Tasks:** CRISPR screen planning and gene identification, scRNA-seq annotation and hypothesis generation, ADMET property prediction, GWAS analysis and variant prioritization, rare disease diagnosis, and lab-bench Q&A
 
 </details>
 
-<a id="model-mira-202606"></a>
 <details>
-<summary><b>MIRA</b> — Towards autonomous medical artificial intelligence agents <i>(Nature 2026-06)</i></summary>
+<summary><b>Towards conversational artificial intelligence for disease management</b> — 202606, Nature</summary>
 
-**[Towards autonomous medical artificial intelligence agents](https://www.nature.com/articles/s41586-026-10675-5)**
+**Paper Card:** [Open the deep-read folder](https://github.com/medfm-flare/AwesomeBiomedicalAI/tree/ai_agent/paper_cards/04_2026-06_AMIE)
 
-*Nature* · 2026-06 · [Dyke Ferber](https://scholar.google.com/citations?user=r7JtdUcAAAAJ&hl=en) & [Jakob Nikolas Kather](https://scholar.google.com/citations?user=w6-uFdEAAAAJ&hl=en)
-
-| | |
-| --- | --- |
-| **Backbone** | LLM-based autonomous agent with 11 tools, operating in a sandboxed, FHIR-compliant EHR environment (ICD, LOINC, ATC, NDC, RxNorm, SNOMED-CT coding) |
-| **Pre-training** | `training-free`<br>No new model trained; MIRA (Medical Intelligence for Reasoning and Action) is an agent framework over an existing LLM backbone. |
-| **Data usage** | N/A; evaluated on >500 MIMIC-IV emergency department cases spanning 8 diagnoses. |
-| **Downstream tasks** | `history-taking`, `diagnosis`, `treatment planning`, `medication prescribing`, `admission decisions`<br>Autonomous EHR-integrated clinical decision-making: history-taking via patient-agent dialogue, ordering/interpreting labs, imaging and microbiology tests, differential diagnosis generation, treatment planning, medication prescribing, procedure scheduling and admission decisions. |
-| **Modalities** | `text`, `EHR data` |
-| **Code** | [github.com/Dyke-F/MIRA](https://github.com/Dyke-F/MIRA/tree/main/src) |
-| **Replication** | [github.com/weimengmeng1999/MIRA](https://github.com/weimengmeng1999/MIRA) |
+- **Model:** AMIE (Articulate Medical Intelligence Explorer) for longitudinal disease management
+- **Network Backbone:** Gemini-based agentic system using long-context in-context retrieval and structured reasoning over clinical guidelines and drug formularies
+- **Pre-training Method:** N/A
+- **Training Data:** N/A
+- **Downstream Tasks:** Multi-visit clinical dialogue, disease-progression and treatment-response reasoning, investigation and care-plan selection, and medication prescription support
 
 </details>
 
-<a id="model-amie-202606"></a>
 <details>
-<summary><b>AMIE</b> — Towards conversational artificial intelligence for disease management <i>(Nature 2026-06)</i></summary>
+<summary><b>Towards autonomous medical artificial intelligence agents</b> — 202606, Nature</summary>
 
-**[Towards conversational artificial intelligence for disease management](https://www.nature.com/articles/s41586-026-10764-5)**
+**Paper Card:** [Open the deep-read folder](https://github.com/medfm-flare/AwesomeBiomedicalAI/tree/ai_agent/paper_cards/05_2026-06_MIRA)
 
-*Nature* · 2026-06 · [Anil Palepu](https://research.google/people/anilpalepu/) & [Mike Schaekermann](https://scholar.google.com/citations?hl=en&user=mwj_ldQAAAAJ)
-
-| | |
-| --- | --- |
-| **Backbone** | LLM-based agentic system built on Gemini's long-context capabilities, combining in-context retrieval with structured reasoning |
-| **Pre-training** | `training-free`<br>No fine-tuning; grounds reasoning in clinical guidelines and drug formularies via in-context retrieval over the base Gemini model. |
-| **Data usage** | RxQA, a multiple-choice medication-reasoning benchmark derived from US/UK drug formularies; 100 multi-visit case scenarios aligned with UK NICE Guidance and BMJ Best Practice (eval). |
-| **Downstream tasks** | `disease management reasoning`, `medication selection`<br>Multi-visit clinical management dialogue: investigation selection, medication prescribing, and guideline-aligned reasoning; non-inferior to 21 primary care physicians in a blinded OSCE study. |
-| **Modalities** | `text` |
+- **Model:** MIRA (Medical Intelligence for Reasoning and Action)
+- **Network Backbone:** LLM-based autonomous agent with 11 tools, operating in a sandboxed, FHIR-compliant EHR environment (ICD, LOINC, ATC, NDC, RxNorm, SNOMED-CT coding)
+- **Pre-training Method:** N/A (training-free agent; no new model trained)
+- **Training Data:** N/A; evaluated on >500 MIMIC-IV emergency department cases spanning 8 diagnoses
+- **Downstream Tasks:** Autonomous EHR-integrated clinical decision-making: history-taking via patient-agent dialogue, ordering/interpreting labs, imaging and microbiology tests, differential diagnosis generation, treatment planning, medication prescribing, procedure scheduling, and admission decisions
 
 </details>
 
-<a id="model-co-scientist-202605"></a>
 <details>
-<summary><b>Co-Scientist</b> — Accelerating scientific discovery with Co-Scientist <i>(Nature 2026-05)</i></summary>
+<summary><b>Optimizing genomics-aware clinical agents in precision oncology</b> — 202606, npj Syst. Biol. Appl.</summary>
 
-**[Accelerating scientific discovery with Co-Scientist](https://www.nature.com/articles/s41586-026-10644-y)**
+**Paper Card:** [Open the deep-read folder](https://github.com/medfm-flare/AwesomeBiomedicalAI/tree/ai_agent/paper_cards/06_2026-06_Genomics-Aware_Clinical_Agent)
 
-*Nature* · 2026-05 · [Juraj Gottweis](https://scholar.google.com/citations?user=jVRSR5AAAAAJ&hl=en) & [Vivek Natarajan](https://scholar.google.com/citations?user=gZiW7IAAAAAJ&hl=en)
-
-| | |
-| --- | --- |
-| **Backbone** | Multi-agent system built on Gemini; specialized agents (Generation, Reflection, Ranking, Evolution, Proximity, Meta-review) coordinated by a Supervisor agent with an asynchronous task-execution framework |
-| **Pre-training** | `test-time compute scaling`<br>Built on pretrained Gemini; uses tournament-based self-improving hypothesis evolution rather than additional model training. |
-| **Data usage** | N/A; grounded via literature search, simulation review and web/tool use — no fine-tuning dataset. |
-| **Downstream tasks** | `hypothesis generation`, `research proposals`<br>Automated scientific hypothesis generation and research-proposal formulation; validated with in vitro experiments in drug-repurposing candidate discovery for AML, synergistic combination-therapy discovery, epigenetic target identification for liver fibrosis, and explaining bacterial gene-transfer mechanisms relevant to antimicrobial resistance. |
-| **Modalities** | `text` |
+- **Model:** gSage
+- **Network Backbone:** Workflow-orchestrated clinical agent restricted to 20 curated genomics and oncology tools backed by a versioned knowledge stack; evaluated with multiple frontier LLM backbones
+- **Pre-training Method:** N/A
+- **Training Data:** N/A
+- **Downstream Tasks:** Genomics-aware precision-oncology decision support, including guideline concordance, patient-specific molecular interpretation, recommendation generation and safety-focused reasoning
 
 </details>
 
-<a id="model-robin-202605"></a>
 <details>
-<summary><b>Robin</b> — A multi-agent system for automating scientific discovery <i>(Nature 2026-05)</i></summary>
+<summary><b>Accelerating scientific discovery with Co-Scientist</b> — 202605, Nature</summary>
 
-**[A multi-agent system for automating scientific discovery](https://www.nature.com/articles/s41586-026-10652-y)**
+**Paper Card:** [Open the deep-read folder](https://github.com/medfm-flare/AwesomeBiomedicalAI/tree/ai_agent/paper_cards/07_2026-05_Co-Scientist)
 
-*Nature* · 2026-05 · [Ali E. Ghareeb](https://scholar.google.com/citations?hl=en&user=dlWmbncAAAAJ) & [Samuel G. Rodriques](https://scholar.google.com/citations?user=yGKwWGEAAAAJ&hl=en)
-
-| | |
-| --- | --- |
-| **Backbone** | Multi-agent LLM system orchestrating Crow (concise literature review), Falcon (deep literature synthesis for candidate evaluation) and Finch (autonomous bioinformatic data analysis) sub-agents |
-| **Pre-training** | `training-free`<br>Agents use LLM reasoning and tool use rather than new model training. |
-| **Data usage** | N/A; validated via a lab-in-the-loop experimental workflow on dry age-related macular degeneration (dAMD). |
-| **Downstream tasks** | `hypothesis generation`, `assay selection`, `candidate proposal`, `data interpretation`<br>Autonomous hypothesis generation, experimental assay selection, therapeutic candidate proposal, interpretation of experimental (RNA-seq) data, and iterative hypothesis refinement; identified and validated ripasudil and KL001 as RPE-phagocytosis-enhancing dAMD candidates and discovered ABCA1 upregulation as a follow-on target. |
-| **Modalities** | `text`, `omics data` |
-| **Code** | [github.com/Future-House/robin](https://github.com/Future-House/robin) |
+- **Model:** Co-Scientist
+- **Network Backbone:** Multi-agent system built on Gemini; specialized agents (Generation, Reflection, Ranking, Evolution, Proximity, Meta-review) coordinated by a Supervisor agent with an asynchronous task-execution framework
+- **Pre-training Method:** N/A; built on pretrained Gemini, uses tournament-based self-improving hypothesis evolution (test-time compute scaling) rather than additional model training
+- **Training Data:** N/A; grounded via literature search, simulation review, and web/tool use; no fine-tuning dataset
+- **Downstream Tasks:** Automated scientific hypothesis generation and research-proposal formulation; validated with in vitro experiments in drug-repurposing candidate discovery for AML, synergistic combination-therapy discovery, epigenetic target identification for liver fibrosis, and explaining bacterial gene-transfer mechanisms relevant to antimicrobial resistance
 
 </details>
 
-<a id="model-era-202605"></a>
 <details>
-<summary><b>ERA</b> — An AI system to help scientists write expert-level empirical software <i>(Nature 2026-05)</i></summary>
+<summary><b>A multi-agent system for automating scientific discovery</b> — 202605, Nature</summary>
 
-**[An AI system to help scientists write expert-level empirical software](https://www.nature.com/articles/s41586-026-10658-6)**
+**Paper Card:** [Open the deep-read folder](https://github.com/medfm-flare/AwesomeBiomedicalAI/tree/ai_agent/paper_cards/08_2026-05_Robin)
 
-*Nature* · 2026-05 · [Eser Aygün (Google DeepMind)](https://scholar.google.com/citations?user=mogd5nkAAAAJ&hl=en) & [Michael Brenner (Google DeepMind)](https://scholar.google.com/citations?user=ZDL6ITwAAAAJ&hl=en)
-
-| | |
-| --- | --- |
-| **Backbone** | LLM agent (ERA, Empirical Research Assistance) |
-| **Pre-training** | `tree search`<br>Uses tree search over generated programs rather than additional model training. |
-| **Data usage** | N/A |
-| **Downstream tasks** | `bioinformatics method discovery`, `epidemiological forecasting`<br>In bioinformatics, ERA discovered 40 novel methods for single-cell data analysis that outperformed the top human-developed methods on a public leaderboard. In epidemiology, ERA generated 14 models that outperformed the CDC ensemble and all other individual models for forecasting COVID-19 hospitalizations. |
-| **Modalities** | `text`, `code` |
-| **Code** | [github.com/google-research/era](https://github.com/google-research/era) |
+- **Model:** Robin (orchestrates Crow, Falcon, and Finch sub-agents)
+- **Network Backbone:** Multi-agent LLM system — Crow (concise literature review), Falcon (deep literature synthesis for candidate evaluation), Finch (autonomous bioinformatic data analysis)
+- **Pre-training Method:** N/A; agents use LLM reasoning and tool use rather than new model training
+- **Training Data:** N/A; validated via a lab-in-the-loop experimental workflow on dry age-related macular degeneration (dAMD)
+- **Downstream Tasks:** Autonomous hypothesis generation, experimental assay selection, therapeutic candidate proposal, interpretation of experimental (RNA-seq) data, and iterative hypothesis refinement; identified and validated ripasudil and KL001 as RPE-phagocytosis-enhancing dAMD candidates and discovered ABCA1 upregulation as a follow-on target
 
 </details>
 
-<a id="model-cipher-202605"></a>
 <details>
-<summary><b>CIPHER</b> — Hybrid reasoning for perception, explanation, and autonomous action in manufacturing <i>(Nat. Commun. 2026-05)</i></summary>
+<summary><b>An AI system to help scientists write expert-level empirical software</b> — 202605, Nature</summary>
 
-**[Hybrid reasoning for perception, explanation, and autonomous action in manufacturing](https://www.nature.com/articles/s41467-026-72378-9)**
+**Paper Card:** [Open the deep-read folder](https://github.com/medfm-flare/AwesomeBiomedicalAI/tree/ai_agent/paper_cards/09_2026-05_ERA)
 
-*Nat. Commun.* · 2026-05 · Christos Margadji & [Sebastian W. Pattinson](https://scholar.google.com/citations?user=I8dpTJMAAAAJ&hl=en)
-
-| | |
-| --- | --- |
-| **Backbone** | Vision-language-action (VLA) model (CIPHER: Control and Interpretation of Production via Hybrid Expertise and Reasoning) integrated with a process-expert regression model and retrieval-augmented generation, instantiated on a commercial-grade 3D printer |
-| **Pre-training** | `N/A`<br>Methods beyond the abstract are paywalled; training details of the process-expert regression component could not be confirmed from accessible sources. |
-| **Data usage** | —; no specific dataset confirmed from the accessible abstract. |
-| **Downstream tasks** | `process monitoring`, `autonomous machine control`<br>Interprets visual/textual process-monitoring inputs, explains its decisions, and autonomously generates precise machine instructions without requiring explicit annotations. |
-| **Modalities** | `image`, `text` |
+- **Model:** ERA (Empirical Research Assistance)
+- **Network Backbone:** LLM
+- **Pre-training Method:** Tree Search
+- **Training Data:** N/A
+- **Downstream Tasks:** In bioinformatics, ERA discovered 40 novel methods for single-cell data analysis that outperformed the top human-developed methods on a public leaderboard. In epidemiology, ERA generated 14 models that outperformed the CDC ensemble and all other individual models for forecasting COVID-19 hospitalizations.
 
 </details>
 
-<a id="model-autonomous-interaction-202605"></a>
 <details>
-<summary><b>Autonomous Interaction</b> — Proactive collaboration via autonomous interaction <i>(Nat. Commun. 2026-05)</i></summary>
+<summary><b>AlphaLab: Autonomous Multi-Agent Research Across Optimization Domains with Frontier LLMs</b> — 202604, Preprint</summary>
 
-**[Proactive collaboration via autonomous interaction](https://www.nature.com/articles/s41467-026-72797-8)**
+**Paper Card:** [Open the deep-read folder](https://github.com/medfm-flare/AwesomeBiomedicalAI/tree/ai_agent/paper_cards/10_2026-04_AlphaLab)
 
-*Nat. Commun.* · 2026-05 · Author list not accessible (paywalled article; no preprint or press coverage naming authors was found)
-
-| | |
-| --- | --- |
-| **Backbone** | Multi-robot team framework contrasting Fixed, Responsive and Proactive Collaboration paradigms; agents use need-driven multi-round communication to negotiate task allocation |
-| **Pre-training** | `N/A`<br>Not confirmed from accessible sources (paywalled beyond the abstract). |
-| **Data usage** | —; evaluated via real-world and simulated multi-robot tasks. |
-| **Downstream tasks** | `multi-robot task negotiation`, `dynamic team coordination`<br>Teams autonomously recruit or release members as tasks evolve, anticipating needs and reorganizing preemptively rather than only reacting to external intervention. |
-| **Modalities** | `text`, `robot control` |
+- **Model:** AlphaLab
+- **Network Backbone:** Multiagent LLM
+- **Pre-training Method:** N/A
+- **Training Data:** N/A
+- **Downstream Tasks:** General Research
 
 </details>
 
-<a id="model-alphalab-202604"></a>
 <details>
-<summary><b>AlphaLab</b> — AlphaLab: Autonomous Multi-Agent Research Across Optimization Domains with Frontier LLMs <i>(Preprint 2026-04)</i></summary>
+<summary><b>An agentic AI system for automated pharmacogenomic recommendation generation</b> — 202604, npj Digit. Med.</summary>
 
-**[AlphaLab: Autonomous Multi-Agent Research Across Optimization Domains with Frontier LLMs](https://brendanhogan.github.io/alphalab-paper/)**
+**Paper Card:** [Open the deep-read folder](https://github.com/medfm-flare/AwesomeBiomedicalAI/tree/ai_agent/paper_cards/11_2026-04_Pharmacogenomic_Recommendation_Agent)
 
-*Preprint* · 2026-04 · [Brendan R. Hogan](https://scholar.google.com/citations?user=7Ha1788AAAAJ&hl=en) & [Yuriy Nevmyvaka](https://scholar.google.com/citations?user=Hui4EIcAAAAJ&hl=en)
-
-| | |
-| --- | --- |
-| **Backbone** | Multiagent LLM |
-| **Pre-training** | `N/A` |
-| **Data usage** | N/A |
-| **Downstream tasks** | `general research automation`<br>General research across optimization domains. |
-| **Modalities** | `text` |
-| **Code** | [github.com/morganstanley/MSML](https://github.com/morganstanley/MSML/tree/main/projects/alpha-lab) |
+- **Model:** Agentic pharmacogenomic recommendation-generation system
+- **Network Backbone:** Modular LLM pipeline for literature and FDA-label retrieval, biomedical entity extraction, cross-study evidence aggregation and phenotype-specific recommendation generation
+- **Pre-training Method:** N/A
+- **Training Data:** N/A
+- **Downstream Tasks:** End-to-end pharmacogenomic evidence synthesis and generation of traceable CPIC-style gene–drug dosing recommendations
 
 </details>
 
-<a id="model-spark-202604"></a>
 <details>
-<summary><b>SPARK</b> — An agentic framework for autonomous scientific discovery in cancer pathology <i>(Nat. Med. 2026-04)</i></summary>
+<summary><b>EcoRxAgent: an AI agent for generating economically substitutable prescriptions</b> — 202604, npj Digit. Med.</summary>
 
-**[An agentic framework for autonomous scientific discovery in cancer pathology](https://www.nature.com/articles/s41591-026-04357-y)**
+**Paper Card:** [Open the deep-read folder](https://github.com/medfm-flare/AwesomeBiomedicalAI/tree/ai_agent/paper_cards/12_2026-04_EcoRxAgent)
 
-*Nat. Med.* · 2026-04 · [Florian Trost](https://scholar.google.com/citations?user=GQnzSMoAAAAJ&hl=de), co-first with Bide Zhang & [Yuri Tolkach](https://scholar.google.com/citations?hl=en&user=bshxyrcAAAAJ&utm_source=chatgpt.com)
-
-| | |
-| --- | --- |
-| **Backbone** | Agentic LLM workflow using OpenAI o1 for idea generation, OpenAI o3-mini for review / duplicate detection, and Claude Sonnet 3.5 for coding. WSI preprocessing uses GrandQC, organ-specific UNet++ / EfficientNet tissue segmentation, and HoverNext with convnextv2_large for single-cell detection and classification. |
-| **Pre-training** | `training-free` (agent), `pretrained preprocessing models`<br>SPARK (System of Pathology Agents for Research and Knowledge) itself is training-free for pathology concept generation and parameter coding, using LLM reasoning and tool-building rather than training a new image model. The preprocessing models were previously trained, including a single-cell model trained on 1,272,506 manually annotated cells. |
-| **Data usage** | No SPARK-specific image training set. Evaluation used >5,400 patients across 18 H&E histopathology cohorts and a METABRIC spatial biology breast cancer dataset with 625 primary tumors. |
-| **Downstream tasks** | `biomarker discovery`, `risk stratification`, `spatial biology analysis`, `hypothesis generation`<br>Autonomous pathology concept generation, coded parameter generation, prognostic biomarker discovery, predictive biomarker analysis, risk stratification, PD-L1 / MSI / HPV / ER-related analyses, spatial biology analysis, tumor progression / temporal evolution hypothesis generation. |
-| **Modalities** | `histopathology`, `text` |
-| **Code** | [github.com/cpath-ukk/SPARK](https://github.com/cpath-ukk/SPARK) |
+- **Model:** EcoRxAgent
+- **Network Backbone:** Qwen3-Max controlled by a sequential four-tool workflow for candidate-drug retrieval, prescription generation, safety checking and cost-effectiveness analysis
+- **Pre-training Method:** N/A
+- **Training Data:** N/A
+- **Downstream Tasks:** Generates physician-reviewable, safety-checked prescription alternatives that aim to preserve therapeutic effectiveness while reducing medication cost
 
 </details>
 
-<a id="model-phenoassistant-202604"></a>
 <details>
-<summary><b>PhenoAssistant</b> — A conversational multi-agent AI system for automated plant phenotyping <i>(Nat. Commun. 2026-04)</i></summary>
+<summary><b>An agentic framework for autonomous scientific discovery in cancer pathology</b> — 202604, Nat. Med.</summary>
 
-**[A conversational multi-agent AI system for automated plant phenotyping](https://www.nature.com/articles/s41467-026-71090-y)**
+**Paper Card:** [Open the deep-read folder](https://github.com/medfm-flare/AwesomeBiomedicalAI/tree/ai_agent/paper_cards/13_2026-04_SPARK)
 
-*Nat. Commun.* · 2026-04 · Feng Chen & [Sotirios A. Tsaftaris](https://scholar.google.com/citations?user=jC1uFnYAAAAJ&hl=en)
-
-| | |
-| --- | --- |
-| **Backbone** | Centralized multi-agent system: a single LLM-orchestrated manager coordinating specialized tool-agents for phenotype extraction, visualization and model training |
-| **Pre-training** | `training-free`<br>No new model trained for the agent framework itself; the model-training tool can train downstream phenotyping models on demand as one of its callable tools. |
-| **Data usage** | —; specific evaluation datasets not detailed in accessible sources. |
-| **Downstream tasks** | `phenotype extraction`, `data visualization`, `model training`<br>Natural-language-driven plant phenotyping: automated phenotype extraction, data visualization, and automated training of downstream phenotyping models. |
-| **Modalities** | `image`, `text` |
-| **Code** | [github.com/vios-s/PhenoAssistant](https://github.com/vios-s/PhenoAssistant) |
+- **Model:** SPARK, System of Pathology Agents for Research and Knowledge
+- **Network Backbone:** Agentic LLM workflow using OpenAI o1 for idea generation, OpenAI o3-mini for review / duplicate detection, and Claude Sonnet 3.5 for coding. WSI preprocessing uses GrandQC, organ-specific UNet++ / EfficientNet tissue segmentation, and HoverNext with convnextv2_large for single-cell detection and classification.
+- **Pre-training Method:** SPARK itself is training-free for pathology concept generation and parameter coding. It uses LLM reasoning and tool-building rather than training a new image model. The preprocessing models were previously trained, including a single-cell model trained on 1,272,506 manually annotated cells.
+- **Training Data:** No SPARK-specific image training set. Evaluation used >5,400 patients across 18 H&E histopathology cohorts and a METABRIC spatial biology breast cancer dataset with 625 primary tumors.
+- **Downstream Tasks:** Autonomous pathology concept generation, coded parameter generation, prognostic biomarker discovery, predictive biomarker analysis, risk stratification, PD-L1 / MSI / HPV / ER-related analyses, spatial biology analysis, tumor progression / temporal evolution hypothesis generation
 
 </details>
 
-<a id="model-biomedagent-202603"></a>
 <details>
-<summary><b>BioMedAgent</b> — Empowering AI data scientists using a multi-agent LLM framework with self-evolving capabilities for autonomous, tool-aware biomedical data analyses <i>(Nat. Biomed. Eng. 2026-03)</i></summary>
+<summary><b>AgentClinic: a multimodal benchmark for tool-using clinical AI agents</b> — 202604, npj Digit. Med.</summary>
 
-**[Empowering AI data scientists using a multi-agent LLM framework with self-evolving capabilities for autonomous, tool-aware biomedical data analyses](https://www.nature.com/articles/s41551-026-01634-6)**
+**Paper Card:** [Open the deep-read folder](https://github.com/medfm-flare/AwesomeBiomedicalAI/tree/ai_agent/paper_cards/14_2026-04_AgentClinic)
 
-*Nat. Biomed. Eng.* · 2026-03 · [Dechao Bu](https://orcid.org/0000-0002-8833-5432) & [Yi Zhao](https://orcid.org/0000-0001-6046-8420)
-
-| | |
-| --- | --- |
-| **Backbone** | Multiagent LLM |
-| **Pre-training** | `N/A` |
-| **Data usage** | N/A |
-| **Downstream tasks** | `bioinformatics analysis`<br>Self-evolving, tool-aware biomedical data analysis. |
-| **Modalities** | `text`, `omics data` |
-| **Code** | [github.com/BOBQWERA/BioMedAgent](https://github.com/BOBQWERA/BioMedAgent) |
+- **Model:** AgentClinic
+- **Network Backbone:** 11 LLM backbones evaluated: Claude-3.5-Sonnet, GPT-4, GPT-4o, GPT-3.5, Mixtral-8x7B, Llama 3 70B-Instruct, Llama 2 70B-chat, MedLlama3-8B, PMC-Llama-7B, Meditron-70B, OpenBioLLM-70B
+- **Pre-training Method:** N/A; no new models trained
+- **Training Data:** Cases from USMLE questions, de-identified MIMIC-IV EHRs, and NEJM case challenges: 215 language-agent cases, 120 multimodal cases, 260 specialist cases across 9 specialties, 749 multilingual cases across 7 languages
+- **Downstream Tasks:** Multimodal, tool-using diagnostic simulation with patient interaction and incomplete-information data collection; evaluates diagnostic accuracy and cognitive/implicit bias across 9 medical specialties and 7 languages
 
 </details>
 
-<a id="model-ai-scientist-202603"></a>
 <details>
-<summary><b>AI Scientist</b> — Towards end-to-end automation of AI research <i>(Nature 2026-03)</i></summary>
+<summary><b>Empowering AI data scientists using a multi-agent LLM framework with self-evolving capabilities for autonomous, tool-aware biomedical data analyses</b> — 202603, Nat. Biomed. Eng.</summary>
 
-**[Towards end-to-end automation of AI research](https://www.nature.com/articles/s41586-026-10265-5)**
+**Paper Card:** [Open the deep-read folder](https://github.com/medfm-flare/AwesomeBiomedicalAI/tree/ai_agent/paper_cards/15_2026-03_BioMedAgent)
 
-*Nature* · 2026-03 · [Chris Lu](https://scholar.google.com/citations?user=4WLoIRsAAAAJ&hl=en) & [Jeff Clune](https://scholar.google.com/citations?hl=en&user=5TZ7f5wAAAAJ&view_op=list_works&sortby=pubdate)
-
-| | |
-| --- | --- |
-| **Backbone** | Multiagent LLM |
-| **Pre-training** | `N/A` |
-| **Data usage** | N/A |
-| **Downstream tasks** | `general research automation`<br>End-to-end automation of the AI research pipeline. |
-| **Modalities** | `text`, `code` |
-| **Code** | [github.com/SakanaAI/AI-Scientist](https://github.com/SakanaAI/AI-Scientist?tab=readme-ov-file) |
+- **Model:** BioMedAgent
+- **Network Backbone:** Multiagent LLM
+- **Pre-training Method:** N/A
+- **Training Data:** N/A
+- **Downstream Tasks:** Bioinformatics Analysis
 
 </details>
 
-<a id="model-pantheonos-202602"></a>
 <details>
-<summary><b>PantheonOS</b> — PantheonOS: An Evolvable Multi-Agent Framework for Automatic Genomics Discovery <i>(bioRxiv 2026-02)</i></summary>
+<summary><b>Towards end-to-end automation of AI research</b> — 202603, Nature</summary>
 
-**[PantheonOS: An Evolvable Multi-Agent Framework for Automatic Genomics Discovery](https://www.biorxiv.org/content/10.64898/2026.02.26.707870v1.full.pdf)**
+**Paper Card:** [Open the deep-read folder](https://github.com/medfm-flare/AwesomeBiomedicalAI/tree/ai_agent/paper_cards/16_2026-03_AI_Scientist)
 
-*bioRxiv* · 2026-02 · [Weize Xu](https://scholar.google.com/citations?user=rHdkQ-cAAAAJ&hl=en) & [Xiaojie Qiu](https://scholar.google.com/citations?user=XlMd8TAAAAAJ&hl=en)
-
-| | |
-| --- | --- |
-| **Backbone** | LLM with a reinforcement-learning module routing to 22 integrated single-cell foundation models (scFMs) |
-| **Pre-training** | `RL`, `generative pre-training (scGPT)`, `masked gene prediction (scBERT)`<br>The router's LLM/RL layer is trained via reinforcement learning; the 22 integrated scFMs use diverse pretraining methods, including generative pre-training (scGPT), BERT-style masked gene prediction (scBERT), and tabular self-supervised learning. |
-| **Data usage** | Subsets of the CELLxGENE dataset. |
-| **Downstream tasks** | `gene panel design`, `signaling pathway mapping`<br>Gene panel design, mapping molecular and signaling events, such as Cer1–Nodal inhibition, in embryonic development. |
-| **Modalities** | `omics data`, `text` |
-| **Code** | [github.com/aristoteleo/PantheonOS](https://github.com/aristoteleo/PantheonOS) |
+- **Model:** The AI Scientist
+- **Network Backbone:** Multiagent LLM
+- **Pre-training Method:** N/A
+- **Training Data:** N/A
+- **Downstream Tasks:** General Research
 
 </details>
 
-<a id="model-deeprare-202602"></a>
 <details>
-<summary><b>DeepRare</b> — An agentic system for rare disease diagnosis with traceable reasoning <i>(Nature 2026-02)</i></summary>
+<summary><b>CellVoyager: AI CompBio agent generates new insights by autonomously analyzing biological data</b> — 202603, Nat. Methods</summary>
 
-**[An agentic system for rare disease diagnosis with traceable reasoning](https://www.nature.com/articles/s41586-025-10097-9)**
+**Paper Card:** [Open the deep-read folder](https://github.com/medfm-flare/AwesomeBiomedicalAI/tree/ai_agent/paper_cards/17_2026-03_CellVoyager)
 
-*Nature* · 2026-02 · [Weike Zhao](https://scholar.google.com/citations?user=yFSlxpwAAAAJ&hl=en) & [Weidi Xie](https://scholar.google.com/citations?user=Vtrqj4gAAAAJ&hl=en)
-
-| | |
-| --- | --- |
-| **Backbone** | LLM-based multi-agent system integrating 40+ specialized tools and up-to-date knowledge sources for rare disease differential diagnosis |
-| **Pre-training** | `training-free`<br>No new model trained; agent framework over an existing LLM backbone. |
-| **Data usage** | 9 datasets from literature, case reports and clinical centers across Asia, North America and Europe, spanning 2,919 diseases and 14 specialties (eval). |
-| **Downstream tasks** | `rare disease diagnosis`, `traceable reasoning`<br>Processes free-text descriptions, HPO terms and genetic testing results to generate ranked diagnostic hypotheses with evidence-linked, traceable reasoning (95.4% expert agreement); 57.18% Recall@1 on HPO-based tasks and 69.1% on multimodal tests. |
-| **Modalities** | `text`, `EHR data` |
-| **Code** | [github.com/MAGIC-AI4Med/DeepRare](https://github.com/MAGIC-AI4Med/DeepRare) |
+- **Model:** CellVoyager
+- **Network Backbone:** LLM-based computational-biology agent that plans, writes, executes and iteratively interprets analyses inside a Jupyter notebook environment
+- **Pre-training Method:** N/A
+- **Training Data:** N/A
+- **Downstream Tasks:** Autonomous scRNA-seq analysis generation and implementation, hypothesis exploration, result interpretation and discovery of previously unreported biological insights
 
 </details>
 
-<a id="model-phia-202601"></a>
 <details>
-<summary><b>PHIA</b> — Transforming wearable data into personal health insights using large language model agents <i>(Nat. Commun. 2026-01)</i></summary>
+<summary><b>Orchestrated multi agents sustain accuracy under clinical-scale workloads compared to a single agent</b> — 202603, npj Health Syst.</summary>
 
-**[Transforming wearable data into personal health insights using large language model agents](https://www.nature.com/articles/s41467-025-67922-y)**
+**Paper Card:** [Open the deep-read folder](https://github.com/medfm-flare/AwesomeBiomedicalAI/tree/ai_agent/paper_cards/18_2026-03_Orchestrated_Clinical_Agents)
 
-*Nat. Commun.* · 2026-01 · [Mike A. Merrill](https://scholar.google.com/citations?user=UtBcznsAAAAJ&hl=en) & [Xin Liu](https://scholar.google.com/citations?user=p9F83HoAAAAJ&hl=en)
-
-| | |
-| --- | --- |
-| **Backbone** | PHIA (Personal Health Insights Agent) built on Gemini 1.0 Ultra |
-| **Pre-training** | `N/A`<br>No fine-tuning; agent framework uses code generation plus information retrieval over the base model. |
-| **Data usage** | 4,000 objective health queries, 172 open-ended queries, synthetic wearable data from 30,000 real Fitbit/Pixel Watch users. |
-| **Downstream tasks** | `wearable-data QA`, `anomaly detection`<br>Answers questions on physical activity, sleep patterns, health correlations, anomaly detection, and population comparisons from wearable data; 84% accuracy on objective queries, 83% favorable rating on open-ended queries. |
-| **Modalities** | `wearable sensor data`, `text` |
+- **Model:** Single-agent baseline versus lightweight orchestrator with dedicated worker agents
+- **Network Backbone:** GPT-4.1-mini, GPT-4.1-nano, Llama-2-70B and Qwen-3-8B agents; each worker invokes one task-specific clinical tool before aggregation
+- **Pre-training Method:** N/A
+- **Training Data:** N/A
+- **Downstream Tasks:** PubMed evidence retrieval, structured field extraction from discharge notes and medication-dose calculations under mixed clinical workloads of 5–80 concurrent tasks
 
 </details>
 
-<a id="model-biodsa-202601"></a>
 <details>
-<summary><b>BioDSA</b> — Making large language models reliable data science programming copilots for biomedical research <i>(Nat. Biomed. Eng. 2026-01)</i></summary>
+<summary><b>PantheonOS: An Evolvable Multi-Agent Framework for Automatic Genomics Discovery</b> — 202602, bioRxiv</summary>
 
-**[Making large language models reliable data science programming copilots for biomedical research](https://www.nature.com/articles/s41551-025-01587-2)**
+**Paper Card:** [Open the deep-read folder](https://github.com/medfm-flare/AwesomeBiomedicalAI/tree/ai_agent/paper_cards/19_2026-02_PantheonOS)
 
-*Nat. Biomed. Eng.* · 2026-01 · [Zifeng Wang](https://scholar.google.co.uk/citations?user=kMlWwTAAAAAJ&hl=en&oi=sra) & [Jimeng Sun](https://scholar.google.co.uk/citations?user=9jmmp5sAAAAJ&hl=en&oi=ao)
-
-| | |
-| --- | --- |
-| **Backbone** | Model-agnostic agent framework |
-| **Pre-training** | `N/A` |
-| **Data usage** | N/A |
-| **Downstream tasks** | `biomedical data science analysis`<br>Reliable data science programming copilot for biomedical research. |
-| **Modalities** | `text`, `code` |
-| **Code** | [github.com/RyanWangZf/BioDSA](https://github.com/RyanWangZf/BioDSA) |
+- **Model:** PantheonOS
+- **Network Backbone:** LLM with Reinforcement Learning Module
+- **Pre-training Method:** Integrated scFMs: The 22 models supported by the router use diverse pretraining methods, including generative pre-training (scGPT), BERT-style masked gene prediction (scBERT), and tabular self-supervised learning
+- **Training Data:** Subsets of the CELLxGENE,
+- **Downstream Tasks:** Gene Panel Design, mapping molecular and signaling events, such as Cer1–Nodal inhibition, in embryonic development
 
 </details>
 
-<a id="model-aila-202510"></a>
 <details>
-<summary><b>AILA</b> — Evaluating large language model agents for automation of atomic force microscopy <i>(Nat. Commun. 2025-10)</i></summary>
+<summary><b>An agentic system for rare disease diagnosis with traceable reasoning</b> — 202602, Nature</summary>
 
-**[Evaluating large language model agents for automation of atomic force microscopy](https://www.nature.com/articles/s41467-025-64105-7)**
+**Paper Card:** [Open the deep-read folder](https://github.com/medfm-flare/AwesomeBiomedicalAI/tree/ai_agent/paper_cards/20_2026-02_DeepRare)
 
-*Nat. Commun.* · 2025-10 · [Indrajeet Mandal](https://scholar.google.com/citations?user=v_747TcAAAAJ&hl=en) & [N. M. Anoop Krishnan](https://scholar.google.com/citations?user=fGnjHcEAAAAJ&hl=en)
-
-| | |
-| --- | --- |
-| **Backbone** | AILA (Artificially Intelligent Lab Assistant), evaluated with GPT-4o, GPT-3.5-turbo, Claude-3.5-Sonnet and Llama-3.3-70B |
-| **Pre-training** | `N/A`<br>No new models trained. |
-| **Data usage** | AFMBench: 100 expertly curated atomic force microscopy experimental tasks. |
-| **Downstream tasks** | `AFM calibration`, `graphene layer analysis`, `mechanical property measurement`, `friction characterization`<br>Autonomous AFM calibration, graphene layer analysis, mechanical property measurement, indentation-mark detection, and load-dependent friction characterization. |
-| **Modalities** | `text`, `instrument control` |
-| **Code** | [github.com/M3RG-IITD/AILA](https://github.com/M3RG-IITD/AILA) |
+- **Model:** DeepRare
+- **Network Backbone:** MCP-inspired three-tier multi-agent architecture with a memory-equipped central LLM host, specialized phenotype/genotype agent servers, a self-reflection loop and more than 40 medical tools and knowledge sources
+- **Pre-training Method:** N/A
+- **Training Data:** N/A
+- **Downstream Tasks:** Rare-disease differential diagnosis from free text, HPO terms and genomic results, producing ranked diagnoses with traceable reasoning and verifiable evidence
 
 </details>
 
-<a id="model-sciscigpt-202512"></a>
 <details>
-<summary><b>SciSciGPT</b> — SciSciGPT: advancing human–AI collaboration in the science of science <i>(Nat. Comput. Sci. 2025-12)</i></summary>
+<summary><b>Benchmarking large language model-based agent systems for clinical decision tasks</b> — 202602, npj Digit. Med.</summary>
 
-**[SciSciGPT: advancing human–AI collaboration in the science of science](https://www.nature.com/articles/s43588-025-00906-6)**
+**Paper Card:** [Open the deep-read folder](https://github.com/medfm-flare/AwesomeBiomedicalAI/tree/ai_agent/paper_cards/21_2026-02_Clinical_Agent_Benchmark)
 
-*Nat. Comput. Sci.* · 2025-12 · Erzhuo Shao & [Dashun Wang](https://scholar.google.com/citations?user=uQJAkBoAAAAJ&hl=en)
-
-| | |
-| --- | --- |
-| **Backbone** | LLM-orchestrated conversational agent with a web-based chat interface coordinating auditable workflows for literature understanding, data processing, analytics and visualization |
-| **Pre-training** | `training-free`<br>No new model trained; agent framework over an existing LLM backbone. |
-| **Data usage** | —; used at inference over science-of-science literature and data corpora rather than a fine-tuning dataset. |
-| **Downstream tasks** | `literature analysis`, `science-of-science workflows`<br>Iterative human–AI collaboration for data-driven findings: literature understanding, data processing/analytics/visualization, and accelerated idea exploration and prototyping. |
-| **Modalities** | `text` |
-| **Code** | [github.com/Northwestern-CSSI/SciSciGPT](https://github.com/Northwestern-CSSI/SciSciGPT) |
+- **Model:** OpenManus (open-source, planner-executor-verifier) and Manus (proprietary agent system)
+- **Network Backbone:** Llama-4, Qwen-3, Gemma-3 / MedGemma, GPT-4.1
+- **Pre-training Method:** N/A; existing models evaluated zero-shot
+- **Training Data:** AgentClinic (MedQA, MIMIC-IV, NEJM case challenges), MedAgentsBench (862 MCQs), Humanity's Last Exam (222 text + 58 multimodal questions)
+- **Downstream Tasks:** Stepwise dialog-based diagnostic simulation, knowledge-intensive medical QA, and multimodal diagnostic reasoning; found that agent tool access (web browsing, code execution, file editing) yielded only modest accuracy gains over baseline LLMs
 
 </details>
 
-<a id="model-cassia-202512"></a>
 <details>
-<summary><b>CASSIA</b> — CASSIA: a multi-agent large language model for automated and interpretable cell annotation <i>(Nat. Commun. 2025-12)</i></summary>
+<summary><b>An agentic AI framework for ingestion and standardization of single-cell RNA-seq data analysis</b> — 202601, npj Artif. Intell.</summary>
 
-**[CASSIA: a multi-agent large language model for automated and interpretable cell annotation](https://www.nature.com/articles/s41467-025-67084-x)**
+**Paper Card:** [Open the deep-read folder](https://github.com/medfm-flare/AwesomeBiomedicalAI/tree/ai_agent/paper_cards/22_2026-01_CellAtria)
 
-*Nat. Commun.* · 2025-12 · Elliot Xie & [Christina Kendziorski](https://scholar.google.com/citations?user=KRVBkHsAAAAJ&hl=en)
-
-| | |
-| --- | --- |
-| **Backbone** | Five-agent LLM framework (annotation, validation, formatting, quality scoring, reporting), with optional RAG, subclustering and uncertainty-quantification agents |
-| **Pre-training** | `training-free`<br>No new model trained; agent framework over existing LLMs. |
-| **Data usage** | >970 cell populations across benchmark single-cell RNA-seq datasets (eval). |
-| **Downstream tasks** | `cell type annotation`, `quality control`<br>Reference-free, automated and interpretable single-cell RNA-seq cell-type annotation, with quality scoring and uncertainty assessment of annotations. |
-| **Modalities** | `text`, `omics data` |
-| **Code** | [github.com/ElliotXie/CASSIA](https://github.com/ElliotXie/CASSIA) |
+- **Model:** CellAtria with the CellExpress analysis pipeline
+- **Network Backbone:** Graph-based multi-actor architecture using GPT-4o or GPT-4o-mini as the controller to orchestrate pre-validated tools for document parsing, metadata extraction, data retrieval and standardized scRNA-seq processing
+- **Pre-training Method:** N/A
+- **Training Data:** N/A
+- **Downstream Tasks:** Dialogue-driven document-to-analysis automation, public-dataset ingestion, file organization, pipeline configuration, quality control, clustering, annotation and auditable report generation
 
 </details>
 
-<a id="model-agentmd-202510"></a>
 <details>
-<summary><b>AgentMD</b> — AgentMD: Empowering language agents for risk prediction with large-scale clinical tool learning <i>(Nat. Commun. 2025-10)</i></summary>
+<summary><b>Transforming wearable data into personal health insights using large language model agents</b> — 202601, Nat. Commun.</summary>
 
-**[AgentMD: Empowering language agents for risk prediction with large-scale clinical tool learning](https://www.nature.com/articles/s41467-025-64430-x)**
+**Paper Card:** [Open the deep-read folder](https://github.com/medfm-flare/AwesomeBiomedicalAI/tree/ai_agent/paper_cards/23_2026-01_PHIA)
 
-*Nat. Commun.* · 2025-10 · [Qiao Jin](https://scholar.google.com/citations?user=tYy-bzgAAAAJ&hl=en) & [Zhiyong Lu](https://scholar.google.com/citations?user=lJAkLo8AAAAJ&hl=en)
-
-| | |
-| --- | --- |
-| **Backbone** | LLM tool-builder/tool-user agent that curates and applies clinical risk calculators over a base LLM |
-| **Pre-training** | `training-free`<br>No fine-tuning; agent autonomously curates a calculator library and selects/applies tools over the base LLM (compared against a GPT-4 chain-of-thought baseline). |
-| **Data usage** | RiskCalcs, a library of 2,164 clinical calculators curated from PubMed; RiskQA benchmark; 698 real-world emergency department notes (eval). |
-| **Downstream tasks** | `clinical risk calculator curation`, `risk prediction`<br>Automated construction of a clinical-calculator tool library and autonomous selection/application of the relevant calculator for individual patients; 87.7% vs. 40.9% accuracy over GPT-4 chain-of-thought on RiskQA. |
-| **Modalities** | `text`, `EHR data` |
+- **Model:** PHIA (Personal Health Insights Agent)
+- **Network Backbone:** Gemini 1.0 Ultra
+- **Pre-training Method:** N/A; no fine-tuning, agent framework uses code generation + information retrieval
+- **Training Data:** 4,000 objective health queries, 172 open-ended queries, synthetic wearable data from 30,000 real Fitbit/Pixel Watch users
+- **Downstream Tasks:** Answers questions on physical activity, sleep patterns, health correlations, anomaly detection, and population comparisons from wearable data; 84% accuracy on objective queries, 83% favorable rating on open-ended queries
 
 </details>
 
-<a id="model-map-202509"></a>
 <details>
-<summary><b>MAP</b> — A brain-inspired agentic architecture to improve planning with LLMs <i>(Nat. Commun. 2025-09)</i></summary>
+<summary><b>Making large language models reliable data science programming copilots for biomedical research</b> — 202601, Nat. Biomed. Eng.</summary>
 
-**[A brain-inspired agentic architecture to improve planning with LLMs](https://www.nature.com/articles/s41467-025-63804-5)**
+**Paper Card:** [Open the deep-read folder](https://github.com/medfm-flare/AwesomeBiomedicalAI/tree/ai_agent/paper_cards/24_2026-01_BioDSA)
 
-*Nat. Commun.* · 2025-09 · [Taylor Webb](https://scholar.google.com/citations?user=WCmrJoQAAAAJ&hl=en) & [Ida Momennejad](https://scholar.google.com/citations?user=OFdUAJwAAAAJ&hl=en)
-
-| | |
-| --- | --- |
-| **Backbone** | Modular Agentic Planner (MAP): brain-inspired modular LLM architecture with separate conflict-monitoring, state-prediction, state-evaluation, task-decomposition and task-coordination modules |
-| **Pre-training** | `training-free`<br>Modules are implemented via prompted LLM calls; no new weights trained. |
-| **Data usage** | Graph traversal, Tower of Hanoi, PlanBench, and an NLP multi-step reasoning task (eval). |
-| **Downstream tasks** | `multi-step planning`, `task decomposition`<br>Goal-directed multi-step planning via interaction of specialized brain-inspired modules, addressing LLMs' typical struggles with multi-step reasoning and planning. |
-| **Modalities** | `text` |
+- **Model:** BioDSA
+- **Network Backbone:** model-agnostic framework
+- **Pre-training Method:** N/A
+- **Training Data:** N/A
+- **Downstream Tasks:** Biomedical Data Science Analysis
 
 </details>
 
-<a id="model-scitoolagent-202508"></a>
 <details>
-<summary><b>SciToolAgent</b> — SciToolAgent: a knowledge-graph-driven scientific agent for multitool integration <i>(Nat. Comput. Sci. 2025-08)</i></summary>
+<summary><b>Simulated patient systems powered by large language model-based AI agents offer potential for transforming medical education</b> — 202512, Commun. Med.</summary>
 
-**[SciToolAgent: a knowledge-graph-driven scientific agent for multitool integration](https://www.nature.com/articles/s43588-025-00849-y)**
+**Paper Card:** [Open the deep-read folder](https://github.com/medfm-flare/AwesomeBiomedicalAI/tree/ai_agent/paper_cards/25_2025-12_AIPatient)
 
-*Nat. Comput. Sci.* · 2025-08 · Keyan Ding & Huajun Chen
-
-| | |
-| --- | --- |
-| **Backbone** | LLM agent orchestrating 500+ scientific tools (web APIs, ML models, Python functions, knowledge databases) via a scientific-tool knowledge graph and graph-based retrieval-augmented generation, with a safety-checking module |
-| **Pre-training** | `training-free`<br>No new model trained; tool selection and execution via knowledge-graph retrieval over an existing LLM. |
-| **Data usage** | —; tool knowledge graph spans biology, chemistry and materials science. |
-| **Downstream tasks** | `multi-tool scientific workflow orchestration`<br>Automated selection, composition and execution of hundreds of scientific tools across biology, chemistry and materials science research workflows. |
-| **Modalities** | `text`, `code` |
-| **Code** | [github.com/HICAI-ZJU/SciToolAgent](https://github.com/HICAI-ZJU/SciToolAgent) |
+- **Model:** AIPatient
+- **Network Backbone:** Six task-specific LLM agents combined with Reasoning RAG and the AIPatient knowledge graph built from de-identified clinical records
+- **Pre-training Method:** N/A
+- **Training Data:** N/A
+- **Downstream Tasks:** Simulated-patient dialogue, EHR-grounded medical question answering, longitudinal conversation management, history-taking practice and medical-education assessment
 
 </details>
 
-<a id="model-virtual-lab-202507"></a>
 <details>
-<summary><b>Virtual Lab</b> — The Virtual Lab of AI agents designs new SARS-CoV-2 nanobodies <i>(Nature 2025-07)</i></summary>
+<summary><b>BioAgents: Bridging the gap in bioinformatics analysis with multi-agent systems</b> — 202511, Sci. Rep.</summary>
 
-**[The Virtual Lab of AI agents designs new SARS-CoV-2 nanobodies](https://www.nature.com/articles/s41586-025-09442-9)**
+**Paper Card:** [Open the deep-read folder](https://github.com/medfm-flare/AwesomeBiomedicalAI/tree/ai_agent/paper_cards/26_2025-11_BioAgents)
 
-*Nature* · 2025-07 · [Kyle Swanson](https://scholar.google.com/citations?user=seqcYSUAAAAJ&hl=en) & [James Zou](https://scholar.google.com/citations?user=23ZXZvEAAAAJ&hl=en)
-
-| | |
-| --- | --- |
-| **Backbone** | An LLM Principal-Investigator agent leading a team of LLM scientist agents through iterative research meetings, with a human researcher providing high-level feedback; computational pipeline combining ESM, AlphaFold-Multimer and Rosetta |
-| **Pre-training** | `training-free`<br>No new model trained for the agent framework; uses pretrained ESM, AlphaFold-Multimer and Rosetta models as tools. |
-| **Data usage** | —; designed and experimentally validated 92 nanobodies against SARS-CoV-2 variants. |
-| **Downstream tasks** | `nanobody design`, `binding-profile evaluation`<br>AI–human collaborative nanobody design against SARS-CoV-2, including variants with improved binding to JN.1/KP.3 while retaining ancestral-spike binding. |
-| **Modalities** | `text`, `protein structure` |
-| **Code** | [github.com/zou-group/virtual-lab](https://github.com/zou-group/virtual-lab) |
+- **Model:** BioAgents
+- **Network Backbone:** Two specialized Phi-3 agents for conceptual genomics and workflow knowledge, plus a Phi-3 reasoning agent that integrates their outputs; retrieval-augmented generation supports workflow documentation
+- **Pre-training Method:** Fine-tuning of a Phi-3 specialized agent on bioinformatics tool documentation
+- **Training Data:** Bioinformatics tool documentation used to fine-tune the conceptual-genomics agent
+- **Downstream Tasks:** Bioinformatics workflow design, conceptual genomics question answering, tool selection and troubleshooting of multi-step analysis pipelines
 
 </details>
 
-<a id="model-oncology-ai-agent-202506"></a>
 <details>
-<summary><b>Oncology AI Agent</b> — Development and validation of an autonomous artificial intelligence agent for clinical decision-making in oncology <i>(Nat. Cancer 2025-06)</i></summary>
+<summary><b>Evaluating large language model agents for automation of atomic force microscopy</b> — 202510, Nat. Commun.</summary>
 
-**[Development and validation of an autonomous artificial intelligence agent for clinical decision-making in oncology](https://www.nature.com/articles/s43018-025-00991-6)**
+**Paper Card:** [Open the deep-read folder](https://github.com/medfm-flare/AwesomeBiomedicalAI/tree/ai_agent/paper_cards/27_2025-10_AILA)
 
-*Nat. Cancer* · 2025-06 · [Dyke Ferber](https://scholar.google.com/citations?user=r7JtdUcAAAAJ&hl=en) & [Jakob Nikolas Kather](https://scholar.google.com/citations?user=w6-uFdEAAAAJ&hl=en)
+- **Model:** AILA (Artificially Intelligent Lab Assistant)
+- **Network Backbone:** GPT-4o, GPT-3.5-turbo, Claude-3.5-Sonnet, Llama-3.3-70B
+- **Pre-training Method:** N/A; no new models trained
+- **Training Data:** AFMBench: 100 expertly curated atomic force microscopy experimental tasks
+- **Downstream Tasks:** Autonomous AFM calibration, graphene layer analysis, mechanical property measurement, indentation-mark detection, and load-dependent friction characterization
 
-| | |
-| --- | --- |
-| **Backbone** | Autonomous clinical AI agent built on GPT-4 with multimodal precision-oncology tools: vision transformers for MSI/KRAS/BRAF detection from histopathology, MedSAM for radiological image segmentation, and web tools (OncoKB, PubMed, Google) |
-| **Pre-training** | `training-free` (agent), `pretrained tool models`<br>The agent itself is training-free tool-use over GPT-4; the vision-transformer and MedSAM tools were previously trained elsewhere. |
-| **Data usage** | 20 realistic multimodal patient cases (eval). |
-| **Downstream tasks** | `oncology decision support`, `tool selection`, `guideline citation`<br>Autonomous multimodal precision-oncology decision-making: 87.5% correct tool use, 91.0% correct clinical conclusions, 75.5% accurate guideline citation; improved decision accuracy from 30.3% (GPT-4 alone) to 87.2%. |
-| **Modalities** | `text`, `histopathology`, `image` |
+</details>
+
+<details>
+<summary><b>Accelerating primer design for amplicon sequencing using large language model-powered agents</b> — 202507, Nat. Biomed. Eng.</summary>
+
+**Paper Card:** [Open the deep-read folder](https://github.com/medfm-flare/AwesomeBiomedicalAI/tree/ai_agent/paper_cards/28_2025-07_PrimeGen)
+
+- **Model:** PrimeGen
+- **Network Backbone:** GPT-4o central controller coordinating search, primer-design, protocol and experiment agents; the experiment agent includes a vision-language model for anomaly detection
+- **Pre-training Method:** N/A
+- **Training Data:** N/A
+- **Downstream Tasks:** Gene-target retrieval, multiplex primer design, executable liquid-handler protocol generation, robot-script execution and visual detection of experimental anomalies
+
+</details>
+
+<details>
+<summary><b>CRISPR-GPT for agentic automation of gene-editing experiments</b> — 202507, Nat. Biomed. Eng.</summary>
+
+**Paper Card:** [Open the deep-read folder](https://github.com/medfm-flare/AwesomeBiomedicalAI/tree/ai_agent/paper_cards/29_2025-07_CRISPR-GPT)
+
+- **Model:** CRISPR-GPT with CRISPR-Llama3
+- **Network Backbone:** Multi-agent system comprising an LLM Planner, User-proxy, Task executor and Tool provider; GPT-4o supports general reasoning and an 8-billion-parameter Llama3-Instruct model supplies specialized gene-editing knowledge
+- **Pre-training Method:** Instruction fine-tuning of Llama3-Instruct-8B on expert CRISPR discussions; the remaining agent components use pretrained LLMs with retrieval and external tools
+- **Training Data:** More than 3,000 question–answer pairs curated from approximately 4,000 CRISPR scientific-discussion threads collected over 11 years
+- **Downstream Tasks:** CRISPR-system selection, experiment planning, guide-RNA and off-target design, delivery-method selection, protocol and validation-assay drafting, troubleshooting and gene-editing data analysis
+
+</details>
+
+<details>
+<summary><b>The Virtual Lab of AI agents designs new SARS-CoV-2 nanobodies</b> — 202507, Nature</summary>
+
+**Paper Card:** [Open the deep-read folder](https://github.com/medfm-flare/AwesomeBiomedicalAI/tree/ai_agent/paper_cards/30_2025-07_Virtual_Lab)
+
+- **Model:** The Virtual Lab
+- **Network Backbone:** An LLM Principal Investigator agent coordinates specialized LLM scientist agents through iterative research meetings, with high-level human feedback and access to ESM, AlphaFold-Multimer and Rosetta
+- **Pre-training Method:** N/A
+- **Training Data:** N/A
+- **Downstream Tasks:** Open-ended interdisciplinary research, computational nanobody-pipeline design, SARS-CoV-2 nanobody generation and prioritization, and wet-lab-validated binder discovery
+
+</details>
+
+<details>
+<summary><b>GeneAgent: self-verification language agent for gene-set analysis using domain databases</b> — 202507, Nat. Methods</summary>
+
+**Paper Card:** [Open the deep-read folder](https://github.com/medfm-flare/AwesomeBiomedicalAI/tree/ai_agent/paper_cards/31_2025-07_GeneAgent)
+
+- **Model:** GeneAgent
+- **Network Backbone:** GPT-4 agent with a four-stage generation, self-verification, modification and summarization loop that autonomously queries expert-curated biological databases through web APIs
+- **Pre-training Method:** N/A
+- **Training Data:** N/A
+- **Downstream Tasks:** Gene-set functional interpretation, biological-process naming, claim-level database verification, hallucination correction and evidence-grounded gene-function discovery
+
+</details>
+
+<details>
+<summary><b>Autonomous chemical research with large language models</b> — 202312, Nature</summary>
+
+**Paper Card:** [Open the deep-read folder](https://github.com/medfm-flare/AwesomeBiomedicalAI/tree/ai_agent/paper_cards/32_2023-12_Coscientist)
+
+- **Model:** Coscientist
+- **Network Backbone:** GPT-4 Planner connected to LLM-based web and documentation search, Python code execution and experimental-automation modules through cloud-lab and liquid-handler APIs
+- **Pre-training Method:** N/A
+- **Training Data:** N/A
+- **Downstream Tasks:** Chemical-synthesis planning, scientific and hardware-documentation search, laboratory robot control, multi-instrument experiment execution and reaction-condition optimization
 
 </details>
