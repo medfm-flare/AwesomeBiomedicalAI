@@ -1,36 +1,67 @@
 <!-- GENERATED FILE - DO NOT EDIT BY HAND -->
-<!-- Generated from data/pathology.yaml in https://github.com/leoyin1127/biomedical-ai-pipeline -->
+<!-- Generated from data/pathology.yaml in https://github.com/1nslyn/biomedical-ai-pipeline -->
 <!-- Edits made here are overwritten by the next build. -->
 
 # Pathology
 
 Histopathology, whole-slide imaging and computational pathology.
 
-**Maintainer:** [Leo Yin](https://shuolinyin.com) ([GitHub](https://github.com/leoyin1127))
+**Maintainer:** [Leo Yin](https://shuolinyin.com) ([GitHub](https://github.com/1nslyn))
 
-**15 entries** · [Back to index](README.md)
+**16 entries** · [Back to index](README.md)
 
-| Date | Model | Venue | Model size | Training data | Pre-training | Downstream tasks |
+| Date | Model | Venue | Model size | Training slides | Pre-training | Downstream tasks |
 | --- | --- | --- | --- | --- | --- | --- |
-| 2026-07 | [PRISM2](#model-prism2-202607) | Nat. Med. | 4.6B | 2.4M WSI | contrastive, next-token prediction | detection, subtyping, grading +4 |
-| 2026-04 | [PRET](#model-pret-202604) | Nat. Cancer | — | 4.5K WSI (eval) | DINO, self-supervised | detection, subtyping, segmentation +1 |
-| 2026-03 | [HistBiases](#model-histbiases-202603) | Nat. Biomed. Eng. | — | 8.2K patients | self-supervised, weakly supervised | biomarker prediction, mutation prediction, benchmarking |
-| 2026-02 | [Neuropath-AI](#model-neuropath-ai-202602) | Lancet Oncol. | — | 5.8K training samples | self-supervised | classification, mutation prediction, gene expression prediction |
-| 2026-02 | [KEEP](#model-keep-202602) | Cancer Cell | 414M | 143K groups | contrastive | segmentation, detection, subtyping +2 |
-| 2026-02 | [CHAI](#model-chai-202602) | J. Clin. Oncol. | — | 477 patients | supervised | biomarker prediction, treatment response |
-| 2025-11 | [TITAN](#model-titan-202511) | Nat. Med. | 48.5M | 335.6K WSI | self-supervised, iBOT, CoCa +1 | classification, subtyping, retrieval +2 |
-| 2025-11 | [SMMILe](#model-smmile-202511) | Nat. Cancer | 1.2M | 3.9K WSI | weakly supervised | classification, detection, subtyping +1 |
-| 2025-01 | [MUSK](#model-musk-202501) | Nature | 675M | 33K WSI | MIM, contrastive | retrieval, visual question answering, classification +4 |
-| 2024-09 | [CHIEF](#model-chief-202409) | Nature | — | 60.5K WSI | self-supervised, weakly supervised | classification, detection, subtyping +2 |
-| 2024-07 | [Virchow](#model-virchow-202407) | Nat. Med. | 632M | 1.5M WSI | DINOv2 | detection, biomarker prediction, classification |
-| 2024-05 | [Prov-GigaPath](#model-prov-gigapath-202405) | Nature | 1B | 171.2K WSI | DINOv2, MAE | classification, subtyping, mutation prediction +1 |
-| 2024-03 | [UNI](#model-uni-202403) | Nat. Med. | 307M | 100.4K WSI | DINOv2 | segmentation, detection, grading +3 |
-| 2024-03 | [CONCH](#model-conch-202403) | Nat. Med. | — | 1.2M pairs | iBOT, CoCa | classification, retrieval, segmentation +1 |
-| 2023-08 | [PLIP](#model-plip-202308) | Nat. Med. | — | 208.4K pairs | CLIP, contrastive | classification, retrieval |
+| 202608 | [Tissue Clocks](#model-tissue-clocks-202608) | Nat. Med. | _not published_ | 25.7K (cross-validated) | ImageNet ConvNeXt → tissue-class tuning | regression, risk prediction, benchmarking |
+| 202607 | [PRISM2](#model-prism2-202607) | Nat. Med. | 4.6B | 2.35M | contrastive → dialogue next-token | detection, subtyping, grading +4 |
+| 202604 | [PRET](#model-pret-202604) | Nat. Cancer | _not published_ | none (training-free) | DINO ViT-S/8 encoder, then frozen | detection, subtyping, segmentation +1 |
+| 202603 | [HistBiases](#model-histbiases-202603) | Nat. Biomed. Eng. | _n/a_ | not stated (8.2K patients) | frozen CTransPath + CLAM/SlideGraph | biomarker prediction, mutation prediction, benchmarking |
+| 202602 | [Neuropath-AI](#model-neuropath-ai-202602) | Lancet Oncol. | _not published_ | 5.8K samples (not slides) | WSI → molecular inference → hierarchy | classification, mutation prediction, gene expression prediction |
+| 202602 | [KEEP](#model-keep-202602) | Cancer Cell | 414M | none (tile–text pairs) | knowledge-graph metric + contrastive | segmentation, detection, subtyping +2 |
+| 202602 | [CHAI](#model-chai-202602) | J. Clin. Oncol. | _not published_ | not stated (178 patients) | supervised histomorphologic screening | biomarker prediction, treatment response |
+| 202511 | [TITAN](#model-titan-202511) | Nat. Med. | 48.5M (slide enc.) | 336K | iBOT → CoCa (3 stages) | classification, subtyping, retrieval +2 |
+| 202511 | [SMMILe](#model-smmile-202511) | Nat. Cancer | 1.2M (MIL head) | 3.9K (cross-validated) | weakly supervised MIL, frozen encoder | classification, detection, subtyping +1 |
+| 202501 | [MUSK](#model-musk-202501) | Nature | 675M | ~33K | BEiT-3 MIM → contrastive | retrieval, visual question answering, classification +4 |
+| 202409 | [CHIEF](#model-chief-202409) | Nature | _not published_ | 60.5K | CTransPath tiles → weakly supervised | classification, detection, subtyping +2 |
+| 202407 | [Virchow](#model-virchow-202407) | Nat. Med. | 632M | ~1.5M | DINOv2 | detection, biomarker prediction, classification |
+| 202405 | [Prov-GigaPath](#model-prov-gigapath-202405) | Nature | 1B (tile enc.) | 171K | DINOv2 tiles → LongNet MAE slides | classification, subtyping, mutation prediction +1 |
+| 202403 | [UNI](#model-uni-202403) | Nat. Med. | 307M | 100K | DINOv2 | segmentation, detection, grading +3 |
+| 202403 | [CONCH](#model-conch-202403) | Nat. Med. | _not published_ | none (1.17M image–caption) | iBOT → CoCa | classification, retrieval, segmentation +1 |
+| 202308 | [PLIP](#model-plip-202308) | Nat. Med. | _not published_ | none (208K image–text) | CLIP contrastive fine-tune | classification, retrieval |
+
+<sub><b>Model size</b> is the count the authors publish, with the component it covers in brackets — a slide encoder and a tile encoder are not comparable. <i>not published</i> means the access routes were worked and no author source states one; <i>n/a</i> means the paper does not introduce a model. <b>Training slides</b> counts whole slides used for training, so a model trained on tiles or image–text pairs shows what it used instead.</sub>
 
 ## Details
 
 Click a model to expand its record.
+
+<a id="model-tissue-clocks-202608"></a>
+<details>
+<summary><b>Tissue Clocks</b> — Histological aging signatures for monitoring tissue-specific aging and disease <i>(Nat. Med. 2026-08)</i></summary>
+
+**[Histological aging signatures for monitoring tissue-specific aging and disease](https://www.nature.com/articles/s41591-026-04566-5)**
+
+*Nat. Med.* · 2026-08 · [Ernesto Abila](https://scholar.google.com/citations?user=EaXz-AIAAAAJ&hl=en) & [André F. Rendeiro](https://scholar.google.at/citations?user=lj17pqEAAAAJ&hl=en) · [doi:10.1038/s41591-026-04566-5](https://doi.org/10.1038/s41591-026-04566-5)
+
+| | |
+| --- | --- |
+| **Backbone** | ImageNet-pretrained ConvNeXt base, fine-tuned as a tissue-type classifier and then frozen as a feature extractor; a slide is represented by its mean tile embedding at three magnifications, and regularised linear or ensemble regressors map that to age |
+| **Pre-training** | `supervised`<br>Supervised transfer learning rather than pathology-specific pretraining. ImageNet architectures (AlexNet, VGG16, ResNet50, ResNet152, ConvNeXt tiny and ConvNeXt base) were fine-tuned to classify tissue type on a dataset balanced across tissue, age bracket and sex -- one epoch with the backbone frozen, then up to 100 epochs of fine-tuning -- and the fine-tuned ConvNeXt base was carried forward. Tiles of 224, 448 and 896 pixels at roughly 0.5 microns per pixel are embedded and averaged per slide, and the age regressor is fitted on those features. |
+| **Training data** | GTEx post-mortem H&E whole-slide images spanning 40 tissue types and 29 organs, paired with the cohort's transcriptomic, methylation and phenotypic records. Validated on separate brain, lung and skin cohorts.<br>**25,712** WSI · **983** individuals · **40** tissue types · **480,000,000** image tiles |
+| **Downstream tasks** | `regression`, `risk prediction`, `benchmarking`<br>Predicts chronological age from tissue morphology and treats the residual -- the "age gap" -- as a measure of biological aging; relates tissue-specific age acceleration to telomere length, subclinical pathology, comorbidities and lifestyle factors; predicts tissue-specific age gaps from blood gene expression via ridge regression; and benchmarks 7 classical vision models and 18 pathology foundation models as feature extractors for the same task. |
+| **Modalities** | `histopathology`, `transcriptomics` |
+| **Code** | [github.com/rendeirolab/tissue-clocks](https://github.com/rendeirolab/tissue-clocks) |
+| **License** | PolyForm-Noncommercial-1.0.0 |
+
+**Reported performance**
+
+| Benchmark | Metric | Value | Note |
+| --- | --- | --- | --- |
+| GTEx, biological age from histology (cross-validated, all tissues) | mean absolute error | 4.88 years | coefficient of determination 0.69 |
+| Feature-extractor comparison, 7 classical vision and 18 pathology foundation models | mean MAE across organs and models | 8.67 vs 5.74 | classical ImageNet models 8.67, pathology foundation models 5.74, against 4.88 for this paper's fine-tuned model. The authors caution that some foundation models were pretrained on data that includes GTEx, which may flatter them here. |
+| External cohorts, GTEx-trained clocks applied unchanged | Pearson correlation with chronological age | 0.56 / 0.76 / 0.46 | brain (n = 70), lung (n = 40) and skin (n = 185) |
+
+</details>
 
 <a id="model-prism2-202607"></a>
 <details>
@@ -128,7 +159,7 @@ Click a model to expand its record.
 
 **[Classification accuracy of a hierarchical molecular inference-based deep-learning system for CNS tumour diagnosis: a multi-institutional, retrospective study](https://www.thelancet.com/journals/lanonc/article/PIIS1470-2045%2825%2900661-8/abstract)**
 
-*Lancet Oncol.* · 2026-02 · H. Lalchungnunga & Kenneth Aldape · [doi:10.1016/S1470-2045(25)00661-8](https://doi.org/10.1016/S1470-2045%2825%2900661-8)
+*Lancet Oncol.* · 2026-02 · H. Lalchungnunga & [Kenneth Aldape](https://scholar.google.com/citations?user=vZM9E_AAAAAJ&hl=en) · [doi:10.1016/S1470-2045(25)00661-8](https://doi.org/10.1016/S1470-2045%2825%2900661-8)
 
 | | |
 | --- | --- |
@@ -485,4 +516,4 @@ Click a model to expand its record.
 
 ---
 
-This page is generated. Add a paper by editing [`data/pathology.yaml`](https://github.com/leoyin1127/biomedical-ai-pipeline/blob/main/data/pathology.yaml) in the [pipeline repository](https://github.com/leoyin1127/biomedical-ai-pipeline) and rebuilding — edits made here are overwritten. The schema and house rules are in [CONTRIBUTING.md](https://github.com/leoyin1127/biomedical-ai-pipeline/blob/main/CONTRIBUTING.md).
+This page is generated. Add a paper by editing [`data/pathology.yaml`](https://github.com/1nslyn/biomedical-ai-pipeline/blob/main/data/pathology.yaml) in the [pipeline repository](https://github.com/1nslyn/biomedical-ai-pipeline) and rebuilding — edits made here are overwritten. The schema and house rules are in [CONTRIBUTING.md](https://github.com/1nslyn/biomedical-ai-pipeline/blob/main/CONTRIBUTING.md).
