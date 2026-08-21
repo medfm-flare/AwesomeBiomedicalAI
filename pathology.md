@@ -10,26 +10,26 @@ Histopathology, whole-slide imaging and computational pathology.
 
 **16 entries** · [Back to index](README.md)
 
-| Date | Model | Venue | Model size | Training slides | Pre-training | Downstream tasks |
+| Date | Model | Venue | Model size | Training slides | Pre-training objective | Downstream tasks |
 | --- | --- | --- | --- | --- | --- | --- |
-| 202608 | [Tissue Clocks](#model-tissue-clocks-202608) | Nat. Med. | _not published_ | 25.7K (cross-validated) | ImageNet ConvNeXt → tissue-class tuning | regression, risk prediction, benchmarking |
-| 202607 | [PRISM2](#model-prism2-202607) | Nat. Med. | 4.6B | 2.35M | contrastive → dialogue next-token | detection, subtyping, grading +4 |
-| 202604 | [PRET](#model-pret-202604) | Nat. Cancer | _not published_ | none (training-free) | DINO ViT-S/8 encoder, then frozen | detection, subtyping, segmentation +1 |
-| 202603 | [HistBiases](#model-histbiases-202603) | Nat. Biomed. Eng. | _n/a_ | not stated (8.2K patients) | frozen CTransPath + CLAM/SlideGraph | biomarker prediction, mutation prediction, benchmarking |
-| 202602 | [Neuropath-AI](#model-neuropath-ai-202602) | Lancet Oncol. | _not published_ | 5.8K samples (not slides) | WSI → molecular inference → hierarchy | classification, mutation prediction, gene expression prediction |
-| 202602 | [KEEP](#model-keep-202602) | Cancer Cell | 414M | none (tile–text pairs) | knowledge-graph metric + contrastive | segmentation, detection, subtyping +2 |
-| 202602 | [CHAI](#model-chai-202602) | J. Clin. Oncol. | _not published_ | not stated (178 patients) | supervised histomorphologic screening | biomarker prediction, treatment response |
-| 202511 | [TITAN](#model-titan-202511) | Nat. Med. | 48.5M (slide enc.) | 336K | iBOT → CoCa (3 stages) | classification, subtyping, retrieval +2 |
-| 202511 | [SMMILe](#model-smmile-202511) | Nat. Cancer | 1.2M (MIL head) | 3.9K (cross-validated) | weakly supervised MIL, frozen encoder | classification, detection, subtyping +1 |
+| 202608 | [Tissue Clocks](#model-tissue-clocks-202608) | Nat. Med. | _not published_ | 25.7K (cross-validated) | none — ImageNet ConvNeXt, fine-tuned | regression, risk prediction, benchmarking |
+| 202607 | [PRISM2](#model-prism2-202607) | Nat. Med. | 4.6B | 2.35M | contrastive → next-token | detection, subtyping, grading +4 |
+| 202604 | [PRET](#model-pret-202604) | Nat. Cancer | _not published_ | none (training-free) | none — frozen DINO ViT-S/8 | detection, subtyping, segmentation +1 |
+| 202603 | [HistBiases](#model-histbiases-202603) | Nat. Biomed. Eng. | _n/a_ | not stated (8.2K patients) | none — frozen CTransPath / ShuffleNet | biomarker prediction, mutation prediction, benchmarking |
+| 202602 | [Neuropath-AI](#model-neuropath-ai-202602) | Lancet Oncol. | _not published_ | 5.8K samples (not slides) | not disclosed | classification, mutation prediction, gene expression prediction |
+| 202602 | [KEEP](#model-keep-202602) | Cancer Cell | 414M | none (tile–text pairs) | knowledge-enhanced contrastive | segmentation, detection, subtyping +2 |
+| 202602 | [CHAI](#model-chai-202602) | J. Clin. Oncol. | _not published_ | not stated (178 patients) | not disclosed | biomarker prediction, treatment response |
+| 202511 | [TITAN](#model-titan-202511) | Nat. Med. | 48.5M (slide enc.) | 336K | iBOT → CoCa | classification, subtyping, retrieval +2 |
+| 202511 | [SMMILe](#model-smmile-202511) | Nat. Cancer | 1.2M (MIL head) | 3.9K (cross-validated) | none — frozen ResNet-50 / CONCH | classification, detection, subtyping +1 |
 | 202501 | [MUSK](#model-musk-202501) | Nature | 675M | ~33K | BEiT-3 MIM → contrastive | retrieval, visual question answering, classification +4 |
-| 202409 | [CHIEF](#model-chief-202409) | Nature | _not published_ | 60.5K | CTransPath tiles → weakly supervised | classification, detection, subtyping +2 |
+| 202409 | [CHIEF](#model-chief-202409) | Nature | _not published_ | 60.5K | unsupervised tiles → weak slide labels | classification, detection, subtyping +2 |
 | 202407 | [Virchow](#model-virchow-202407) | Nat. Med. | 632M | ~1.5M | DINOv2 | detection, biomarker prediction, classification |
-| 202405 | [Prov-GigaPath](#model-prov-gigapath-202405) | Nature | 1B (tile enc.) | 171K | DINOv2 tiles → LongNet MAE slides | classification, subtyping, mutation prediction +1 |
+| 202405 | [Prov-GigaPath](#model-prov-gigapath-202405) | Nature | 1B (tile enc.) | 171K | DINOv2 → LongNet MAE | classification, subtyping, mutation prediction +1 |
 | 202403 | [UNI](#model-uni-202403) | Nat. Med. | 307M | 100K | DINOv2 | segmentation, detection, grading +3 |
 | 202403 | [CONCH](#model-conch-202403) | Nat. Med. | _not published_ | none (1.17M image–caption) | iBOT → CoCa | classification, retrieval, segmentation +1 |
-| 202308 | [PLIP](#model-plip-202308) | Nat. Med. | _not published_ | none (208K image–text) | CLIP contrastive fine-tune | classification, retrieval |
+| 202308 | [PLIP](#model-plip-202308) | Nat. Med. | _not published_ | none (208K image–text) | CLIP contrastive | classification, retrieval |
 
-<sub><b>Model size</b> is the count the authors publish, with the component it covers in brackets — a slide encoder and a tile encoder are not comparable. <i>not published</i> means the access routes were worked and no author source states one; <i>n/a</i> means the paper does not introduce a model. <b>Training slides</b> counts whole slides used for training, so a model trained on tiles or image–text pairs shows what it used instead.</sub>
+<sub><b>Model size</b> is the count the authors publish, with the component it covers in brackets — a slide encoder and a tile encoder are not comparable. <i>not published</i> means the access routes were worked and no author source states one; <i>n/a</i> means the paper does not introduce a model. <b>Training slides</b> counts whole slides used for training, so a model trained on tiles or image–text pairs shows what it used instead. <b>Pre-training objective</b> names the objective the authors trained with. <i>none</i> means the work does no pre-training of its own and reuses the frozen encoder named after it; <i>not disclosed</i> means no reachable source states one.</sub>
 
 ## Details
 
@@ -43,15 +43,15 @@ Click a model to expand its record.
 
 *Nat. Med.* · 2026-08 · [Ernesto Abila](https://scholar.google.com/citations?user=EaXz-AIAAAAJ&hl=en) & [André F. Rendeiro](https://scholar.google.at/citations?user=lj17pqEAAAAJ&hl=en) · [doi:10.1038/s41591-026-04566-5](https://doi.org/10.1038/s41591-026-04566-5)
 
-| | |
-| --- | --- |
-| **Backbone** | ImageNet-pretrained ConvNeXt base, fine-tuned as a tissue-type classifier and then frozen as a feature extractor; a slide is represented by its mean tile embedding at three magnifications, and regularised linear or ensemble regressors map that to age |
-| **Pre-training** | `supervised`<br>Supervised transfer learning rather than pathology-specific pretraining. ImageNet architectures (AlexNet, VGG16, ResNet50, ResNet152, ConvNeXt tiny and ConvNeXt base) were fine-tuned to classify tissue type on a dataset balanced across tissue, age bracket and sex -- one epoch with the backbone frozen, then up to 100 epochs of fine-tuning -- and the fine-tuned ConvNeXt base was carried forward. Tiles of 224, 448 and 896 pixels at roughly 0.5 microns per pixel are embedded and averaged per slide, and the age regressor is fitted on those features. |
-| **Training data** | GTEx post-mortem H&E whole-slide images spanning 40 tissue types and 29 organs, paired with the cohort's transcriptomic, methylation and phenotypic records. Validated on separate brain, lung and skin cohorts.<br>**25,712** WSI · **983** individuals · **40** tissue types · **480,000,000** image tiles |
-| **Downstream tasks** | `regression`, `risk prediction`, `benchmarking`<br>Predicts chronological age from tissue morphology and treats the residual -- the "age gap" -- as a measure of biological aging; relates tissue-specific age acceleration to telomere length, subclinical pathology, comorbidities and lifestyle factors; predicts tissue-specific age gaps from blood gene expression via ridge regression; and benchmarks 7 classical vision models and 18 pathology foundation models as feature extractors for the same task. |
-| **Modalities** | `histopathology`, `transcriptomics` |
-| **Code** | [github.com/rendeirolab/tissue-clocks](https://github.com/rendeirolab/tissue-clocks) |
-| **License** | PolyForm-Noncommercial-1.0.0 |
+<table>
+<tr><td><strong>Backbone</strong></td><td>ImageNet-pretrained ConvNeXt base, fine-tuned as a tissue-type classifier and then frozen as a feature extractor; a slide is represented by its mean tile embedding at three magnifications, and regularised linear or ensemble regressors map that to age</td></tr>
+<tr><td><strong>Pre-training</strong></td><td><code>supervised</code><br>Supervised transfer learning rather than pathology-specific pretraining. ImageNet architectures (AlexNet, VGG16, ResNet50, ResNet152, ConvNeXt tiny and ConvNeXt base) were fine-tuned to classify tissue type on a dataset balanced across tissue, age bracket and sex -- one epoch with the backbone frozen, then up to 100 epochs of fine-tuning -- and the fine-tuned ConvNeXt base was carried forward. Tiles of 224, 448 and 896 pixels at roughly 0.5 microns per pixel are embedded and averaged per slide, and the age regressor is fitted on those features.</td></tr>
+<tr><td><strong>Training data</strong></td><td>GTEx post-mortem H&amp;E whole-slide images spanning 40 tissue types and 29 organs, paired with the cohort's transcriptomic, methylation and phenotypic records. Validated on separate brain, lung and skin cohorts.<br><strong>25,712</strong> WSI · <strong>983</strong> individuals · <strong>40</strong> tissue types · <strong>480,000,000</strong> image tiles</td></tr>
+<tr><td><strong>Downstream tasks</strong></td><td><code>regression</code>, <code>risk prediction</code>, <code>benchmarking</code><br>Predicts chronological age from tissue morphology and treats the residual -- the "age gap" -- as a measure of biological aging; relates tissue-specific age acceleration to telomere length, subclinical pathology, comorbidities and lifestyle factors; predicts tissue-specific age gaps from blood gene expression via ridge regression; and benchmarks 7 classical vision models and 18 pathology foundation models as feature extractors for the same task.</td></tr>
+<tr><td><strong>Modalities</strong></td><td><code>histopathology</code>, <code>transcriptomics</code></td></tr>
+<tr><td><strong>Code</strong></td><td><a href="https://github.com/rendeirolab/tissue-clocks">github.com/rendeirolab/tissue-clocks</a></td></tr>
+<tr><td><strong>License</strong></td><td>PolyForm-Noncommercial-1.0.0</td></tr>
+</table>
 
 **Reported performance**
 
@@ -71,16 +71,16 @@ Click a model to expand its record.
 
 *Nat. Med.* · 2026-07 · [Eugene Vorontsov](https://scholar.google.com/citations?user=5o1gS_sAAAAJ&hl=en) & [Siqi Liu](https://scholar.google.com/citations?hl=en&user=ADyo_cAAAAAJ) · [doi:10.1038/s41591-026-04521-4](https://doi.org/10.1038/s41591-026-04521-4)
 
-| | |
-| --- | --- |
-| **Parameters** | 4.6B |
-| **Backbone** | Virchow2 tile encoder, Perceiver slide encoder (541M, plus a 79M attention pooler), BioGPT language encoder and a Phi-3 Mini 3.8B decoder-only LLM reached through a 29M-parameter MLP adapter |
-| **Pre-training** | `contrastive`, `next-token prediction`<br>Two-stage language-supervised multimodal pre-training: contrastive slide-report alignment against BioGPT text embeddings plus an autoregressive dialogue objective, then a second stage in which the contrastive objective is dropped, the slide encoder is frozen and Phi-3 Mini is fine-tuned. Trained on 56 A100 40GB GPUs in bf16. |
-| **Training data** | H&E whole-slide images with paired clinical reports, converted into question-answer pairs<br>**2,350,518** WSI · **685,507** specimens · **200,692** patients · **14,000,000** QA pairs |
-| **Downstream tasks** | `detection`, `subtyping`, `grading`, `biomarker prediction`, `survival prediction`, `question answering`, `report generation`<br>Prompt-based cancer detection and subtyping via yes/no and multiple-choice question answering; diagnostic, biomarker and survival prediction by linear probing on the base and diagnostic embeddings; staging and grading on external public data; pathology report completion following CAP guidelines. |
-| **Modalities** | `histopathology`, `text` |
-| **Weights** | [huggingface.co/paige-ai/Prism2](https://huggingface.co/paige-ai/Prism2) |
-| **License** | CC-BY-NC-ND-4.0 |
+<table>
+<tr><td><strong>Parameters</strong></td><td>4.6B</td></tr>
+<tr><td><strong>Backbone</strong></td><td>Virchow2 tile encoder, Perceiver slide encoder (541M, plus a 79M attention pooler), BioGPT language encoder and a Phi-3 Mini 3.8B decoder-only LLM reached through a 29M-parameter MLP adapter</td></tr>
+<tr><td><strong>Pre-training</strong></td><td><code>contrastive</code>, <code>next-token prediction</code><br>Two-stage language-supervised multimodal pre-training: contrastive slide-report alignment against BioGPT text embeddings plus an autoregressive dialogue objective, then a second stage in which the contrastive objective is dropped, the slide encoder is frozen and Phi-3 Mini is fine-tuned. Trained on 56 A100 40GB GPUs in bf16.</td></tr>
+<tr><td><strong>Training data</strong></td><td>H&amp;E whole-slide images with paired clinical reports, converted into question-answer pairs<br><strong>2,350,518</strong> WSI · <strong>685,507</strong> specimens · <strong>200,692</strong> patients · <strong>14,000,000</strong> QA pairs</td></tr>
+<tr><td><strong>Downstream tasks</strong></td><td><code>detection</code>, <code>subtyping</code>, <code>grading</code>, <code>biomarker prediction</code>, <code>survival prediction</code>, <code>question answering</code>, <code>report generation</code><br>Prompt-based cancer detection and subtyping via yes/no and multiple-choice question answering; diagnostic, biomarker and survival prediction by linear probing on the base and diagnostic embeddings; staging and grading on external public data; pathology report completion following CAP guidelines.</td></tr>
+<tr><td><strong>Modalities</strong></td><td><code>histopathology</code>, <code>text</code></td></tr>
+<tr><td><strong>Weights</strong></td><td><a href="https://huggingface.co/paige-ai/Prism2">huggingface.co/paige-ai/Prism2</a></td></tr>
+<tr><td><strong>License</strong></td><td>CC-BY-NC-ND-4.0</td></tr>
+</table>
 
 **Reported performance**
 
@@ -102,16 +102,16 @@ Click a model to expand its record.
 
 *Nat. Cancer* · 2026-04 · [Yi Li](https://scholar.google.com/citations?user=qGsK180AAAAJ&hl=en) & [Xiaomeng Li](https://scholar.google.com/citations?user=uVTzPpoAAAAJ&hl=en) · [doi:10.1038/s43018-026-01141-2](https://doi.org/10.1038/s43018-026-01141-2)
 
-| | |
-| --- | --- |
-| **Backbone** | Default feature extractor is a DINO-pretrained ViT-S/8 pathology encoder; PRET adds an in-context tagger, in-context classifier, instance miner, attention aggregator and postprocessor |
-| **Pre-training** | `DINO`, `self-supervised`<br>Training-free for downstream tasks; the feature extractor holds all model parameters and is never fine-tuned. The default encoder was pretrained self-supervised with DINO on unlabelled TCGA pathology images, and the framework also runs on UNI, GPFM, CONCH, TITAN, mSTAR and Prov-GigaPath. |
-| **Training data** | No task-specific training images for PRET itself. Evaluated on 4,484 WSIs across 23 benchmarks. The paper does not state a numeric TCGA pretraining image count for the default encoder.<br>**4,484** WSI (eval) · **23** benchmarks |
-| **Downstream tasks** | `detection`, `subtyping`, `segmentation`, `classification`<br>Cancer screening, cancer subtyping, tumour segmentation, lymph node metastasis detection. |
-| **Modalities** | `histopathology` |
-| **Code** | [github.com/xmed-lab/PRET](https://github.com/xmed-lab/PRET) |
-| **Weights** | [huggingface.co/yili7eli/PRET](https://huggingface.co/yili7eli/PRET) |
-| **License** | Apache-2.0 |
+<table>
+<tr><td><strong>Backbone</strong></td><td>Default feature extractor is a DINO-pretrained ViT-S/8 pathology encoder; PRET adds an in-context tagger, in-context classifier, instance miner, attention aggregator and postprocessor</td></tr>
+<tr><td><strong>Pre-training</strong></td><td><code>DINO</code>, <code>self-supervised</code><br>Training-free for downstream tasks; the feature extractor holds all model parameters and is never fine-tuned. The default encoder was pretrained self-supervised with DINO on unlabelled TCGA pathology images, and the framework also runs on UNI, GPFM, CONCH, TITAN, mSTAR and Prov-GigaPath.</td></tr>
+<tr><td><strong>Training data</strong></td><td>No task-specific training images for PRET itself. Evaluated on 4,484 WSIs across 23 benchmarks. The paper does not state a numeric TCGA pretraining image count for the default encoder.<br><strong>4,484</strong> WSI (eval) · <strong>23</strong> benchmarks</td></tr>
+<tr><td><strong>Downstream tasks</strong></td><td><code>detection</code>, <code>subtyping</code>, <code>segmentation</code>, <code>classification</code><br>Cancer screening, cancer subtyping, tumour segmentation, lymph node metastasis detection.</td></tr>
+<tr><td><strong>Modalities</strong></td><td><code>histopathology</code></td></tr>
+<tr><td><strong>Code</strong></td><td><a href="https://github.com/xmed-lab/PRET">github.com/xmed-lab/PRET</a></td></tr>
+<tr><td><strong>Weights</strong></td><td><a href="https://huggingface.co/yili7eli/PRET">huggingface.co/yili7eli/PRET</a></td></tr>
+<tr><td><strong>License</strong></td><td>Apache-2.0</td></tr>
+</table>
 
 **Reported performance**
 
@@ -132,15 +132,15 @@ Click a model to expand its record.
 
 *Nat. Biomed. Eng.* · 2026-03 · [Muhammad Dawood](https://scholar.google.com/citations?hl=en&user=a-szm64AAAAJ) & [Fayyaz ul Amir Afsar Minhas](https://scholar.google.com/citations?hl=en&user=cQ6eO_kAAAAJ) · [doi:10.1038/s41551-026-01616-8](https://doi.org/10.1038/s41551-026-01616-8)
 
-| | |
-| --- | --- |
-| **Backbone** | Benchmarking study rather than a new model. Evaluates CLAM, SlideGraph-infinity and TITAN, with CTransPath and ShuffleNet patch encoders. |
-| **Pre-training** | `self-supervised`, `weakly supervised`<br>CTransPath pretrained on histology via self-supervised learning, giving 768-dimensional patch features; ShuffleNet pretrained on ImageNet, giving 1,024-dimensional patch features; TITAN trained on 330,000 image-text pairs. |
-| **Training data** | H&E WSIs from TCGA, METABRIC, MSK and DFCI. Weakly supervised models trained on TCGA and validated on CPTAC and ABCTB.<br>**8,221** patients |
-| **Downstream tasks** | `biomarker prediction`, `mutation prediction`, `benchmarking`<br>Molecular biomarker and gene mutation prediction from WSIs, plus a confounding/stratification analysis against biomarker interdependency, grade and TMB. |
-| **Modalities** | `histopathology` |
-| **Code** | [github.com/imuhdawood/HistBiases](https://github.com/imuhdawood/HistBiases) |
-| **Note** | Benchmarking and bias study, not a new foundation model. |
+<table>
+<tr><td><strong>Backbone</strong></td><td>Benchmarking study rather than a new model. Evaluates CLAM, SlideGraph-infinity and TITAN, with CTransPath and ShuffleNet patch encoders.</td></tr>
+<tr><td><strong>Pre-training</strong></td><td><code>self-supervised</code>, <code>weakly supervised</code><br>CTransPath pretrained on histology via self-supervised learning, giving 768-dimensional patch features; ShuffleNet pretrained on ImageNet, giving 1,024-dimensional patch features; TITAN trained on 330,000 image-text pairs.</td></tr>
+<tr><td><strong>Training data</strong></td><td>H&amp;E WSIs from TCGA, METABRIC, MSK and DFCI. Weakly supervised models trained on TCGA and validated on CPTAC and ABCTB.<br><strong>8,221</strong> patients</td></tr>
+<tr><td><strong>Downstream tasks</strong></td><td><code>biomarker prediction</code>, <code>mutation prediction</code>, <code>benchmarking</code><br>Molecular biomarker and gene mutation prediction from WSIs, plus a confounding/stratification analysis against biomarker interdependency, grade and TMB.</td></tr>
+<tr><td><strong>Modalities</strong></td><td><code>histopathology</code></td></tr>
+<tr><td><strong>Code</strong></td><td><a href="https://github.com/imuhdawood/HistBiases">github.com/imuhdawood/HistBiases</a></td></tr>
+<tr><td><strong>Note</strong></td><td>Benchmarking and bias study, not a new foundation model.</td></tr>
+</table>
 
 **Reported performance**
 
@@ -161,14 +161,14 @@ Click a model to expand its record.
 
 *Lancet Oncol.* · 2026-02 · H. Lalchungnunga & [Kenneth Aldape](https://scholar.google.com/citations?user=vZM9E_AAAAAJ&hl=en) · [doi:10.1016/S1470-2045(25)00661-8](https://doi.org/10.1016/S1470-2045%2825%2900661-8)
 
-| | |
-| --- | --- |
-| **Backbone** | Hierarchical molecular inference: deep-learning models predict DNA methylation and gene expression from H&E whole-slide images, and a hierarchical classifier maps those predictions to nine tumour families and 52 terminal CNS tumour types |
-| **Pre-training** | `self-supervised`<br>WSI-pretrained encoder followed by molecular inference-based hierarchical classification. |
-| **Training data** | Multi-institutional retrospective CNS tumour cohort. Training data from the NCI, the Children's Brain Tumor Network and the Digital Brain Tumour Atlas; test data from the NCI, Northwestern Medicine, UPMC and University College London, drawn from laboratory archives between May 17, 2024 and May 13, 2025.<br>**5,835** training samples · **5,516** test samples · **52** tumour types |
-| **Downstream tasks** | `classification`, `mutation prediction`, `gene expression prediction`<br>CNS tumour family-level classification, 52 terminal CNS tumour types, IDH mutation prediction, inferred gene expression and DNA methylation. |
-| **Modalities** | `histopathology` |
-| **Weights** | [methylscape.ccr.cancer.gov](https://methylscape.ccr.cancer.gov/) |
+<table>
+<tr><td><strong>Backbone</strong></td><td>Hierarchical molecular inference: deep-learning models predict DNA methylation and gene expression from H&amp;E whole-slide images, and a hierarchical classifier maps those predictions to nine tumour families and 52 terminal CNS tumour types</td></tr>
+<tr><td><strong>Pre-training</strong></td><td><code>self-supervised</code><br>WSI-pretrained encoder followed by molecular inference-based hierarchical classification.</td></tr>
+<tr><td><strong>Training data</strong></td><td>Multi-institutional retrospective CNS tumour cohort. Training data from the NCI, the Children's Brain Tumor Network and the Digital Brain Tumour Atlas; test data from the NCI, Northwestern Medicine, UPMC and University College London, drawn from laboratory archives between May 17, 2024 and May 13, 2025.<br><strong>5,835</strong> training samples · <strong>5,516</strong> test samples · <strong>52</strong> tumour types</td></tr>
+<tr><td><strong>Downstream tasks</strong></td><td><code>classification</code>, <code>mutation prediction</code>, <code>gene expression prediction</code><br>CNS tumour family-level classification, 52 terminal CNS tumour types, IDH mutation prediction, inferred gene expression and DNA methylation.</td></tr>
+<tr><td><strong>Modalities</strong></td><td><code>histopathology</code></td></tr>
+<tr><td><strong>Weights</strong></td><td><a href="https://methylscape.ccr.cancer.gov/">methylscape.ccr.cancer.gov</a></td></tr>
+</table>
 
 **Reported performance**
 
@@ -189,17 +189,17 @@ Click a model to expand its record.
 
 *Cancer Cell* · 2026-02 · Xiao Zhou & [Weidi Xie](https://scholar.google.com/citations?user=Vtrqj4gAAAAJ&hl=zh-CN) · [doi:10.1016/j.ccell.2026.01.019](https://doi.org/10.1016/j.ccell.2026.01.019)
 
-| | |
-| --- | --- |
-| **Parameters** | 414M |
-| **Parameter note** | 414M is the released checkpoint's own total, not a figure from the paper: the HuggingFace API reports safetensors total 414,210,816 for Astaxanthin/KEEP and the model page renders "Model size 0.4B params". It covers both towers (ViT-L/16 vision encoder plus the BERT-family text encoder) at F32. Neither the Cancer Cell abstract nor the arXiv preprint states a parameter count anywhere. |
-| **Backbone** | ViT-L/16 vision encoder initialised from UNI, paired with a PubMedBERT text encoder initialised from a disease-knowledge encoder |
-| **Pre-training** | `contrastive`<br>Knowledge-enhanced vision-language pretraining. A BERT-family knowledge encoder is first trained by metric learning over a disease knowledge graph, then used to align visual and textual representations within hierarchical semantic spaces, so alignment happens at the level of a semantic group rather than a single noisy image-text pair. |
-| **Training data** | Pathology image-text pairs from OpenPath and Quilt-1M, reorganized into semantically structured groups aligned with disease ontology hierarchies<br>**143,000** groups · **11,454** diseases · **139,143** disease attributes |
-| **Downstream tasks** | `segmentation`, `detection`, `subtyping`, `retrieval`, `classification`<br>Zero-shot slide-level cancer region segmentation, cancer detection and subtyping; tile-level cross-modal retrieval and zero-shot image classification. |
-| **Modalities** | `histopathology`, `text` |
-| **Code** | [github.com/MAGIC-AI4Med/KEEP](https://github.com/MAGIC-AI4Med/KEEP) |
-| **Weights** | [huggingface.co/Astaxanthin/KEEP](https://huggingface.co/Astaxanthin/KEEP) |
+<table>
+<tr><td><strong>Parameters</strong></td><td>414M</td></tr>
+<tr><td><strong>Parameter note</strong></td><td>414M is the released checkpoint's own total, not a figure from the paper: the HuggingFace API reports safetensors total 414,210,816 for Astaxanthin/KEEP and the model page renders "Model size 0.4B params". It covers both towers (ViT-L/16 vision encoder plus the BERT-family text encoder) at F32. Neither the Cancer Cell abstract nor the arXiv preprint states a parameter count anywhere.</td></tr>
+<tr><td><strong>Backbone</strong></td><td>ViT-L/16 vision encoder initialised from UNI, paired with a PubMedBERT text encoder initialised from a disease-knowledge encoder</td></tr>
+<tr><td><strong>Pre-training</strong></td><td><code>contrastive</code><br>Knowledge-enhanced vision-language pretraining. A BERT-family knowledge encoder is first trained by metric learning over a disease knowledge graph, then used to align visual and textual representations within hierarchical semantic spaces, so alignment happens at the level of a semantic group rather than a single noisy image-text pair.</td></tr>
+<tr><td><strong>Training data</strong></td><td>Pathology image-text pairs from OpenPath and Quilt-1M, reorganized into semantically structured groups aligned with disease ontology hierarchies<br><strong>143,000</strong> groups · <strong>11,454</strong> diseases · <strong>139,143</strong> disease attributes</td></tr>
+<tr><td><strong>Downstream tasks</strong></td><td><code>segmentation</code>, <code>detection</code>, <code>subtyping</code>, <code>retrieval</code>, <code>classification</code><br>Zero-shot slide-level cancer region segmentation, cancer detection and subtyping; tile-level cross-modal retrieval and zero-shot image classification.</td></tr>
+<tr><td><strong>Modalities</strong></td><td><code>histopathology</code>, <code>text</code></td></tr>
+<tr><td><strong>Code</strong></td><td><a href="https://github.com/MAGIC-AI4Med/KEEP">github.com/MAGIC-AI4Med/KEEP</a></td></tr>
+<tr><td><strong>Weights</strong></td><td><a href="https://huggingface.co/Astaxanthin/KEEP">huggingface.co/Astaxanthin/KEEP</a></td></tr>
+</table>
 
 **Reported performance**
 
@@ -220,13 +220,13 @@ Click a model to expand its record.
 
 *J. Clin. Oncol.* · 2026-02 · [Andrew Hendifar](https://scholar.google.com/citations?hl=en&user=XwWT-TMAAAAJ) & [Jennifer J. Knox](https://scholar.google.com/citations?user=6aEaHzcAAAAJ&hl=en) · [doi:10.1200/JCO-25-02199](https://doi.org/10.1200/JCO-25-02199)
 
-| | |
-| --- | --- |
-| **Backbone** | Not described in any reachable source; the abstract says only that the CHAI platform extracts quantitative histomorphologic features from whole-slide images |
-| **Pre-training** | `supervised`<br>Histomorphologic features extracted from H&E whole-slide images of diagnostic biopsies were screened in a development cohort for association with differential time to next treatment or death between F-chemo- and G-chemo-treated patients; the resulting continuous score was dichotomised and the threshold locked before validation. |
-| **Training data** | H&E-stained diagnostic biopsy whole-slide images from patients with advanced pancreatic ductal adenocarcinoma<br>**477** patients · **178** development patients · **299** validation patients |
-| **Downstream tasks** | `biomarker prediction`, `treatment response`<br>Predicts which of two first-line chemotherapy backbones -- fluoropyrimidine-based (F-chemo) or gemcitabine-based (G-chemo) -- a patient will benefit from, reported as a binary F-pref or G-pref result. |
-| **Modalities** | `histopathology` |
+<table>
+<tr><td><strong>Backbone</strong></td><td>Not described in any reachable source; the abstract says only that the CHAI platform extracts quantitative histomorphologic features from whole-slide images</td></tr>
+<tr><td><strong>Pre-training</strong></td><td><code>supervised</code><br>Histomorphologic features extracted from H&amp;E whole-slide images of diagnostic biopsies were screened in a development cohort for association with differential time to next treatment or death between F-chemo- and G-chemo-treated patients; the resulting continuous score was dichotomised and the threshold locked before validation.</td></tr>
+<tr><td><strong>Training data</strong></td><td>H&amp;E-stained diagnostic biopsy whole-slide images from patients with advanced pancreatic ductal adenocarcinoma<br><strong>477</strong> patients · <strong>178</strong> development patients · <strong>299</strong> validation patients</td></tr>
+<tr><td><strong>Downstream tasks</strong></td><td><code>biomarker prediction</code>, <code>treatment response</code><br>Predicts which of two first-line chemotherapy backbones -- fluoropyrimidine-based (F-chemo) or gemcitabine-based (G-chemo) -- a patient will benefit from, reported as a binary F-pref or G-pref result.</td></tr>
+<tr><td><strong>Modalities</strong></td><td><code>histopathology</code></td></tr>
+</table>
 
 **Reported performance**
 
@@ -247,17 +247,17 @@ Click a model to expand its record.
 
 *Nat. Med.* · 2025-11 · [Tong Ding](https://scholar.google.com/citations?user=Vwt2ZVYAAAAJ&hl=en) & [Faisal Mahmood](https://scholar.google.com/citations?user=9MsdbKoAAAAJ&hl=en) · [doi:10.1038/s41591-025-03982-3](https://doi.org/10.1038/s41591-025-03982-3)
 
-| | |
-| --- | --- |
-| **Parameters** | 48.5M |
-| **Parameter note** | 48.5M is the slide encoder and excludes the frozen CONCH v1.5 patch encoder, so it is not comparable with tile-encoder counts such as Virchow's 632M. The released checkpoint on HuggingFace reports a safetensors total of 158,866,176, which is a different scope -- that file also carries the text encoder and multimodal decoder used for zero-shot and report generation, and ships the patch encoder separately as conch_v1_5_pytorch_model.bin. The repo is gated, so its config.json and model card could not be read to confirm the split. |
-| **Backbone** | ViT slide encoder (Transformer-based Image and Text Alignment Network) over CONCH v1.5 patch features |
-| **Pre-training** | `self-supervised`, `iBOT`, `CoCa`, `contrastive`<br>Three stages: iBOT self-supervised pretraining on a 2D grid of patch features, then CoCa alignment against synthetic ROI captions generated by the PathChat pathology copilot, then alignment against whole-slide pathology reports. |
-| **Training data** | Whole-slide images with paired pathology reports and synthetic captions<br>**335,645** WSI · **182,862** pathology reports · **423,122** captions |
-| **Downstream tasks** | `classification`, `subtyping`, `retrieval`, `report generation`, `survival prediction`<br>Slide-level representation without fine-tuning, rare disease recognition, cancer outcome prediction and pathology report generation. |
-| **Modalities** | `histopathology`, `text` |
-| **Code** | [github.com/mahmoodlab/TITAN](https://github.com/mahmoodlab/TITAN) |
-| **Weights** | [huggingface.co/MahmoodLab/TITAN](https://huggingface.co/MahmoodLab/TITAN) |
+<table>
+<tr><td><strong>Parameters</strong></td><td>48.5M</td></tr>
+<tr><td><strong>Parameter note</strong></td><td>48.5M is the slide encoder and excludes the frozen CONCH v1.5 patch encoder, so it is not comparable with tile-encoder counts such as Virchow's 632M. The released checkpoint on HuggingFace reports a safetensors total of 158,866,176, which is a different scope -- that file also carries the text encoder and multimodal decoder used for zero-shot and report generation, and ships the patch encoder separately as conch_v1_5_pytorch_model.bin. The repo is gated, so its config.json and model card could not be read to confirm the split.</td></tr>
+<tr><td><strong>Backbone</strong></td><td>ViT slide encoder (Transformer-based Image and Text Alignment Network) over CONCH v1.5 patch features</td></tr>
+<tr><td><strong>Pre-training</strong></td><td><code>self-supervised</code>, <code>iBOT</code>, <code>CoCa</code>, <code>contrastive</code><br>Three stages: iBOT self-supervised pretraining on a 2D grid of patch features, then CoCa alignment against synthetic ROI captions generated by the PathChat pathology copilot, then alignment against whole-slide pathology reports.</td></tr>
+<tr><td><strong>Training data</strong></td><td>Whole-slide images with paired pathology reports and synthetic captions<br><strong>335,645</strong> WSI · <strong>182,862</strong> pathology reports · <strong>423,122</strong> captions</td></tr>
+<tr><td><strong>Downstream tasks</strong></td><td><code>classification</code>, <code>subtyping</code>, <code>retrieval</code>, <code>report generation</code>, <code>survival prediction</code><br>Slide-level representation without fine-tuning, rare disease recognition, cancer outcome prediction and pathology report generation.</td></tr>
+<tr><td><strong>Modalities</strong></td><td><code>histopathology</code>, <code>text</code></td></tr>
+<tr><td><strong>Code</strong></td><td><a href="https://github.com/mahmoodlab/TITAN">github.com/mahmoodlab/TITAN</a></td></tr>
+<tr><td><strong>Weights</strong></td><td><a href="https://huggingface.co/MahmoodLab/TITAN">huggingface.co/MahmoodLab/TITAN</a></td></tr>
+</table>
 
 **Reported performance**
 
@@ -279,16 +279,16 @@ Click a model to expand its record.
 
 *Nat. Cancer* · 2025-11 · [Zeyu Gao](https://scholar.google.com/citations?hl=zh-CN&user=CeP6dkcAAAAJ) & [Mireia Crispin-Ortuzar](https://scholar.google.com/citations?hl=en&user=TRZzLJgAAAAJ) · [doi:10.1038/s43018-025-01060-8](https://doi.org/10.1038/s43018-025-01060-8)
 
-| | |
-| --- | --- |
-| **Parameters** | 1.2M |
-| **Parameter note** | The paper reports SMMILe's own cost as "1.50 GFLOPS, 1.20 M parameters" for 1,024-dimension patch embeddings; the frozen ResNet-50/CONCH patch encoder is not counted, so this is not comparable to a tile-encoder parameter count. |
-| **Backbone** | ResNet-50 and CONCH patch encoders with an instance-based multiple-instance-learning architecture using superpatch and refinement modules |
-| **Pre-training** | `weakly supervised`<br>Feature extraction with pretrained encoders (ImageNet ResNet-50, pathology foundation model CONCH), then weakly supervised MIL training with slide-level labels. |
-| **Training data** | 8 datasets covering 6 cancer types<br>**3,850** WSI · **8** datasets · **6** cancer types |
-| **Downstream tasks** | `classification`, `detection`, `subtyping`, `grading`<br>WSI-level classification and patch-level spatial quantification, including metastasis detection, subtype prediction and grading. |
-| **Modalities** | `histopathology` |
-| **Code** | [github.com/ZeyuGaoAi/SMMILe](https://github.com/ZeyuGaoAi/SMMILe) |
+<table>
+<tr><td><strong>Parameters</strong></td><td>1.2M</td></tr>
+<tr><td><strong>Parameter note</strong></td><td>The paper reports SMMILe's own cost as "1.50 GFLOPS, 1.20 M parameters" for 1,024-dimension patch embeddings; the frozen ResNet-50/CONCH patch encoder is not counted, so this is not comparable to a tile-encoder parameter count.</td></tr>
+<tr><td><strong>Backbone</strong></td><td>ResNet-50 and CONCH patch encoders with an instance-based multiple-instance-learning architecture using superpatch and refinement modules</td></tr>
+<tr><td><strong>Pre-training</strong></td><td><code>weakly supervised</code><br>Feature extraction with pretrained encoders (ImageNet ResNet-50, pathology foundation model CONCH), then weakly supervised MIL training with slide-level labels.</td></tr>
+<tr><td><strong>Training data</strong></td><td>8 datasets covering 6 cancer types<br><strong>3,850</strong> WSI · <strong>8</strong> datasets · <strong>6</strong> cancer types</td></tr>
+<tr><td><strong>Downstream tasks</strong></td><td><code>classification</code>, <code>detection</code>, <code>subtyping</code>, <code>grading</code><br>WSI-level classification and patch-level spatial quantification, including metastasis detection, subtype prediction and grading.</td></tr>
+<tr><td><strong>Modalities</strong></td><td><code>histopathology</code></td></tr>
+<tr><td><strong>Code</strong></td><td><a href="https://github.com/ZeyuGaoAi/SMMILe">github.com/ZeyuGaoAi/SMMILe</a></td></tr>
+</table>
 
 **Reported performance**
 
@@ -309,17 +309,17 @@ Click a model to expand its record.
 
 *Nature* · 2025-01 · [Jinxi Xiang](https://scholar.google.com/citations?user=Zn-0LioAAAAJ&hl=en) & [Ruijiang Li](https://scholar.google.com/citations?user=Y89JnCYAAAAJ&hl=en) · [doi:10.1038/s41586-024-08378-w](https://doi.org/10.1038/s41586-024-08378-w)
 
-| | |
-| --- | --- |
-| **Parameters** | 675M |
-| **Backbone** | BEiT-3-style multimodal transformer -- shared self-attention blocks with two independent vision and language experts; 24 layers, hidden size 1024, FFN 4096, 16 attention heads, 384x384 input at 16x16 patches |
-| **Pre-training** | `MIM`, `contrastive`<br>Masked image modelling followed by vision-language contrastive alignment. |
-| **Training data** | 50 million TCGA H&E image patches from ~33,000 WSIs and 1 billion text tokens from PubMed Central OA articles for masked pretraining, then ~1 million image-text pairs from Quilt1M (802k) and PathAsst (207k) for contrastive alignment<br>**50,000,000** image patches · **33,000** WSI · **11,577** patients · **1,000,000,000** text tokens · **1,001,800** articles · **1,000,000** pairs |
-| **Downstream tasks** | `retrieval`, `visual question answering`, `classification`, `biomarker prediction`, `prognosis`, `survival prediction`, `treatment response`<br>Cross-modal retrieval, visual question answering, histopathology image classification and molecular biomarker prediction, plus clinical outcome prediction -- melanoma relapse, pan-cancer prognosis and immunotherapy response. |
-| **Modalities** | `histopathology`, `text` |
-| **Code** | [github.com/lilab-stanford/MUSK](https://github.com/lilab-stanford/MUSK) |
-| **Weights** | [huggingface.co/xiangjx/musk](https://huggingface.co/xiangjx/musk) |
-| **License** | CC-BY-NC-ND-4.0 |
+<table>
+<tr><td><strong>Parameters</strong></td><td>675M</td></tr>
+<tr><td><strong>Backbone</strong></td><td>BEiT-3-style multimodal transformer -- shared self-attention blocks with two independent vision and language experts; 24 layers, hidden size 1024, FFN 4096, 16 attention heads, 384x384 input at 16x16 patches</td></tr>
+<tr><td><strong>Pre-training</strong></td><td><code>MIM</code>, <code>contrastive</code><br>Masked image modelling followed by vision-language contrastive alignment.</td></tr>
+<tr><td><strong>Training data</strong></td><td>50 million TCGA H&amp;E image patches from ~33,000 WSIs and 1 billion text tokens from PubMed Central OA articles for masked pretraining, then ~1 million image-text pairs from Quilt1M (802k) and PathAsst (207k) for contrastive alignment<br><strong>50,000,000</strong> image patches · <strong>33,000</strong> WSI · <strong>11,577</strong> patients · <strong>1,000,000,000</strong> text tokens · <strong>1,001,800</strong> articles · <strong>1,000,000</strong> pairs</td></tr>
+<tr><td><strong>Downstream tasks</strong></td><td><code>retrieval</code>, <code>visual question answering</code>, <code>classification</code>, <code>biomarker prediction</code>, <code>prognosis</code>, <code>survival prediction</code>, <code>treatment response</code><br>Cross-modal retrieval, visual question answering, histopathology image classification and molecular biomarker prediction, plus clinical outcome prediction -- melanoma relapse, pan-cancer prognosis and immunotherapy response.</td></tr>
+<tr><td><strong>Modalities</strong></td><td><code>histopathology</code>, <code>text</code></td></tr>
+<tr><td><strong>Code</strong></td><td><a href="https://github.com/lilab-stanford/MUSK">github.com/lilab-stanford/MUSK</a></td></tr>
+<tr><td><strong>Weights</strong></td><td><a href="https://huggingface.co/xiangjx/musk">huggingface.co/xiangjx/musk</a></td></tr>
+<tr><td><strong>License</strong></td><td>CC-BY-NC-ND-4.0</td></tr>
+</table>
 
 **Reported performance**
 
@@ -341,16 +341,16 @@ Click a model to expand its record.
 
 *Nature* · 2024-09 · [Xiyue Wang](https://scholar.google.com/citations?user=NHt3fUcAAAAJ&hl=en) & [Kun-Hsing Yu](https://scholar.google.com/citations?user=1ZCJvkgAAAAJ&hl=en) · [doi:10.1038/s41586-024-07894-z](https://doi.org/10.1038/s41586-024-07894-z)
 
-| | |
-| --- | --- |
-| **Backbone** | CTransPath tile encoder with a weakly supervised whole-slide aggregation module |
-| **Pre-training** | `self-supervised`, `weakly supervised`<br>Two complementary pretraining strategies: unsupervised pretraining for tile-level features and weakly supervised pretraining for whole-slide pattern recognition. |
-| **Training data** | Unsupervised tile-level pretraining then weakly supervised slide-level pretraining, across 14 cohorts and 19 anatomical sites<br>**15,000,000** image tiles · **60,530** WSI · **19** anatomical sites |
-| **Downstream tasks** | `classification`, `detection`, `subtyping`, `prognosis`, `mutation prediction`<br>Cancer cell detection, tumour origin identification, molecular profile prediction and survival outcome prediction across cancer types. |
-| **Modalities** | `histopathology` |
-| **Code** | [github.com/hms-dbmi/CHIEF](https://github.com/hms-dbmi/CHIEF) |
-| **Weights** | [hub.docker.com/r/chiefcontainer/chief](https://hub.docker.com/r/chiefcontainer/chief/) |
-| **License** | GPLv3 |
+<table>
+<tr><td><strong>Backbone</strong></td><td>CTransPath tile encoder with a weakly supervised whole-slide aggregation module</td></tr>
+<tr><td><strong>Pre-training</strong></td><td><code>self-supervised</code>, <code>weakly supervised</code><br>Two complementary pretraining strategies: unsupervised pretraining for tile-level features and weakly supervised pretraining for whole-slide pattern recognition.</td></tr>
+<tr><td><strong>Training data</strong></td><td>Unsupervised tile-level pretraining then weakly supervised slide-level pretraining, across 14 cohorts and 19 anatomical sites<br><strong>15,000,000</strong> image tiles · <strong>60,530</strong> WSI · <strong>19</strong> anatomical sites</td></tr>
+<tr><td><strong>Downstream tasks</strong></td><td><code>classification</code>, <code>detection</code>, <code>subtyping</code>, <code>prognosis</code>, <code>mutation prediction</code><br>Cancer cell detection, tumour origin identification, molecular profile prediction and survival outcome prediction across cancer types.</td></tr>
+<tr><td><strong>Modalities</strong></td><td><code>histopathology</code></td></tr>
+<tr><td><strong>Code</strong></td><td><a href="https://github.com/hms-dbmi/CHIEF">github.com/hms-dbmi/CHIEF</a></td></tr>
+<tr><td><strong>Weights</strong></td><td><a href="https://hub.docker.com/r/chiefcontainer/chief/">hub.docker.com/r/chiefcontainer/chief</a></td></tr>
+<tr><td><strong>License</strong></td><td>GPLv3</td></tr>
+</table>
 
 **Reported performance**
 
@@ -372,17 +372,17 @@ Click a model to expand its record.
 
 *Nat. Med.* · 2024-07 · [Eugene Vorontsov](https://scholar.google.com/citations?user=5o1gS_sAAAAJ&hl=en) & [Thomas J. Fuchs](https://scholar.google.ch/citations?user=zh0Raz8AAAAJ&hl=en) · [doi:10.1038/s41591-024-03141-0](https://doi.org/10.1038/s41591-024-03141-0)
 
-| | |
-| --- | --- |
-| **Parameters** | 632M |
-| **Backbone** | ViT-H/14 |
-| **Pre-training** | `DINOv2`<br>Self-supervised DINOv2 pretraining on H&E whole-slide images. |
-| **Training data** | H&E-stained whole-slide images from a clinical archive<br>**1,500,000** WSI · **100,000** patients · **2,000,000,000** training tiles |
-| **Downstream tasks** | `detection`, `biomarker prediction`, `classification`<br>Pan-cancer detection including rare cancers, and biomarker prediction. |
-| **Modalities** | `histopathology` |
-| **Code** | [github.com/Paige-AI/paige-ml-sdk](https://github.com/Paige-AI/paige-ml-sdk) |
-| **Weights** | [huggingface.co/paige-ai/Virchow](https://huggingface.co/paige-ai/Virchow) |
-| **License** | Apache-2.0 |
+<table>
+<tr><td><strong>Parameters</strong></td><td>632M</td></tr>
+<tr><td><strong>Backbone</strong></td><td>ViT-H/14</td></tr>
+<tr><td><strong>Pre-training</strong></td><td><code>DINOv2</code><br>Self-supervised DINOv2 pretraining on H&amp;E whole-slide images.</td></tr>
+<tr><td><strong>Training data</strong></td><td>H&amp;E-stained whole-slide images from a clinical archive<br><strong>1,500,000</strong> WSI · <strong>100,000</strong> patients · <strong>2,000,000,000</strong> training tiles</td></tr>
+<tr><td><strong>Downstream tasks</strong></td><td><code>detection</code>, <code>biomarker prediction</code>, <code>classification</code><br>Pan-cancer detection including rare cancers, and biomarker prediction.</td></tr>
+<tr><td><strong>Modalities</strong></td><td><code>histopathology</code></td></tr>
+<tr><td><strong>Code</strong></td><td><a href="https://github.com/Paige-AI/paige-ml-sdk">github.com/Paige-AI/paige-ml-sdk</a></td></tr>
+<tr><td><strong>Weights</strong></td><td><a href="https://huggingface.co/paige-ai/Virchow">huggingface.co/paige-ai/Virchow</a></td></tr>
+<tr><td><strong>License</strong></td><td>Apache-2.0</td></tr>
+</table>
 
 **Reported performance**
 
@@ -403,17 +403,17 @@ Click a model to expand its record.
 
 *Nature* · 2024-05 · [Hanwen Xu](https://scholar.google.com/citations?user=HwO7L5sAAAAJ&hl=zh-CN) & [Hoifung Poon](https://scholar.google.com/citations?user=yqqmVbkAAAAJ&hl=en) · [doi:10.1038/s41586-024-07441-w](https://doi.org/10.1038/s41586-024-07441-w)
 
-| | |
-| --- | --- |
-| **Parameters** | 1B |
-| **Parameter note** | Two components, counted separately. The Nature paper and its Supplementary Information give no count for the released model; both figures come from the same team's follow-up paper (GigaPath-Flash, arXiv:2607.18218), whose Table 1 lists "GigaPath \| Whole-Slide FM \| ViT-g (1B) + LongNet (86M) \| Apache-2.0 \| Nature, 2024" and whose section 2.1 calls it "the frozen GigaPath ViT-g (1B) teacher". The 1B is the tile encoder; the 86M is the LongNet slide encoder. Not comparable with a tile-encoder-only count such as UNI's 307M without saying which half you mean. |
-| **Backbone** | ViT-g tile encoder with a 12-layer, 768-dim LongNet slide encoder over 1,536-dim tile embeddings |
-| **Pre-training** | `DINOv2`, `MAE`<br>DINOv2 tile-level pretraining followed by masked autoencoder pretraining with LongNet over whole slides. |
-| **Training data** | Real-world H&E slides from the Providence health network<br>**171,189** WSI · **1,384,860,229** image tiles |
-| **Downstream tasks** | `classification`, `subtyping`, `mutation prediction`, `biomarker prediction`<br>26 prediction tasks spanning pathomics and cancer subtyping. |
-| **Modalities** | `histopathology` |
-| **Code** | [github.com/prov-gigapath/prov-gigapath](https://github.com/prov-gigapath/prov-gigapath) |
-| **Weights** | [huggingface.co/prov-gigapath/prov-gigapath](https://huggingface.co/prov-gigapath/prov-gigapath) |
+<table>
+<tr><td><strong>Parameters</strong></td><td>1B</td></tr>
+<tr><td><strong>Parameter note</strong></td><td>Two components, counted separately. The Nature paper and its Supplementary Information give no count for the released model; both figures come from the same team's follow-up paper (GigaPath-Flash, arXiv:2607.18218), whose Table 1 lists "GigaPath | Whole-Slide FM | ViT-g (1B) + LongNet (86M) | Apache-2.0 | Nature, 2024" and whose section 2.1 calls it "the frozen GigaPath ViT-g (1B) teacher". The 1B is the tile encoder; the 86M is the LongNet slide encoder. Not comparable with a tile-encoder-only count such as UNI's 307M without saying which half you mean.</td></tr>
+<tr><td><strong>Backbone</strong></td><td>ViT-g tile encoder with a 12-layer, 768-dim LongNet slide encoder over 1,536-dim tile embeddings</td></tr>
+<tr><td><strong>Pre-training</strong></td><td><code>DINOv2</code>, <code>MAE</code><br>DINOv2 tile-level pretraining followed by masked autoencoder pretraining with LongNet over whole slides.</td></tr>
+<tr><td><strong>Training data</strong></td><td>Real-world H&amp;E slides from the Providence health network<br><strong>171,189</strong> WSI · <strong>1,384,860,229</strong> image tiles</td></tr>
+<tr><td><strong>Downstream tasks</strong></td><td><code>classification</code>, <code>subtyping</code>, <code>mutation prediction</code>, <code>biomarker prediction</code><br>26 prediction tasks spanning pathomics and cancer subtyping.</td></tr>
+<tr><td><strong>Modalities</strong></td><td><code>histopathology</code></td></tr>
+<tr><td><strong>Code</strong></td><td><a href="https://github.com/prov-gigapath/prov-gigapath">github.com/prov-gigapath/prov-gigapath</a></td></tr>
+<tr><td><strong>Weights</strong></td><td><a href="https://huggingface.co/prov-gigapath/prov-gigapath">huggingface.co/prov-gigapath/prov-gigapath</a></td></tr>
+</table>
 
 **Reported performance**
 
@@ -434,16 +434,16 @@ Click a model to expand its record.
 
 *Nat. Med.* · 2024-03 · [Richard J. Chen](https://scholar.google.com/citations?user=yhGqdMgAAAAJ&hl=en) & [Faisal Mahmood](https://scholar.google.com/citations?user=9MsdbKoAAAAJ&hl=en) · [doi:10.1038/s41591-024-02857-3](https://doi.org/10.1038/s41591-024-02857-3)
 
-| | |
-| --- | --- |
-| **Parameters** | 307M |
-| **Backbone** | ViT-L/16 |
-| **Pre-training** | `DINOv2`<br>Self-supervised DINOv2 pretraining on the Mass-100K slide corpus. |
-| **Training data** | Mass-100K, H&E whole-slide images from Massachusetts General Brigham<br>**100,426** WSI · **100,130,900** tissue patches |
-| **Downstream tasks** | `segmentation`, `detection`, `grading`, `subtyping`, `biomarker prediction`, `classification`<br>34 tasks including nuclear segmentation, primary and metastatic cancer detection, cancer grading and subtyping, biomarker screening, molecular subtyping, organ transplant assessment and pan-cancer classification. |
-| **Modalities** | `histopathology` |
-| **Code** | [github.com/mahmoodlab/UNI](https://github.com/mahmoodlab/UNI) |
-| **Weights** | [huggingface.co/MahmoodLab/UNI](https://huggingface.co/MahmoodLab/UNI) |
+<table>
+<tr><td><strong>Parameters</strong></td><td>307M</td></tr>
+<tr><td><strong>Backbone</strong></td><td>ViT-L/16</td></tr>
+<tr><td><strong>Pre-training</strong></td><td><code>DINOv2</code><br>Self-supervised DINOv2 pretraining on the Mass-100K slide corpus.</td></tr>
+<tr><td><strong>Training data</strong></td><td>Mass-100K, H&amp;E whole-slide images from Massachusetts General Brigham<br><strong>100,426</strong> WSI · <strong>100,130,900</strong> tissue patches</td></tr>
+<tr><td><strong>Downstream tasks</strong></td><td><code>segmentation</code>, <code>detection</code>, <code>grading</code>, <code>subtyping</code>, <code>biomarker prediction</code>, <code>classification</code><br>34 tasks including nuclear segmentation, primary and metastatic cancer detection, cancer grading and subtyping, biomarker screening, molecular subtyping, organ transplant assessment and pan-cancer classification.</td></tr>
+<tr><td><strong>Modalities</strong></td><td><code>histopathology</code></td></tr>
+<tr><td><strong>Code</strong></td><td><a href="https://github.com/mahmoodlab/UNI">github.com/mahmoodlab/UNI</a></td></tr>
+<tr><td><strong>Weights</strong></td><td><a href="https://huggingface.co/MahmoodLab/UNI">huggingface.co/MahmoodLab/UNI</a></td></tr>
+</table>
 
 **Reported performance**
 
@@ -465,15 +465,15 @@ Click a model to expand its record.
 
 *Nat. Med.* · 2024-03 · [Ming Y. Lu](https://scholar.google.com/citations?user=GhzAXmIAAAAJ&hl=en) & [Faisal Mahmood](https://scholar.google.com/citations?user=9MsdbKoAAAAJ&hl=en) · [doi:10.1038/s41591-024-02856-4](https://doi.org/10.1038/s41591-024-02856-4)
 
-| | |
-| --- | --- |
-| **Backbone** | ViT-B/16 image encoder, 12-layer text encoder and 12-layer multimodal decoder |
-| **Pre-training** | `iBOT`, `CoCa`<br>iBOT visual pretraining followed by CoCa image-text pretraining. |
-| **Training data** | Pathology image-caption pairs curated from educational sources and PubMed<br>**1,170,647** pairs |
-| **Downstream tasks** | `classification`, `retrieval`, `segmentation`, `captioning`<br>Tile- and slide-level classification, cross-modal image-to-text and text-to-image retrieval, image segmentation and captioning. |
-| **Modalities** | `histopathology`, `text` |
-| **Code** | [github.com/mahmoodlab/CONCH](https://github.com/mahmoodlab/CONCH) |
-| **Weights** | [huggingface.co/MahmoodLab/CONCH](https://huggingface.co/MahmoodLab/CONCH) |
+<table>
+<tr><td><strong>Backbone</strong></td><td>ViT-B/16 image encoder, 12-layer text encoder and 12-layer multimodal decoder</td></tr>
+<tr><td><strong>Pre-training</strong></td><td><code>iBOT</code>, <code>CoCa</code><br>iBOT visual pretraining followed by CoCa image-text pretraining.</td></tr>
+<tr><td><strong>Training data</strong></td><td>Pathology image-caption pairs curated from educational sources and PubMed<br><strong>1,170,647</strong> pairs</td></tr>
+<tr><td><strong>Downstream tasks</strong></td><td><code>classification</code>, <code>retrieval</code>, <code>segmentation</code>, <code>captioning</code><br>Tile- and slide-level classification, cross-modal image-to-text and text-to-image retrieval, image segmentation and captioning.</td></tr>
+<tr><td><strong>Modalities</strong></td><td><code>histopathology</code>, <code>text</code></td></tr>
+<tr><td><strong>Code</strong></td><td><a href="https://github.com/mahmoodlab/CONCH">github.com/mahmoodlab/CONCH</a></td></tr>
+<tr><td><strong>Weights</strong></td><td><a href="https://huggingface.co/MahmoodLab/CONCH">huggingface.co/MahmoodLab/CONCH</a></td></tr>
+</table>
 
 **Reported performance**
 
@@ -495,15 +495,15 @@ Click a model to expand its record.
 
 *Nat. Med.* · 2023-08 · [Zhi Huang](https://scholar.google.com/citations?user=Sh6TgyQAAAAJ&hl=en) & [James Zou](https://scholar.google.com/citations?user=23ZXZvEAAAAJ&hl=en) · [doi:10.1038/s41591-023-02504-3](https://doi.org/10.1038/s41591-023-02504-3)
 
-| | |
-| --- | --- |
-| **Backbone** | CLIP ViT-B/32 image encoder with a 12-layer, 512-dim Transformer text encoder |
-| **Pre-training** | `CLIP`, `contrastive`<br>CLIP fine-tuned on the OpenPath image-text corpus. |
-| **Training data** | OpenPath, pathology images paired with natural-language descriptions sourced from medical Twitter<br>**208,414** pairs |
-| **Downstream tasks** | `classification`, `retrieval`<br>Zero-shot and transfer-learning classification of pathology images, and cross-modal image-to-text retrieval. |
-| **Modalities** | `histopathology`, `text` |
-| **Code** | [github.com/PathologyFoundation/plip](https://github.com/PathologyFoundation/plip) |
-| **Weights** | [huggingface.co/vinid/plip](https://huggingface.co/vinid/plip) |
+<table>
+<tr><td><strong>Backbone</strong></td><td>CLIP ViT-B/32 image encoder with a 12-layer, 512-dim Transformer text encoder</td></tr>
+<tr><td><strong>Pre-training</strong></td><td><code>CLIP</code>, <code>contrastive</code><br>CLIP fine-tuned on the OpenPath image-text corpus.</td></tr>
+<tr><td><strong>Training data</strong></td><td>OpenPath, pathology images paired with natural-language descriptions sourced from medical Twitter<br><strong>208,414</strong> pairs</td></tr>
+<tr><td><strong>Downstream tasks</strong></td><td><code>classification</code>, <code>retrieval</code><br>Zero-shot and transfer-learning classification of pathology images, and cross-modal image-to-text retrieval.</td></tr>
+<tr><td><strong>Modalities</strong></td><td><code>histopathology</code>, <code>text</code></td></tr>
+<tr><td><strong>Code</strong></td><td><a href="https://github.com/PathologyFoundation/plip">github.com/PathologyFoundation/plip</a></td></tr>
+<tr><td><strong>Weights</strong></td><td><a href="https://huggingface.co/vinid/plip">huggingface.co/vinid/plip</a></td></tr>
+</table>
 
 **Reported performance**
 
