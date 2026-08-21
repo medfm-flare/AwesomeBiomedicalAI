@@ -12,21 +12,21 @@ Histopathology, whole-slide imaging and computational pathology.
 
 | Date | Model | Venue | Model size | Training slides | Pre-training | Downstream tasks |
 | --- | --- | --- | --- | --- | --- | --- |
-| 2026.07 | [PRISM2](#model-prism2-202607) | Nat. Med. | 4.6B | 2.35M | contrastive → dialogue next-token | detection, subtyping, grading +4 |
-| 2026.04 | [PRET](#model-pret-202604) | Nat. Cancer | _not published_ | none (training-free) | DINO ViT-S/8 encoder, then frozen | detection, subtyping, segmentation +1 |
-| 2026.03 | [HistBiases](#model-histbiases-202603) | Nat. Biomed. Eng. | _n/a_ | not stated (8.2K patients) | frozen CTransPath + CLAM/SlideGraph | biomarker prediction, mutation prediction, benchmarking |
-| 2026.02 | [Neuropath-AI](#model-neuropath-ai-202602) | Lancet Oncol. | _not published_ | 5.8K samples (not slides) | WSI → molecular inference → hierarchy | classification, mutation prediction, gene expression prediction |
-| 2026.02 | [KEEP](#model-keep-202602) | Cancer Cell | 414M | none (tile–text pairs) | knowledge-graph metric + contrastive | segmentation, detection, subtyping +2 |
-| 2026.02 | [CHAI](#model-chai-202602) | J. Clin. Oncol. | _not published_ | not stated (178 patients) | supervised histomorphologic screening | biomarker prediction, treatment response |
-| 2025.11 | [TITAN](#model-titan-202511) | Nat. Med. | 48.5M (slide enc.) | 336K | iBOT → CoCa (3 stages) | classification, subtyping, retrieval +2 |
-| 2025.11 | [SMMILe](#model-smmile-202511) | Nat. Cancer | 1.2M (MIL head) | 3.9K (cross-validated) | weakly supervised MIL, frozen encoder | classification, detection, subtyping +1 |
-| 2025.01 | [MUSK](#model-musk-202501) | Nature | 675M | 33K | BEiT-3 MIM → contrastive | retrieval, visual question answering, classification +4 |
-| 2024.09 | [CHIEF](#model-chief-202409) | Nature | _not published_ | 60.5K | CTransPath tiles → weakly supervised | classification, detection, subtyping +2 |
-| 2024.07 | [Virchow](#model-virchow-202407) | Nat. Med. | 632M | 1.5M | DINOv2 | detection, biomarker prediction, classification |
-| 2024.05 | [Prov-GigaPath](#model-prov-gigapath-202405) | Nature | 1B (tile enc.) | 171K | DINOv2 tiles → LongNet MAE slides | classification, subtyping, mutation prediction +1 |
-| 2024.03 | [UNI](#model-uni-202403) | Nat. Med. | 307M | 100K | DINOv2 | segmentation, detection, grading +3 |
-| 2024.03 | [CONCH](#model-conch-202403) | Nat. Med. | _not published_ | none (1.17M image–caption) | iBOT → CoCa | classification, retrieval, segmentation +1 |
-| 2023.08 | [PLIP](#model-plip-202308) | Nat. Med. | _not published_ | none (208K image–text) | CLIP contrastive fine-tune | classification, retrieval |
+| 202607 | [PRISM2](#model-prism2-202607) | Nat. Med. | 4.6B | 2.35M | contrastive → dialogue next-token | detection, subtyping, grading +4 |
+| 202604 | [PRET](#model-pret-202604) | Nat. Cancer | _not published_ | none (training-free) | DINO ViT-S/8 encoder, then frozen | detection, subtyping, segmentation +1 |
+| 202603 | [HistBiases](#model-histbiases-202603) | Nat. Biomed. Eng. | _n/a_ | not stated (8.2K patients) | frozen CTransPath + CLAM/SlideGraph | biomarker prediction, mutation prediction, benchmarking |
+| 202602 | [Neuropath-AI](#model-neuropath-ai-202602) | Lancet Oncol. | _not published_ | 5.8K samples (not slides) | WSI → molecular inference → hierarchy | classification, mutation prediction, gene expression prediction |
+| 202602 | [KEEP](#model-keep-202602) | Cancer Cell | 414M | none (tile–text pairs) | knowledge-graph metric + contrastive | segmentation, detection, subtyping +2 |
+| 202602 | [CHAI](#model-chai-202602) | J. Clin. Oncol. | _not published_ | not stated (178 patients) | supervised histomorphologic screening | biomarker prediction, treatment response |
+| 202511 | [TITAN](#model-titan-202511) | Nat. Med. | 48.5M (slide enc.) | 336K | iBOT → CoCa (3 stages) | classification, subtyping, retrieval +2 |
+| 202511 | [SMMILe](#model-smmile-202511) | Nat. Cancer | 1.2M (MIL head) | 3.9K (cross-validated) | weakly supervised MIL, frozen encoder | classification, detection, subtyping +1 |
+| 202501 | [MUSK](#model-musk-202501) | Nature | 675M | ~33K | BEiT-3 MIM → contrastive | retrieval, visual question answering, classification +4 |
+| 202409 | [CHIEF](#model-chief-202409) | Nature | _not published_ | 60.5K | CTransPath tiles → weakly supervised | classification, detection, subtyping +2 |
+| 202407 | [Virchow](#model-virchow-202407) | Nat. Med. | 632M | ~1.5M | DINOv2 | detection, biomarker prediction, classification |
+| 202405 | [Prov-GigaPath](#model-prov-gigapath-202405) | Nature | 1B (tile enc.) | 171K | DINOv2 tiles → LongNet MAE slides | classification, subtyping, mutation prediction +1 |
+| 202403 | [UNI](#model-uni-202403) | Nat. Med. | 307M | 100K | DINOv2 | segmentation, detection, grading +3 |
+| 202403 | [CONCH](#model-conch-202403) | Nat. Med. | _not published_ | none (1.17M image–caption) | iBOT → CoCa | classification, retrieval, segmentation +1 |
+| 202308 | [PLIP](#model-plip-202308) | Nat. Med. | _not published_ | none (208K image–text) | CLIP contrastive fine-tune | classification, retrieval |
 
 <sub><b>Model size</b> is the count the authors publish, with the component it covers in brackets — a slide encoder and a tile encoder are not comparable. <i>not published</i> means the access routes were worked and no author source states one; <i>n/a</i> means the paper does not introduce a model. <b>Training slides</b> counts whole slides used for training, so a model trained on tiles or image–text pairs shows what it used instead.</sub>
 
