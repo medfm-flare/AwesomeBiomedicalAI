@@ -15,7 +15,7 @@ A curated catalogue of biomedical artificial intelligence models and systems pub
 | [AI Agents](AI_agent.md) | Agentic, autonomous and tool-using AI systems | @Meng Wei @Lan Feng |  |
 | [AI for Biology](AI4biology.md) | Genomics, transcriptomics, proteomics, omics and biological modeling | @Keishi Suzuki |  |
 | [Large Language Models](LLM.md) | Top foundational and recent research papers on medical large language models (LLMs) focusing on clinical knowledge encoding, multi-modal integration, reasoning benchmarks, and expert-level question-answering alignment | [Leo Chen](https://github.com/leochenmd) |  |
-| [AI for Science](AI4Science.md) | Scientific discovery, research assistance, chemistry and drug design | @Ryan Khalloqi |  |
+| [AI for Science](AI4Science.md) | Scientific discovery, research assistance, chemistry and drug design | [Ryan Khalloqi](https://github.com/ryanwangk) |  |
 
 
 ## Contributing
