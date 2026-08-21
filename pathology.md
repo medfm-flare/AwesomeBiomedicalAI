@@ -8,10 +8,11 @@ Histopathology, whole-slide imaging and computational pathology.
 
 **Maintainer:** [Leo Yin](https://shuolinyin.com) ([GitHub](https://github.com/1nslyn))
 
-**15 entries** · [Back to index](README.md)
+**16 entries** · [Back to index](README.md)
 
 | Date | Model | Venue | Model size | Training slides | Pre-training | Downstream tasks |
 | --- | --- | --- | --- | --- | --- | --- |
+| 202608 | [Tissue Clocks](#model-tissue-clocks-202608) | Nat. Med. | _not published_ | 25.7K (cross-validated) | ImageNet ConvNeXt → tissue-class tuning | regression, risk prediction, benchmarking |
 | 202607 | [PRISM2](#model-prism2-202607) | Nat. Med. | 4.6B | 2.35M | contrastive → dialogue next-token | detection, subtyping, grading +4 |
 | 202604 | [PRET](#model-pret-202604) | Nat. Cancer | _not published_ | none (training-free) | DINO ViT-S/8 encoder, then frozen | detection, subtyping, segmentation +1 |
 | 202603 | [HistBiases](#model-histbiases-202603) | Nat. Biomed. Eng. | _n/a_ | not stated (8.2K patients) | frozen CTransPath + CLAM/SlideGraph | biomarker prediction, mutation prediction, benchmarking |
@@ -33,6 +34,34 @@ Histopathology, whole-slide imaging and computational pathology.
 ## Details
 
 Click a model to expand its record.
+
+<a id="model-tissue-clocks-202608"></a>
+<details>
+<summary><b>Tissue Clocks</b> — Histological aging signatures for monitoring tissue-specific aging and disease <i>(Nat. Med. 2026-08)</i></summary>
+
+**[Histological aging signatures for monitoring tissue-specific aging and disease](https://www.nature.com/articles/s41591-026-04566-5)**
+
+*Nat. Med.* · 2026-08 · Ernesto Abila & André F. Rendeiro · [doi:10.1038/s41591-026-04566-5](https://doi.org/10.1038/s41591-026-04566-5)
+
+| | |
+| --- | --- |
+| **Backbone** | ImageNet-pretrained ConvNeXt base, fine-tuned as a tissue-type classifier and then frozen as a feature extractor; a slide is represented by its mean tile embedding at three magnifications, and regularised linear or ensemble regressors map that to age |
+| **Pre-training** | `supervised`<br>Supervised transfer learning rather than pathology-specific pretraining. ImageNet architectures (AlexNet, VGG16, ResNet50, ResNet152, ConvNeXt tiny and ConvNeXt base) were fine-tuned to classify tissue type on a dataset balanced across tissue, age bracket and sex -- one epoch with the backbone frozen, then up to 100 epochs of fine-tuning -- and the fine-tuned ConvNeXt base was carried forward. Tiles of 224, 448 and 896 pixels at roughly 0.5 microns per pixel are embedded and averaged per slide, and the age regressor is fitted on those features. |
+| **Training data** | GTEx post-mortem H&E whole-slide images spanning 40 tissue types and 29 organs, paired with the cohort's transcriptomic, methylation and phenotypic records. Validated on separate brain, lung and skin cohorts.<br>**25,712** WSI · **983** individuals · **40** tissue types · **480,000,000** image tiles |
+| **Downstream tasks** | `regression`, `risk prediction`, `benchmarking`<br>Predicts chronological age from tissue morphology and treats the residual -- the "age gap" -- as a measure of biological aging; relates tissue-specific age acceleration to telomere length, subclinical pathology, comorbidities and lifestyle factors; predicts tissue-specific age gaps from blood gene expression via ridge regression; and benchmarks 7 classical vision models and 18 pathology foundation models as feature extractors for the same task. |
+| **Modalities** | `histopathology`, `transcriptomics` |
+| **Code** | [github.com/rendeirolab/tissue-clocks](https://github.com/rendeirolab/tissue-clocks) |
+| **License** | PolyForm-Noncommercial-1.0.0 |
+
+**Reported performance**
+
+| Benchmark | Metric | Value | Note |
+| --- | --- | --- | --- |
+| GTEx, biological age from histology (cross-validated, all tissues) | mean absolute error | 4.88 years | coefficient of determination 0.69 |
+| Feature-extractor comparison, 7 classical vision and 18 pathology foundation models | mean MAE across organs and models | 8.67 vs 5.74 | classical ImageNet models 8.67, pathology foundation models 5.74, against 4.88 for this paper's fine-tuned model. The authors caution that some foundation models were pretrained on data that includes GTEx, which may flatter them here. |
+| External cohorts, GTEx-trained clocks applied unchanged | Pearson correlation with chronological age | 0.56 / 0.76 / 0.46 | brain (n = 70), lung (n = 40) and skin (n = 185) |
+
+</details>
 
 <a id="model-prism2-202607"></a>
 <details>
