@@ -2,7 +2,7 @@
 
 Ultrasound, microscopy, retinal imaging, optical coherence tomography (OCT), dermatology, endoscopy, cytology, and other biomedical imaging modalities.
 
-**Maintainers:** @Terry Fu · [Zaiyou He](https://github.com/zaiyouzy)
+**Maintainers:** @Terry Fu · [Zaiyou He](https://github.com/zaiyouzy) ([LinkedIn](https://www.linkedin.com/in/zaiyouhe))
 
 **15 papers** · **Last updated: 2026-08** · [Back to index](README.md)
 
@@ -13,19 +13,19 @@ Click a model name to jump to its expandable record. `Not reported` means that n
 | Date | Model | Venue | Modality | Training data | Model size | Training / adaptation | Downstream tasks |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | 202608 | [VirTues](#model-virtues-202608) | Nature | Spatial proteomics, multiplex tissue imaging | 3,102 patients in 15 IMC cohorts (core pretraining); extended evaluation across >5,100 patients | 43.4M (official weights) | masked marker-space reconstruction with marker and spatial attention; ESM-2 marker embeddings | virtual staining, cell and niche analysis, retrieval, biomarker discovery, patient stratification |
+| 202608 | [ULTRA](#model-ultra-202608) | Cell | SRS, virtual H&E, 3D histology | component-specific paired/unpaired datasets; 17-patient clinical validation | 29.8M diffusion U-Net; 2.0M virtual-stain G; 11.4M protein G; 28.3M 3D CNN (computed) | diffusion restoration, paired cGAN translation, semi-supervised CycleGAN staining, supervised 3D classification | restoration, virtual staining, protein prediction, 3D tumor mapping |
 | 202607 | [Retina4IRD](#model-retina4ird-202607) | Nat. Med. | CFP, OCT | 1,137 development patients / 2,197 eyes; 1,843 patients / 3,376 eyes overall | 303.3M per CFP/OCT ViT-L model (computed); stacking model not included | separate RETFound-initialized CFP and OCT models fine-tuned for 17 genotypes; prediction stacking with clinical metadata | genotype ranking, clinician decision support, management planning |
 | 202607 | [MLLM-EDR](#model-mllm-edr-202607) | Nat. Commun. | Endoscopy, text | 203,838 images and 4,461 reports; 1,839 patients in primary training split | ≥2.7B decoder; exact full-system total not reported | trainable CLIP vision encoder, frozen CLIP text encoder, multitask contrastive/classification losses; rank-16 LoRA on OPT-2.7B decoder | anatomical and mucosal recognition, 19-disease diagnosis, report generation |
-| 202607 | [ULTRA](#model-ultra-202607) | Cell | SRS, virtual H&E, 3D histology | component-specific paired/unpaired datasets; 17-patient clinical validation | 29.8M diffusion U-Net; 2.0M virtual-stain G; 11.4M protein G; 28.3M 3D CNN (computed) | diffusion restoration, paired cGAN translation, semi-supervised CycleGAN staining, supervised 3D classification | restoration, virtual staining, protein prediction, 3D tumor mapping |
 | 202606 | [AIOC](#model-aioc-202606) | Nat. Commun. | Fetal ultrasound | 28,994-image internal cohort plus 16,145 external/early images; 9,215 fetuses total | 12.7M detector + 20.6M classifier (official ONNX weights) | joint rotated-box YOLOX structure detection and MILA/LSTM four-view classification; no external pretraining reported | structure detection, standard-view classification, case-level cleft diagnosis, education |
 | 202605 | [MouseMapper](#model-mousemapper-202605) | Nature | 3D light-sheet microscopy | module-specific nerve, immune-cell, organ and tissue annotations | 31.4M VesselFM/DynUNet (computed); tissue nnU-Nets configuration dependent | VesselFM transfer with distillation or encoder freezing; supervised nnU-Net tissue models | nerve, immune-cell, organ and tissue mapping across whole bodies |
 | 202605 | [MicroSplit](#model-microsplit-202605) | Nat. Methods | Fluorescence microscopy | 14 named datasets; 24 2D + 6 3D primary tasks | Task/configuration dependent; not reported | dedicated variational splitting encoder-decoder per task; supervised semantic separation with co-learned denoising | 2–4-way semantic unmixing, denoising, uncertainty maps, artifact removal |
-| 202604 | [BUSGen](#model-busgen-202604) | Nat. Biomed. Eng. | Breast ultrasound | BUS-3.5M: 3.5M images | Not publicly verifiable | U-Net DDPM trained for breast-ultrasound generation; task-specific downstream adaptation | screening, diagnosis, prognosis |
+| 202604 | [BUSGen](#model-busgen-202604) | Nat. Biomed. Eng. | Breast ultrasound | BUS-3.5M: >3.5M images from 5,907 examinations and 4,636 patients | Not publicly verifiable | conditional DDPM pretraining; frozen backbone with LoRA adapters for downstream BUS-DMs | screening, diagnosis, prognosis |
 | 202604 | [Reti-Pioneer](#model-reti-pioneer-202604) | Nat. Med. | Color fundus photography, clinical variables | 107,730 images from 53,865 individuals | 303.3M RETFound + 86.9M Swin V2-B (computed); ViM-S and fusion heads additional | bilateral features from RETFound, Swin V2-B and ViM-S fused with image-quality and clinical metadata | six-disease screening and 5-/10-year risk prediction |
 | 202603 | [FluoResFM](#model-fluoresfm-202603) | Nat. Commun. | Fluorescence microscopy, text prompts | 4,303,086 paired patches across 3 restoration tasks and >20 structures | 683.7M U-Net; 6,721 parameters adapted for new tasks (computed; text encoder excluded) | paired L1 restoration with frozen BiomedCLIP prompt embeddings; new-task tuning limited to input/output blocks | denoising, deconvolution, multi-scale super-resolution and four additional restoration settings |
 | 202603 | [OVFM](#model-ovfm-202603) | Nat. Biomed. Eng. | Ophthalmic surgical video | 1.1M clips across 144 surgery types | Base 121.3M; Small 36.2M; Tiny 7.8M (computed) | DINO-style self-distillation with spatiotemporal transformers; Base checkpoint used in released downstream scripts | step/tool recognition, complications, skills, segmentation, nucleus localization |
 | 202602 | [Autonomous cytopathology pipeline](#model-cytopathology-202602) | Nature | Whole-slide cytology, single cells | detector: 242,669 nuclei / 348 images; classifier: 168,569 augmented training images from 354 slides | MaxViT classifier 118.7M (computed); YOLOX variant/count not specified | supervised YOLOX nucleus detection and ImageNet-initialized MaxViT-base 10-class cell classification | single-cell classification, LSIL+/HSIL+ detection, HPV abnormality stratification, triage |
 | 202506 | [PanDerm](#model-panderm-202506) | Nat. Med. | Dermoscopy, clinical, TBP, dermatopathology | ~2.1M unlabeled images across four modalities | 303.3M paper ViT-L/16; 85.8M later Base release (computed) | CAEv2-style masked-image pretraining; downstream linear probing, full fine-tuning or segmentation heads | cancer screening, differential diagnosis, segmentation, longitudinal monitoring, prognosis |
-| 202501 | [FMUE](#model-fmue-202501) | Cell Rep. Med. | OCT | 102,468 OCT images | 303.7M total; 0.393M rank-4 LoRA parameters plus task head (computed) | RETFound ViT-L initialization; frozen backbone with query/value LoRA in every attention block | retinal-disease diagnosis, calibrated uncertainty, OOD detection |
+| 202412 | [FMUE](#model-fmue-202412) | Cell Rep. Med. | OCT | 102,468 OCT images | 303.7M total; 0.393M rank-4 LoRA parameters plus task head (computed) | RETFound ViT-L initialization; frozen backbone with query/value LoRA in every attention block | retinal-disease diagnosis, calibrated uncertainty, OOD detection |
 | 202309 | [RETFound](#model-retfound-202309) | Nature | CFP, OCT | 1.6M unlabeled retinal images | 303.3M ViT-L/16 encoder (computed) | modality-specific masked autoencoder pretraining followed by supervised task fine-tuning | ocular disease detection and systemic-disease prediction |
 
 ## Details
@@ -42,7 +42,7 @@ Click a model name to jump to its expandable record. `Not reported` means that n
 
 | | |
 | --- | --- |
-| **Model** | [VirTues](https://github.com/bunnelab/virtues) |
+| **Model** | VirTues |
 | **Model type** | Foundation model for highly multiplexed tissue imaging and spatial proteomics |
 | **Backbone** | Purpose-built Vision Transformer with factorized marker and spatial attention; ESM-2 protein representations encode marker identity |
 | **Model size** | **43,374,656 parameters (43.4M)**, verified from the official Hugging Face safetensors metadata |
@@ -67,6 +67,7 @@ Click a model name to jump to its expandable record. `Not reported` means that n
 
 | | |
 | --- | --- |
+| **Model** | Retina4IRD |
 | **Model type** | Clinical AI decision-support system |
 | **Backbone** | ViT-L/16 image models for color fundus photography and OCT; the released implementation combines image predictions with clinical metadata using an ensemble/stacking model |
 | **Model size** | **303,319,057 parameters (303.3M) per CFP or OCT image model**, computed from the official `vit_large_patch16` definition and 17-class configuration. The separate stacking model is not included because its serialized estimator was not independently counted. |
@@ -100,6 +101,7 @@ Click a model name to jump to its expandable record. `Not reported` means that n
 
 | | |
 | --- | --- |
+| **Model** | MLLM-EDR |
 | **Model type** | Medical multimodal large-language-model system |
 | **Backbone** | CLIP/MedCLIP vision and text encoders; temporal adaptive pooling; one self-attention layer and three visual–text cross-attention blocks; an OPT-2.7B language decoder in the official software implementation; linear mucosa and disease heads |
 | **Model size** | **At least 2.7B parameters** from the named OPT-2.7B decoder alone. The exact full-system total, including CLIP encoders, fusion blocks and heads, is not reported and cannot be reproduced without the authors' private local checkpoints. |
@@ -108,6 +110,7 @@ Click a model name to jump to its expandable record. `Not reported` means that n
 | **Downstream tasks** | Eight-site anatomical recognition; six-type gastric-mucosa classification; diagnosis of 19 gastrointestinal diseases; EGD report generation; video-level clinical assistance |
 | **Modalities** | `endoscopy images`, `clinical reports`, `medical text` |
 | **Code** | [Zenodo software record](https://doi.org/10.5281/zenodo.21023152) |
+| **Weights** | Not publicly released |
 | **Data** | Available by request under the restrictions described in the paper |
 
 **Reported performance**
@@ -132,6 +135,7 @@ Click a model name to jump to its expandable record. `Not reported` means that n
 
 | | |
 | --- | --- |
+| **Model** | AIOC |
 | **Model type** | Clinical ultrasound diagnostic and educational AI system |
 | **Backbone** | Dual-branch system: YOLOX structure-detection branch plus a Mamba-Inspired Linear Attention (MILA) classification branch; an LSTM models relationships between global and local structural features |
 | **Model size** | **12,659,177 parameters** in the released detector and **20,598,244 parameters** in the released four-view classifier, counted from the official ONNX initializers on Zenodo. |
@@ -162,6 +166,7 @@ Click a model name to jump to its expandable record. `Not reported` means that n
 
 | | |
 | --- | --- |
+| **Model** | MouseMapper |
 | **Model type** | Modular whole-body 3D image-analysis framework |
 | **Backbone** | Nerve-Module and Immune-Module based on VesselFM; Tissue-Module uses 3D U-Net models trained through nnU-Net; graph extraction follows segmentation |
 | **Model size** | **31,420,554 parameters (31.4M)** for the published VesselFM-style MONAI DynUNet configuration, computed from the official code. Tissue/organ nnU-Net models are generated from dataset-specific plans, so no single additional count is valid. |
@@ -192,6 +197,7 @@ Click a model name to jump to its expandable record. `Not reported` means that n
 
 | | |
 | --- | --- |
+| **Model** | MicroSplit |
 | **Model type** | Task-specific computational microscopy model; not a foundation model |
 | **Backbone** | Variational Splitting Encoder–Decoder using lateral context; architecture resembles a hierarchical VAE / Ladder-VAE but predicts separated structures rather than reconstructing its input |
 | **Model size** | **Task/configuration dependent; not reported.** Each 2D/3D task has a dedicated model whose target-channel count, input size, multiscale context and convolution strides can differ. |
@@ -199,7 +205,7 @@ Click a model name to jump to its expandable record. `Not reported` means that n
 | **Training data** | Fourteen publicly downloadable named microscopy datasets. Evaluated on **24 2D** and **6 3D** semantic-unmixing tasks, plus six additional tasks in the supplementary material. The paper does not report one aggregate training-image count. |
 | **Downstream tasks** | Separation of two, three, or four superimposed fluorescence structures; denoising; uncertainty estimation; structured-artifact removal; reduced channel count, acquisition time, and light exposure |
 | **Modalities** | `2D fluorescence microscopy`, `3D fluorescence microscopy` |
-| **Implementation** | [CAREamics](https://careamics.github.io/) |
+| **Implementation** | [CAREamics MicroSplit API](https://careamics.github.io/latest/reference/careamics/config/algorithms/microsplit_algorithm_config/) |
 | **Reproducibility code** | [github.com/CAREamics/MicroSplit-reproducibility](https://github.com/CAREamics/MicroSplit-reproducibility) |
 | **Original research code** | [github.com/juglab/MicroSplit](https://github.com/juglab/MicroSplit) |
 
@@ -223,6 +229,7 @@ Click a model name to jump to its expandable record. `Not reported` means that n
 
 | | |
 | --- | --- |
+| **Model** | FluoResFM |
 | **Model type** | Fluorescence-microscopy image-restoration foundation model |
 | **Backbone** | Text-conditioned U-Net with residual blocks and text–image fusion blocks at every scale; cross-attention injects task, structure, and imaging-condition prompts encoded by BiomedCLIP |
 | **Model size** | **683,650,561 parameters (683.7M)** in the restoration U-Net, computed from the official training configuration. The frozen external BiomedCLIP text encoder is excluded. The released `in-out` adaptation strategy updates **6,721 parameters**. |
@@ -242,17 +249,17 @@ Click a model name to jump to its expandable record. `Not reported` means that n
 
 These earlier records are retained from the existing catalogue and updated here where the paper, supplementary information, official code, configurations, or released weights support a more specific statement.
 
-<a id="model-ultra-202607"></a>
+<a id="model-ultra-202608"></a>
 <details>
-<summary><b>ULTRA</b> — Ultrarapid deep 3D histology for intraoperative glioma mapping <i>(Cell 2026-07)</i></summary>
+<summary><b>ULTRA</b> — Ultrarapid deep 3D histology for intraoperative glioma mapping <i>(Cell 2026-08)</i></summary>
 
 **[Ultrarapid deep 3D histology enables intraoperative mapping of glioma infiltration](https://doi.org/10.1016/j.cell.2026.07.026)**
 
-*Cell* · 2026-07 · [Zhijie Liu](https://github.com/Zhijie-Liu) & [Lixue Shi](https://ibs.fudan.edu.cn/ibsen/42/73/c39095a475763/page.htm) · [doi:10.1016/j.cell.2026.07.026](https://doi.org/10.1016/j.cell.2026.07.026)
+*Cell* · 2026-08 · [Zhijie Liu](https://github.com/Zhijie-Liu) & [Lixue Shi](https://ibs.fudan.edu.cn/ibsen/42/73/c39095a475763/page.htm) · [doi:10.1016/j.cell.2026.07.026](https://doi.org/10.1016/j.cell.2026.07.026)
 
 | | |
 | --- | --- |
-| **Model** | [ULTRA](https://github.com/Zhijie-Liu/Ultrarapid-Deep-3D-Histology) |
+| **Model** | ULTRA |
 | **Model type** | Multistage image-to-image translation and 3D histology analysis pipeline |
 | **Backbone** | U-Net-based Poisson diffusion model (PBDM); U-Net-based conditional GAN; modified Stimulated Raman CycleGAN (SRC-GAN); six-layer 3D CNN for tumor segmentation |
 | **Model size** | Multi-component pipeline: **29,763,329** parameters in the diffusion U-Net; **1,965,059** in the virtual-staining generator; **11,370,881** in the released lipid-to-protein generator; **28,269,826** in the 3D CNN. Counts are computed from the official default configurations; they must not be summed as one simultaneously executed model. |
@@ -274,16 +281,18 @@ These earlier records are retained from the existing catalogue and updated here 
 
 | | |
 | --- | --- |
-| **Model** | [BUSGen](https://aibus.bio) |
+| **Model** | BUSGen |
 | **Model type** | Breast-ultrasound generative foundation model |
 | **Backbone** | U-Net denoiser inside a DDPM |
-| **Model size** | **Not publicly verifiable.** No parameter count was found in the article material reviewed here, and public code/weights are not available; the authors state that code is available on reasonable request. |
-| **Training / adaptation** | Denoising Diffusion Probabilistic Model (DDPM) |
-| **Training data** | BUS-3.5M: 3.5 million breast-ultrasound images |
+| **Model size** | **Not publicly verifiable.** No parameter count was found in the article material reviewed here, and public code or weights are not available. |
+| **Training / adaptation** | Conditional DDPM pretraining for breast-ultrasound generation, conditioned on pathology, lesion location and device type. For downstream BUS-DMs, the pretrained backbone is frozen and LoRA adapters are fine-tuned for task-specific generation. |
+| **Training data** | BUS-3.5M: **more than 3.5 million images** from **5,907 examinations**, **4,636 patients** and **3,749 lesions**. |
 | **Downstream tasks** | Breast-cancer screening, diagnosis, and prognosis |
 | **Modalities** | `breast ultrasound` |
+| **Code / weights** | Not publicly released; pretraining code, adaptation code and an online API are available from the authors upon reasonable request |
+| **Project page / demo** | [aibus.bio](https://aibus.bio/) |
 
-> **Verification note:** The previous catalogue entry listed approximately 50M parameters, but this count was not found on the official article page reviewed for this draft, so it is omitted pending a citable source.
+> **Verification note:** The previous catalogue entry listed approximately 50M parameters, but this count was not found on the official article page reviewed for this draft, so it is omitted pending a citable source. The official aibus.bio site is listed as a project/demo, not as a model repository.
 
 </details>
 
@@ -297,7 +306,7 @@ These earlier records are retained from the existing catalogue and updated here 
 
 | | |
 | --- | --- |
-| **Model** | [Reti-Pioneer](https://github.com/lyhyl/Reti-Pioneer) |
+| **Model** | Reti-Pioneer |
 | **Model type** | Retinal-image multidisease screening and risk-stratification framework |
 | **Backbone** | Ensemble of RETFound ViT-L/16, torchvision Swin V2-B and ViM-S/Visual Mamba feature extractors; bilateral-eye features are fused with image-quality scores and ten clinical metadata variables |
 | **Model size** | **303,301,632** parameters for the RETFound encoder and **86,905,848** for the Swin V2-B encoder (computed from the official definitions). The ViM-S encoder and disease-specific fusion heads are additional; an exact complete-system total is not reported. |
@@ -305,6 +314,7 @@ These earlier records are retained from the existing catalogue and updated here 
 | **Training data** | 107,730 color fundus photographs from 53,865 individuals |
 | **Downstream tasks** | Cross-sectional detection plus five- and ten-year risk prediction for type 2 diabetes, hypertension, hyperlipidemia, gout, osteoporosis, and thyroid disease |
 | **Modalities** | `color fundus photography` |
+| **Code** | [github.com/lyhyl/Reti-Pioneer](https://github.com/lyhyl/Reti-Pioneer) |
 
 </details>
 
@@ -318,7 +328,7 @@ These earlier records are retained from the existing catalogue and updated here 
 
 | | |
 | --- | --- |
-| **Model** | [OVFM](https://github.com/puxuntu/OVFM) |
+| **Model** | OVFM |
 | **Model type** | Ophthalmic surgical-video foundation model |
 | **Backbone** | Spatiotemporal Vision Transformer with divided space–time attention; the official repository provides Tiny, Small and Base encoders |
 | **Model size** | **121,258,752 (Base)**, **36,233,728 (Small)** and **7,753,920 (Tiny)** encoder parameters, computed from the official no-head inference definitions. |
@@ -326,6 +336,7 @@ These earlier records are retained from the existing catalogue and updated here 
 | **Training data** | 1.1 million clips across 144 surgical types |
 | **Downstream tasks** | Surgical-step and tool recognition; complication detection; skill assessment; scene and limbus segmentation; nucleus localization |
 | **Modalities** | `ophthalmic surgical video` |
+| **Code** | [github.com/puxuntu/OVFM](https://github.com/puxuntu/OVFM) |
 
 </details>
 
@@ -339,7 +350,7 @@ These earlier records are retained from the existing catalogue and updated here 
 
 | | |
 | --- | --- |
-| **Model** | No single model name stated; [code/data record](https://zenodo.org/records/17808303) |
+| **Model** | No single model name stated; multistage autonomous cytopathology pipeline |
 | **Model type** | Autonomous cytopathology pipeline using whole-slide edge tomography and CMD-based population analysis |
 | **Backbone** | YOLOX nucleus detector; maxvit_base_tf_224 single-cell classifier; CMD-based slide/population analysis |
 | **Model size** | **118,706,398 parameters (118.7M)** for the released 10-class MaxViT-base classifier configuration. The YOLOX variant and its parameter count are not specified in the public release, so no detector value is inferred. |
@@ -347,6 +358,7 @@ These earlier records are retained from the existing catalogue and updated here 
 | **Training data** | YOLOX: **348 images with 242,669 annotated nuclei**. MaxViT: **168,569 augmented training images** derived from **354 whole-slide images**, with 50,222 validation images. Multicentre evaluation involved **1,124 slides**; these evaluation slides are not training data. |
 | **Downstream tasks** | Single-cell classification; slide-level LSIL+/HSIL+ detection; HPV-associated abnormality stratification; autonomous cervical-cytology triage |
 | **Modalities** | `whole-slide cytology`, `single-cell imaging` |
+| **Code** | [Zenodo code record](https://zenodo.org/records/17808303) |
 
 </details>
 
@@ -360,7 +372,7 @@ These earlier records are retained from the existing catalogue and updated here 
 
 | | |
 | --- | --- |
-| **Model** | [PanDerm](https://github.com/SiyuanYan1/PanDerm) |
+| **Model** | PanDerm |
 | **Model type** | Dermatology vision foundation model |
 | **Backbone** | Paper model: ViT-L/16; the later public release also provides a ViT-B/16 checkpoint |
 | **Model size** | **303,326,208 parameters (303.3M)** for the paper ViT-L/16 encoder; **85,807,872 (85.8M)** for the later Base release, computed from the official implementation. |
@@ -368,20 +380,21 @@ These earlier records are retained from the existing catalogue and updated here 
 | **Training data** | Approximately 2.1 million unlabelled real-world skin-disease images |
 | **Downstream tasks** | Skin-cancer screening; differential diagnosis across many skin conditions; lesion segmentation; longitudinal change monitoring; total-body-photography applications; prognosis prediction |
 | **Modalities** | `dermoscopy`, `clinical photography`, `total-body photography`, `dermatopathology` |
+| **Code** | [github.com/SiyuanYan1/PanDerm](https://github.com/SiyuanYan1/PanDerm) |
 
 </details>
 
-<a id="model-fmue-202501"></a>
+<a id="model-fmue-202412"></a>
 <details>
-<summary><b>FMUE</b> — Uncertainty-aware OCT retinal-disease diagnosis <i>(Cell Rep. Med. 2025-01)</i></summary>
+<summary><b>FMUE</b> — Uncertainty-aware OCT retinal-disease diagnosis <i>(Cell Rep. Med. 2024-12)</i></summary>
 
 **[Enhancing AI reliability: A foundation model with uncertainty estimation for optical coherence tomography-based retinal disease diagnosis](https://doi.org/10.1016/j.xcrm.2024.101876)**
 
-*Cell Reports Medicine* · 2025-01 · [Yuanyuan Peng](https://scholar.google.ca/citations?user=UZGX1XkAAAAJ&hl=ko&oi=sra) & [Haoyu Chen](https://scholar.google.com/citations?hl=en&user=KWbcBucAAAAJ&view_op=list_works&sortby=pubdate)
+*Cell Reports Medicine* · 2024-12 · [Yuanyuan Peng](https://scholar.google.ca/citations?user=UZGX1XkAAAAJ&hl=ko&oi=sra) & [Haoyu Chen](https://scholar.google.com/citations?hl=en&user=KWbcBucAAAAJ&view_op=list_works&sortby=pubdate)
 
 | | |
 | --- | --- |
-| **Model** | [FMUE](https://github.com/yuanyuanpeng0129/FMUE) |
+| **Model** | FMUE |
 | **Model type** | OCT foundation model with uncertainty estimation |
 | **Backbone** | RETFound ViT-L/16 with rank-4 LoRA matrices inserted into the query and value projections of all 24 attention blocks |
 | **Model size** | **303.7M total parameters** (exact count varies slightly with the task head). The LoRA matrices contribute **393,216 trainable parameters**; the classification head is also trainable (for example, 2,050 parameters for a binary head). Counts are computed from the official implementation. |
@@ -389,6 +402,7 @@ These earlier records are retained from the existing catalogue and updated here 
 | **Training data** | 102,468 OCT images |
 | **Downstream tasks** | Retinal-disease diagnosis and out-of-distribution detection |
 | **Modalities** | `OCT` |
+| **Code** | [github.com/yuanyuanpeng0129/FMUE](https://github.com/yuanyuanpeng0129/FMUE) |
 
 </details>
 
@@ -402,7 +416,7 @@ These earlier records are retained from the existing catalogue and updated here 
 
 | | |
 | --- | --- |
-| **Model** | [RETFound](https://github.com/rmaphoh/RETFound_MAE) |
+| **Model** | RETFound |
 | **Model type** | Retinal-image foundation model |
 | **Backbone** | ViT-L/16 retinal encoder with separate CFP and OCT pretrained checkpoints |
 | **Model size** | **303,301,632 parameters (303.3M)** for the no-head encoder used by the official downstream implementation, computed from the released model definition. |
@@ -410,6 +424,7 @@ These earlier records are retained from the existing catalogue and updated here 
 | **Training data** | 1.6 million unlabelled retinal images |
 | **Downstream tasks** | Ocular-disease detection and prognosis; prediction of systemic conditions including heart failure and myocardial infarction |
 | **Modalities** | `color fundus photography`, `OCT` |
+| **Code** | [github.com/rmaphoh/RETFound](https://github.com/rmaphoh/RETFound) |
 
 </details>
 
@@ -417,7 +432,7 @@ These earlier records are retained from the existing catalogue and updated here 
 
 ## Curation notes
 
-- Overview entries are ordered by publication month.
+- Dates use the first online publication month, and overview entries are ordered by that date.
 - Parameter counts are included only when reported by the paper, exposed by official weights, or reproducible from an official architecture/configuration. Each computed count is labeled; unknown or configuration-dependent totals remain explicit.
 - The compact overview is intended for discovery. The expandable records hold architecture, data, resources, and representative reported results.
 - Publisher PDFs and supplementary PDFs should not be committed to this public repository.
