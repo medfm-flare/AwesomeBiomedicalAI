@@ -1,0 +1,12 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "ai4science-webapp",
+      "runtimeExecutable": "python3",
+      "runtimeArgs": ["pipeline/webapp.py"],
+      "port": 8765,
+      "autoPort": true
+    }
+  ]
+}
