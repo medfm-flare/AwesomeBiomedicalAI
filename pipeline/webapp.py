@@ -23,6 +23,7 @@ import threading
 import uuid
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from pathlib import Path
+from urllib.parse import parse_qs, urlsplit
 
 REPO_ROOT = Path(__file__).resolve().parent.parent
 
@@ -46,6 +47,7 @@ def _load_dotenv():
 
 _load_dotenv()
 
+import discover  # noqa: E402
 import ingest  # noqa: E402 -- must follow _load_dotenv() so the SDK sees the key
 
 JOBS: dict[str, dict] = {}
@@ -80,10 +82,31 @@ INDEX_HTML = """<!doctype html>
   details summary { cursor: pointer; margin-top: 0.75rem; }
   pre { white-space: pre-wrap; font-size: 0.8rem; }
   #status { margin-top: 0.75rem; font-weight: 600; }
+  .discover { margin-bottom: 1.5rem; padding-bottom: 1.5rem; border-bottom: 1px solid #8883; }
+  .candidate { display: flex; justify-content: space-between; align-items: center;
+               gap: 0.75rem; padding: 0.5rem 0; border-bottom: 1px solid #8882; }
+  .candidate:last-child { border-bottom: none; }
+  .candidate-info { flex: 1; }
+  .candidate-meta { font-size: 0.8rem; color: #888; }
+  .candidate button { font-size: 0.85rem; padding: 0.3rem 0.7rem; white-space: nowrap; }
+  #discoverList { margin-top: 0.75rem; }
 </style>
 </head>
 <body>
 <h1>AI4Science catalogue ingest</h1>
+
+<div class="discover">
+  <p>Find recent candidates from Nature/Cell/Science-family journals, not yet in the catalogue.</p>
+  <div class="row">
+    <label for="days">Last</label>
+    <input id="days" type="text" value="14" style="max-width: 3rem; flex: none;">
+    <label for="days">days</label>
+    <button id="discoverBtn" onclick="runDiscover()">Find candidates</button>
+  </div>
+  <div id="discoverStatus" style="margin-top: 0.5rem; color: #666;"></div>
+  <div id="discoverList"></div>
+</div>
+
 <p>Paste a paper URL. Claude fetches it, extracts a catalogue entry, and scores how well it fits.</p>
 
 <div class="row">
@@ -111,8 +134,44 @@ function scoreClass(score) {
   return "bad";
 }
 
-async function startIngest() {
-  const url = document.getElementById("url").value.trim();
+async function runDiscover() {
+  const days = document.getElementById("days").value.trim() || "14";
+  const btn = document.getElementById("discoverBtn");
+  const status = document.getElementById("discoverStatus");
+  const list = document.getElementById("discoverList");
+  btn.disabled = true;
+  status.textContent = "Searching PubMed...";
+  list.innerHTML = "";
+
+  try {
+    const resp = await fetch("/api/discover?days=" + encodeURIComponent(days));
+    const data = await resp.json();
+    if (!resp.ok) {
+      status.textContent = "Error: " + (data.error || resp.statusText);
+      return;
+    }
+    status.textContent = data.candidates.length + " new candidate(s), out of " + data.total_matched + " matched.";
+    data.candidates.forEach(c => {
+      const row = el("div", {class: "candidate"}, [
+        el("div", {class: "candidate-info"}, [
+          el("div", {html: c.title}),
+          el("div", {class: "candidate-meta", html: c.journal + " · " + c.pubdate + " · " + c.source}),
+        ]),
+      ]);
+      const analyzeBtn = el("button", {html: "Analyze"});
+      analyzeBtn.onclick = () => startIngest(c.url);
+      row.appendChild(analyzeBtn);
+      list.appendChild(row);
+    });
+  } finally {
+    btn.disabled = false;
+  }
+}
+
+async function startIngest(urlOverride) {
+  const urlInput = document.getElementById("url");
+  if (urlOverride) urlInput.value = urlOverride;
+  const url = urlInput.value.trim();
   if (!url) return;
   document.getElementById("goBtn").disabled = true;
   document.getElementById("log").textContent = "Starting...";
@@ -260,17 +319,31 @@ class Handler(BaseHTTPRequestHandler):
         return json.loads(self.rfile.read(length) or b"{}")
 
     def do_GET(self):
-        if self.path == "/":
+        parsed = urlsplit(self.path)
+        if parsed.path == "/":
             body = INDEX_HTML.encode("utf-8")
             self.send_response(200)
             self.send_header("Content-Type", "text/html; charset=utf-8")
             self.send_header("Content-Length", str(len(body)))
             self.end_headers()
             self.wfile.write(body)
-        elif self.path.startswith("/api/events/"):
-            self._sse(self.path.removeprefix("/api/events/"))
+        elif parsed.path.startswith("/api/events/"):
+            self._sse(parsed.path.removeprefix("/api/events/"))
+        elif parsed.path == "/api/discover":
+            self._handle_discover(parse_qs(parsed.query))
         else:
             self._json(404, {"error": "not found"})
+
+    def _handle_discover(self, query: dict):
+        days = int(query.get("days", ["14"])[0])
+        try:
+            candidates = discover.search_all(days=days, max_results=40)
+            data = ingest.load_data()
+            new_candidates = discover.filter_new(candidates, data)
+        except Exception as exc:  # noqa: BLE001
+            self._json(500, {"error": str(exc)})
+            return
+        self._json(200, {"candidates": new_candidates, "total_matched": len(candidates)})
 
     def _sse(self, job_id: str):
         with JOBS_LOCK:
