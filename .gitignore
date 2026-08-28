@@ -1,3 +1,9 @@
 # Paper PDFs belong in a maintainer's own PDF repository, never in this one --
 # most are under publisher copyright and this repository is public.
 *.pdf
+
+__pycache__/
+*.pyc
+
+# Local secrets -- never commit an API key.
+.env
