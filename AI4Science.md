@@ -8,7 +8,7 @@ Scientific discovery, research assistance, chemistry and drug design.
 
 **Maintainer:** [Ryan Khalloqi](https://github.com/ryanwangk)
 
-**12 entries** across 3 categories · [Back to index](README.md)
+**13 entries** across 3 categories · [Back to index](README.md)
 
 ## Catalogue
 
@@ -104,6 +104,7 @@ Scientific discovery, research assistance, chemistry and drug design.
 | 202602 | [Discovery Learning](#model-discovery-learning-202602) | Nature | N/A — no single model (learner/interpreter/oracle loop) | ✓ | Predicts full cycle life from ~50 cycles: ~5% of the energy, ~2% of the time of full testing |
 | 202501 | [MatterGen](#model-mattergen-202501) | Nature | 46.8M | ✓ | >2x more novel/stable structures than prior baselines; one design (TaCr₂O₆) synthesized |
 | 202311 | [GNoME](#model-gnome-202311) | Nature | not stated (GNN) | ✓ | 2.2M candidate crystals, ~380K most stable; 736 independently synthesized externally |
+| 202311 | [A-Lab (with ARROWS3 active learning and XRD-AutoAnalyzer)](#model-a-lab-202311) | Nature | not stated \u2014 no single network; pipeline of an NLP similarity/precursor model, an XGBoost temperature regressor, a phase-ID CNN and an actor\u2013critic RL refinement agent, none with published parameter counts | ✓ | Self-driving lab synthesized 36 of 57 predicted inorganic targets in 17 days across 353 robotic recipes |
 
 <a id="model-discovery-learning-202602"></a>
 <details>
@@ -180,6 +181,37 @@ Scientific discovery, research assistance, chemistry and drug design.
 
 - Identified 2.2 million candidate structures below the known stability threshold, of which ~380,000 are the most stable — roughly a ten-fold expansion of known stable materials.
 - 736 of the predicted structures were independently synthesised and confirmed by external groups.
+
+</details>
+
+<a id="model-a-lab-202311"></a>
+<details>
+<summary><b>A-Lab (with ARROWS3 active learning and XRD-AutoAnalyzer)</b> — An autonomous laboratory for the accelerated synthesis of inorganic materials <i>(Nature 202311)</i></summary>
+
+**[An autonomous laboratory for the accelerated synthesis of inorganic materials](https://www.nature.com/articles/s41586-023-06734-w)**
+
+*Nature* · 202311 · [Nathan J. Szymanski](https://orcid.org/0000-0003-2255-9676) & [Gerbrand Ceder](https://orcid.org/0000-0001-9275-3605) · [doi:10.1038/s41586-023-06734-w](https://doi.org/10.1038/s41586-023-06734-w)
+
+| | |
+| --- | --- |
+| **Parameters** | not stated \u2014 no single network; pipeline of an NLP similarity/precursor model, an XGBoost temperature regressor, a phase-ID CNN and an actor\u2013critic RL refinement agent, none with published parameter counts |
+| **Backbone** | Modular: text-mined synthesis-similarity encoder + masked precursor-completion model for recipe proposal; XGBoost regressor for synthesis temperature; XRD phase ID by CNN with 6 convolutional layers (max pooling between each) and 3 fully connected ReLU layers, batch norm and 50% dropout, Monte Carlo dropout ensemble of 100 networks at inference; automated Rietveld refinement by PPO actor\u2013critic agent driving GSAS-II; ARROWS3 active learning over DFT reaction energies |
+| **Pre-training** | `text-mined-literature` `supervised` `simulated-data` `reinforcement-learning` `active-learning`<br>Recipe models were trained on text-mined literature synthesis procedures; the XRD CNN is trained per-target on simulated diffraction patterns (200 per reference phase, augmented for strain, texture, impurity peaks and poor crystallinity) derived from ICSD/Materials Project structures; the Rietveld agent was trained by PPO reinforcement learning in a custom gym environment wrapping GSAS-II. |
+| **Training data** | Knowledge base of 33,343 solid-state synthesis procedures extracted from 24,304 publications for recipe/temperature models; SynTERRA text-mined data from >24,000 publications used for novelty filtering; ICSD experimental structures plus Materials Project (v2022.10.28) DFT entries cross-referenced with a Google DeepMind database for target screening and XRD simulation.<br>**33,343 synthesis procedures from 24,304 publications** |
+| **Downstream tasks** | `autonomous-experimentation` `materials-synthesis` `synthesis-planning` `XRD-phase-identification` `active-learning`<br>Closed-loop screening of novel air-stable inorganic targets, ML proposal of precursor sets and firing temperatures, robotic powder dosing/heating/XRD characterization, automated phase and weight-fraction analysis, and active-learning re-planning of failed syntheses via pairwise reaction pathways. |
+| **Modalities** | `X-ray diffraction patterns`, `crystal structures / DFT thermodynamic data`, `scientific text (synthesis literature)` |
+| **Code** | [github.com/mattmcdermott/novel-materials-screening](https://github.com/njszym/ARROWS ; https://github.com/njszym/XRD-AutoAnalyzer ; https://github.com/CederGroupHub/SynthesisSimilarity ; https://github.com/CederGroupHub/s4 ; https://github.com/mattmcdermott/novel-materials-screening) |
+| **Note** | An Author Correction was published 19 January 2026 (10.1038/s41586-025-09992-y); the current article text reports 36/57 successes, while stale page metadata and the original abstract still cite 41/58 \u2014 the 36/57 and 63% figures used here are from the corrected main text. The paper drew public criticism from solid-state chemists over XRD-based phase assignments and novelty of some targets. |
+
+**Key results**
+
+- Synthesized 36 of 57 target compounds (63% success) in 17 days of continuous closed-loop operation, spanning 33 elements and 40 structural prototypes
+- 353 synthesis recipes were tested; only 30% of individual recipes produced their target, and 30 of the 36 successes came from literature-trained ML recipes
+- Active learning (ARROWS3) found improved routes for 9 targets, 6 of which had zero yield from the initial literature-inspired recipes
+- Manual regrinding/higher-temperature follow-up added 2 targets (Y3Ga3In2O12, Mg3NiO4), raising success to 67%; excluding 3 computationally problematic compounds gives 70% (38/54)
+- 88 unique pairwise reactions were catalogued, which can prune the recipe search space by up to 80%
+- Rerouting CaFe2P2O9 synthesis through CaFe3P3O13 (77 vs 8 meV per atom driving force) raised target yield by about 70%
+- Average hardware exception rate across stations was about 3.9% over 1.5 years of operation
 
 </details>
 
