@@ -16,6 +16,7 @@ import argparse
 import json
 import subprocess
 import sys
+import time
 from pathlib import Path
 
 import anthropic
@@ -206,9 +207,21 @@ def _describe_tool_start(block) -> str | None:
     return f"Calling {block.name}..."
 
 
-def fetch_entry(url: str, model: str, on_progress=None) -> dict:
+class ExtractionTimeout(RuntimeError):
+    pass
+
+
+def fetch_entry(url: str, model: str, on_progress=None, max_seconds: float = 300) -> dict:
     """Fetch and extract a catalogue entry. on_progress(str), if given, is
-    called with human-readable status lines as the agentic turn runs."""
+    called with human-readable status lines as the agentic turn runs.
+
+    max_seconds bounds total wall-clock time: max_uses on the tools caps how
+    many top-level web_search/web_fetch calls happen, but each call's own
+    dynamic-filtering (internal code_execution rounds) can still run long on
+    a paper with no accessible source anywhere -- e.g. one published days ago
+    with no indexed mirror yet. Without this, that case just runs (and bills)
+    indefinitely instead of failing with a clear reason.
+    """
     notify = on_progress or (lambda _msg: None)
     client = anthropic.Anthropic()
     messages = [{"role": "user", "content": f"Extract a catalogue entry for this paper: {url}"}]
@@ -218,9 +231,16 @@ def fetch_entry(url: str, model: str, on_progress=None) -> dict:
     ]
     output_config = {"format": {"type": "json_schema", "schema": ENTRY_SCHEMA}, "effort": "medium"}
 
+    start = time.monotonic()
     restarts, max_restarts = 0, 5
     response = None
     while True:
+        if time.monotonic() - start > max_seconds:
+            notify(f"Giving up after {int(max_seconds)}s without a final answer.")
+            raise ExtractionTimeout(
+                f"No result after {int(max_seconds)}s -- likely no accessible source exists yet "
+                "for this paper (e.g. too recently published for a mirror to be indexed)."
+            )
         # Streaming avoids request-timeout risk on a turn with several
         # server-tool (web_search/web_fetch) round-trips under the hood.
         with client.messages.stream(
@@ -232,7 +252,11 @@ def fetch_entry(url: str, model: str, on_progress=None) -> dict:
             messages=messages,
         ) as stream:
             block_types: dict[int, str] = {}
+            timed_out = False
             for event in stream:
+                if time.monotonic() - start > max_seconds:
+                    timed_out = True
+                    break
                 if event.type == "content_block_start":
                     block_types[event.index] = event.content_block.type
                     message = _describe_tool_start(event.content_block)
@@ -244,6 +268,12 @@ def fetch_entry(url: str, model: str, on_progress=None) -> dict:
                     kind = block_types.get(event.index, "")
                     if kind in ("web_search_tool_result", "web_fetch_tool_result"):
                         notify(f"{kind.replace('_tool_result', '')} finished.")
+            if timed_out:
+                notify(f"Giving up after {int(max_seconds)}s without a final answer.")
+                raise ExtractionTimeout(
+                    f"No result after {int(max_seconds)}s -- likely no accessible source exists yet "
+                    "for this paper (e.g. too recently published for a mirror to be indexed)."
+                )
             response = stream.get_final_message()
         if response.stop_reason == "refusal":
             detail = getattr(response, "stop_details", None)
@@ -292,6 +322,7 @@ def main():
     parser.add_argument("--model", default="claude-sonnet-5")
     parser.add_argument("--dry-run", action="store_true", help="Fetch and print the entry, don't write files")
     parser.add_argument("--fit-threshold", type=int, default=60, help="Minimum fit_score (0-100) to insert without --force")
+    parser.add_argument("--max-seconds", type=float, default=300, help="Give up if no result after this many seconds")
     parser.add_argument("--force", action="store_true", help="Insert even if the review gate flags a low fit_score or weak source_access")
     args = parser.parse_args()
 
@@ -302,7 +333,11 @@ def main():
 
     print(f"Fetching and extracting: {args.url}", file=sys.stderr)
     print("(can take a few minutes — web_search/web_fetch may run several rounds server-side)", file=sys.stderr)
-    entry = fetch_entry(args.url, args.model, on_progress=lambda msg: print(f"  {msg}", file=sys.stderr))
+    entry = fetch_entry(
+        args.url, args.model,
+        on_progress=lambda msg: print(f"  {msg}", file=sys.stderr),
+        max_seconds=args.max_seconds,
+    )
 
     print(
         f"fit_score={entry['fit_score']}/100  source_access={entry['source_access']}  category={entry['category']}",
