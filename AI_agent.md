@@ -4,10 +4,11 @@ Agentic, autonomous and tool-using AI systems.
 
 **Maintainer:** @[Meng Wei](https://weimengmeng1999.github.io/meng-wei.github.io/) @[ Feng Lan](https://ai-healthcare-portfolio.hushed-dove-3131.chatgpt.site)
 
-**27 entries** · [Back to index](README.md)
+**28 entries** · [Back to index](README.md)
 
 | Date | Model | Venue | Pre-training | Data usage | Downstream tasks |
 | --- | --- | --- | --- | --- | --- |
+| 2026-08 | CoDaS [[details]](#model-codas-202608) | Google Research / arXiv | training-free multi-agent orchestration | 9,279 participant-observations across 3 cohorts (eval) | digital biomarker discovery, statistical validation, wearable health analysis +2 |
 | 2026-07 | Multi-Agent Architectures [[details]](#model-multi-agent-architectures-202607) [[paper card]](https://github.com/medfm-flare/AwesomeBiomedicalAI/tree/ai_agent/paper_cards/02_2026-07_Multi-Agent_Architectures/paper-card.md) | Nat. Mach. Intell. | N/A | 6 benchmarks (eval) | benchmarking, agent coordination |
 | 2026-07 | Biomni [[details]](#model-biomni-202607) [[paper card]](https://github.com/medfm-flare/AwesomeBiomedicalAI/tree/ai_agent/paper_cards/03_2026-07_Biomni/paper-card.md) | Science | RL fine-tuning, training-free tool use | agent trajectories (train); 433 instances (eval) | CRISPR planning, scRNA-seq annotation, ADMET prediction +2 |
 | 2026-07 | AI X-ray Scientist [[details]](#model-ai-x-ray-scientist-202607) | Nat. Mach. Intell. | training-free | — | X-ray sample alignment, closed-loop experimentation |
@@ -39,6 +40,24 @@ Agentic, autonomous and tool-using AI systems.
 ## Details
 
 Click a model to expand its record.
+
+<a id="model-codas-202608"></a>
+<details>
+<summary><b>CoDaS</b> — AI Co-Data-Scientist for Biomarker Discovery via Wearable Sensors <i>(Google Research / arXiv 2026-08)</i></summary>
+
+**[CoDaS: AI Co-Data-Scientist for Biomarker Discovery via Wearable Sensors](https://arxiv.org/abs/2604.14615)**
+
+*Google Research / arXiv* · 2026-08 · Yubin Kim, Salman Rahman, Samuel Schmidgall, Chunjong Park, A. Ali Heydari, Ahmed A. Metwally, et al.
+
+| | |
+| --- | --- |
+| **Backbone** | Multi-agent AI co-data-scientist coordinated by an Orchestrator agent, with specialized Scout, Hypotheses, Statistical/ML, Critic, Defender, Mechanism, Novelty, Strategy, and Report agents. The system uses Gemini 3.1 Pro Preview for research-intensive reasoning and code generation and Gemini 3 Flash Preview for repeated lower-latency tasks. |
+| **Pre-training** | `training-free multi-agent orchestration`<br>No new foundation model is trained; CoDaS organizes pretrained Gemini models and deterministic statistical/ML tools into a closed-loop scientific workflow with shared memory, adversarial review, leakage controls, and human oversight. |
+| **Data usage** | Evaluated across three wearable/clinical cohorts totaling 9,279 participant-observations: Digital Wellbeing (DWB), GLOBEM, and WEAR-ME, spanning mental-health and metabolic-disease settings. |
+| **Downstream tasks** | `digital biomarker discovery`, `hypothesis generation`, `statistical validation`, `wearable health analysis`, `scientific reporting`<br>Autonomously generates and prioritizes wearable-derived biomarker hypotheses, runs statistical and ML analyses, stress-tests candidates through adversarial Critic/Defender review, grounds mechanisms in literature, and assembles expert-reviewable scientific reports. CoDaS identified 41 candidate digital biomarkers for mental health and 25 for metabolic outcomes; adding CoDaS-derived features improved cross-validated prediction by ΔR² = 0.040 for depression and 0.021 for insulin resistance. |
+| **Modalities** | `wearable time series`, `clinical labs`, `survey data`, `app data`, `text` |
+
+</details>
 
 <a id="model-multi-agent-architectures-202607"></a>
 <details>
@@ -98,7 +117,6 @@ Click a model to expand its record.
 <a id="model-mira-202606"></a>
 <details>
 <summary><b>MIRA</b> — Towards autonomous medical artificial intelligence agents <i>(Nature 2026-06)</i></summary>
-
 **[Towards autonomous medical artificial intelligence agents](https://www.nature.com/articles/s41586-026-10675-5)**
 
 *Nature* · 2026-06 · [Dyke Ferber](https://scholar.google.com/citations?user=r7JtdUcAAAAJ&hl=en) & [Jakob Nikolas Kather](https://scholar.google.com/citations?user=w6-uFdEAAAAJ&hl=en)
@@ -197,8 +215,7 @@ Click a model to expand its record.
 
 *Nat. Commun.* · 2026-05 · Christos Margadji & [Sebastian W. Pattinson](https://scholar.google.com/citations?user=I8dpTJMAAAAJ&hl=en)
 
-| | |
-| --- | --- |
+| | || --- | --- |
 | **Backbone** | Vision-language-action (VLA) model (CIPHER: Control and Interpretation of Production via Hybrid Expertise and Reasoning) integrated with a process-expert regression model and retrieval-augmented generation, instantiated on a commercial-grade 3D printer |
 | **Pre-training** | `N/A`<br>Methods beyond the abstract are paywalled; training details of the process-expert regression component could not be confirmed from accessible sources. |
 | **Data usage** | —; no specific dataset confirmed from the accessible abstract. |
@@ -298,7 +315,6 @@ Click a model to expand its record.
 | **Downstream tasks** | `bioinformatics analysis`<br>Self-evolving, tool-aware biomedical data analysis. |
 | **Modalities** | `text`, `omics data` |
 | **Code** | [github.com/BOBQWERA/BioMedAgent](https://github.com/BOBQWERA/BioMedAgent) |
-
 </details>
 
 <a id="model-ai-scientist-202603"></a>
@@ -398,7 +414,6 @@ Click a model to expand its record.
 <a id="model-aila-202510"></a>
 <details>
 <summary><b>AILA</b> — Evaluating large language model agents for automation of atomic force microscopy <i>(Nat. Commun. 2025-10)</i></summary>
-
 **[Evaluating large language model agents for automation of atomic force microscopy](https://www.nature.com/articles/s41467-025-64105-7)**
 
 *Nat. Commun.* · 2025-10 · [Indrajeet Mandal](https://scholar.google.com/citations?user=v_747TcAAAAJ&hl=en) & [N. M. Anoop Krishnan](https://scholar.google.com/citations?user=fGnjHcEAAAAJ&hl=en)
@@ -497,8 +512,7 @@ Click a model to expand its record.
 *Nat. Comput. Sci.* · 2025-08 · Keyan Ding & Huajun Chen
 
 | | |
-| --- | --- |
-| **Backbone** | LLM agent orchestrating 500+ scientific tools (web APIs, ML models, Python functions, knowledge databases) via a scientific-tool knowledge graph and graph-based retrieval-augmented generation, with a safety-checking module |
+| --- | --- || **Backbone** | LLM agent orchestrating 500+ scientific tools (web APIs, ML models, Python functions, knowledge databases) via a scientific-tool knowledge graph and graph-based retrieval-augmented generation, with a safety-checking module |
 | **Pre-training** | `training-free`<br>No new model trained; tool selection and execution via knowledge-graph retrieval over an existing LLM. |
 | **Data usage** | —; tool knowledge graph spans biology, chemistry and materials science. |
 | **Downstream tasks** | `multi-tool scientific workflow orchestration`<br>Automated selection, composition and execution of hundreds of scientific tools across biology, chemistry and materials science research workflows. |
