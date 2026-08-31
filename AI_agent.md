@@ -4,10 +4,11 @@ Agentic, autonomous and tool-using AI systems.
 
 **Maintainer:** @[Meng Wei](https://weimengmeng1999.github.io/meng-wei.github.io/) @[ Feng Lan](https://ai-healthcare-portfolio.hushed-dove-3131.chatgpt.site)
 
-**28 entries** · [Back to index](README.md)
+**29 entries** · [Back to index](README.md)
 
 | Date | Model | Venue | Pre-training | Data usage | Downstream tasks |
 | --- | --- | --- | --- | --- | --- |
+| 2026-08 | Co-Scientist (Real-World) [[details]](#model-co-scientist-real-world-202608) | arXiv (Google) | training-free multi-agent extension | real-world lab + HealthBench + 450 expert reviews (eval) | closed-loop scientific research, biology experiments, clinical-AI architecture discovery +2 |
 | 2026-08 | CoDaS [[details]](#model-codas-202608) | Google Research / arXiv | training-free multi-agent orchestration | 9,279 participant-observations across 3 cohorts (eval) | digital biomarker discovery, statistical validation, wearable health analysis +2 |
 | 2026-07 | Multi-Agent Architectures [[details]](#model-multi-agent-architectures-202607) [[paper card]](https://github.com/medfm-flare/AwesomeBiomedicalAI/tree/ai_agent/paper_cards/02_2026-07_Multi-Agent_Architectures/paper-card.md) | Nat. Mach. Intell. | N/A | 6 benchmarks (eval) | benchmarking, agent coordination |
 | 2026-07 | Biomni [[details]](#model-biomni-202607) [[paper card]](https://github.com/medfm-flare/AwesomeBiomedicalAI/tree/ai_agent/paper_cards/03_2026-07_Biomni/paper-card.md) | Science | RL fine-tuning, training-free tool use | agent trajectories (train); 433 instances (eval) | CRISPR planning, scRNA-seq annotation, ADMET prediction +2 |
@@ -40,6 +41,24 @@ Agentic, autonomous and tool-using AI systems.
 ## Details
 
 Click a model to expand its record.
+
+<a id="model-co-scientist-real-world-202608"></a>
+<details>
+<summary><b>Co-Scientist (Real-World)</b> — Accelerating Scientific Research with Gemini in the Real-World <i>(arXiv / Google 2026-08)</i></summary>
+
+**[Accelerating Scientific Research with Gemini in the Real-World](https://arxiv.org/abs/2608.26701)**
+
+*arXiv / Google* · 2026-08 · Samuel Schmidgall, Xiaokai Zhu, Marian Shaw, Lin Yang, Valentin Liévin, Jingyun Yang, Yuchen Zhuang, Tim Strother, Alex Bijamov, Min Woo Sun, Anil Palepu, Justin Chen, David Steiner, Jacqueline Shreibati, Wei-Hung Weng, Yilin Zhao, Xingjian Hu, Nicholas Zahn, Sadhya Garg, Julia Kirby, Yuxiang Gan, Jiaoli Li, Divy Thakkar, Shekoofeh Azizi, David Racz, Juraj Gottweis, Vivek Natarajan, Chenglin Wu, Tal Danino, Keran Rong, Haozhe Wang, Benoit Schillings, Yong Cheng, Quoc V. Le & Tao Tu
+
+| | |
+| --- | --- |
+| **Backbone** | Extension of Google's Gemini-based Co-Scientist multi-agent system for execution-grounded, end-to-end scientific research. The paper reports use of Gemini 3 Deep Think for rapid lab-in-the-loop execution in experimental settings. |
+| **Pre-training** | `training-free multi-agent extension`<br>The work extends and validates the existing Co-Scientist agent system rather than introducing a newly pretrained foundation model. |
+| **Data usage** | Real-world and expert-evaluation settings spanning materials science, biology, and computer science: semi-automated laboratory experiments, sparse imaging measurements for engineered *E. coli*, HealthBench Hard/Professional, and a double-blind evaluation with 30 domain experts across 450 paper reviews. |
+| **Downstream tasks** | `closed-loop scientific research`, `lab-in-the-loop experimentation`, `biology phenotype prediction`, `clinical-AI architecture discovery`, `scientific manuscript generation`<br>Co-Scientist designed and iterated real-world experimental workflows, predicted emergent swarming phenotypes of engineered *E. coli* from sparse imaging data, autonomously discovered an inference-time scaling architecture that outperformed six frontier models on HealthBench while reducing potential clinical harm, and generated full scientific papers evaluated by domain experts. |
+| **Modalities** | `text`, `code`, `scientific measurements`, `images`, `laboratory control` |
+
+</details>
 
 <a id="model-codas-202608"></a>
 <details>
