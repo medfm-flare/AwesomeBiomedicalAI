@@ -4,7 +4,7 @@ CT, MRI, PET, X-ray and fMRI foundation models.
 
 **Maintainer:** [Judy Lyu](https://github.com/judylyu)
 
-**31 entries** · [Back to index](README.md)
+**32 entries** · [Back to index](README.md)
 
 <sub><b>Model size</b> is the count the authors publish, with the component it covers in brackets — a vision encoder and a full vision–language model are not comparable. <i>not published</i> means the access routes were worked and no author source states one; <i>n/a</i> means the paper does not introduce a foundation model. <b>Training data</b> counts whole 3D volumes or scans used for pre-training, so a model trained on slices, frames, or image–text pairs shows what it used instead.</sub>
 
@@ -14,6 +14,7 @@ Click a model to expand its record.
 
 | Date | Model | Venue | Model size | Training data | Pre-training | Downstream tasks |
 | --- | --- | --- | --- | --- | --- | --- |
+| 202608 | [LiON](#model-lion-202608) | Nat. Med. | _n/a_ | 6.4K patients | _n/a_ | classification, segmentation |
 | 202607 | [NeuroVFM](#model-neurovfm-202607) | Nat. Med. | 85.8M | 5.24M volumes | JEPA | classification, report generation, retrieval +2 |
 | 202604 | [FM-HCT](#model-fm-hct-202604) | Nat. Biomed. Eng. | 86M (ViT-B) | 362K volumes | DINO | classification, retrieval |
 | 202603 | [Merlin](#model-merlin-202603) | Nature | 121M | none (25.5K volume–report pairs) | CLIP | classification, segmentation, retrieval +2 |
@@ -31,6 +32,25 @@ Click a model to expand its record.
 | 202507 | [Percival](#model-percival-202507) | medRxiv | 22M (DeiT-S enc.) | none (403K volume–report pairs) | InfoNCE, contrastive | retrieval, classification, prognosis |
 | 202501 | [CT-FM](#model-ct-fm-202501) | arXiv | 77.8M | 148K CT volumes | SimCLR | segmentation, triage, retrieval |
 | 202501 | [3DINO](#model-3dino-202501) | arXiv | 307M (ViT-L) | ~100K volumes | 3DINO, self-supervised | classification, segmentation |
+
+<a id="model-lion-202608"></a>
+<details>
+<summary><b>LiON</b> — Large-scale AI-guided liver malignancy diagnosis: multicenter study and a single-arm trial <i>(Nat. Med. 202608)</i></summary>
+
+**[Large-scale AI-guided liver malignancy diagnosis: multicenter study and a single-arm trial](https://www.nature.com/articles/s41591-026-04589-y)**
+
+*Nat. Med.* · 202608 · [doi:10.1038/s41591-026-04589-y](https://doi.org/10.1038/s41591-026-04589-y)
+
+| | |
+| --- | --- |
+| **Backbone** | Feature pyramid network with query-based classifier and segmentator |
+| **Pre-training** | `_n/a_`<br>Supervised end-to-end training for liver malignancy diagnosis; not a self-supervised foundation-model pre-training recipe. |
+| **Training data** | Contrast-enhanced CT<br>**6,443** patients |
+| **Downstream tasks** | `classification`, `segmentation`<br>Patient-level liver malignancy diagnosis and eight-type lesion segmentation. |
+| **Modalities** | `CT` |
+| **Code** | [github.com/alibaba-damo-academy/pixel-lesion-patient-network](https://github.com/alibaba-damo-academy/pixel-lesion-patient-network) |
+
+</details>
 
 <a id="model-neurovfm-202607"></a>
 <details>
