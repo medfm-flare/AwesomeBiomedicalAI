@@ -1,6 +1,6 @@
 # AI Agent Deep-Read Paper Cards
 
-English Nature-style deep-reading cards for all 32 papers listed in [AI_agent.md](../AI_agent.md). Each card preserves the fixed Sections 01–16 structure, provenance labels, claim boundaries, source-access notice, figure analysis, and audit artifact where the source mode permits it.
+English Nature-style deep-reading cards for 33 papers; the current catalogue is [AI_agent.md](../AI_agent.md). Each card preserves the fixed Sections 01–16 structure, provenance labels, claim boundaries, source-access notice, figure analysis, and audit artifact where the source mode permits it.
 
 ## Source modes
 
@@ -12,6 +12,7 @@ English Nature-style deep-reading cards for all 32 papers listed in [AI_agent.md
 
 | Model | Paper | Venue / date | Card status |
 |---|---|---|---|
+| [MoChiAgent](33_2026-09_MoChiAgent/paper-card.md) | Prediction of maternal and infant outcomes from longitudinal electronic health records with a Mother-Child AI agent | Nat. Med. 2026-09 | Page-grounded; physician-score audit |
 | [Pathology-CoT](01_2026-07_Pathology-CoT/paper-card.md) | Pathology-CoT: learning visual chain-of-thought agents from expert whole-slide image diagnosis behaviour | Nat. Biomed. Eng. 2026-07 | New page-grounded card |
 | [Multi-Agent Architectures](02_2026-07_Multi-Agent_Architectures/paper-card.md) | Capable language models can outgrow the benefits of collaboration | Nat. Mach. Intell. 2026-07 | Retained from the prior audited collection |
 | [Biomni](03_2026-07_Biomni/paper-card.md) | Autonomous biomedical research with an artificial intelligence agent | Science 2026-07 | Source-limited: abstract, catalogue, and author code |

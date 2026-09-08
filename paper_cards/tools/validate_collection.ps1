@@ -8,7 +8,7 @@ $errors = New-Object System.Collections.Generic.List[string]
 $warnings = New-Object System.Collections.Generic.List[string]
 $folders = @(Get-ChildItem -LiteralPath $CardsRoot -Directory | Where-Object { $_.Name -match '^\d{2}_' } | Sort-Object Name)
 
-if ($folders.Count -ne 32) { $errors.Add("Expected 32 paper folders; found $($folders.Count).") }
+if ($folders.Count -ne 33) { $errors.Add("Expected 33 paper folders; found $($folders.Count).") }
 
 foreach ($folder in $folders) {
     foreach ($required in @('paper-card.md','figure-analysis.md','audit-report.json','source_article_access.md')) {
