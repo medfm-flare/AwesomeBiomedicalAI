@@ -8,7 +8,15 @@ $errors = New-Object System.Collections.Generic.List[string]
 $warnings = New-Object System.Collections.Generic.List[string]
 $folders = @(Get-ChildItem -LiteralPath $CardsRoot -Directory | Where-Object { $_.Name -match '^\d{2}_' } | Sort-Object Name)
 
-if ($folders.Count -ne 33) { $errors.Add("Expected 33 paper folders; found $($folders.Count).") }
+$cataloguePath = Join-Path (Split-Path -Parent (Resolve-Path -LiteralPath $CardsRoot).Path) 'AI_agent.md'
+$catalogue = Get-Content -LiteralPath $cataloguePath -Raw
+$expectedFolders = @([regex]::Matches($catalogue, 'paper_cards/([^/]+)/paper-card\.md') | ForEach-Object { $_.Groups[1].Value } | Sort-Object -Unique)
+foreach ($folder in $folders) {
+    if ($folder.Name -notin $expectedFolders) { $errors.Add("Card absent from catalogue: $($folder.Name)") }
+}
+foreach ($expected in $expectedFolders) {
+    if ($expected -notin $folders.Name) { $errors.Add("Catalogue link has no card: $expected") }
+}
 
 foreach ($folder in $folders) {
     foreach ($required in @('paper-card.md','figure-analysis.md','audit-report.json','source_article_access.md')) {
