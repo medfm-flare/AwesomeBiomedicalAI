@@ -1,0 +1,242 @@
+[
+  {
+    "number": 1,
+    "name": "MoChiAgent",
+    "date": "2026-09",
+    "old": "33_2026-09_MoChiAgent",
+    "folder": "01_2026-09_MoChiAgent",
+    "status": "available"
+  },
+  {
+    "number": 2,
+    "name": "Co-Scientist (Real-World)",
+    "date": "2026-08",
+    "old": null,
+    "folder": "02_2026-08_Co-Scientist_Real-World",
+    "status": "pending"
+  },
+  {
+    "number": 3,
+    "name": "CoDaS",
+    "date": "2026-08",
+    "old": null,
+    "folder": "03_2026-08_CoDaS",
+    "status": "pending"
+  },
+  {
+    "number": 4,
+    "name": "Multi-Agent Architectures",
+    "date": "2026-07",
+    "old": "02_2026-07_Multi-Agent_Architectures",
+    "folder": "04_2026-07_Multi-Agent_Architectures",
+    "status": "available"
+  },
+  {
+    "number": 5,
+    "name": "Biomni",
+    "date": "2026-07",
+    "old": "03_2026-07_Biomni",
+    "folder": "05_2026-07_Biomni",
+    "status": "available"
+  },
+  {
+    "number": 6,
+    "name": "AI X-ray Scientist",
+    "date": "2026-07",
+    "old": null,
+    "folder": "06_2026-07_AI_X-ray_Scientist",
+    "status": "pending"
+  },
+  {
+    "number": 7,
+    "name": "MIRA",
+    "date": "2026-06",
+    "old": "05_2026-06_MIRA",
+    "folder": "07_2026-06_MIRA",
+    "status": "available"
+  },
+  {
+    "number": 8,
+    "name": "AMIE",
+    "date": "2026-06",
+    "old": "04_2026-06_AMIE",
+    "folder": "08_2026-06_AMIE",
+    "status": "available"
+  },
+  {
+    "number": 9,
+    "name": "Co-Scientist",
+    "date": "2026-05",
+    "old": "07_2026-05_Co-Scientist",
+    "folder": "09_2026-05_Co-Scientist",
+    "status": "available"
+  },
+  {
+    "number": 10,
+    "name": "Robin",
+    "date": "2026-05",
+    "old": "08_2026-05_Robin",
+    "folder": "10_2026-05_Robin",
+    "status": "available"
+  },
+  {
+    "number": 11,
+    "name": "ERA",
+    "date": "2026-05",
+    "old": "09_2026-05_ERA",
+    "folder": "11_2026-05_ERA",
+    "status": "available"
+  },
+  {
+    "number": 12,
+    "name": "CIPHER",
+    "date": "2026-05",
+    "old": null,
+    "folder": "12_2026-05_CIPHER",
+    "status": "pending"
+  },
+  {
+    "number": 13,
+    "name": "Autonomous Interaction",
+    "date": "2026-05",
+    "old": null,
+    "folder": "13_2026-05_Autonomous_Interaction",
+    "status": "pending"
+  },
+  {
+    "number": 14,
+    "name": "AlphaLab",
+    "date": "2026-04",
+    "old": "10_2026-04_AlphaLab",
+    "folder": "14_2026-04_AlphaLab",
+    "status": "available"
+  },
+  {
+    "number": 15,
+    "name": "SPARK",
+    "date": "2026-04",
+    "old": "13_2026-04_SPARK",
+    "folder": "15_2026-04_SPARK",
+    "status": "available"
+  },
+  {
+    "number": 16,
+    "name": "PhenoAssistant",
+    "date": "2026-04",
+    "old": null,
+    "folder": "16_2026-04_PhenoAssistant",
+    "status": "pending"
+  },
+  {
+    "number": 17,
+    "name": "BioMedAgent",
+    "date": "2026-03",
+    "old": "15_2026-03_BioMedAgent",
+    "folder": "17_2026-03_BioMedAgent",
+    "status": "available"
+  },
+  {
+    "number": 18,
+    "name": "AI Scientist",
+    "date": "2026-03",
+    "old": "16_2026-03_AI_Scientist",
+    "folder": "18_2026-03_AI_Scientist",
+    "status": "available"
+  },
+  {
+    "number": 19,
+    "name": "PantheonOS",
+    "date": "2026-02",
+    "old": "19_2026-02_PantheonOS",
+    "folder": "19_2026-02_PantheonOS",
+    "status": "available"
+  },
+  {
+    "number": 20,
+    "name": "DeepRare",
+    "date": "2026-02",
+    "old": "20_2026-02_DeepRare",
+    "folder": "20_2026-02_DeepRare",
+    "status": "available"
+  },
+  {
+    "number": 21,
+    "name": "PHIA",
+    "date": "2026-01",
+    "old": "23_2026-01_PHIA",
+    "folder": "21_2026-01_PHIA",
+    "status": "available"
+  },
+  {
+    "number": 22,
+    "name": "BioDSA",
+    "date": "2026-01",
+    "old": "24_2026-01_BioDSA",
+    "folder": "22_2026-01_BioDSA",
+    "status": "available"
+  },
+  {
+    "number": 23,
+    "name": "SciSciGPT",
+    "date": "2025-12",
+    "old": null,
+    "folder": "23_2025-12_SciSciGPT",
+    "status": "pending"
+  },
+  {
+    "number": 24,
+    "name": "CASSIA",
+    "date": "2025-12",
+    "old": null,
+    "folder": "24_2025-12_CASSIA",
+    "status": "pending"
+  },
+  {
+    "number": 25,
+    "name": "AILA",
+    "date": "2025-10",
+    "old": "27_2025-10_AILA",
+    "folder": "25_2025-10_AILA",
+    "status": "available"
+  },
+  {
+    "number": 26,
+    "name": "AgentMD",
+    "date": "2025-10",
+    "old": null,
+    "folder": "26_2025-10_AgentMD",
+    "status": "pending"
+  },
+  {
+    "number": 27,
+    "name": "MAP",
+    "date": "2025-09",
+    "old": null,
+    "folder": "27_2025-09_MAP",
+    "status": "pending"
+  },
+  {
+    "number": 28,
+    "name": "SciToolAgent",
+    "date": "2025-08",
+    "old": null,
+    "folder": "28_2025-08_SciToolAgent",
+    "status": "pending"
+  },
+  {
+    "number": 29,
+    "name": "Virtual Lab",
+    "date": "2025-07",
+    "old": "30_2025-07_Virtual_Lab",
+    "folder": "29_2025-07_Virtual_Lab",
+    "status": "available"
+  },
+  {
+    "number": 30,
+    "name": "Oncology AI Agent",
+    "date": "2025-06",
+    "old": null,
+    "folder": "30_2025-06_Oncology_AI_Agent",
+    "status": "pending"
+  }
+]

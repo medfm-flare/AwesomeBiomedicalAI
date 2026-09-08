@@ -10,7 +10,15 @@ $folders = @(Get-ChildItem -LiteralPath $CardsRoot -Directory | Where-Object { $
 
 $cataloguePath = Join-Path (Split-Path -Parent (Resolve-Path -LiteralPath $CardsRoot).Path) 'AI_agent.md'
 $catalogue = Get-Content -LiteralPath $cataloguePath -Raw
-$expectedFolders = @([regex]::Matches($catalogue, 'paper_cards/([^/]+)/paper-card\.md') | ForEach-Object { $_.Groups[1].Value } | Sort-Object -Unique)
+$mapping = Get-Content -LiteralPath (Join-Path $CardsRoot 'catalogue-map.json') -Raw | ConvertFrom-Json
+$expectedFolders = @($mapping.folder)
+$rows = @($catalogue -split "`n" | Where-Object { $_ -match '^\| 20\d\d-\d\d ' })
+if ($rows.Count -ne 30 -or $mapping.Count -ne 30) { $errors.Add('Expected 30 catalogue rows and mapping entries') }
+for ($i=0; $i -lt $mapping.Count; $i++) {
+    $item = $mapping[$i]
+    $name = (($rows[$i] -split '\|')[2] -split ' \[\[details\]\]')[0].Trim()
+    if ($item.number -ne ($i+1) -or $item.name -cne $name -or -not $item.folder.StartsWith(('{0:D2}_' -f ($i+1)))) { $errors.Add("Order mismatch at row $($i+1)") }
+}
 foreach ($folder in $folders) {
     if ($folder.Name -notin $expectedFolders) { $errors.Add("Card absent from catalogue: $($folder.Name)") }
 }
@@ -19,6 +27,11 @@ foreach ($expected in $expectedFolders) {
 }
 
 foreach ($folder in $folders) {
+    $entry = $mapping | Where-Object { $_.folder -eq $folder.Name }
+    if ($entry.status -eq 'pending') {
+        if (-not (Test-Path -LiteralPath (Join-Path $folder.FullName 'README.md')) -or (Test-Path -LiteralPath (Join-Path $folder.FullName 'paper-card.md'))) { $errors.Add("Invalid pending folder: $($folder.Name)") }
+        continue
+    }
     foreach ($required in @('paper-card.md','figure-analysis.md','audit-report.json','source_article_access.md')) {
         if (-not (Test-Path -LiteralPath (Join-Path $folder.FullName $required))) {
             $errors.Add("$($folder.Name): missing $required")
@@ -46,7 +59,7 @@ foreach ($folder in $folders) {
         $audit = Get-Content -LiteralPath $auditPath -Raw | ConvertFrom-Json
         if ([int]$audit.summary.errors -ne 0) { $errors.Add("$($folder.Name): audit has $($audit.summary.errors) error(s)") }
         if ([int]$audit.summary.warnings -ne 0) {
-            if ($folder.Name -in @('03_2026-07_Biomni','30_2025-07_Virtual_Lab') -and [int]$audit.summary.warnings -eq 1) {
+            if ($folder.Name -in @('05_2026-07_Biomni','29_2025-07_Virtual_Lab') -and [int]$audit.summary.warnings -eq 1) {
                 $warnings.Add("$($folder.Name): expected fallback warning because no PDF source bundle was supplied")
             } else {
                 $errors.Add("$($folder.Name): audit has unresolved warning(s)")

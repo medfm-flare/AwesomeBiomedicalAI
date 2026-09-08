@@ -1,51 +1,40 @@
-# AI Agent Deep-Read Paper Cards
+# AI Agent Paper Cards
 
-English deep-reading cards for 18 of the 30 articles in [AI_agent.md](../AI_agent.md). Only papers included in that catalogue are retained here. Original folder identifiers are preserved so existing links remain stable.
+Numbered 01–30 in the exact order of [AI_agent.md](../AI_agent.md). There are 18 existing Paper Cards and 12 explicitly marked pending folders. Pending folders contain no completed deep read.
 
-## Source modes
-
-- **Page-grounded:** official PDF or author-posted preprint processed with the installed Nature Paper Card parser; main figures are embedded as faithful page views.
-- **Structure-grounded:** official full HTML and original publisher figures, with structural rather than PDF-page locators.
-- **Source-limited:** full text was not lawfully accessible; unseen methods, figures, and limitations are marked not assessable.
-- **Reused:** English card and audit were copied from the maintainer's previously validated public Nature-style library and adapted to this repository's English-only layout.
-- **Retained:** A previously audited card remains valid for an article shared by the old and corrected catalogues.
-
-| Model | Paper | Venue / date | Card status |
-|---|---|---|---|
-| [MoChiAgent](33_2026-09_MoChiAgent/paper-card.md) | Prediction of maternal and infant outcomes from longitudinal electronic health records with a Mother-Child AI agent | Nat. Med. 2026-09 | Page-grounded; physician-score audit |
-| [Multi-Agent Architectures](02_2026-07_Multi-Agent_Architectures/paper-card.md) | Capable language models can outgrow the benefits of collaboration | Nat. Mach. Intell. 2026-07 | Retained from the prior audited collection |
-| [Biomni](03_2026-07_Biomni/paper-card.md) | Autonomous biomedical research with an artificial intelligence agent | Science 2026-07 | Source-limited: abstract, catalogue, and author code |
-| [AMIE](04_2026-06_AMIE/paper-card.md) | Towards conversational artificial intelligence for disease management | Nature 2026-06 | Retained from the prior audited collection |
-| [MIRA](05_2026-06_MIRA/paper-card.md) | Towards autonomous medical artificial intelligence agents | Nature 2026-06 | Retained from the prior audited collection |
-| [Co-Scientist](07_2026-05_Co-Scientist/paper-card.md) | Accelerating scientific discovery with Co-Scientist | Nature 2026-05 | Retained from the prior audited collection |
-| [Robin](08_2026-05_Robin/paper-card.md) | A multi-agent system for automating scientific discovery | Nature 2026-05 | Retained from the prior audited collection |
-| [ERA](09_2026-05_ERA/paper-card.md) | An AI system to help scientists write expert-level empirical software | Nature 2026-05 | Retained from the prior audited collection |
-| [AlphaLab](10_2026-04_AlphaLab/paper-card.md) | AlphaLab: Autonomous Multi-Agent Research Across Optimization Domains with Frontier LLMs | Preprint 2026-04 | Retained from the prior audited collection |
-| [SPARK](13_2026-04_SPARK/paper-card.md) | An agentic framework for autonomous scientific discovery in cancer pathology | Nat. Med. 2026-04 | Retained from the prior audited collection |
-| [BioMedAgent](15_2026-03_BioMedAgent/paper-card.md) | Empowering AI data scientists using a multi-agent LLM framework with self-evolving capabilities for autonomous, tool-aware biomedical data analyses | Nat. Biomed. Eng. 2026-03 | Retained from the prior audited collection |
-| [AI Scientist](16_2026-03_AI_Scientist/paper-card.md) | Towards end-to-end automation of AI research | Nature 2026-03 | Retained from the prior audited collection |
-| [PantheonOS](19_2026-02_PantheonOS/paper-card.md) | PantheonOS: An Evolvable Multi-Agent Framework for Automatic Genomics Discovery | bioRxiv 2026-02 | Retained from the prior audited collection |
-| [DeepRare](20_2026-02_DeepRare/paper-card.md) | An agentic system for rare disease diagnosis with traceable reasoning | Nature 2026-02 | Retained from the prior audited collection |
-| [PHIA](23_2026-01_PHIA/paper-card.md) | Transforming wearable data into personal health insights using large language model agents | Nat. Commun. 2026-01 | Retained from the prior audited collection |
-| [BioDSA](24_2026-01_BioDSA/paper-card.md) | Making large language models reliable data science programming copilots for biomedical research | Nat. Biomed. Eng. 2026-01 | Retained from the prior audited collection |
-| [AILA](27_2025-10_AILA/paper-card.md) | Evaluating large language model agents for automation of atomic force microscopy | Nat. Commun. 2025-10 | Retained from the prior audited collection |
-| [Virtual Lab](30_2025-07_Virtual_Lab/paper-card.md) | The Virtual Lab of AI agents designs new SARS-CoV-2 nanobodies | Nature 2025-07 | Structure-grounded: official HTML and source figures |
-
-## Catalogue articles awaiting a Paper Card
-
-- Co-Scientist (Real-World)
-- CoDaS
-- AI X-ray Scientist
-- CIPHER
-- Autonomous Interaction
-- PhenoAssistant
-- SciSciGPT
-- CASSIA
-- AgentMD
-- MAP
-- SciToolAgent
-- Oncology AI Agent
+| No. | Article | Date | Status |
+| --- | --- | --- | --- |
+| 01 | [MoChiAgent](01_2026-09_MoChiAgent/paper-card.md) | 2026-09 | Existing Paper Card |
+| 02 | [Co-Scientist (Real-World)](02_2026-08_Co-Scientist_Real-World/README.md) | 2026-08 | Pending |
+| 03 | [CoDaS](03_2026-08_CoDaS/README.md) | 2026-08 | Pending |
+| 04 | [Multi-Agent Architectures](04_2026-07_Multi-Agent_Architectures/paper-card.md) | 2026-07 | Existing Paper Card |
+| 05 | [Biomni](05_2026-07_Biomni/paper-card.md) | 2026-07 | Existing Paper Card |
+| 06 | [AI X-ray Scientist](06_2026-07_AI_X-ray_Scientist/README.md) | 2026-07 | Pending |
+| 07 | [MIRA](07_2026-06_MIRA/paper-card.md) | 2026-06 | Existing Paper Card |
+| 08 | [AMIE](08_2026-06_AMIE/paper-card.md) | 2026-06 | Existing Paper Card |
+| 09 | [Co-Scientist](09_2026-05_Co-Scientist/paper-card.md) | 2026-05 | Existing Paper Card |
+| 10 | [Robin](10_2026-05_Robin/paper-card.md) | 2026-05 | Existing Paper Card |
+| 11 | [ERA](11_2026-05_ERA/paper-card.md) | 2026-05 | Existing Paper Card |
+| 12 | [CIPHER](12_2026-05_CIPHER/README.md) | 2026-05 | Pending |
+| 13 | [Autonomous Interaction](13_2026-05_Autonomous_Interaction/README.md) | 2026-05 | Pending |
+| 14 | [AlphaLab](14_2026-04_AlphaLab/paper-card.md) | 2026-04 | Existing Paper Card |
+| 15 | [SPARK](15_2026-04_SPARK/paper-card.md) | 2026-04 | Existing Paper Card |
+| 16 | [PhenoAssistant](16_2026-04_PhenoAssistant/README.md) | 2026-04 | Pending |
+| 17 | [BioMedAgent](17_2026-03_BioMedAgent/paper-card.md) | 2026-03 | Existing Paper Card |
+| 18 | [AI Scientist](18_2026-03_AI_Scientist/paper-card.md) | 2026-03 | Existing Paper Card |
+| 19 | [PantheonOS](19_2026-02_PantheonOS/paper-card.md) | 2026-02 | Existing Paper Card |
+| 20 | [DeepRare](20_2026-02_DeepRare/paper-card.md) | 2026-02 | Existing Paper Card |
+| 21 | [PHIA](21_2026-01_PHIA/paper-card.md) | 2026-01 | Existing Paper Card |
+| 22 | [BioDSA](22_2026-01_BioDSA/paper-card.md) | 2026-01 | Existing Paper Card |
+| 23 | [SciSciGPT](23_2025-12_SciSciGPT/README.md) | 2025-12 | Pending |
+| 24 | [CASSIA](24_2025-12_CASSIA/README.md) | 2025-12 | Pending |
+| 25 | [AILA](25_2025-10_AILA/paper-card.md) | 2025-10 | Existing Paper Card |
+| 26 | [AgentMD](26_2025-10_AgentMD/README.md) | 2025-10 | Pending |
+| 27 | [MAP](27_2025-09_MAP/README.md) | 2025-09 | Pending |
+| 28 | [SciToolAgent](28_2025-08_SciToolAgent/README.md) | 2025-08 | Pending |
+| 29 | [Virtual Lab](29_2025-07_Virtual_Lab/paper-card.md) | 2025-07 | Existing Paper Card |
+| 30 | [Oncology AI Agent](30_2025-06_Oncology_AI_Agent/README.md) | 2025-06 | Pending |
 
 ## Rights and use
 
-Complete article PDFs are not redistributed. Selected original visuals are retained only where available and necessary for scholarly analysis; each folder includes a source-access and rights note. Rights remain with the respective authors, publishers, and other rightsholders.
+Full article PDFs are not redistributed. Figure rights remain with the authors and publishers; each existing card includes its source-access note.
