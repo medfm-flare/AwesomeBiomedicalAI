@@ -13,7 +13,7 @@ $catalogue = Get-Content -LiteralPath $cataloguePath -Raw
 $mapping = Get-Content -LiteralPath (Join-Path $CardsRoot 'catalogue-map.json') -Raw | ConvertFrom-Json
 $expectedFolders = @($mapping.folder)
 $rows = @($catalogue -split "`n" | Where-Object { $_ -match '^\| 20\d\d-\d\d ' })
-if ($rows.Count -ne 30 -or $mapping.Count -ne 30) { $errors.Add('Expected 30 catalogue rows and mapping entries') }
+if ($rows.Count -ne $mapping.Count -or $mapping.Count -eq 0) { $errors.Add("Catalogue row/mapping count mismatch: rows=$($rows.Count), mapping=$($mapping.Count)") }
 for ($i=0; $i -lt $mapping.Count; $i++) {
     $item = $mapping[$i]
     $name = (($rows[$i] -split '\|')[2] -split ' \[\[details\]\]')[0].Trim()
@@ -59,7 +59,7 @@ foreach ($folder in $folders) {
         $audit = Get-Content -LiteralPath $auditPath -Raw | ConvertFrom-Json
         if ([int]$audit.summary.errors -ne 0) { $errors.Add("$($folder.Name): audit has $($audit.summary.errors) error(s)") }
         if ([int]$audit.summary.warnings -ne 0) {
-            if ($folder.Name -in @('05_2026-07_Biomni','29_2025-07_Virtual_Lab') -and [int]$audit.summary.warnings -eq 1) {
+            if ($folder.Name -in @('04_2026-07_Biomni','28_2025-07_Virtual_Lab') -and [int]$audit.summary.warnings -eq 1) {
                 $warnings.Add("$($folder.Name): expected fallback warning because no PDF source bundle was supplied")
             } else {
                 $errors.Add("$($folder.Name): audit has unresolved warning(s)")
