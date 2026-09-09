@@ -13,7 +13,7 @@
     "date": "2026-08",
     "old": null,
     "folder": "02_2026-08_Co-Scientist_Real-World",
-    "status": "pending"
+    "status": "available"
   },
   {
     "number": 3,
@@ -21,7 +21,7 @@
     "date": "2026-08",
     "old": null,
     "folder": "03_2026-08_CoDaS",
-    "status": "pending"
+    "status": "available"
   },
   {
     "number": 4,
@@ -45,7 +45,7 @@
     "date": "2026-07",
     "old": null,
     "folder": "06_2026-07_AI_X-ray_Scientist",
-    "status": "pending"
+    "status": "available"
   },
   {
     "number": 7,
@@ -93,7 +93,7 @@
     "date": "2026-05",
     "old": null,
     "folder": "12_2026-05_CIPHER",
-    "status": "pending"
+    "status": "available"
   },
   {
     "number": 13,
@@ -101,7 +101,7 @@
     "date": "2026-05",
     "old": null,
     "folder": "13_2026-05_Autonomous_Interaction",
-    "status": "pending"
+    "status": "available"
   },
   {
     "number": 14,
@@ -125,7 +125,7 @@
     "date": "2026-04",
     "old": null,
     "folder": "16_2026-04_PhenoAssistant",
-    "status": "pending"
+    "status": "available"
   },
   {
     "number": 17,
@@ -181,7 +181,7 @@
     "date": "2025-12",
     "old": null,
     "folder": "23_2025-12_SciSciGPT",
-    "status": "pending"
+    "status": "available"
   },
   {
     "number": 24,
@@ -189,7 +189,7 @@
     "date": "2025-12",
     "old": null,
     "folder": "24_2025-12_CASSIA",
-    "status": "pending"
+    "status": "available"
   },
   {
     "number": 25,
@@ -205,7 +205,7 @@
     "date": "2025-10",
     "old": null,
     "folder": "26_2025-10_AgentMD",
-    "status": "pending"
+    "status": "available"
   },
   {
     "number": 27,
@@ -213,7 +213,7 @@
     "date": "2025-09",
     "old": null,
     "folder": "27_2025-09_MAP",
-    "status": "pending"
+    "status": "available"
   },
   {
     "number": 28,
@@ -221,7 +221,7 @@
     "date": "2025-08",
     "old": null,
     "folder": "28_2025-08_SciToolAgent",
-    "status": "pending"
+    "status": "available"
   },
   {
     "number": 29,
@@ -237,6 +237,6 @@
     "date": "2025-06",
     "old": null,
     "folder": "30_2025-06_Oncology_AI_Agent",
-    "status": "pending"
+    "status": "available"
   }
 ]
