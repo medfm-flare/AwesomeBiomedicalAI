@@ -1,0 +1,88 @@
+{
+  "schema_version": "1.0",
+  "summary": {
+    "status": "pass",
+    "passes": 11,
+    "warnings": 0,
+    "errors": 0
+  },
+  "metrics": {
+    "locator_mode": "structure-grounded",
+    "sections_found": [
+      "01",
+      "02",
+      "03",
+      "04",
+      "05",
+      "06",
+      "07",
+      "08",
+      "09",
+      "10",
+      "11",
+      "12",
+      "13",
+      "14",
+      "15",
+      "16"
+    ],
+    "paper_pointer_count": 61
+  },
+  "findings": [
+    {
+      "level": "pass",
+      "code": "sections",
+      "message": "Sections 01-16 are present in order."
+    },
+    {
+      "level": "pass",
+      "code": "forbidden_sections",
+      "message": "No Sections 17 or 18 found."
+    },
+    {
+      "level": "pass",
+      "code": "status_header",
+      "message": "The evidence-status header has at least seven fields."
+    },
+    {
+      "level": "pass",
+      "code": "locator_mode_declaration",
+      "message": "The card declares locator mode: structure-grounded."
+    },
+    {
+      "level": "pass",
+      "code": "paper_pointers",
+      "message": "Found 61 paper source pointers."
+    },
+    {
+      "level": "pass",
+      "code": "page_pointers_forbidden",
+      "message": "structure-grounded mode contains no page-number citations."
+    },
+    {
+      "level": "pass",
+      "code": "limitations_split",
+      "message": "Sections 12 and 13 are both present."
+    },
+    {
+      "level": "pass",
+      "code": "idea_status",
+      "message": "Section 16 includes the required status field."
+    },
+    {
+      "level": "pass",
+      "code": "idea_validation",
+      "message": "Section 16 includes the required validation field."
+    },
+    {
+      "level": "pass",
+      "code": "idea_failure",
+      "message": "Section 16 includes the required falsifier field."
+    },
+    {
+      "level": "pass",
+      "code": "local_path",
+      "message": "No local absolute paths."
+    }
+  ]
+}
