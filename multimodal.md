@@ -16,7 +16,7 @@ Click a model name to jump to its expandable record. A dash (—) means the valu
 | 202608 | [VirTues](#model-virtues-202608) | Nature | — | Multiplex spatial proteomics + protein sequence | self-supervised, masked autoencoding | reconstruction, cell typing, niche annotation, biomarker discovery +1 |
 | 202607 | [PRISM2](#model-prism2-202607) | Nat. Med. | 4.6B | Histopathology + clinical text | contrastive, next-token prediction | detection, subtyping, grading +4 |
 | 202607 | [RisQ](#model-risq-202607) | medRxiv | — | EHR/diagnoses + labs + lifestyle + genetics | N/A (supervised, no separate pretraining) | zero-shot disease risk prediction |
-| 202607 | [DeepComp](#model-deepcomp-202607) | Ann. Oncol. | Not disclosed | Preoperative CT (tumor + peritumoral + body composition) + clinical variables | frozen foundation-model embeddings, supervised tabular fusion | complication prediction, survival prediction |
+| 202607 | [DeepComp](#model-deepcomp-202607) | Ann. Oncol. | — | Preoperative CT (tumor + peritumoral + body composition) + clinical variables | frozen foundation-model embeddings, supervised tabular fusion | complication prediction, survival prediction |
 | 202604 | [APOLLO](#model-apollo-202604) | arXiv | — | EHR (diagnoses, meds, labs, notes) + pathology images | masked modeling | patient retrieval, disease onset, progression +3 |
 | 202602 | [MAOSS](#model-maoss-202602) | Nat. Commun. | — | Non-contrast CT + demographics + labs | — | steatosis grading, fibrosis detection, cirrhosis risk |
 | 202601 | [Emu3](#model-emu3-202601) | Nature | 8.49B | Text + image + video | next-token prediction, autoregressive | image gen, video gen, vision-language understanding |
