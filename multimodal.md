@@ -4,7 +4,7 @@ Cross-modal health models without a single dominant biomedical domain.
 
 **Maintainer:** @Yeonwoo Seo ([Homepage](https://yws0322.github.io/) / [LinkedIn](https://www.linkedin.com/in/yeonwoo-seo-8950372bb/) / [GitHub](https://github.com/yws0322))
 
-**19 entries** · **Last updated: 202608** · [Back to index](README.md)
+**21 entries** · **Last updated: 202608** · [Back to index](README.md)
 
 ## Paper overview
 
@@ -12,9 +12,11 @@ Click a model name to jump to its expandable record. A dash (—) means the valu
 
 | Date | Model | Venue | Model Size | Modalities | Pre-training | Downstream Tasks |
 | --- | --- | --- | --- | --- | --- | --- |
+| 202608 | [oFM](#model-ofm-202608) | arXiv | 421M trained + 5.1B frozen (PRISM2) | EHR/clinical text + DNA + RNA + H&E pathology | three-stage: TSDAE reconstruction, masked/JEPA-style trajectory prediction | prognostic prediction, treatment-benefit ranking +1 |
 | 202608 | [VirTues](#model-virtues-202608) | Nature | — | Multiplex spatial proteomics + protein sequence | self-supervised, masked autoencoding | reconstruction, cell typing, niche annotation, biomarker discovery +1 |
 | 202607 | [PRISM2](#model-prism2-202607) | Nat. Med. | 4.6B | Histopathology + clinical text | contrastive, next-token prediction | detection, subtyping, grading +4 |
 | 202607 | [RisQ](#model-risq-202607) | medRxiv | — | EHR/diagnoses + labs + lifestyle + genetics | N/A (supervised, no separate pretraining) | zero-shot disease risk prediction |
+| 202607 | [DeepComp](#model-deepcomp-202607) | Ann. Oncol. | — | Preoperative CT (tumor + peritumoral + body composition) + clinical variables | frozen foundation-model embeddings, supervised tabular fusion | complication prediction, survival prediction |
 | 202604 | [APOLLO](#model-apollo-202604) | arXiv | — | EHR (diagnoses, meds, labs, notes) + pathology images | masked modeling | patient retrieval, disease onset, progression +3 |
 | 202602 | [MAOSS](#model-maoss-202602) | Nat. Commun. | — | Non-contrast CT + demographics + labs | — | steatosis grading, fibrosis detection, cirrhosis risk |
 | 202601 | [Emu3](#model-emu3-202601) | Nature | 8.49B | Text + image + video | next-token prediction, autoregressive | image gen, video gen, vision-language understanding |
@@ -35,6 +37,37 @@ Click a model name to jump to its expandable record. A dash (—) means the valu
 ## Details
 
 Click a model to expand its record.
+
+<a id="model-ofm-202608"></a>
+<details>
+<summary><b>oFM</b> — A Multimodal Foundation Model for Longitudinal Patient Representation and Scalable Insight Generation in Oncology <i>(arXiv 202608)</i></summary>
+
+**[A Multimodal Foundation Model for Longitudinal Patient Representation and Scalable Insight Generation in Oncology](https://arxiv.org/pdf/2608.24688v1)**
+
+*arXiv* · 202608 · [Eugene Vorontsov](https://scholar.google.com/citations?user=5o1gS_sAAAAJ) & [Siqi Liu](https://scholar.google.com/citations?user=ADyo_cAAAAAJ) (Tempus AI)
+
+| | |
+| --- | --- |
+| **Parameters** | 421M trained (episode encoder 358M, trajectory encoder 25.2M, heads/projectors 38.1M) + 5.1B frozen pathology encoder (PRISM2: Virchow2 tile encoder 632M, Perceiver + attention pooler 620M, Phi-3-Mini 3.8B) |
+| **Backbone** | Hierarchical multimodal Transformer: (1) an episode encoder — a fine-tuned GatorTron-base-2k clinical BERT (hidden dim 1024, max 2048 tokens) augmented with a Fourier Number Embedding (FoNE) pathway for lab/measurement values; (2) a frozen PRISM2 pathology slide encoder (Virchow2 tiles → Perceiver attention pooler → Phi-3-Mini) producing one 8192-d embedding per biospecimen, linearly projected to 1024-d; (3) a trajectory encoder — a 2-layer Transformer (16 heads, 4096-d feed-forward, rotary day-offset position encoding, modality-tagged tokens, FlashAttention, bidirectional self-attention) whose output CLS token is the patient-state embedding h(t*) ∈ R¹⁰²⁴ |
+| **Pre-training** | three-stage curriculum: TSDAE reconstruction, then masked/JEPA-style trajectory prediction<br>Stage I pretrains the episode encoder alone via Transformer-based Sequential Denoising Auto-Encoding (60% token dropout, autoregressive token + numeric reconstruction; decoder discarded afterward). Stage II freezes the episode and PRISM2 encoders and trains the trajectory encoder with masked episode/pathology reconstruction plus an I-JEPA-style anchor-conditioned joint-embedding objective (EMA teacher predicts a later patient state from a student view masked before an intervention anchor). Stage III unfreezes the episode encoder for end-to-end joint fine-tuning. |
+| **Training data** | Tempus de-identified multimodal real-world oncology corpus, partitioned by patient-ID hash<br>**1,672,203** patients total · **1,045,011** for Stage I · **386,382** (109,938 with H&E) for Stage II · **92,567** with paired DNA+RNA for Stage III · 445,804 deaths observed · 704,273 patients with ≥1 intervention |
+| **Downstream tasks** | prognostic prediction, treatment-benefit ranking, mechanism discovery<br>Linear probing for overall survival, progression-free survival and treatment-response AUC across tumor × therapy strata; Cox-based (UV-Cox) treatment-benefit ranking and per-arm prognostic C-index across 11 comparative-treatment cohorts (breast, colorectal, NSCLC, renal-cell, prostate, pan-cancer); an evidence-grounded temporal-graph framework linking downstream model outputs to clinical/biological mechanisms. |
+| **Modalities** | EHR/clinical text (daily "episodes": diagnoses, labs, medications, notes), DNA + RNA sequencing, H&E whole-slide pathology images |
+| **Code** | Not found; built on Tempus's proprietary de-identified patient corpus, no code or weights release mentioned |
+| **License** | CC-BY-NC-ND-4.0 (arXiv preprint) |
+
+**Reported performance**
+
+| Benchmark | Metric | Value | Note |
+| --- | --- | --- | --- |
+| Overall survival (linear probing) | mean AUC | 0.774 | vs. 0.563 for curated-feature baseline |
+| Progression-free survival (linear probing) | mean AUC | 0.688 | vs. 0.544 for baseline |
+| Treatment response, CR/PR vs. SD/PD (linear probing) | mean AUC | 0.585 | vs. 0.513 for baseline; beat baseline on 78% of strata (95% for OS/PFS) |
+| Treatment-benefit ranking, 11 cohorts | tAUTOC/SD | 4.61 | vs. 1.38 for baseline (does not clear its 1.85 permutation null); p = 0.0003; oFM wins in 9/11 cohorts |
+| Treatment-benefit ordering | pooled HRR | 0.671 | vs. 0.949 for baseline (lower is better); p = 0.0100 |
+
+</details>
 
 <a id="model-virtues-202608"></a>
 <details>
@@ -121,6 +154,37 @@ Click a model to expand its record.
 | Benchmark | Metric | Value | Note |
 | --- | --- | --- | --- |
 | Zero-shot, out-of-disease-chapter | C-index | 0.667 (95% CI 0.660–0.673) | vs. 0.632 (95% CI 0.625–0.639) demographic-only baseline; outperformed disease-specific models, multi-disease frameworks and tabular foundation models on both UK Biobank and the external All of Us cohort |
+
+</details>
+
+<a id="model-deepcomp-202607"></a>
+<details>
+<summary><b>DeepComp</b> — A multimodal deep learning model for preoperative prediction of post-operative complications in gastric cancer <i>(Ann. Oncol. 202607)</i></summary>
+
+**[A multimodal deep learning model for preoperative prediction of post-operative complications in gastric cancer](https://doi.org/10.1016/j.annonc.2026.07.004)**
+
+*Annals of Oncology* · 202607 · P. A. Ding & Q. Zhao · [doi:10.1016/j.annonc.2026.07.004](https://doi.org/10.1016/j.annonc.2026.07.004)
+
+| | |
+| --- | --- |
+| **Parameters** | Not disclosed (frozen MedGemma 1.5 vision encoder; trainable TabM tabular-fusion head size not stated) |
+| **Backbone** | Frozen MedGemma 1.5 medical vision-language foundation model as region-specific image encoder, feeding a TabM (parameter-efficient batch-ensembled tabular deep learning) backbone with two task-specific heads |
+| **Pre-training** | frozen foundation-model embeddings, supervised tabular fusion<br>MedGemma 1.5's vision encoder — externally pretrained on large-scale medical imaging data — is held frozen and extracts a 1152-dimensional embedding from each of five CT-derived regions per patient (target lesion, 5-mm peritumoral region, and three L3 body-composition compartments). Embeddings pass through a training-only feature-selection pipeline (intraclass-correlation filtering, bootstrap-LASSO, Spearman decorrelation), are concatenated with structured clinical variables, and fused in a TabM architecture; two heads are trained via focal loss (CD ≥II complication classification) and Cox partial-likelihood loss (overall survival), with 5-fold stratified cross-validation and no self-supervised pretraining of DeepComp's own parameters. |
+| **Training data** | 11-center Chinese multicenter cohort plus six prospective registered neoadjuvant trials<br>**5,237** patients with gastric adenocarcinoma (training n=1,398; two time-split internal validation sets n=350/362; two geographic external validation sets n=568/753; robot-assisted cohort n=529) · plus 6 registered trials (n=1,277 pooled) spanning neoadjuvant chemotherapy, chemoradiation and immunochemotherapy |
+| **Downstream tasks** | complication prediction, survival prediction<br>Preoperative prediction of Clavien–Dindo grade ≥II post-operative complications and overall survival; benchmarked against 9 clinical risk scores and 10 surgeons, and used in target-trial emulation of ICU monitoring, nutritional prehabilitation and minimally invasive triage strategies. |
+| **Modalities** | preoperative portal-venous-phase CT (target lesion region, peritumoral region, L3 skeletal muscle/subcutaneous/visceral adipose compartments), structured clinical variables |
+| **Code** | [github.com/hebeidpa/DeepComp](https://github.com/hebeidpa/DeepComp) (installation instructions, pretrained weights, inference code, evaluation scripts, example data) |
+
+**Reported performance**
+
+| Benchmark | Metric | Value | Note |
+| --- | --- | --- | --- |
+| CD ≥II complication, merged internal validation | AUC | 0.888 (95% CI 0.854–0.921) | vs. best clinical baseline, +15.3 points, p < 0.001 |
+| CD ≥II complication, 9 external cohorts | AUC | 0.824–0.869 | outperformed all 9 established clinical scores, p < 0.001 each |
+| Surgeon assistance | mean sensitivity of 10 surgeons | 47.1% → 87.9% | with DeepComp assistance, p < 0.001 |
+| Overall survival, pooled non-training cohorts | C-index | 0.766 | adjusted HR 3.08 per SD (95% CI 2.91–3.25) |
+| Overall survival by DeepComp risk quintile | 5-year survival | 97.5% (Q1) to 2.4% (Q5) | trend p < 0.001 |
+| Target-trial emulation interventions | absolute CD ≥II risk reduction | 5.9% / 20.6% / 11.7% | ICU monitoring / nutritional support+delayed surgery / minimally invasive triage; all p < 0.01, E-values 1.90–5.73 |
 
 </details>
 
