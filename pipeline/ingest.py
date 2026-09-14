@@ -124,7 +124,15 @@ ENTRY_SCHEMA = {
         "code": {"type": ["string", "null"]},
         "weights": {"type": ["string", "null"]},
         "license": {"type": ["string", "null"]},
-        "open": {"type": "boolean", "description": "True if code and/or weights are publicly available."},
+        "open": {
+            "type": "boolean",
+            "description": (
+                "True only if actual code and/or model weights are publicly available "
+                "(i.e. \"code\" or \"weights\" above is non-null). Do NOT set this from "
+                "the paper being 'open-access' -- that describes the publication being "
+                "free to read, not the code/model being open-source. Those are unrelated."
+            ),
+        },
         "key_results": {
             "type": "array",
             "items": {"type": "string"},
