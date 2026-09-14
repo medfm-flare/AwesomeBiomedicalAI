@@ -4,10 +4,11 @@ Agentic, autonomous and tool-using AI systems.
 
 **Maintainer:** @[Meng Wei](https://weimengmeng1999.github.io/meng-wei.github.io/) @[ Feng Lan](https://ai-healthcare-portfolio.hushed-dove-3131.chatgpt.site)
 
-**30 entries** · [Back to index](README.md)
+**31 entries** · [Back to index](README.md)
 
 | Date | Model | Venue | Pre-training | Data usage | Downstream tasks |
 | --- | --- | --- | --- | --- | --- |
+| 2026-09 | MutexaGPT [[details]](#model-mutexagpt-202609) | Nat. Comput. Sci. | training-free multi-agent orchestration | 600 methyltransferase variants (retrospective eval); WT + 10 amylase linker variants (prospective experimental eval) | enzyme variant design, high-throughput molecular simulation, substrate-specificity engineering, cold-adaptation engineering |
 | 2026-09 | MoChiAgent [[details]](#model-mochiagent-202609) [[paper card]](https://github.com/medfm-flare/AwesomeBiomedicalAI/tree/paper-cards-20260908/paper_cards/01_2026-09_MoChiAgent/paper-card.md) | Nat. Med. | self-supervised masked-feature pretraining; supervised multi-task fine-tuning | 1.46M maternal/infant participants, 4.40M visits (development); 90.2K participants (external eval); 25 cases + 6 specialists (agent pilot) | maternal and infant disease prediction, biological-age estimation, transgenerational risk stratification, evidence-grounded clinical reporting +1 |
 | 2026-08 | Co-Scientist (Real-World) [[details]](#model-co-scientist-real-world-202608) | arXiv (Google) | training-free multi-agent extension | real-world lab + HealthBench + 450 expert reviews (eval) | closed-loop scientific research, biology experiments, clinical-AI architecture discovery +2 |
 | 2026-08 | CoDaS [[details]](#model-codas-202608) | Google Research / arXiv | training-free multi-agent orchestration | 9,279 participant-observations across 3 cohorts (eval) | digital biomarker discovery, statistical validation, wearable health analysis +2 |
@@ -42,6 +43,26 @@ Agentic, autonomous and tool-using AI systems.
 ## Details
 
 Click a model to expand its record.
+
+<a id="model-mutexagpt-202609"></a>
+<details>
+<summary><b>MutexaGPT</b> — MutexaGPT: an intuition-to-design translator for physics-based enzyme engineering <i>(Nat. Comput. Sci. 2026-09)</i></summary>
+
+**[MutexaGPT: an intuition-to-design translator for physics-based enzyme engineering](https://www.nature.com/articles/s43588-026-01049-y)**
+
+*Nature Computational Science* · 2026-09 · Qianzhen Shao, Yinjie Zhong, Sebastian Stull, Xinchun Ran, Ning Ding, Kieran Nehil-Puleo, Ruizhe Yao, Han Xu & Zhongyue J. Yang
+
+| | |
+| --- | --- |
+| **Backbone** | Multi-LLM-agent system comprising QuestionAnalyzer, WorkPlanningBoard (MetricsPlanner and MutantPlanner), and ResultExplainer, integrated with EnzyHTP for autonomous high-throughput molecular modeling and simulation. |
+| **Pre-training** | `training-free multi-agent orchestration`<br>No new foundation model is trained; prompted LLM agents translate plain-English enzyme-engineering intuition into simulation plans, execute tool-backed workflows, and interpret results. |
+| **Data usage** | Retrospective cavity-engineering evaluation over a 600-variant halide methyltransferase library; prospective cold-adaptation evaluation of wild type and ten bidomain-amylase linker variants, with experimental activity assays for the two prioritized designs. Separate curated test cases evaluate the core agents. |
+| **Downstream tasks** | `enzyme variant design`, `high-throughput molecular simulation`, `substrate-specificity engineering`, `cold-adaptation engineering`<br>Clarifies underspecified design requests, maps intuition to physical metrics and mutation libraries, configures and executes molecular-dynamics workflows, ranks variants, explains limitations, and recommends follow-up experiments. The cavity campaign achieved a 40% hit rate (~4× enrichment); cold-adaptation variants improved relative activity by up to 3.7×. |
+| **Modalities** | `text`, `protein structure`, `molecular simulation data` |
+| **Code** | [github.com/ChemBioHTP/EnzyHTP-GPT](https://github.com/ChemBioHTP/EnzyHTP-GPT/) |
+| **Evaluation boundary** | Cavity-engineering validation is retrospective against a previously characterized library; prospective wet-lab testing covers two prioritized linker variants. The system is an automation and intuition-translation platform rather than a learned predictive model. |
+
+</details>
 
 <a id="model-mochiagent-202609"></a>
 <details>
