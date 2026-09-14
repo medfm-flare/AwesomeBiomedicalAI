@@ -4,7 +4,7 @@ Ultrasound, microscopy, retinal imaging, optical coherence tomography (OCT), der
 
 **Maintainers:** @Terry Fu · [Zaiyou He](https://github.com/zaiyouzy) ([LinkedIn](https://www.linkedin.com/in/zaiyouhe))
 
-**15 papers** · **Last updated: 2026-08** · [Back to index](README.md)
+**18 papers** · **Last updated: 2026-09** · [Back to index](README.md)
 
 ## Paper overview
 
@@ -12,6 +12,9 @@ Click a model name to jump to its expandable record. `Not reported` means that n
 
 | Date | Model | Venue | Modality | Training data | Model size | Training / adaptation | Downstream tasks |
 | --- | --- | --- | --- | --- | --- | --- | --- |
+| 202609 | [AI4AB](#model-ai4ab-202609) | Nat. Commun. | Brightfield microscopy, high-content screening | 22 antibiotics × 4 concentrations + DMSO across 4 biological-replicate plates (89 classes); as few as 8 images per condition in the data-efficiency experiment | 5,444,029 (official safetensors weights) | ImageNet-pretrained EfficientNet-B0 fine-tuned with 89-class cross-entropy; nine tile embeddings averaged before classification | treatment and sub-MIC classification, unseen-drug MoA assignment, novel-MoA detection |
+| 202608 | [SFibAI](#model-sfibai-202608) | Nat. Commun. | Ultrasound, liver fibrosis | 9,588 participants / 167,702 images; train: 8,629 / 150,891; independent test: 959 / 16,811 | Not reported | end-to-end ResNet-50 ordinal training with local-KL + expected-score MSE + clinical-boundary loss; class-frequency-aware ROI crops | fine-grained fibrosis grading and F0–F3 mapping, screening and follow-up, Windows/Android deployment |
+| 202608 | [RETFound age model](#model-retfound-age-model-202608) | Nat. Commun. | Color fundus photography | UK Biobank: 130,360 images / 71,343 participants; external Rotterdam: 10,354 / 4,757 | 303.3M RETFound ViT-L/16 encoder (computed); regression head additional | RETFound CFP checkpoint fine-tuned end-to-end for age regression with participant-level five-fold splits; combined and sex-specific models; bias correction | age prediction, retinal age gap, disease-risk association, GWAS, sex-specific analysis |
 | 202608 | [VirTues](#model-virtues-202608) | Nature | Spatial proteomics, multiplex tissue imaging | 3,102 patients in 15 IMC cohorts (core pretraining); extended evaluation across >5,100 patients | 43.4M (official weights) | masked marker-space reconstruction with marker and spatial attention; ESM-2 marker embeddings | virtual staining, cell and niche analysis, retrieval, biomarker discovery, patient stratification |
 | 202608 | [ULTRA](#model-ultra-202608) | Cell | SRS, virtual H&E, 3D histology | component-specific paired/unpaired datasets; 17-patient clinical validation | 29.8M diffusion U-Net; 2.0M virtual-stain G; 11.4M protein G; 28.3M 3D CNN (computed) | diffusion restoration, paired cGAN translation, semi-supervised CycleGAN staining, supervised 3D classification | restoration, virtual staining, protein prediction, 3D tumor mapping |
 | 202607 | [Retina4IRD](#model-retina4ird-202607) | Nat. Med. | CFP, OCT | 1,137 development patients / 2,197 eyes; 1,843 patients / 3,376 eyes overall | 303.3M per CFP/OCT ViT-L model (computed); stacking model not included | separate RETFound-initialized CFP and OCT models fine-tuned for 17 genotypes; prediction stacking with clinical metadata | genotype ranking, clinician decision support, management planning |
@@ -31,6 +34,111 @@ Click a model name to jump to its expandable record. `Not reported` means that n
 ## Details
 
 ### 2026 additions
+
+<a id="model-ai4ab-202609"></a>
+<details>
+<summary><b>AI4AB</b> — Deep learning recognises antibiotic modes of action from brightfield images <i>(Nat. Commun. 2026-09)</i></summary>
+
+**[Deep learning recognises antibiotic modes of action from brightfield images](https://www.nature.com/articles/s41467-026-76355-0)**
+
+*Nature Communications* · 2026-09 · Daniel Krentzel & Christophe Zimmer · [doi:10.1038/s41467-026-76355-0](https://doi.org/10.1038/s41467-026-76355-0)
+
+| | |
+| --- | --- |
+| **Model** | AI4AB |
+| **Model type** | Supervised image classifier for bacterial phenotypic profiling (not a foundation model) |
+| **Backbone** | EfficientNet-B0 convolutional backbone; each 2,160×2,160-pixel field of view is split into nine tiles that share the same filters, and tile embeddings are aggregated (avg-pool, 1,280-dimensional features) before the classifier |
+| **Model size** | **5,444,029 parameters (5.44M)**, counted from the official released safetensors weight metadata for the brightfield, single-channel, 89-class configuration. |
+| **Training / adaptation** | Supervised fine-tuning of an **ImageNet-pretrained EfficientNet-B0** from brightfield image tiles, using cross-entropy over the 89 drug–concentration classes. Each field of view is split into nine tiles processed by the shared backbone; the 1,280-dimensional tile embeddings are averaged before the classifier. No fluorescent channels are required for the headline brightfield model. |
+| **Training data** | Four 96-well plates of *Escherichia coli* exposed to 22 reference antibiotics at 0.125×, 0.25×, 0.5× and 1× IC50 plus a DMSO control (89 classes). Fields of view are 2,160×2,160 pixels (139.32×139.32 µm) acquired with a 63× water-immersion objective; three independently grown biological-replicate plates with randomised layouts are used for training and the fourth plate is held out for testing. In the data-efficiency experiment, the model retains mode-of-action information with as few as **eight images per treatment condition**. |
+| **Downstream tasks** | Distinguishing individual antibiotic treatments, detecting drug exposure at subinhibitory concentrations, assigning unseen drugs to a known mode of action, flagging compounds with a novel mode of action, and embedding-based phenotypic comparison for antibiotic discovery |
+| **Modalities** | `brightfield microscopy`, `high-content screening` |
+| **Code** | [github.com/krentzd/ai4ab](https://github.com/krentzd/ai4ab) |
+| **Code / models** | [Zenodo software record](https://doi.org/10.5281/zenodo.22093635) |
+| **Weights** | [huggingface.co/krentzd/ai4ab](https://huggingface.co/krentzd/ai4ab) |
+| **Data** | [BioImage Archive S-BIAD1851](https://www.ebi.ac.uk/biostudies/BioImages/studies/S-BIAD1851) · [Zenodo embeddings, predictions and source data](https://doi.org/10.5281/zenodo.20529251) |
+
+**Reported performance**
+
+| Benchmark | Metric | Value | Note |
+| --- | --- | --- | --- |
+| Held-out biological-replicate plates | well-level mode-of-action accuracy | 86.7%–100% | 100% for two plates, 95.7% and 86.7% for the other two |
+| Unseen-drug leave-one-compound-out evaluation | k-NN mode-of-action accuracy at IC50 | 75.0 ± 4.1% | mode of action represented by at least one training compound |
+| Novel mode-of-action detection | AUC | 0.75–0.94 | five of six modes of action; PBP3 is the exception (0.38) |
+
+> **Verification note:** Architecture, training design and performance were checked against the final Nature Communications article and supplementary information. The 5.44M model size comes from the official safetensors metadata, and the official code confirms ImageNet initialisation and nine-tile aggregation. AI4AB is the name used by the authors' official code and weights release; released weights also include *Klebsiella pneumoniae* and multi-channel variants.
+
+</details>
+
+<a id="model-sfibai-202608"></a>
+<details>
+<summary><b>SFibAI</b> — Deep learning for precision grading of Schistosoma japonicum-induced liver fibrosis in ultrasound images <i>(Nat. Commun. 2026-08)</i></summary>
+
+**[Deep learning for precision grading of Schistosoma japonicum-induced liver fibrosis in ultrasound images](https://www.nature.com/articles/s41467-026-76287-9)**
+
+*Nature Communications* · 2026-08 · Ziyang Xu & Tieyong Zeng · [doi:10.1038/s41467-026-76287-9](https://doi.org/10.1038/s41467-026-76287-9)
+
+| | |
+| --- | --- |
+| **Model** | SFibAI |
+| **Model type** | Ordinal ultrasound image-grading system for liver fibrosis (not a foundation model) |
+| **Backbone** | ResNet-50 (official default) with the final fully connected layer replaced by a 36-unit ordinal output head |
+| **Model size** | **Not reported.** The official implementation defaults to a ResNet-50 backbone with a 36-unit output head, but neither the article material reviewed nor the repository states a parameter count, and the manuscript checkpoint is not released. |
+| **Training / adaptation** | Supervised end-to-end training of the ResNet-50 ordinal head with a hybrid loss combining local KL divergence over soft ordinal labels, MSE of the expected clinical score and a clinical-boundary penalty (weights 1.0/0.02/0.02); AdamW at 1e-4 for 120 epochs, batch 32, StepLR (step 15, gamma 0.6), optional mixed precision and distributed training. Augmentation includes gamma correction, horizontal flip, HSV saturation/value jitter, RGB contrast/brightness, Gaussian noise and class-frequency-aware ROI random crops (3–10 per annotated training image). |
+| **Training data** | Multicentre cohort of **9,588 participants and 167,702 ultrasound images** from 20 centres, 26 B-mode devices and 10 endemic counties. The participant-level split contains **8,629 participants / 150,891 training images** and **959 participants / 16,811 independent test images**, labelled on a 36-level ordinal scale (0.0–3.5) mapping to F0–F3. The full dataset is not redistributed; 500 pre-segmented sample images are released. |
+| **Downstream tasks** | Fine-grained fibrosis-score grading on a 36-level 0.0–3.5 scale, mapping to the four clinical grades F0–F3, for scalable ultrasound screening and follow-up; a deployable build runs on Windows and Android devices in under 400 ms per image |
+| **Modalities** | `ultrasound`, `liver fibrosis` |
+| **Code** | [github.com/StatXzy7/SFibAI](https://github.com/StatXzy7/SFibAI) |
+| **Data** | [500 pre-segmented sample images](https://github.com/StatXzy7/SFibAI/tree/main/data/seg_samples_500); the full multicentre dataset is not redistributed |
+| **Reproducibility code** | [archived release on Zenodo](https://doi.org/10.5281/zenodo.20628823) |
+| **Weights** | Not publicly released; the manuscript checkpoint is not included in the repository |
+
+**Reported performance**
+
+| Benchmark | Metric | Value | Note |
+| --- | --- | --- | --- |
+| Independent multicentre test set | predictions within 0.5 grades | 93.9% | 16,811 held-out images |
+| Independent multicentre test set | mean absolute error | 0.116 | 36-level 0.0–3.5 scale |
+| Deployed Windows/Android build | inference time | < 400 ms per image | reported in the article abstract |
+
+> **Verification note:** Scope, first-online date, participant-level split, training procedure and performance were checked against the final Nature Communications article, supplementary information and official code. Model size is not reported and the manuscript checkpoint is not released, so no parameter count is inferred. SFibAI is the name used by the official repository.
+
+</details>
+
+<a id="model-retfound-age-model-202608"></a>
+<details>
+<summary><b>RETFound age model</b> — Deep learning aging marker from retinal images unveils sex-specific clinical and genetic signatures <i>(Nat. Commun. 2026-08)</i></summary>
+
+**[Deep learning aging marker from retinal images unveils sex-specific clinical and genetic signatures](https://www.nature.com/articles/s41467-026-77102-1)**
+
+*Nature Communications* · 2026-08 · Olga Trofimova & Sven Bergmann · [doi:10.1038/s41467-026-77102-1](https://doi.org/10.1038/s41467-026-77102-1)
+
+| | |
+| --- | --- |
+| **Model** | No separate model name stated; RETFound ViT-L/16 fine-tuned for retinal age prediction |
+| **Model type** | Retinal-image age-regression model used as an aging biomarker (fine-tuned foundation model) |
+| **Backbone** | RETFound ViT-L/16 (masked-autoencoder colour-fundus checkpoint) with global average pooling and a single continuous-output regression head |
+| **Model size** | **303,301,632 parameters (303.3M)** for the RETFound ViT-L/16 encoder, counted from the official RETFound implementation; the single-output regression head is additional and no total for the fine-tuned model is reported. |
+| **Training / adaptation** | End-to-end fine-tuning of the RETFound ViT-L/16 colour-fundus checkpoint for continuous age regression with an L1 loss, AdamW and layer-wise learning-rate decay (0.65), 224×224 ImageNet-normalised inputs, RandomResizedCrop and rotation augmentation, and 50 epochs with warm-up and cosine decay. Participant-level five-fold cross-validation uses 60% training, 20% validation and 20% testing per rotation; combined, female and male cohorts yield 15 models. Eye-level and fold predictions are averaged and regression-to-the-mean bias is corrected before computing retinal age gap. |
+| **Training data** | **130,360 UK Biobank colour-fundus images from 71,343 participants**, including sex-stratified, age-matched female and male cohorts (32,918 participants each; 0.1-year caliper). External validation uses **10,354 images from 4,757 Rotterdam Study participants**. Both datasets are access-restricted and are not redistributed. |
+| **Downstream tasks** | Chronological age prediction from colour fundus images, retinal age gap computation, association with cardiometabolic traits, inflammation, cognitive performance, all-cause mortality, dementia, cancer and incident cardiovascular disease, genome-wide association of the retinal age gap, sex-specific comparison, and model attention/saliency analysis |
+| **Modalities** | `color fundus photography` |
+| **Code** | [github.com/ot710/retinal-age](https://github.com/ot710/retinal-age) |
+| **Implementation** | [official RETFound repository](https://github.com/rmaphoh/RETFound) |
+| **Reproducibility code** | [archived release on Zenodo](https://doi.org/10.5281/zenodo.21877477) |
+
+**Reported performance**
+
+| Benchmark | Metric | Value | Note |
+| --- | --- | --- | --- |
+| UK Biobank, image level (130,360 images) | MAE / r / R² | 2.99 years / 0.88 / 0.78 | five-fold out-of-fold predictions |
+| UK Biobank, participant level (71,343 participants) | MAE / r / R² | 2.85 years / 0.90 / 0.80 | eye-level predictions averaged per participant |
+| Rotterdam Study, image level (10,354 images) | MAE / r / R² | 3.58 years / 0.83 / 0.61 | external validation |
+| Rotterdam Study, participant level (4,757 participants) | MAE / r / R² | 3.35 years / 0.85 / 0.66 | external validation; eye-level predictions averaged |
+
+> **Verification note:** Scope, first-online date, cohort construction, training procedure and internal/external performance were checked against the final Nature Communications article, supplementary information and official repository. No separate model name is stated, so this entry is labelled descriptively. The 303.3M count is for the RETFound encoder and was reproduced from the official implementation; the regression head is additional and fine-tuned checkpoints are not released.
+
+</details>
 
 <a id="model-virtues-202608"></a>
 <details>
