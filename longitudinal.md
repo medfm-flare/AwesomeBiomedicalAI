@@ -1,23 +1,23 @@
 # Longitudinal Health Data
 
-Longitudinal EHR, physiological signals, wearables and temporal clinical records.
+Longitudinal EHR, physiological signals, wearables, and temporal clinical records.
 
 **Maintainer:** Evan Su ([GitHub](https://github.com/HACKERALERT))
 
 **50 entries** · **Last reviewed: 2026-09-14** · [Back to index](README.md)
 
-**Jump to:** [EHR models and patient representations](#ehr-models-and-patient-representations) · [Disease risk, subtyping and survival](#disease-risk-subtyping-and-survival) · [Cardiac and physiological signals](#cardiac-and-physiological-signals) · [Wearables and continuous sensing](#wearables-and-continuous-sensing) · [Inpatient deterioration and critical care](#inpatient-deterioration-and-critical-care) · [Biological age clocks](#biological-age-clocks)
+**Jump to:** [EHR models and patient representations](#ehr-models-and-patient-representations) · [Disease risk, subtyping, and survival](#disease-risk-subtyping-and-survival) · [Cardiac and physiological signals](#cardiac-and-physiological-signals) · [Wearables and continuous sensing](#wearables-and-continuous-sensing) · [Inpatient deterioration and critical care](#inpatient-deterioration-and-critical-care) · [Biological age clocks](#biological-age-clocks)
 
-This catalogue includes reusable representations, temporal prediction models and clinically evaluated systems. Selection follows the repository’s journal coverage, particularly Nature and its clinical/computational journals, npj Digital Medicine, NEJM AI, The Lancet Digital Health and Cell. Selected preprints are explicitly marked. Dates use the journal’s first online publication month, or the preprint’s first posting month; this is a curated selection, not a systematic review.
+This catalogue includes reusable representations, temporal prediction models, and clinically evaluated systems. Selection follows the repository’s journal coverage, particularly Nature and its clinical/computational journals, npj Digital Medicine, NEJM AI, The Lancet Digital Health, and Cell. Selected preprints are explicitly marked. Dates use the journal’s first online publication month, or the preprint’s first posting month; this is a curated selection, not a systematic review.
 
-**Reading the table:** Data scale distinguishes pretraining, development, evaluation and study-wide cohorts where reported; patient, visit and recording counts are not interchangeable. “Training” includes self-supervision, supervised fitting and downstream adaptation. `—` means a parameter count was not verified in the cited sources; `N/A` denotes non-neural entries without a comparable parameter count. Partial, trainable-only and computed counts identify their scope in the record. Metrics retain their original cohorts and definitions and should not be ranked across papers. Prospective prediction evaluation and trials of effects on patient outcomes are distinguished in the evidence notes.
+**Reading the table:** Data scale distinguishes pretraining, development, evaluation, and study-wide cohorts where reported; patient, visit, and recording counts are not interchangeable. “Training” includes self-supervision, supervised fitting, and downstream adaptation. `—` means a parameter count was not verified in the cited sources; `N/A` denotes non-neural entries without a comparable parameter count. Partial, trainable-only, and computed counts identify their scope in the record. Metrics retain their original cohorts and definitions and should not be ranked across papers. Prospective prediction evaluation and trials of effects on patient outcomes are distinguished in the evidence notes.
 
 | Date | Model | Venue | Modalities | Model size | Data scale | Training | Downstream tasks |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | 202609 | [Computable patient journeys](#model-computable-patient-journeys-202609) | Nat. Med. | EHR, clinical text | 4B open model; full system — | 100K tuning visits; 31.2K extraction patients | instruction tuning, distillation, verification | temporal patient graphs, GLP-1 treatment trajectories |
 | 202609 | [MoChiFormer / MoChiAgent](#model-mochiformer-mochiagent-202609) | Nat. Med. | maternal and infant EHR | — | 1.46M development; 90.2K external participants | masked reconstruction, multitask adaptation | maternal and infant outcomes, transgenerational risk |
-| 202609 | [ECG-CLIP](#model-ecg-clip-202609) | Lancet Digit. Health | ECG, clinical reports | — | >1.7M ECGs / 542K patients; >800K external ECGs | masked ECG reconstruction, ECG–text contrastive learning | cardiac diagnosis, AF, mortality, CKD and diabetes risk |
-| 202608 | [PULSE](#model-pulse-202608) | Nat. Comput. Sci. | longitudinal labs, omics, images, EHR | — | 7K training / 3K test in core UKB experiment | longitudinal reconstruction, variational and adversarial losses | cross-modal imputation, disease risk, trajectory forecasting |
+| 202609 | [ECG-CLIP](#model-ecg-clip-202609) | Lancet Digit. Health | ECG, clinical reports | — | >1.7M ECGs / 542K patients; >800K external ECGs | masked ECG reconstruction, ECG–text contrastive learning | cardiac diagnosis, AF, mortality, CKD, and diabetes risk |
+| 202608 | [PULSE](#model-pulse-202608) | Nat. Comput. Sci. | longitudinal labs, omics, images, EHR | — | 7K training / 3K test in core UKB experiment | longitudinal reconstruction, variational, and adversarial losses | cross-modal imputation, disease risk, trajectory forecasting |
 | 202608 | [oFM](#model-ofm-202608) | arXiv (preprint) | oncology EHR, pathology, DNA/RNA | 421M trained + 5.1B frozen | 1.67M total; 1.05M stage-I patients | episode reconstruction, future-state prediction | survival, response, exploratory treatment ranking |
 | 202607 | [Oncoformer](#model-oncoformer-202607) | Cell | EHR, chest X-ray | — | 3.7M COMPASS individuals; 502.7K external UKB participants | multimodal reconstruction, domain-adversarial learning, alignment | pan-cancer diagnosis, 1-year cancer risk, tumor staging |
 | 202607 | [ALADYNOULLI](#model-aladynoulli-202607) | Nature | EHR, genetics | N/A | 683K participants across three fitted cohorts | hierarchical Bayesian inference with temporal priors | 20 disease signatures + low-incidence state, risk, genetic discovery |
@@ -57,12 +57,12 @@ This catalogue includes reusable representations, temporal prediction models and
 | 202510 | [DT-GPT](#model-dt-gpt-202510) | npj Digit. Med. | EHR, text | 7B | 16.5K NSCLC / 35.1K ICU / 1.1K ADNI task cohorts | BioMistral pretraining, supervised trajectory adaptation | multivariate trajectory forecasting, zero-shot unseen variables, chatbot interpretability |
 | 202509 | [Delphi-2M](#model-delphi-2m-202509) | Nature | EHR | 2.2M | 0.4M UK Biobank participants | autoregressive disease-event modeling with age encoding | rates for >1,000 diseases, 20-year synthetic trajectories, comorbidity structure |
 | 202509 | [InfEHR](#model-infehr-202509) | Nat. Commun. | temporal EHR graphs | — | 8.1K neonatal patients; separate postoperative cohorts | self-supervised graph learning, semisupervised refinement | neonatal sepsis and postoperative AKI phenotyping |
-| 202508 | [PatientEmbedding](#model-patientembedding-202508) | npj Digit. Med. | longitudinal EHR codes | — | 102.7K eMERGE patients / 1.05M patient-year events | code autoencoding, masked temporal modeling, patient-pair learning | disease onset, phenotyping, subtyping and progression |
+| 202508 | [PatientEmbedding](#model-patientembedding-202508) | npj Digit. Med. | longitudinal EHR codes | — | 102.7K eMERGE patients / 1.05M patient-year events | code autoencoding, masked temporal modeling, patient-pair learning | disease onset, phenotyping, subtyping, and progression |
 | 202507 | [EchoNext](#model-echonext-202507) | Nature | ECG, demographics, echo-derived labels | — | 796.8K training ECG–echo pairs / 149.8K patients | supervised multitask ECG learning | structural heart disease screening |
 | 202506 | [ECGFounder](#model-ecgfounder-202506) | NEJM AI | ECG | 76.3M | 10.8M ECGs, 1.8M subjects | supervised ECG pretraining on 150 diagnostic labels | 150-way diagnosis, single- and reduced-lead ECG, demographics, wearable ECG |
 | 202506 | [TRisk](#model-trisk-202506) | Lancet Digit. Health | EHR | — | 3M adults across development and validation | supervised EHR survival modeling | 10-year CVD risk in primary prevention and diabetes, treatment-eligibility triage |
 | 202504 | [CONCERN](#model-concern-202504) | Nat. Med. | nursing documentation, EHR | — | 60.9K trial encounters | supervised deterioration prediction | hourly deterioration alerts and clinical surveillance |
-| 202406 | [CLMBR-T-base](#model-clmbr-t-base-202406) | npj Digit. Med. | longitudinal EHR codes | 141M | 2.57M Stanford pretraining patients | autoregressive next-code prediction, local continued pretraining | eight clinical tasks, transfer and label efficiency |
+| 202406 | [CLMBR-T-base](#model-clmbr-t-base-202406) | npj Digit. Med. | longitudinal EHR codes | 141M | 2.57M Stanford pretraining patients | autoregressive next-code prediction, local continued pretraining | eight clinical tasks, transfer, and label efficiency |
 | 202403 | [Foresight](#model-foresight-202403) | Lancet Digit. Health | clinical text converted to temporal concepts | — | 811K patients across three source cohorts | autoregressive next-concept prediction | patient timeline generation, future disorder prediction |
 
 ## Details
@@ -87,7 +87,7 @@ Click a model to expand its record.
 | **Backbone** | LLM extraction and verification followed by ontology normalization and temporal knowledge-graph construction. |
 | **Training** | Instruction tuning and teacher-label distillation using a 100,000-visit cohort, with a 70%/30% training/validation split. |
 | **Data / cohorts** | Source EHR covers 35M patients; extraction uses 1M visits from 31,235 patients. The 100,000-visit tuning cohort is drawn from this extraction sample. The GLP-1 receptor agonist analysis includes 25,092 patients. |
-| **Downstream tasks** | Medication, diagnosis and outcome extraction; computable treatment and disease trajectories. |
+| **Downstream tasks** | Medication, diagnosis, and outcome extraction; computable treatment and disease trajectories. |
 | **Modalities** | EHR, clinical text |
 | **Evidence** | Retrospective cohort analysis and blinded physician adjudication of extractions; treatment associations are observational. |
 | **Code / resources** | [Extraction and validation assets](https://github.com/MyOwnMed/glp1_nature2026_extraction_validation) |
@@ -140,8 +140,8 @@ Click a model to expand its record.
 | **Parameters** | Not reported |
 | **Backbone** | Modality-specific variational encoders and temporal propagation using recurrent or causal transformer modules. |
 | **Training** | Reconstructs missing modalities using current observations and past patient states, with variational and missingness-adversarial objectives. |
-| **Data / cohorts** | Core UK Biobank experiment: 10,000 participants with paired visits, split 7,000/3,000 for training/testing; 61 blood measures and 251 metabolites. Additional experiments use proteomics, retinal images and clinical cohorts. |
-| **Downstream tasks** | Longitudinal cross-modal imputation, disease prediction, ICU readmission and myopia forecasting. |
+| **Data / cohorts** | Core UK Biobank experiment: 10,000 participants with paired visits, split 7,000/3,000 for training/testing; 61 blood measures and 251 metabolites. Additional experiments use proteomics, retinal images, and clinical cohorts. |
+| **Downstream tasks** | Longitudinal cross-modal imputation, disease prediction, ICU readmission, and myopia forecasting. |
 | **Modalities** | longitudinal labs, omics, images, EHR |
 | **Evidence** | Retrospective experiments with task-specific cohorts and splits; generated measurements are evaluated against observed data. |
 | **Code / resources** | [LongitudinalGeneration](https://github.com/ww20hust/LongitudinalGeneration) |
@@ -165,10 +165,10 @@ Click a model to expand its record.
 | | |
 | --- | --- |
 | **Parameters** | 421M trained parameters plus the frozen 5.1B PRISM2 encoder (paper Table A4). |
-| **Backbone** | GatorTron episode encoder, temporal transformer and frozen PRISM2 pathology encoder, with molecular inputs. |
+| **Backbone** | GatorTron episode encoder, temporal transformer, and frozen PRISM2 pathology encoder, with molecular inputs. |
 | **Training** | Episode denoising, masked-episode and future-state representation prediction, then joint multimodal adaptation. |
-| **Data / cohorts** | 1,672,203 patients overall. Training stages use 1,045,011 patients for episode learning, 386,382 for trajectories and 92,567 with molecular data; stages are overlapping subsets. |
-| **Downstream tasks** | Survival and treatment-response prediction, patient representations and exploratory treatment ranking. |
+| **Data / cohorts** | 1,672,203 patients overall. Training stages use 1,045,011 patients for episode learning, 386,382 for trajectories, and 92,567 with molecular data; stages are overlapping subsets. |
+| **Downstream tasks** | Survival and treatment-response prediction, patient representations, and exploratory treatment ranking. |
 | **Modalities** | oncology EHR, pathology, DNA/RNA |
 | **Evidence** | Preprint; retrospective observational evaluations. Treatment ranking does not establish treatment benefit. |
 
@@ -194,7 +194,7 @@ Click a model to expand its record.
 | **Backbone** | Unified multimodal transformer; 24-layer examination encoder (d=1024) and 12-layer temporal decoder (d=768). Visit-level encoding uses a BERT-style transformer encoder; chest X-rays are embedded with a DINOv2-pretrained Vision Transformer backbone. |
 | **Training** | `self-supervised`, `reconstruction`, `domain-adversarial`, `cross-modal alignment`<br>Self-supervised reconstruction with a VAE regularization term, combined with domain-adversarial losses against cohort-specific and missingness patterns to promote cohort-invariant and missing-invariant representations, plus a cross-modal alignment term between tabular and image latents. |
 | **Data / cohorts** | COMPASS cohort, with external validation on UK Biobank<br>**3,672,989** individuals · **17,748,334** clinical visits · **502,665** UK Biobank participants |
-| **Downstream tasks** | `diagnosis`, `risk prediction`, `staging`, `treatment response`, `survival prediction`, `patient clustering`<br>Pan-cancer diagnosis, future cancer prediction, tumor staging, treatment-response prediction, recurrence-free survival prediction and patient clustering. |
+| **Downstream tasks** | `diagnosis`, `risk prediction`, `staging`, `treatment response`, `survival prediction`, `patient clustering`<br>Pan-cancer diagnosis, future cancer prediction, tumor staging, treatment-response prediction, recurrence-free survival prediction, and patient clustering. |
 | **Modalities** | `EHR`, `laboratory tests`, `chest X-ray`, `longitudinal clinical records` |
 | **Code** | [github.com/kaiwang13/Oncoformer](https://github.com/kaiwang13/Oncoformer) |
 
@@ -219,10 +219,10 @@ Click a model to expand its record.
 | | |
 | --- | --- |
 | **Parameters** | Not stated in the paper. **507,713 trainable parameters (0.51M)** for the published `hidden_dim=64` configuration, taken from the author-supplied count table in the official repository (`figures/scripts/supplementary/f_supp_scaling_val_loss.py`, `HIDDEN_DIM_TO_N_PARAMS`), whose stated conditions — RepQuery on UK Biobank variables at `icd_hierarchy_level=[3]` — match `TFM/configs/model/RepQuery.yaml`. |
-| **Backbone** | Transformer encoder-decoder with FT-Transformer feature tokenizers, BioLORD concept embeddings and a cross-attention query decoder conditioned on disease and time horizon; 1-layer encoder and 1-layer decoder (d=64, 4 heads, 64 health tokens, 4,463 input features — 1,370 baseline plus 588 ICD and 2,505 medication features) |
+| **Backbone** | Transformer encoder-decoder with FT-Transformer feature tokenizers, BioLORD concept embeddings, and a cross-attention query decoder conditioned on disease and time horizon; 1-layer encoder and 1-layer decoder (d=64, 4 heads, 64 health tokens, 4,463 input features — 1,370 baseline plus 588 ICD and 2,505 medication features) |
 | **Training** | `horizon-conditional supervised`, `multi-task`<br>Single-stage horizon-conditional supervised multi-task training with 60% modality dropout; no self-supervised stage. |
-| **Data / cohorts** | UK Biobank, with external validation on All of Us without retraining<br>**488,170** participants · **3,813,248** diagnosis events · **3,658** structured and unstructured features spanning medications, biomarkers and physical measurements · **257,538** All of Us participants |
-| **Downstream tasks** | `risk prediction`, `survival`, `zero-shot generalization`, `temporal extrapolation`, `genetic association`<br>Multi-disease risk at 1/2/5/10-year horizons, survival, zero-shot leave-one-ICD-chapter-out generalization, temporal extrapolation and exome-wide burden association. |
+| **Data / cohorts** | UK Biobank, with external validation on All of Us without retraining<br>**488,170** participants · **3,813,248** diagnosis events · **3,658** structured and unstructured features spanning medications, biomarkers, and physical measurements · **257,538** All of Us participants |
+| **Downstream tasks** | `risk prediction`, `survival`, `zero-shot generalization`, `temporal extrapolation`, `genetic association`<br>Multi-disease risk at 1/2/5/10-year horizons, survival, zero-shot leave-one-ICD-chapter-out generalization, temporal extrapolation, and exome-wide burden association. |
 | **Modalities** | `EHR`, `biomarkers`, `medications`, `physical measurements`, `genetics` |
 | **Code** | [github.com/RisQ-Lab/RisQ](https://github.com/RisQ-Lab/RisQ) |
 
@@ -248,10 +248,10 @@ Click a model to expand its record.
 | | |
 | --- | --- |
 | **Parameters** | Qwen3-Embedding at 0.6B / 4B / 8B |
-| **Backbone** | Decoder-only LLM embedding models — Qwen3-Embedding, Qwen2-Emb-7B and Llama3.1-LLM2Vec-8B — with logistic-regression heads |
+| **Backbone** | Decoder-only LLM embedding models — Qwen3-Embedding, Qwen2-Emb-7B, and Llama3.1-LLM2Vec-8B — with logistic-regression heads |
 | **Training** | `off-the-shelf LLM embeddings`<br>No task-specific pre-training. Structured EHR codes are serialized into natural-language descriptions and embedded with general-purpose LLM encoders. |
 | **Data / cohorts** | Downstream benchmark cohorts, not LLM pretraining data: EHRSHOT and UK Biobank<br>**6,739** patients · **921,499** visits · **41,661,637** events (EHRSHOT) · **387,464** UK Biobank patients · **19,484,777** visits · **72,265,684** events ([Table 1](https://www.nature.com/articles/s41746-026-02915-9/tables/1)). The processed UK Biobank subset used in the study is 387,464 patients, drawn from the full 502,489-participant cohort. |
-| **Downstream tasks** | `operational outcomes`, `lab value prediction`, `new diagnoses`, `chest X-ray findings`<br>15 clinical prediction tasks spanning operational outcomes, lab value prediction, new diagnoses and chest X-ray findings. |
+| **Downstream tasks** | `operational outcomes`, `lab value prediction`, `new diagnoses`, `chest X-ray findings`<br>15 clinical prediction tasks spanning operational outcomes, lab value prediction, new diagnoses, and chest X-ray findings. |
 | **Modalities** | `EHR` |
 | **Code** | [github.com/stefanhgm/ehrshot-benchmark](https://github.com/stefanhgm/ehrshot-benchmark) |
 
@@ -276,9 +276,9 @@ Click a model to expand its record.
 | --- | --- |
 | **Parameters** | 22M; weights withheld for data privacy |
 | **Backbone** | Decoder-only transformer with a neural competing-risks survival head (DeSurv); 384-d latent embeddings |
-| **Training** | `self-supervised`, `competing-risk time-to-event`<br>Self-supervised competing-risk, time-to-next-event objective over 263 competing outcomes: 74 long-term conditions, 81 medication classes and 108 test types. |
+| **Training** | `self-supervised`, `competing-risk time-to-event`<br>Self-supervised competing-risk, time-to-next-event objective over 263 competing outcomes: 74 long-term conditions, 81 medication classes, and 108 test types. |
 | **Data / cohorts** | CPRD Aurum, with a 90-5-5 split by practice site<br>**7,600,000,000** coded events · **~23,000,000** UK primary-care patients |
-| **Downstream tasks** | `next-event prediction`, `risk prediction`, `multimorbidity progression`<br>Next-event prediction, 5-year incident hypertension, 5-year CVD under competing risks and multimorbidity progression from age 50. |
+| **Downstream tasks** | `next-event prediction`, `risk prediction`, `multimorbidity progression`<br>Next-event prediction, 5-year incident hypertension, 5-year CVD under competing risks, and multimorbidity progression from age 50. |
 | **Modalities** | `EHR` |
 | **Code** | [github.com/cwlgadd/SurvivEHR](https://github.com/cwlgadd/SurvivEHR) |
 
@@ -301,11 +301,11 @@ Click a model to expand its record.
 
 | | |
 | --- | --- |
-| **Parameters** | Not reported in the paper. **266,125,824 (266.1M), computed** for the transformer trunk: the 235,768 x 768 structured embedding table (181,069,824) plus 12 transformer blocks at E=768, 12 heads and a 4E-width MLP (85,054,464) and the final LayerNorm. Decoder weights for discrete vocabularies are tied to the input embeddings, so the output head adds no weights. Excludes the learnable time encoding, per-modality mask vectors, the projectors onto the 28 frozen unimodal encoders and the unstructured regression head. |
+| **Parameters** | Not reported in the paper. **266,125,824 (266.1M), computed** for the transformer trunk: the 235,768 x 768 structured embedding table (181,069,824) plus 12 transformer blocks at E=768, 12 heads, and a 4E-width MLP (85,054,464) and the final LayerNorm. Decoder weights for discrete vocabularies are tied to the input embeddings, so the output head adds no weights. Excludes the learnable time encoding, per-modality mask vectors, the projectors onto the 28 frozen unimodal encoders, and the unstructured regression head. |
 | **Backbone** | Transformer encoder-decoder over a single time-ordered heterogeneous event sequence, with learnable time encoding replacing positional embeddings and modality-specific adapters (GatorTron for text, vision foundation models for images); 12 layers, 12 heads, d=768, 1,536-event context, 235,768-token structured vocabulary |
 | **Training** | `masked event modeling`<br>Masked event and token modeling at a 0.3 mask ratio with modality-specific mask tokens; cross-entropy for structured tokens and embedding regression for unstructured inputs. |
 | **Data / cohorts** | MGB-7M study corpus: **7,155,044** patients and **25,296,943,893** medical events over 33 years and 28 modalities. These totals include a held-out test set of **1.4M** patients; they are not training-only counts. |
-| **Downstream tasks** | `disease onset`, `disease progression`, `treatment response`, `adverse events`, `hospital operations`, `retrieval`<br>261 prognostic tasks plus 61 retrieval cohorts via frozen embeddings — new disease onset (95), disease progression (78), treatment response (59), adverse events (17), hospital operations (12) and 61 retrieval cohorts. |
+| **Downstream tasks** | `disease onset`, `disease progression`, `treatment response`, `adverse events`, `hospital operations`, `retrieval`<br>261 prognostic tasks plus 61 retrieval cohorts via frozen embeddings — new disease onset (95), disease progression (78), treatment response (59), adverse events (17), hospital operations (12), and 61 retrieval cohorts. |
 | **Modalities** | `EHR`, `text`, `images`, `28 modalities` |
 | **Evidence** | Preprint; retrospective evaluations using frozen patient embeddings. |
 
@@ -332,8 +332,8 @@ Click a model to expand its record.
 | **Parameters** | 7B (BioMistral-7B) |
 | **Backbone** | BioMistral-7B fine-tuned on text-serialized longitudinal clinical variables, with no imputation or normalization |
 | **Training** | `biomedical LLM pretraining`, `supervised fine-tuning`<br>BioMistral biomedical pretraining followed by supervised fine-tuning on clinical trajectories. |
-| **Data / cohorts** | NSCLC Flatiron Health, MIMIC-IV ICU and ADNI Alzheimer's cohorts<br>**16,496** NSCLC patients · **35,131** ICU patients · **1,140** Alzheimer's patients |
-| **Downstream tasks** | `trajectory forecasting`, `zero-shot forecasting`, `interpretability`<br>Multivariate clinical-variable trajectory forecasting, zero-shot forecasting of unseen variables and chatbot-based patient-level interpretability. |
+| **Data / cohorts** | NSCLC Flatiron Health, MIMIC-IV ICU, and ADNI Alzheimer's cohorts<br>**16,496** NSCLC patients · **35,131** ICU patients · **1,140** Alzheimer's patients |
+| **Downstream tasks** | `trajectory forecasting`, `zero-shot forecasting`, `interpretability`<br>Multivariate clinical-variable trajectory forecasting, zero-shot forecasting of unseen variables, and chatbot-based patient-level interpretability. |
 | **Modalities** | `EHR`, `text` |
 | **Code** | [github.com/MendenLab/DT-GPT](https://github.com/MendenLab/DT-GPT) |
 
@@ -361,7 +361,7 @@ Click a model to expand its record.
 | **Backbone** | Modified GPT-2 transformer |
 | **Training** | `autoregressive generative`<br>Autoregressive generative modeling of disease-event sequences with continuous age encoding. |
 | **Data / cohorts** | UK Biobank for training, with validation on Danish national data<br>**~400,000** UK Biobank participants · **1,900,000** Danish individuals (validation) |
-| **Downstream tasks** | `rate prediction`, `trajectory generation`, `burden estimation`, `comorbidity structure`<br>Predict rates of more than 1,000 diseases, generate future health trajectories, estimate disease burden and interpret comorbidity structure. |
+| **Downstream tasks** | `rate prediction`, `trajectory generation`, `burden estimation`, `comorbidity structure`<br>Predict rates of more than 1,000 diseases, generate future health trajectories, estimate disease burden, and interpret comorbidity structure. |
 | **Modalities** | `EHR` |
 | **Code** | [github.com/gerstung-lab/delphi](https://github.com/gerstung-lab/delphi) |
 
@@ -398,7 +398,7 @@ Click a model to expand its record.
 
 <a id="model-patientembedding-202508"></a>
 <details>
-<summary><b>PatientEmbedding</b> — disease onset, phenotyping, subtyping and progression <i>(npj Digit. Med. 2025-08)</i></summary>
+<summary><b>PatientEmbedding</b> — disease onset, phenotyping, subtyping, and progression <i>(npj Digit. Med. 2025-08)</i></summary>
 
 **[Transformer patient embedding using electronic health records enables patient stratification and progression analysis](https://doi.org/10.1038/s41746-025-01872-z)**
 
@@ -407,7 +407,7 @@ Click a model to expand its record.
 | | |
 | --- | --- |
 | **Parameters** | Not reported |
-| **Backbone** | Medical-code autoencoder, six-layer transformer and sentence-embedding model for patient similarity. |
+| **Backbone** | Medical-code autoencoder, six-layer transformer, and sentence-embedding model for patient similarity. |
 | **Training** | Code reconstruction, temporal modeling with 20% code masking, and patient-pair representation learning. |
 | **Data / cohorts** | 102,740 eMERGE patients; 1,046,649 longitudinal patient-year events and 34,851 medical codes. University of Washington records support external subtype analyses. |
 | **Downstream tasks** | Next-year disease prediction, phenotyping, colorectal cancer and lupus subtyping, and progression analysis. |
@@ -425,7 +425,7 @@ Click a model to expand its record.
 
 <a id="model-clmbr-t-base-202406"></a>
 <details>
-<summary><b>CLMBR-T-base</b> — eight clinical tasks, transfer and label efficiency <i>(npj Digit. Med. 2024-06)</i></summary>
+<summary><b>CLMBR-T-base</b> — eight clinical tasks, transfer, and label efficiency <i>(npj Digit. Med. 2024-06)</i></summary>
 
 **[A multi-center study on the adaptability of a shared foundation model for electronic health records](https://doi.org/10.1038/s41746-024-01166-w)**
 
@@ -437,7 +437,7 @@ Click a model to expand its record.
 | **Backbone** | 12-layer decoder transformer with local attention and a 65,536-code vocabulary. |
 | **Training** | Autoregressive next-clinical-code prediction, optionally continued on local records before task-specific prediction. |
 | **Data / cohorts** | 2.57M Stanford patients for initial pretraining; SickKids and MIMIC-IV support local adaptation and evaluation. |
-| **Downstream tasks** | Eight clinical prediction tasks, transfer across institutions and label-efficiency assessment. |
+| **Downstream tasks** | Eight clinical prediction tasks, transfer across institutions, and label-efficiency assessment. |
 | **Modalities** | longitudinal EHR codes |
 | **Evidence** | Retrospective multicenter benchmarks comparing direct transfer and continued local pretraining. |
 | **Code / resources** | [SickKids experiments](https://github.com/sungresearch/femr-on-sk) · [MIMIC experiments](https://github.com/sungresearch/femr-on-mimic) · [Base weights](https://huggingface.co/StanfordShahLab/clmbr-t-base) |
@@ -471,7 +471,7 @@ Click a model to expand its record.
 
 </details>
 
-### Disease risk, subtyping and survival
+### Disease risk, subtyping, and survival
 
 <a id="model-aladynoulli-202607"></a>
 <details>
@@ -485,9 +485,9 @@ Click a model to expand its record.
 | --- | --- |
 | **Parameters** | N/A — Bayesian generative model with K = 21 signatures: 20 disease signatures and one low-incidence signature |
 | **Backbone** | Bayesian generative mixture model with Gaussian-process priors over time; 36 polygenic risk scores plus sex and 10 genetic PCs feed individual-specific signature loadings |
-| **Training** | `Bayesian inference`<br>Hierarchical Bayesian inference jointly over longitudinal diagnoses, age and polygenic risk; fitted separately in each biobank. |
-| **Data / cohorts** | UK Biobank, Mass General Brigham and All of Us, with up to 52 years of follow-up<br>**427,239** UK Biobank · **48,069** Mass General Brigham · **208,263** All of Us · **>683,000** individuals · **348** diseases |
-| **Downstream tasks** | `signature discovery`, `risk prediction`, `genetic discovery`, `patient stratification`<br>Latent time-varying disease-signature discovery, 1-year and 10-year risk prediction, common- and rare-variant genetic discovery and patient stratification. |
+| **Training** | `Bayesian inference`<br>Hierarchical Bayesian inference jointly over longitudinal diagnoses, age, and polygenic risk; fitted separately in each biobank. |
+| **Data / cohorts** | UK Biobank, Mass General Brigham, and All of Us, with up to 52 years of follow-up<br>**427,239** UK Biobank · **48,069** Mass General Brigham · **208,263** All of Us · **>683,000** individuals · **348** diseases |
+| **Downstream tasks** | `signature discovery`, `risk prediction`, `genetic discovery`, `patient stratification`<br>Latent time-varying disease-signature discovery, 1-year and 10-year risk prediction, common- and rare-variant genetic discovery, and patient stratification. |
 | **Modalities** | `EHR`, `genetics` |
 | **Code** | [doi:10.5281/zenodo.20802505](https://doi.org/10.5281/zenodo.20802505) |
 
@@ -513,9 +513,9 @@ Click a model to expand its record.
 | --- | --- |
 | **Parameters** | Not reported |
 | **Backbone** | Transformer over active feature indices from 3,445 clinical variables collected during the two years before PCI; survival and binary-classification heads. |
-| **Training** | Joint piecewise-constant hazard loss, binary cross-entropy and outcome-supervised triplet loss for representation learning. |
+| **Training** | Joint piecewise-constant hazard loss, binary cross-entropy, and outcome-supervised triplet loss for representation learning. |
 | **Data / cohorts** | 29,032 Mayo Clinic patients, split 70%/10%/20% for training/validation/testing; 19,173 OneFlorida patients for external validation. |
-| **Downstream tasks** | Ischemic and bleeding risk at 1, 2, 3, 6, 9 and 12 months after PCI, using pre-PCI clinical features. |
+| **Downstream tasks** | Ischemic and bleeding risk at 1, 2, 3, 6, 9, and 12 months after PCI, using pre-PCI clinical features. |
 | **Modalities** | EHR-derived clinical features |
 | **Evidence** | Retrospective internal and external validation; proposed treatment applications have not been tested in an intervention trial. |
 | **Code / resources** | [Transformer-DAPT](https://github.com/Tao-AI-group/Transformer-DAPT) |
@@ -539,7 +539,7 @@ Click a model to expand its record.
 | | |
 | --- | --- |
 | **Parameters** | Not reported |
-| **Backbone** | Transformer over diagnosis histories, laboratory results and demographic features. |
+| **Backbone** | Transformer over diagnosis histories, laboratory results, and demographic features. |
 | **Training** | Supervised dynamic risk prediction after systemic cancer treatment begins. |
 | **Data / cohorts** | 80,808 Veterans Affairs patients for development; 9,752 Harris Health patients for external validation. |
 | **Downstream tasks** | Updating cancer-associated venous thromboembolism risk in three-month intervals during the first treatment year. |
@@ -568,7 +568,7 @@ Click a model to expand its record.
 | **Parameters** | Not reported |
 | **Backbone** | Encoder–decoder with adversarial learning of treatment-free physiological representations and temporal policy optimization. |
 | **Training** | Counterfactual outcome learning followed by medication-policy optimization under causal assumptions. |
-| **Data / cohorts** | Six task-specific datasets spanning sepsis, diabetes, hypertension, coronary disease, pediatric burns and macular degeneration; no single pooled training cohort. |
+| **Data / cohorts** | Six task-specific datasets spanning sepsis, diabetes, hypertension, coronary disease, pediatric burns, and macular degeneration; no single pooled training cohort. |
 | **Downstream tasks** | Individualized longitudinal treatment-response estimation and medication-policy generation. |
 | **Modalities** | longitudinal physiology, treatments |
 | **Evidence** | Offline observational evaluation and physician simulation; causal identification assumptions and prospective clinical utility remain distinct questions. |
@@ -608,7 +608,7 @@ Click a model to expand its record.
 | | |
 | --- | --- |
 | **Parameters** | Not reported for the full pretrained transformer; DoRA fine-tuning reduces trainable parameters to **29,440** |
-| **Backbone** | Discrete time-to-event transformer with axial rotary positional embeddings encoding age, encounter position and continuous values; weight-decomposed low-rank adaptation (DoRA) applied to each linear layer for fine-tuning |
+| **Backbone** | Discrete time-to-event transformer with axial rotary positional embeddings encoding age, encounter position, and continuous values; weight-decomposed low-rank adaptation (DoRA) applied to each linear layer for fine-tuning |
 | **Training** | `masked modeling`, `self-supervised`<br>Self-supervised masked-modeling pretraining on longitudinal EHR. |
 | **Data / cohorts** | Pretraining: **721,896** patients. Pediatric fine-tuning cohort: **142,270** patients, including **113,846** in the training split. |
 | **Downstream tasks** | `diagnosis`, `diagnosis timing`<br>ADHD diagnosis and diagnosis timing from birth to age 9. |
@@ -634,7 +634,7 @@ Click a model to expand its record.
 | | |
 | --- | --- |
 | **Parameters** | Not reported |
-| **Backbone** | Deep learning over routine-care event sequences combining hospital diagnoses, primary-care prescriptions and primary-care service events across 0-24 month horizons |
+| **Backbone** | Deep learning over routine-care event sequences combining hospital diagnoses, primary-care prescriptions, and primary-care service events across 0-24 month horizons |
 | **Training** | `supervised`<br>Supervised end-to-end risk prediction on registry sequences. |
 | **Data / cohorts** | Nationwide Danish registries, 1995-2018<br>**3,435,638** individuals · **16,828** developed young-onset type 2 diabetes (diagnosis before age 40) |
 | **Downstream tasks** | `risk prediction`<br>Future young-onset type 2 diabetes risk at 0-24 month horizons. |
@@ -661,7 +661,7 @@ Click a model to expand its record.
 | --- | --- |
 | **Parameters** | N/A — Cox regression |
 | **Backbone** | Multivariate Cox regression with time-varying covariates; bone-marrow and no-bone-marrow variants |
-| **Training** | `supervised`<br>Cox regression fitted to clinical covariates and evolving biomarkers, including M-protein, serum free light chain ratio, creatinine and hemoglobin. |
+| **Training** | `supervised`<br>Cox regression fitted to clinical covariates and evolving biomarkers, including M-protein, serum free light chain ratio, creatinine, and hemoglobin. |
 | **Data / cohorts** | Dana-Farber Cancer Institute training cohort plus six international validation institutions<br>**1,031** training patients · **1,313** validation patients |
 | **Downstream tasks** | `progression risk`<br>Predicting risk of progression from smoldering multiple myeloma (SMM) to active multiple myeloma (MM). |
 | **Modalities** | `labs`, `clinical variables` |
@@ -726,7 +726,7 @@ Click a model to expand its record.
 
 | Benchmark | Metric | Value | Note |
 | --- | --- | --- | --- |
-| 10-year CVD risk | C-index | 0.910 (95% CI 0.906-0.913) | outperforms QRISK3 across age, sex and deprivation strata |
+| 10-year CVD risk | C-index | 0.910 (95% CI 0.906-0.913) | outperforms QRISK3 across age, sex, and deprivation strata |
 | Treatment-eligibility triage, 10% threshold | reduction in high-risk classifications | 20.6% fewer | |
 | Treatment-eligibility triage, 15% threshold | reduction in high-risk classifications | 34.6% fewer | |
 
@@ -736,7 +736,7 @@ Click a model to expand its record.
 
 <a id="model-ecg-clip-202609"></a>
 <details>
-<summary><b>ECG-CLIP</b> — cardiac diagnosis, AF, mortality, CKD and diabetes risk <i>(Lancet Digit. Health 2026-09)</i></summary>
+<summary><b>ECG-CLIP</b> — cardiac diagnosis, AF, mortality, CKD, and diabetes risk <i>(Lancet Digit. Health 2026-09)</i></summary>
 
 **[Development and external validation of a contrastive learning foundation model for ECG-based prediction of cardiovascular diseases and outcomes](https://doi.org/10.1016/j.landig.2026.101092)**
 
@@ -748,7 +748,7 @@ Click a model to expand its record.
 | **Backbone** | Paired ECG and text encoders for multimodal representation learning. |
 | **Training** | Two stages: masked ECG reconstruction and contrastive alignment with clinician-overread reports. |
 | **Data / cohorts** | Scripps pretraining corpus: >1.7M ECGs from 542,288 patients. MIMIC-IV supplies >800K ECGs for downstream training and evaluation. |
-| **Downstream tasks** | Myocardial infarction, amyloidosis and hypertrophic cardiomyopathy detection; atrial fibrillation, mortality, kidney disease and diabetes prediction. |
+| **Downstream tasks** | Myocardial infarction, amyloidosis, and hypertrophic cardiomyopathy detection; atrial fibrillation, mortality, kidney disease, and diabetes prediction. |
 | **Modalities** | ECG, clinical reports |
 | **Evidence** | Retrospective external-dataset evaluation with five-fold downstream cross-validation and label-efficiency experiments; external performance includes task adaptation. |
 
@@ -825,10 +825,10 @@ Click a model to expand its record.
 | | |
 | --- | --- |
 | **Parameters** | Not reported; 1,024-d embeddings |
-| **Backbone** | Convolutional feature encoder, Gumbel-softmax multi-codebook quantizer and Conformer context blocks, in the style of wav2vec 2.0 |
-| **Training** | `self-supervised`, `contrastive`, `masked modeling`, `multi-task`<br>Self-supervised multi-task learning combining contextual contrastive, masked-modeling and multi-segment contrastive losses. |
+| **Backbone** | Convolutional feature encoder, Gumbel-softmax multi-codebook quantizer, and Conformer context blocks, in the style of wav2vec 2.0 |
+| **Training** | `self-supervised`, `contrastive`, `masked modeling`, `multi-task`<br>Self-supervised multi-task learning combining contextual contrastive, masked-modeling, and multi-segment contrastive losses. |
 | **Data / cohorts** | Harvard-Emory ECG Database plus MIMIC-IV-ECG<br>**11,571,587** 12-lead ECGs · **1,979,599** individuals. These are the reported combined pretraining totals. |
-| **Downstream tasks** | `classification`, `phenotyping`, `identification`, `genetic discovery`<br>8 cardiovascular disease classifications, 8 cardiac functional phenotypes, individual identification and genetic factor discovery. |
+| **Downstream tasks** | `classification`, `phenotyping`, `identification`, `genetic discovery`<br>8 cardiovascular disease classifications, 8 cardiac functional phenotypes, individual identification, and genetic factor discovery. |
 | **Modalities** | `ECG` |
 | **Code** | [github.com/biomed-AI/ECG-LFM](https://github.com/biomed-AI/ECG-LFM) |
 
@@ -856,10 +856,10 @@ Click a model to expand its record.
 | | |
 | --- | --- |
 | **Parameters** | Tiny 51M / Base 117M / Large 343M |
-| **Backbone** | Vision Transformer variant in three sizes — CSFM-Tiny (6 encoder layers, hidden 1024, 8 attention heads), CSFM-Base (12 layers, hidden 3072, 12 heads) and CSFM-Large (16 layers, hidden 4096, 24 heads) |
+| **Backbone** | Vision Transformer variant in three sizes — CSFM-Tiny (6 encoder layers, hidden 1024, 8 attention heads), CSFM-Base (12 layers, hidden 3072, 12 heads), and CSFM-Large (16 layers, hidden 4096, 24 heads) |
 | **Training** | `generative masked pretraining`<br>MAE-style generative masked pretraining with 75% of ECG tokens and 50% of text tokens masked; multimodal ECG/PPG signals paired with clinical and machine-generated text reports. |
-| **Data / cohorts** | MIMIC-III-WDB (USA), MIMIC-IV-ECG (USA) and CODE-Full (Brazil)<br>**~1,700,000** individuals |
-| **Downstream tasks** | `diagnosis`, `demographic recognition`, `vital sign estimation`, `outcome prediction`, `question answering`<br>Cardiac disease diagnosis, demographic recognition, vital sign measurement, clinical outcome prediction and ECG question answering, evaluated on CinC17, PTB-XL, VTaC, CODE-15, SimBand and ECG-QA. |
+| **Data / cohorts** | MIMIC-III-WDB (USA), MIMIC-IV-ECG (USA), and CODE-Full (Brazil)<br>**~1,700,000** individuals |
+| **Downstream tasks** | `diagnosis`, `demographic recognition`, `vital sign estimation`, `outcome prediction`, `question answering`<br>Cardiac disease diagnosis, demographic recognition, vital sign measurement, clinical outcome prediction, and ECG question answering, evaluated on CinC17, PTB-XL, VTaC, CODE-15, SimBand, and ECG-QA. |
 | **Modalities** | `ECG`, `PPG`, `text` |
 | **Code** | [github.com/guxiao0822/Cardiac-Sensing-FM](https://github.com/guxiao0822/Cardiac-Sensing-FM) |
 
@@ -886,8 +886,8 @@ Click a model to expand its record.
 | **Parameters** | 92.7M trainable |
 | **Backbone** | 1-D Vision Transformer with a patch-embedding layer for multichannel 1-D waveforms |
 | **Training** | `masked signal modeling`, `self-supervised`<br>Self-supervised masked signal modeling at a 60% masking ratio. |
-| **Data / cohorts** | Pretraining on MIMIC-IV-ECG, fine-tuning on PET-derived labels and clinical reports, with generalization assessed across five further cohorts including PTB-XL, UK Biobank cardiac MRI and SPECT<br>**800,035** unlabeled ECGs · **3,126** PET-derived labels · **13,704** clinical reports |
-| **Downstream tasks** | `regression`, `classification`, `cross-modality transfer`<br>12 clinical, demographic and traditional ECG tasks including LVEF, myocardial flow reserve, rest and stress myocardial blood flow and total perfusion deficit. |
+| **Data / cohorts** | Pretraining on MIMIC-IV-ECG, fine-tuning on PET-derived labels and clinical reports, with generalization assessed across five further cohorts including PTB-XL, UK Biobank cardiac MRI, and SPECT<br>**800,035** unlabeled ECGs · **3,126** PET-derived labels · **13,704** clinical reports |
+| **Downstream tasks** | `regression`, `classification`, `cross-modality transfer`<br>12 clinical, demographic, and traditional ECG tasks including LVEF, myocardial flow reserve, rest and stress myocardial blood flow, and total perfusion deficit. |
 | **Modalities** | `ECG` |
 | **Code** | [github.com/4dm-labs/ecgflow](https://github.com/4dm-labs/ecgflow) |
 
@@ -939,10 +939,10 @@ Click a model to expand its record.
 | | |
 | --- | --- |
 | **Parameters** | 76.3M; ablation variants at 11.7M / 25.6M / 110M |
-| **Backbone** | 1-D RegNet self-regulated CNN with group convolutions, channel attention and skip connections |
+| **Backbone** | 1-D RegNet self-regulated CNN with group convolutions, channel attention, and skip connections |
 | **Training** | `supervised pretraining`<br>Large-scale supervised pretraining on 150 cardiologist-annotated diagnostic labels. |
 | **Data / cohorts** | Harvard-Emory ECG Database<br>**10,771,552** ECGs · **1,818,247** subjects · **150** label categories |
-| **Downstream tasks** | `diagnosis`, `demographics`, `event detection`, `reduced-lead ECG`, `cross-modality transfer`, `wearable ECG`<br>150-way diagnosis, single- and reduced-lead ECG, demographics, clinical-event detection, cross-modality rhythm diagnosis and wearable ECG. |
+| **Downstream tasks** | `diagnosis`, `demographics`, `event detection`, `reduced-lead ECG`, `cross-modality transfer`, `wearable ECG`<br>150-way diagnosis, single- and reduced-lead ECG, demographics, clinical-event detection, cross-modality rhythm diagnosis, and wearable ECG. |
 | **Modalities** | `ECG` |
 | **Weights** | [huggingface.co/PKUDigitalHealth/ECGFounder](https://huggingface.co/PKUDigitalHealth/ECGFounder) |
 
@@ -998,7 +998,7 @@ Click a model to expand its record.
 | | |
 | --- | --- |
 | **Parameters** | Not reported; ~10 layers, d=512, 16 heads, deployed as a 10-model ensemble |
-| **Backbone** | Autoregressive transformer with 1D-convolutional tokenization of HealthKit data at 90-1440 min resolutions, FiLM conditioning on clinical covariates and rotary embeddings |
+| **Backbone** | Autoregressive transformer with 1D-convolutional tokenization of HealthKit data at 90-1440 min resolutions, FiLM conditioning on clinical covariates, and rotary embeddings |
 | **Training** | `semi-supervised`<br>Semi-supervised learning with daily target labels obtained by linearly interpolating outcomes between clinical assessments. |
 | **Data / cohorts** | TRUE-HF study cohort, with external validation on an NIH All of Us Fitbit cohort<br>**217** patients with heart failure |
 | **Downstream tasks** | `regression`, `early warning`<br>Predicting peak oxygen uptake (pVO2) and serving as an early warning signal for unplanned healthcare utilization from heart failure exacerbations. |
@@ -1030,7 +1030,7 @@ Click a model to expand its record.
 | **Backbone** | Wearable foundation model produces daily embeddings, which are pooled and reduced to five principal components for a nonlinear classifier. |
 | **Training** | Masked reconstruction pretraining; the wearable encoder remains frozen during insulin-resistance classifier training. |
 | **Data / cohorts** | 40M hours for pretraining. WEAR-ME: 932 training and 233 test participants; independent external cohort: 72 participants. |
-| **Downstream tasks** | Insulin resistance prediction with wearable signals, demographics and routine blood biomarkers. |
+| **Downstream tasks** | Insulin resistance prediction with wearable signals, demographics, and routine blood biomarkers. |
 | **Modalities** | wearable signals, routine blood tests |
 | **Evidence** | External validation against HOMA-IR-defined labels; no intervention trial. |
 | **Code / resources** | [Insulin-resistance prediction code](https://github.com/Google-Health/consumer-health-research/tree/main/insulin_resistance_prediction) |
@@ -1055,9 +1055,9 @@ Click a model to expand its record.
 | --- | --- |
 | **Parameters** | Not reported |
 | **Backbone** | Deep networks process raw EEG or time–frequency spectrograms and learn a 1,024-dimensional latent representation. |
-| **Training** | Joint prediction of cognition, disease and sleep metrics, followed by distillation into a scalar Brain Health Score. |
+| **Training** | Joint prediction of cognition, disease, and sleep metrics, followed by distillation into a scalar Brain Health Score. |
 | **Data / cohorts** | Approximately 36,000 polysomnography recordings from 27,000 people across six cohorts; these are study-wide totals. |
-| **Downstream tasks** | Cognitive performance, disease status and mortality association analysis. |
+| **Downstream tasks** | Cognitive performance, disease status, and mortality association analysis. |
 | **Modalities** | sleep EEG |
 | **Evidence** | Multicohort observational validation; the score is a biomarker, not a demonstrated treatment target. |
 | **Code / resources** | [Philosophers’ Stone](https://github.com/bdsp-core/philosophers-stone) |
@@ -1080,11 +1080,11 @@ Click a model to expand its record.
 
 | | |
 | --- | --- |
-| **Parameters** | Not reported in the paper. **135,341,516 (135.3M), computed** by instantiating the official `TransformerModel` from `train_model/train_GluFormer.py`: 16 `nn.TransformerEncoderLayer` blocks (d=1024, 16 heads, FFN 2048) contribute 134,397,952, the 461-row embedding table 472,064 and the untied 460-way output head 471,500. The sinusoidal positional encoding is a plain tensor, not a parameter, so it adds nothing. |
+| **Parameters** | Not reported in the paper. **135,341,516 (135.3M), computed** by instantiating the official `TransformerModel` from `train_model/train_GluFormer.py`: 16 `nn.TransformerEncoderLayer` blocks (d=1024, 16 heads, FFN 2048) contribute 134,397,952, the 461-row embedding table 472,064, and the untied 460-way output head 471,500. The sinusoidal positional encoding is a plain tensor, not a parameter, so it adds nothing. |
 | **Backbone** | Autoregressive transformer |
 | **Training** | `autoregressive`, `self-supervised`<br>Self-supervised autoregressive next-token prediction over a 461-token glucose vocabulary, using input sequences padded to 1,200 tokens. |
 | **Data / cohorts** | Human Phenotype Project CGM data, validated on 19 external cohorts across 5 countries and 8 CGM devices<br>**>10,000,000** glucose measurements · **10,812** adults · **6,044** external participants |
-| **Downstream tasks** | `trajectory generation`, `glycaemic prediction`, `risk stratification`, `multimodal extension`<br>Generate CGM trajectories, predict glycaemic measures such as HbA1c and fasting glucose plus long-term outcomes, risk stratification and multimodal extension with diet. |
+| **Downstream tasks** | `trajectory generation`, `glycaemic prediction`, `risk stratification`, `multimodal extension`<br>Generate CGM trajectories, predict glycaemic measures such as HbA1c and fasting glucose plus long-term outcomes, risk stratification, and multimodal extension with diet. |
 | **Modalities** | `CGM`, `diet` |
 | **Code** | [github.com/Guylu/GluFormer](https://github.com/Guylu/GluFormer) |
 
@@ -1111,7 +1111,7 @@ Click a model to expand its record.
 | **Backbone** | 1D CNN encoder (six conv layers, 128-d embeddings) with three transformer encoder layers and attention-based channel pooling; two LSTM layers in the downstream head |
 | **Training** | `leave-one-out contrastive`<br>Leave-One-Out Contrastive Learning (LOO-CL). |
 | **Data / cohorts** | Pretraining: **~432,000** hours of PSG from **~48,000** participants. The study-wide **~585,000** hours and **>65,000** participants include downstream and evaluation cohorts. |
-| **Downstream tasks** | `disease prediction`, `sleep staging`, `phenotype estimation`<br>Disease prediction, sleep stage classification and physiological and demographic estimation. |
+| **Downstream tasks** | `disease prediction`, `sleep staging`, `phenotype estimation`<br>Disease prediction, sleep stage classification, and physiological and demographic estimation. |
 | **Modalities** | `PSG` |
 | **Code** | [github.com/zou-group/sleepfm-clinical](https://github.com/zou-group/sleepfm-clinical) |
 
@@ -1138,9 +1138,9 @@ Click a model to expand its record.
 | --- | --- |
 | **Parameters** | Not reported |
 | **Backbone** | Channel-adaptive transformer with time-domain and frequency-domain representations. |
-| **Training** | Contrastive time–frequency alignment, hard-negative matching and masked reconstruction. |
+| **Training** | Contrastive time–frequency alignment, hard-negative matching, and masked reconstruction. |
 | **Data / cohorts** | Main-text pretraining set: 59,267 hours from 5,132 subjects. The larger 86,335-hour / 8,377-subject figure covers pretraining and evaluation. |
-| **Downstream tasks** | Sleep staging, pathology classification, PSG generation and spindle detection. |
+| **Downstream tasks** | Sleep staging, pathology classification, PSG generation, and spindle detection. |
 | **Modalities** | multichannel PSG |
 | **Evidence** | Retrospective evaluation across heterogeneous PSG datasets and channel configurations. |
 | **Code / resources** | [SleepGPT](https://github.com/LordXX505/SleepGPT) |
@@ -1161,10 +1161,10 @@ Click a model to expand its record.
 | **Backbone** | Diffusion transformer generates kinematics and forces; a refinement model improves force estimates. |
 | **Training** | Generative denoising and supervised force refinement. |
 | **Data / cohorts** | 15 AddBiomechanics studies: 34.8 hours from 270 participants overall. Training uses 169 participants from eight studies; seven studies are held out entirely. |
-| **Downstream tasks** | Walking and running synthesis, missing-joint reconstruction, ground-reaction-force estimation and knee-loading analysis. |
+| **Downstream tasks** | Walking and running synthesis, missing-joint reconstruction, ground-reaction-force estimation, and knee-loading analysis. |
 | **Modalities** | motion trajectories, ground reaction forces |
 | **Evidence** | Biomechanical validation on held-out movements and participants; no patient-outcome trial. |
-| **Code / resources** | [Code, model and demo](https://github.com/stanfordnmbl/GaitDynamics) |
+| **Code / resources** | [Code, model, and demo](https://github.com/stanfordnmbl/GaitDynamics) |
 
 </details>
 
@@ -1183,8 +1183,8 @@ Click a model to expand its record.
 | **Parameters** | Not reported |
 | **Backbone** | BEiT-3-based multimodal transformer with shared attention and modality-specific experts. |
 | **Training** | Masked multimodal pretraining followed by contrastive alignment and downstream adaptation. |
-| **Data / cohorts** | Includes 166,755 longitudinal narratives from SYSMH plus MIMIC-IV/ED, Quilt-1M and RATIC resources; nine downstream datasets. |
-| **Downstream tasks** | Emergency triage, prognosis and decision support across stages of emergency care. |
+| **Data / cohorts** | Includes 166,755 longitudinal narratives from SYSMH plus MIMIC-IV/ED, Quilt-1M, and RATIC resources; nine downstream datasets. |
+| **Downstream tasks** | Emergency triage, prognosis, and decision support across stages of emergency care. |
 | **Modalities** | clinical text, medical images |
 | **Evidence** | Retrospective benchmarks across multiple datasets; no randomized deployment study reported. |
 | **Code / resources** | [ED-Foundation implementation](https://github.com/AllminerLab/ED-Foundation) |
@@ -1202,10 +1202,10 @@ Click a model to expand its record.
 | | |
 | --- | --- |
 | **Parameters** | 1,792,015 for the discrete-decoder configuration; not a count for every variant. |
-| **Backbone** | Graph encoder, LSTM and intervention-interaction attention, with discrete or temporal decoders. |
+| **Backbone** | Graph encoder, LSTM, and intervention-interaction attention, with discrete or temporal decoders. |
 | **Training** | Supervised intervention prediction with weighted cross-entropy for discrete states or focal loss for hourly probabilities. |
 | **Data / cohorts** | 23,926 MIMIC-IV ICU admissions for development and internal testing; 12,603 AmsterdamUMCdb admissions for external evaluation without retraining. |
-| **Downstream tasks** | Forecasting seven ICU interventions over a six-hour window, cold-start prediction and patient stratification. |
+| **Downstream tasks** | Forecasting seven ICU interventions over a six-hour window, cold-start prediction, and patient stratification. |
 | **Modalities** | ICU physiology, interventions |
 | **Evidence** | Retrospective external validation. Targets are recorded clinician interventions; the model does not estimate counterfactual treatment benefit. |
 | **Code / resources** | [Archived implementation](https://doi.org/10.5281/zenodo.19609882) |
@@ -1250,10 +1250,10 @@ Click a model to expand its record.
 | | |
 | --- | --- |
 | **Parameters** | Not reported for the mixed ensemble, which includes a deep learning component |
-| **Backbone** | Group-Based Trajectory Modeling for label derivation, combined with a random forest, gradient boosting and deep learning ensemble |
+| **Backbone** | Group-Based Trajectory Modeling for label derivation, combined with a random forest, gradient boosting, and deep learning ensemble |
 | **Training** | `supervised`<br>Supervised ensemble learning after trajectory-based label derivation; no separate pretraining stage. |
 | **Data / cohorts** | Ruijin Hospital development and internal validation cohorts plus external MIMIC-III and eICU<br>**2,843** development (2012-2019) · **1,213** internal validation (2020-2021) · **25,633** MIMIC-III · **18,247** eICU · **47,936** patients total |
-| **Downstream tasks** | `trajectory classification`, `deterioration prediction`, `timing`<br>Three-class trajectory classification (rapid recovery, slow recovery, deterioration), binary deterioration and deterioration timing. |
+| **Downstream tasks** | `trajectory classification`, `deterioration prediction`, `timing`<br>Three-class trajectory classification (rapid recovery, slow recovery, deterioration), binary deterioration, and deterioration timing. |
 | **Modalities** | `vitals`, `labs` |
 | **Code** | [github.com/ccmzhangrui/sepsis-trajectory-python-data](https://github.com/ccmzhangrui/sepsis-trajectory-python-data) |
 
@@ -1283,7 +1283,7 @@ Click a model to expand its record.
 | **Backbone** | Recurrent neural network with LSTM units over continuous vitals plus demographics |
 | **Training** | `supervised`<br>Supervised LSTM learning with 5-fold stratified patient-level cross-validation and class-balance resampling. |
 | **Data / cohorts** | Non-ICU inpatients on VitalPatch biosensors at Northwell, Mar 2020-Nov 2022, plus prospective second-hospital and alternate-device external validation<br>**888** patients · **2,897** patient-days |
-| **Downstream tasks** | `clinical alert prediction`, `deterioration prediction`<br>MEWS>6 clinical-alert prediction and 24-hour hard outcomes covering ICU transfer, rapid-response call, intubation, cardiac arrest and death. |
+| **Downstream tasks** | `clinical alert prediction`, `deterioration prediction`<br>MEWS>6 clinical-alert prediction and 24-hour hard outcomes covering ICU transfer, rapid-response call, intubation, cardiac arrest, and death. |
 | **Modalities** | `continuous vitals`, `demographics` |
 | **Code** | [codeocean.com/capsule/9888403](https://codeocean.com/capsule/9888403/tree) |
 
@@ -1292,7 +1292,7 @@ Click a model to expand its record.
 | Benchmark | Metric | Value | Note |
 | --- | --- | --- | --- |
 | Deterioration prediction | ROC-AUC | 0.89 ± 0.03 | PR-AUC 0.58 ± 0.14 |
-| Intubations, cardiac arrests and deaths | detection rate | 100% | |
+| Intubations, cardiac arrests, and deaths | detection rate | 100% | |
 | Unplanned ICU transfers | detection rate | 83.6% | |
 | Rapid-response calls | detection rate | 50% | lead time up to 17 h |
 
@@ -1340,8 +1340,8 @@ Click a model to expand its record.
 | **Parameters** | N/A — penalized regression over 990 CpGs plus 40 epigenetic biomarker proxies and age; upstream EMRAge uses 19 clinical variables |
 | **Backbone** | Elastic-net regression stacked on a Cox proportional-hazards EMR clock (EMRAge → DNAmEMRAge → OMICmAge) |
 | **Training** | `supervised elastic net`<br>Supervised elastic net with 25-fold cross-validation for lambda selection. |
-| **Data / cohorts** | MGB Biobank for EMRAge and MGB-ABC for the omics clocks, with validation in All of Us, TruDiagnostic Biobank and Generation Scotland<br>**31,264** MGB Biobank · **3,451** MGB-ABC · **10,769** All of Us · **14,213** TruDiagnostic · **18,672** Generation Scotland |
-| **Downstream tasks** | `mortality prediction`, `incident disease`, `prevalent disease`, `lifestyle association`<br>All-cause mortality, incident and prevalent stroke, type 2 diabetes, COPD, depression, CVD and cancer, and lifestyle-factor associations. |
+| **Data / cohorts** | MGB Biobank for EMRAge and MGB-ABC for the omics clocks, with validation in All of Us, TruDiagnostic Biobank, and Generation Scotland<br>**31,264** MGB Biobank · **3,451** MGB-ABC · **10,769** All of Us · **14,213** TruDiagnostic · **18,672** Generation Scotland |
+| **Downstream tasks** | `mortality prediction`, `incident disease`, `prevalent disease`, `lifestyle association`<br>All-cause mortality, incident and prevalent stroke, type 2 diabetes, COPD, depression, CVD, and cancer, and lifestyle-factor associations. |
 | **Modalities** | `EHR`, `DNA methylation`, `multi-omics` |
 | **Code** | [github.com/LaskySuLab/OMICmAge](https://github.com/LaskySuLab/OMICmAge) |
 
@@ -1367,9 +1367,9 @@ Click a model to expand its record.
 | --- | --- |
 | **Parameters** | Not reported |
 | **Backbone** | EHRFormer time-series transformer; 24-layer examination encoder (d=1024) and 12-layer temporal decoder (d=768) |
-| **Training** | `self-supervised`<br>Self-supervised learning combining mask reconstruction, cohort discrimination, missing-data discrimination and next-visit prediction. |
+| **Training** | `self-supervised`<br>Self-supervised learning combining mask reconstruction, cohort discrimination, missing-data discrimination, and next-visit prediction. |
 | **Data / cohorts** | Longitudinal clinical visits, with external validation on UK Biobank<br>**24,633,025** clinical visits · **9,680,764** individuals |
-| **Downstream tasks** | `biological age`, `age gap`, `disease risk`<br>Biological age prediction across the lifespan, age-gap estimation and current plus future disease risk prediction. |
+| **Downstream tasks** | `biological age`, `age gap`, `disease risk`<br>Biological age prediction across the lifespan, age-gap estimation, and current plus future disease risk prediction. |
 | **Modalities** | `EHR` |
 | **Code** | [github.com/kaiwang13/EHRFormer](https://github.com/kaiwang13/EHRFormer) |
 
@@ -1398,7 +1398,7 @@ Click a model to expand its record.
 | **Backbone** | Deep PPG encoder with a linear age-regression head |
 | **Training** | `self-supervised contrastive`<br>Self-supervised contrastive learning on unlabeled wearable PPG. |
 | **Data / cohorts** | Apple Heart & Movement Study<br>**19,993,427** PPG segments · **172,318** pretraining participants · **6,728** healthy participants for the age head · **120,235** validation participants |
-| **Downstream tasks** | `age regression`, `disease risk`, `behavior association`, `longitudinal change detection`<br>Chronological-age prediction, age-gap to disease risk for ASCVD, hypertension, diabetes and hyperlipidemia, behavior associations and longitudinal change detection. |
+| **Downstream tasks** | `age regression`, `disease risk`, `behavior association`, `longitudinal change detection`<br>Chronological-age prediction, age-gap to disease risk for ASCVD, hypertension, diabetes, and hyperlipidemia, behavior associations, and longitudinal change detection. |
 | **Modalities** | `PPG` |
 
 **Reported performance**
