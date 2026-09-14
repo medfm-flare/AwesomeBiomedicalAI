@@ -8,7 +8,7 @@ Scientific discovery, research assistance, chemistry and drug design.
 
 **Maintainer:** [Ryan Khalloqi](https://github.com/ryanwangk)
 
-**12 entries** across 3 categories · [Back to index](README.md)
+**16 entries** across 3 categories · [Back to index](README.md)
 
 ## Catalogue
 
@@ -16,9 +16,122 @@ Scientific discovery, research assistance, chemistry and drug design.
 
 | Date | Model | Venue | Model size | Open | Headline result |
 | --- | --- | --- | --- | --- | --- |
+| 202609 | [MutexaGPT](#model-mutexagpt-202609) | Nat. Comput. Sci. | not stated (multi-agent LLM orchestration platform, base LLM undisclosed) | — | LLM multi-agent platform (MutexaGPT) automates physics-based enzyme design, validated experimentally on two enzymes |
+| 202609 | [CARPNN (chimaeric antigen receptor-protein-mpNN)](#model-carpnn-de-novo-car-binders-202609) | Nat. Biomed. Eng. | N/A — not a single neural network; a pipeline combining several pretrained models (RFdiffusion, BindCraft/AlphaFold2-hallucination, ProteinMPNN/SolubleMPNN, Boltz-2, AlphaFold2-multimer); no new model parameter count is reported | ✓ | 1,758 AI-designed CAR-T binders screened; evolved BCMA binder achieves near-complete tumour control in mice |
+| 202608 | [MAP (mechanism-aware perturbation response predictor)](#model-map-knowledge-driven-perturbation-202608) | Nat. Mach. Intell. | not stated as a single total parameter count (uses frozen ESM-2 and MoleculeSTM encoders + trainable adapter MLPs + 4-layer transformer + STATE SE-600M foundation model) | — | MAP predicts single-cell drug responses zero-shot, improving DEG correlation up to +12.3% over baselines |
+| 202606 | [LASErMPNN](#model-lasermpnn-202606) | Nature | not stated (GNN) | ✓ | 5x hit rate, 70x affinity vs. prior SOTA; zero-shot design reached Kd = 1.2 nM |
 | 202604 | [DeepDrugDiscovery](#model-deepdrugdiscovery-202604) | Nat. Biomed. Eng. | not stated (VAE+GRU) | ✓ | 2 lead BBB-permeable, mTOR-independent autophagy enhancers; restored memory in AD mouse models |
 | 202603 | [AI-guided LNP design (unnamed in paper)](#model-lnp-spatial-ai-202603) | Nat. Biomed. Eng. | N/A — non-neural (SISSO symbolic regression) | — | Lead lipid P1: 14.8x mRNA delivery efficiency vs. clinical-standard ALC-0315 |
-| 202606 | [LASErMPNN](#model-lasermpnn-202606) | Nature | not stated (GNN) | ✓ | 5x hit rate, 70x affinity vs. prior SOTA; zero-shot design reached Kd = 1.2 nM |
+
+<a id="model-mutexagpt-202609"></a>
+<details>
+<summary><b>MutexaGPT</b> — MutexaGPT: an intuition-to-design translator for physics-based enzyme engineering <i>(Nat. Comput. Sci. 202609)</i></summary>
+
+**[MutexaGPT: an intuition-to-design translator for physics-based enzyme engineering](https://www.nature.com/articles/s43588-026-01049-y)**
+
+*Nat. Comput. Sci.* · 202609 · Zhongyue J. Yang · [doi:10.1038/s43588-026-01049-y](https://doi.org/10.1038/s43588-026-01049-y)
+
+| | |
+| --- | --- |
+| **Parameters** | not stated (multi-agent LLM orchestration platform, base LLM undisclosed) |
+| **Backbone** | Multi-agent large language model system that elicits missing information via dialogue, constructs physics-based enzyme models, and configures/executes high-throughput molecular dynamics (Mutexa) workflows |
+| **Pre-training** | `LLM-agents` `no-custom-pretraining`<br>Built on existing large language model agents (base LLM not disclosed in the accessible text) orchestrated to elicit user intuition, build physics-based simulation inputs, and interpret molecular dynamics outputs; not a newly pretrained model. |
+| **Training data** | No dedicated training dataset described; the system operates via prompt-based agent orchestration and physics-based molecular dynamics simulations rather than supervised training on a curated dataset. |
+| **Downstream tasks** | `enzyme-engineering` `molecular-dynamics` `mutation-library-design` `protein-design`<br>Applied to two protein engineering tasks: engineering halide methyltransferase toward bulkier substrates and engineering bidomain amylase for enhanced activity at lower temperature, producing smart mutation libraries validated experimentally. |
+| **Modalities** | `natural language`, `protein structure/dynamics`, `molecular simulation trajectories` |
+| **Note** | Full text metadata/abstract and article HTML were accessible; base LLM identity, model size, and detailed quantitative results (e.g., fold-improvement numbers) were not present in the fetched excerpt, so params and precise numeric gains are left unstated rather than guessed. The paper calls itself "open-access" (free to read), which is not the same as open-source; no code or weights repository was found, so "open" reflects that, not publication access. |
+
+**Key results**
+
+- MutexaGPT is described as an 'open-access, multi-agent large language model platform'
+- Demonstrated on two tasks: engineering halide methyltransferase toward bulkier substrates and engineering bidomain amylase for enhanced activity at lower temperature
+- System yields 'experimentally validated improvements in enzyme specificity and cold activity'
+
+</details>
+
+<a id="model-carpnn-de-novo-car-binders-202609"></a>
+<details>
+<summary><b>CARPNN (chimaeric antigen receptor-protein-mpNN)</b> — Sequence and structural determinants of efficacious de novo chimaeric antigen receptors <i>(Nat. Biomed. Eng. 202609)</i></summary>
+
+**[Sequence and structural determinants of efficacious de novo chimaeric antigen receptors](https://www.nature.com/articles/s41551-026-01790-9)**
+
+*Nat. Biomed. Eng.* · 202609 · Arthur Chow & [Caleb A. Lareau](https://orcid.org/0000-0003-4179-4807) · [doi:10.1038/s41551-026-01790-9](https://doi.org/10.1038/s41551-026-01790-9)
+
+| | |
+| --- | --- |
+| **Parameters** | N/A — not a single neural network; a pipeline combining several pretrained models (RFdiffusion, BindCraft/AlphaFold2-hallucination, ProteinMPNN/SolubleMPNN, Boltz-2, AlphaFold2-multimer); no new model parameter count is reported |
+| **Backbone** | Composite generative pipeline: RFdiffusion (diffusion backbone generation) + ProteinMPNN sequence design + AlphaFold2-multimer co-fold validation, or BindCraft (AlphaFold2-gradient hallucination); lead optimization via CARPNN, which mutates interface/non-interface residues with SolubleMPNN (temperature 0.4, 2,000–10,000 draws) and refolds/filters candidates with Boltz-2 |
+| **Pre-training** | `structure-prediction` `protein-language-model` `diffusion-model` `no-new-pretraining`<br>No new model was pretrained; the authors chained existing pretrained tools (RFdiffusion, ProteinMPNN/SolubleMPNN, BindCraft's AlphaFold2-based hallucination, AlphaFold2-multimer, Boltz-2) into design and filtering pipelines for binder generation and sequence diversification. |
+| **Training data** | No new training dataset for a model; instead the study generated and experimentally screened 1,758 de novo designed protein binders against three antigens (BCMA, CD19, CD22) using yeast surface display, biolayer interferometry, CAR-Jurkat/primary CAR-T assays, and in vivo xenograft models.<br>**1,758 designed protein binders screened across BCMA, CD19 and CD22 campaigns** |
+| **Downstream tasks** | `CAR-T cell engineering` `protein binder design` `drug discovery` `cancer immunotherapy`<br>Downstream evaluation includes yeast-surface-display binding screens, CAR-Jurkat and primary CAR-T activation/cytokine assays, single-cell RNA-seq of CAR-T cells, in vitro tumour-killing assays, and in vivo xenograft tumour-control experiments in mice. |
+| **Modalities** | `protein sequence`, `protein structure` |
+| **Code** | [github.com/clareaulab/CARPNN](https://github.com/clareaulab/CARPNN) |
+| **Note** | The DOI/URL originally supplied (10.1038/s41551-026-01792-7) is a short paywalled 'Research Briefing' summarizing this primary, fully open-access research article (10.1038/s41551-026-01790-9), which was used for all extracted details. |
+
+**Key results**
+
+- Screened 1,758 newly designed protein binders targeting BCMA, CD19 and CD22 for efficacy in protein-binding, T-cell activation and in vivo killing assays.
+- BindCraft campaign yielded 10.7% yeast enrichment for BCMA binders versus a maximum of 2.4% for any RFdiffusion campaign.
+- Evolved BCMA binder B5.I0 achieved near-complete tumour control in a high-tumour-burden (1:10 effector:target) xenograft model, whereas the clinical scFv C11D5.3 and biparatopic VHH1-VHH2 (CARVYKTI) binder failed to control tumours at that ratio.
+- A single ipSAE ≥0.85 cutoff was the best-calibrated in silico metric predicting sub-1,000 nM binding success across YSD and CARPNN campaigns.
+- CARPNN sequence evolution reduced off-target CD22 CAR activation from 42% (parental D1) to 19% (evolved D1.N0) in RPMI-8226 (CD22−) co-cultures while retaining on-target CD69 activation of 65–74%.
+
+</details>
+
+<a id="model-map-knowledge-driven-perturbation-202608"></a>
+<details>
+<summary><b>MAP (mechanism-aware perturbation response predictor)</b> — A knowledge-driven framework for predicting single-cell responses for unprofiled drugs <i>(Nat. Mach. Intell. 202608)</i></summary>
+
+**[A knowledge-driven framework for predicting single-cell responses for unprofiled drugs](https://www.nature.com/articles/s42256-026-01286-w)**
+
+*Nat. Mach. Intell.* · 202608 · Jinghao Feng & Weidi Xie · [doi:10.1038/s42256-026-01286-w](https://doi.org/10.1038/s42256-026-01286-w)
+
+| | |
+| --- | --- |
+| **Parameters** | not stated as a single total parameter count (uses frozen ESM-2 and MoleculeSTM encoders + trainable adapter MLPs + 4-layer transformer + STATE SE-600M foundation model) |
+| **Backbone** | Knowledge encoders: BioBERT (text), MoleculeSTM (SMILES, frozen + 4 trainable MLP layers), ESM-2 (protein sequence, frozen + 4 trainable MLP layers) aligned via contrastive InfoNCE pretraining on MAP-KG; perturbation predictor conditions a pretrained single-cell foundation model (STATE SE-600M) via a 4-self-attention-layer transformer encoder fusing drug, gene, and cell-state embeddings, followed by an MLP decoder. |
+| **Pre-training** | `knowledge-graph` `contrastive-learning` `multimodal-alignment` `molecular-structure` `protein-language-model`<br>Knowledge-driven multimodal contrastive (InfoNCE) pretraining on MAP-KG, aligning drug SMILES, protein sequences, and free-text mechanism-of-action descriptions (via frozen MoleculeSTM/ESM-2 encoders plus BioBERT) into a unified mechanism-aware embedding space, using both intra-node attribute alignment and inter-node relation-conditioned alignment. |
+| **Training data** | MAP-KG, a constructed knowledge graph unifying 14 public biomedical resources (including PrimeKG) linking drugs and genes via mechanistic relations; perturbation prediction trained/evaluated on Tahoe-100M, OP3, SciPlex3 and ComboSciPlex single-cell perturbation atlases.<br>**187,089 drugs, 22,924 genes, 694,246 mechanistic relations (428,192 drug-gene + 266,054 gene-gene edges) in MAP-KG** |
+| **Downstream tasks** | `perturbation-response-prediction` `zero-shot-drug-generalization` `virtual-screening` `gene-set-enrichment-analysis` `drug-combination-prediction`<br>Zero-shot prediction of single-cell transcriptional response to unseen cell type-drug combinations and to entirely unprofiled drugs; extension to two-drug combination perturbation prediction; pathway-level GSEA-based in silico virtual screening for anti-cancer drug prioritization in A-549 lung cancer cells. |
+| **Modalities** | `gene expression (scRNA-seq)`, `molecular structure (SMILES)`, `protein sequence`, `text (mechanism-of-action descriptions)`, `knowledge graph` |
+| **Code** | [huggingface.co/datasets/RainGate/MAP-KG](https://huggingface.co/datasets/RainGate/MAP-KG) |
+| **Note** | MAP-KG dataset is openly released on Hugging Face, but model code/weights for the perturbation predictor itself were not confirmed as released in the fetched text; params count not disclosed as a single number since it combines multiple frozen/pretrained backbones. |
+
+**Key results**
+
+- Improves top-50 DEG Pearson delta correlation by up to +12.3% (unseen cell type-drug combos) and +11.8% (unprofiled drugs) over strongest baselines across three benchmarks
+- On Tahoe-100M unprofiled-drug regime: +17.5% top-50 DEG direction accuracy, +11.8% top-50 DEG Pearson delta correlation, +16.9% HVG perturbation discrimination score over baselines
+- Prioritizes four out of five approved anti-cancer drugs among top-14 of 58 held-out compounds for A-549 (NSCLC) in silico screening; adagrasib and afatinib ranked 2nd and 4th
+- MAP-KG comprises 187,089 drugs, 22,924 genes and 694,246 mechanistic relations from 14 public resources
+- Per-compound top-50 DEG Pearson delta correlation on unprofiled drugs ranged from 0.942 (sildenafil) to 0.620 (ciclopirox), highest of all baselines on all 16 test compounds
+
+</details>
+
+<a id="model-lasermpnn-202606"></a>
+<details>
+<summary><b>LASErMPNN</b> — Zero-shot design of drug-binding proteins via neural iterative selection−expansion <i>(Nature 202606)</i></summary>
+
+**[Zero-shot design of drug-binding proteins via neural iterative selection−expansion](https://www.nature.com/articles/s41586-026-10670-w)**
+
+*Nature* · 202606 · [Benjamin Fry](https://scholar.google.com/citations?user=2TE2_OkAAAAJ&hl=en) & [Nicholas F. Polizzi](https://scholar.google.com/citations?hl=en&user=CgZvDJkAAAAJ&view_op=list_works&sortby=pubdate) · [doi:10.1038/s41586-026-10670-w](https://doi.org/10.1038/s41586-026-10670-w)
+
+| | |
+| --- | --- |
+| **Parameters** | not stated (GNN) |
+| **Backbone** | Extends ProteinMPNN with SE(3)-equivariant Geometric Vector Perceptron (GVP) layers and a Hetero-GATv2 message-passing scheme handling ligand-to-protein and protein-to-protein messages; the ligand encoder runs 3 rounds of GATv2 message passing to build 256-dim per-atom embeddings, paired with a structure predictor for the 3D protein–ligand complex |
+| **Pre-training** | `graph neural network` `structure-conditioned`<br>Trained to predict atom-level properties; used in an iterative selection-expansion design loop rather than single-shot generation. |
+| **Training data** | Protein–ligand co-crystal structures from the Protein Data Bank (PDB). |
+| **Downstream tasks** | `de novo binder design` `side-chain packing` `proofreading`<br>Zero-shot de novo design of high-affinity small-molecule binding proteins, side-chain packing and dihedral-angle prediction, neural proofreading, and designing proteins that protect labile ligands from hydrolysis. |
+| **Modalities** | `protein structure`, `small molecules` |
+| **Code** | [github.com/polizzilab/LASErMPNN](https://github.com/polizzilab/LASErMPNN) |
+| **Note** | Also catalogued on AI4biology.md (Keishi's page) — kept here too since drug-binding protein design sits squarely in this page's chemistry/drug-design scope; duplicates across pages are fine for now per team discussion. |
+
+**Key results**
+
+- Hit rate and highest-affinity design each surpassed the prior state-of-the-art method by 5-fold and 70-fold respectively.
+- Without any experimental input, LASErMPNN suggested two mutations that increased binding affinity by more than two orders of magnitude (Kd = 1.2 ± 0.2 nM).
+
+</details>
 
 <a id="model-deepdrugdiscovery-202604"></a>
 <details>
@@ -71,32 +184,6 @@ Scientific discovery, research assistance, chemistry and drug design.
 
 </details>
 
-<a id="model-lasermpnn-202606"></a>
-<details>
-<summary><b>LASErMPNN</b> — Zero-shot design of drug-binding proteins via neural iterative selection−expansion <i>(Nature 202606)</i></summary>
-
-**[Zero-shot design of drug-binding proteins via neural iterative selection−expansion](https://www.nature.com/articles/s41586-026-10670-w)**
-
-*Nature* · 202606 · [Benjamin Fry](https://scholar.google.com/citations?user=2TE2_OkAAAAJ&hl=en) & [Nicholas F. Polizzi](https://scholar.google.com/citations?hl=en&user=CgZvDJkAAAAJ&view_op=list_works&sortby=pubdate) · [doi:10.1038/s41586-026-10670-w](https://doi.org/10.1038/s41586-026-10670-w)
-
-| | |
-| --- | --- |
-| **Parameters** | not stated (GNN) |
-| **Backbone** | Extends ProteinMPNN with SE(3)-equivariant Geometric Vector Perceptron (GVP) layers and a Hetero-GATv2 message-passing scheme handling ligand-to-protein and protein-to-protein messages; the ligand encoder runs 3 rounds of GATv2 message passing to build 256-dim per-atom embeddings, paired with a structure predictor for the 3D protein–ligand complex |
-| **Pre-training** | `graph neural network` `structure-conditioned`<br>Trained to predict atom-level properties; used in an iterative selection-expansion design loop rather than single-shot generation. |
-| **Training data** | Protein–ligand co-crystal structures from the Protein Data Bank (PDB). |
-| **Downstream tasks** | `de novo binder design` `side-chain packing` `proofreading`<br>Zero-shot de novo design of high-affinity small-molecule binding proteins, side-chain packing and dihedral-angle prediction, neural proofreading, and designing proteins that protect labile ligands from hydrolysis. |
-| **Modalities** | `protein structure`, `small molecules` |
-| **Code** | [github.com/polizzilab/LASErMPNN](https://github.com/polizzilab/LASErMPNN) |
-| **Note** | Also catalogued on AI4biology.md (Keishi's page) — kept here too since drug-binding protein design sits squarely in this page's chemistry/drug-design scope; duplicates across pages are fine for now per team discussion. |
-
-**Key results**
-
-- Hit rate and highest-affinity design each surpassed the prior state-of-the-art method by 5-fold and 70-fold respectively.
-- Without any experimental input, LASErMPNN suggested two mutations that increased binding affinity by more than two orders of magnitude (Kd = 1.2 ± 0.2 nM).
-
-</details>
-
 ### Materials & Physical Science
 
 | Date | Model | Venue | Model size | Open | Headline result |
@@ -104,6 +191,7 @@ Scientific discovery, research assistance, chemistry and drug design.
 | 202602 | [Discovery Learning](#model-discovery-learning-202602) | Nature | N/A — no single model (learner/interpreter/oracle loop) | ✓ | Predicts full cycle life from ~50 cycles: ~5% of the energy, ~2% of the time of full testing |
 | 202501 | [MatterGen](#model-mattergen-202501) | Nature | 46.8M | ✓ | >2x more novel/stable structures than prior baselines; one design (TaCr₂O₆) synthesized |
 | 202311 | [GNoME](#model-gnome-202311) | Nature | not stated (GNN) | ✓ | 2.2M candidate crystals, ~380K most stable; 736 independently synthesized externally |
+| 202311 | [A-Lab (with ARROWS3 active learning and XRD-AutoAnalyzer)](#model-a-lab-202311) | Nature | not stated \u2014 no single network; pipeline of an NLP similarity/precursor model, an XGBoost temperature regressor, a phase-ID CNN and an actor\u2013critic RL refinement agent, none with published parameter counts | ✓ | Self-driving lab synthesized 36 of 57 predicted inorganic targets in 17 days across 353 robotic recipes |
 
 <a id="model-discovery-learning-202602"></a>
 <details>
@@ -180,6 +268,37 @@ Scientific discovery, research assistance, chemistry and drug design.
 
 - Identified 2.2 million candidate structures below the known stability threshold, of which ~380,000 are the most stable — roughly a ten-fold expansion of known stable materials.
 - 736 of the predicted structures were independently synthesised and confirmed by external groups.
+
+</details>
+
+<a id="model-a-lab-202311"></a>
+<details>
+<summary><b>A-Lab (with ARROWS3 active learning and XRD-AutoAnalyzer)</b> — An autonomous laboratory for the accelerated synthesis of inorganic materials <i>(Nature 202311)</i></summary>
+
+**[An autonomous laboratory for the accelerated synthesis of inorganic materials](https://www.nature.com/articles/s41586-023-06734-w)**
+
+*Nature* · 202311 · [Nathan J. Szymanski](https://orcid.org/0000-0003-2255-9676) & [Gerbrand Ceder](https://orcid.org/0000-0001-9275-3605) · [doi:10.1038/s41586-023-06734-w](https://doi.org/10.1038/s41586-023-06734-w)
+
+| | |
+| --- | --- |
+| **Parameters** | not stated \u2014 no single network; pipeline of an NLP similarity/precursor model, an XGBoost temperature regressor, a phase-ID CNN and an actor\u2013critic RL refinement agent, none with published parameter counts |
+| **Backbone** | Modular: text-mined synthesis-similarity encoder + masked precursor-completion model for recipe proposal; XGBoost regressor for synthesis temperature; XRD phase ID by CNN with 6 convolutional layers (max pooling between each) and 3 fully connected ReLU layers, batch norm and 50% dropout, Monte Carlo dropout ensemble of 100 networks at inference; automated Rietveld refinement by PPO actor\u2013critic agent driving GSAS-II; ARROWS3 active learning over DFT reaction energies |
+| **Pre-training** | `text-mined-literature` `supervised` `simulated-data` `reinforcement-learning` `active-learning`<br>Recipe models were trained on text-mined literature synthesis procedures; the XRD CNN is trained per-target on simulated diffraction patterns (200 per reference phase, augmented for strain, texture, impurity peaks and poor crystallinity) derived from ICSD/Materials Project structures; the Rietveld agent was trained by PPO reinforcement learning in a custom gym environment wrapping GSAS-II. |
+| **Training data** | Knowledge base of 33,343 solid-state synthesis procedures extracted from 24,304 publications for recipe/temperature models; SynTERRA text-mined data from >24,000 publications used for novelty filtering; ICSD experimental structures plus Materials Project (v2022.10.28) DFT entries cross-referenced with a Google DeepMind database for target screening and XRD simulation.<br>**33,343 synthesis procedures from 24,304 publications** |
+| **Downstream tasks** | `autonomous-experimentation` `materials-synthesis` `synthesis-planning` `XRD-phase-identification` `active-learning`<br>Closed-loop screening of novel air-stable inorganic targets, ML proposal of precursor sets and firing temperatures, robotic powder dosing/heating/XRD characterization, automated phase and weight-fraction analysis, and active-learning re-planning of failed syntheses via pairwise reaction pathways. |
+| **Modalities** | `X-ray diffraction patterns`, `crystal structures / DFT thermodynamic data`, `scientific text (synthesis literature)` |
+| **Code** | [github.com/mattmcdermott/novel-materials-screening](https://github.com/njszym/ARROWS ; https://github.com/njszym/XRD-AutoAnalyzer ; https://github.com/CederGroupHub/SynthesisSimilarity ; https://github.com/CederGroupHub/s4 ; https://github.com/mattmcdermott/novel-materials-screening) |
+| **Note** | An Author Correction was published 19 January 2026 (10.1038/s41586-025-09992-y); the current article text reports 36/57 successes, while stale page metadata and the original abstract still cite 41/58 \u2014 the 36/57 and 63% figures used here are from the corrected main text. The paper drew public criticism from solid-state chemists over XRD-based phase assignments and novelty of some targets. |
+
+**Key results**
+
+- Synthesized 36 of 57 target compounds (63% success) in 17 days of continuous closed-loop operation, spanning 33 elements and 40 structural prototypes
+- 353 synthesis recipes were tested; only 30% of individual recipes produced their target, and 30 of the 36 successes came from literature-trained ML recipes
+- Active learning (ARROWS3) found improved routes for 9 targets, 6 of which had zero yield from the initial literature-inspired recipes
+- Manual regrinding/higher-temperature follow-up added 2 targets (Y3Ga3In2O12, Mg3NiO4), raising success to 67%; excluding 3 computationally problematic compounds gives 70% (38/54)
+- 88 unique pairwise reactions were catalogued, which can prune the recipe search space by up to 80%
+- Rerouting CaFe2P2O9 synthesis through CaFe3P3O13 (77 vs 8 meV per atom driving force) raised target yield by about 70%
+- Average hardware exception rate across stations was about 3.9% over 1.5 years of operation
 
 </details>
 
