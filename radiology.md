@@ -1,10 +1,10 @@
 # Radiology
 
-CT, MRI, PET, X-ray and fMRI foundation models.
+CT, MRI, X-ray and fMRI foundation models.
 
-**Maintainer:** [Judy Lyu](https://github.com/judylyu)
+**Maintainer:** @Sumin Kim · [Judy Lyu](https://github.com/judylyu) 
 
-**32 entries** · [Back to index](README.md)
+**33 entries** · **Last updated: 202609** · [Back to index](README.md)
 
 <sub><b>Model size</b> is the count the authors publish, with the component it covers in brackets — a vision encoder and a full vision–language model are not comparable. <i>not published</i> means the access routes were worked and no author source states one; <i>n/a</i> means the paper does not introduce a foundation model. <b>Training data</b> counts whole 3D volumes or scans used for pre-training, so a model trained on slices, frames, or image–text pairs shows what it used instead.</sub>
 
@@ -14,6 +14,7 @@ Click a model to expand its record.
 
 | Date | Model | Venue | Model size | Training data | Pre-training | Downstream tasks |
 | --- | --- | --- | --- | --- | --- | --- |
+| 202609 | [RADAR](#model-radar-202609) | Science | _not published_ | none (15M anatomy–text pairs) | contrastive, vision-language | classification |
 | 202608 | [LiON](#model-lion-202608) | Nat. Med. | _n/a_ | 6.4K patients | _n/a_ | classification, segmentation |
 | 202607 | [NeuroVFM](#model-neurovfm-202607) | Nat. Med. | 85.8M | 5.24M volumes | JEPA | classification, report generation, retrieval +2 |
 | 202604 | [FM-HCT](#model-fm-hct-202604) | Nat. Biomed. Eng. | 86M (ViT-B) | 362K volumes | DINO | classification, retrieval |
@@ -32,6 +33,26 @@ Click a model to expand its record.
 | 202507 | [Percival](#model-percival-202507) | medRxiv | 22M (DeiT-S enc.) | none (403K volume–report pairs) | InfoNCE, contrastive | retrieval, classification, prognosis |
 | 202501 | [CT-FM](#model-ct-fm-202501) | arXiv | 77.8M | 148K CT volumes | SimCLR | segmentation, triage, retrieval |
 | 202501 | [3DINO](#model-3dino-202501) | arXiv | 307M (ViT-L) | ~100K volumes | 3DINO, self-supervised | classification, segmentation |
+
+<a id="model-radar-202609"></a>
+<details>
+<summary><b>RADAR</b> — An expert-level generalist AI for abdominal CT diagnosis <i>(Science 202609)</i></summary>
+
+**[An expert-level generalist AI for abdominal CT diagnosis](https://www.science.org/doi/10.1126/science.aec6129)**
+
+*Science* · 202609 · [doi:10.1126/science.aec6129](https://doi.org/10.1126/science.aec6129)
+
+| | |
+| --- | --- |
+| **Backbone** | U-Net vision encoder and BERT text encoder |
+| **Pre-training** | `contrastive`, `vision-language`<br>Anatomy-level image–text alignment of abdominal CT structures with radiology-report descriptions. |
+| **Training data** | Contrast-enhanced abdominal CT<br>**424,911** examinations · **15,000,000** anatomy-wise image–text pairs |
+| **Downstream tasks** | `classification`<br>Generalist diagnosis across 18 anatomical structures and 146 imaging findings. |
+| **Modalities** | `CT`, `text` |
+| **Code** | [doi.org/10.5281/zenodo.21271172](https://doi.org/10.5281/zenodo.21271172) |
+| **Weights** | [huggingface.co/radar-generalist/RADAR](https://huggingface.co/radar-generalist/RADAR) |
+
+</details>
 
 <a id="model-lion-202608"></a>
 <details>
