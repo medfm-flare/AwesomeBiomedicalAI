@@ -6,8 +6,6 @@ CT, MRI, X-ray and fMRI foundation models.
 
 **33 entries** · **Last updated: 202609** · [Back to index](README.md)
 
-<sub><b>Model size</b> is the count the authors publish, with the component it covers in brackets — a vision encoder and a full vision–language model are not comparable. <i>not published</i> means the access routes were worked and no author source states one; <i>n/a</i> means the paper does not introduce a foundation model. <b>Training data</b> counts whole 3D volumes or scans used for pre-training, so a model trained on slices, frames, or image–text pairs shows what it used instead.</sub>
-
 ## CT
 
 Click a model to expand its record.
