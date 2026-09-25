@@ -249,7 +249,7 @@
             "Hit rate and highest-affinity design each surpassed the prior state-of-the-art method by 5-fold and 70-fold respectively.",
             "Without any experimental input, LASErMPNN suggested two mutations that increased binding affinity by more than two orders of magnitude (Kd = 1.2 ± 0.2 nM)."
           ],
-          "note": "Also catalogued on AI4biology.md (Keishi's page) — kept here too since drug-binding protein design sits squarely in this page's chemistry/drug-design scope; duplicates across pages are fine for now per team discussion.",
+          "note": "Originally cross-listed with AI4biology.md (Keishi's page); that page was later removed from the repo (2026-09-15), so this entry now lives only here, which fits the drug-design/protein-binder scope on its own merits.",
           "headline": "5x hit rate, 70x affinity vs. prior SOTA; zero-shot design reached Kd = 1.2 nM"
         },
         {
@@ -356,6 +356,67 @@
           ],
           "note": "Numbers are from the CAS English-language press release (english.cas.cn); the full text is paywalled and was not independently checked. No code or model repository was found.",
           "headline": "Lead lipid P1: 14.8x mRNA delivery efficiency vs. clinical-standard ALC-0315"
+        },
+        {
+          "fit_score": 90,
+          "fit_rationale": "Core AI-for-chemistry paper: a deep learning retrosynthesis model for synthesis planning of small-molecule drugs, validated by organic chemists and tested on pharma company data, published in Nature.",
+          "source_access": "open_mirror",
+          "id": "retrochimera",
+          "date": "202412",
+          "model": "RetroChimera",
+          "title": "Chemist-aligned retrosynthesis by ensembling diverse inductive bias models",
+          "url": "https://doi.org/10.1038/s41586-026-11160-9",
+          "doi": "10.1038/s41586-026-11160-9",
+          "venue": "Nature",
+          "authors": [
+            {
+              "name": "Krzysztof Maziarz",
+              "url": "https://orcid.org/0009-0007-0477-562X"
+            },
+            {
+              "name": "Marwin H. S. Segler",
+              "url": "https://orcid.org/0000-0001-8008-0546"
+            }
+          ],
+          "params": "Ensemble of two models; on the Pistachio dataset NeuralLoc has 165M parameters and R-SMILES 2 has 66.7M parameters (on USPTO-50K: 1.9M and 17.4M respectively)",
+          "backbone": "NeuralLoc: GNN-based template-classification/localization model (GPS+PNA layers, 3-5 layers, hidden dim 64-1024); R-SMILES 2: Transformer encoder-decoder with Group-Query Attention, RMSNorm, SwiGLU (6-8 layers, hidden dim 256-512), combined via a learned pointwise ensembling/reranking scheme",
+          "pretraining": {
+            "tags": [
+              "supervised",
+              "reaction-prediction",
+              "ensembling"
+            ],
+            "text": "Both submodels are trained from scratch (no generic self-supervised pretraining) directly on reaction datasets to predict reactants from products; a separate learning-based ensembling module (with monotonic convex per-model scoring functions) is fit on a validation split to combine their outputs."
+          },
+          "training_data": {
+            "text": "Trained and evaluated on USPTO-50K, USPTO-FULL, and the proprietary Pistachio reaction database (curated, larger and more diverse than USPTO-FULL), plus zero-shot/fine-tuning tests on internal Novartis and GSK reaction datasets.",
+            "stat": "Pistachio training set is ~3.5x larger than USPTO-FULL; zero-shot test used 10,444 internal Novartis reactions"
+          },
+          "downstream_tasks": {
+            "tags": [
+              "retrosynthesis-prediction",
+              "multi-step-synthesis-planning",
+              "reaction-feasibility-scoring"
+            ],
+            "text": "Single-step retrosynthesis prediction (reactant recall accuracy at top-k), multi-step synthetic route search (SimpRetro and hard Pistachio targets), and chemist preference/alignment evaluation via pairwise AB-tests."
+          },
+          "modalities": [
+            "molecular-graphs",
+            "SMILES"
+          ],
+          "code": "https://github.com/microsoft/retrochimera",
+          "weights": "https://github.com/microsoft/retrochimera",
+          "license": "MIT",
+          "open": true,
+          "key_results": [
+            "RetroChimera improves top-10 accuracy over prior state of the art by 1.7% on USPTO-50K and 1.6% on USPTO-FULL",
+            "On a held-out 2024 Pistachio time-split test set of 146,393 reactions, RetroChimera reaches with 10 candidates the accuracy that R-SMILES 2 needs 50 candidates to reach",
+            "In double-blind pairwise chemist evaluations (599 comparisons, 9 experts), chemists preferred RetroChimera's top prediction over the published reference reaction with mean preference rate ≈64% (P<0.05)",
+            "Zero-shot transfer to 10,444 internal Novartis reactions: RetroChimera outperformed both of its constituent submodels without any fine-tuning",
+            "NeuralLoc submodel has 165M parameters and R-SMILES 2 submodel has 66.7M parameters when trained on Pistachio (1.9M / 17.4M respectively on USPTO-50K)"
+          ],
+          "note": "Nature version (2026, 'accepted article preview') is paywalled; extracted from the complete open arXiv preprint (2412.05269), which matches the abstract and appears to be the same study accepted at Nature.",
+          "headline": "Ensembled retrosynthesis model preferred by chemists over reference reactions ~64% of the time"
         }
       ]
     },
@@ -592,6 +653,355 @@
       "title": "Research Agents & Literature Tools",
       "entries": [
         {
+          "fit_score": 92,
+          "fit_rationale": "A multi-agent AI research-assistant system built specifically to integrate biomedical/clinical evidence for drug target discovery and development decisions, published in Science; squarely within research-agents/drug-design scope.",
+          "source_access": "open_mirror",
+          "id": "virtual-biotech",
+          "date": "202609",
+          "model": "Virtual Biotech",
+          "title": "The Virtual Biotech: A multi-agent AI framework for therapeutic discovery and development",
+          "url": "https://doi.org/10.1126/science.aeg6779",
+          "doi": "10.1126/science.aeg6779",
+          "venue": "Science",
+          "authors": [
+            {
+              "name": "Harrison G. Zhang",
+              "url": "https://scholar.google.com/citations?user=d2JMhbEAAAAJ&hl=en"
+            },
+            {
+              "name": "James Zou",
+              "url": null
+            }
+          ],
+          "params": "N/A — not a single neural net; orchestration of LLM agents (Claude via Anthropic's Agent SDK), underlying model size undisclosed",
+          "backbone": "Multi-agent system with a virtual Chief Scientific Officer orchestrator, a chief-of-staff briefing agent, a scientific reviewer agent, and specialized scientist agents organized into four scientific divisions comprising eleven total agents, equipped with more than 100 custom MCPs/analytical tools; built on Anthropic's Agent SDK (Claude models)",
+          "pretraining": {
+            "tags": [
+              "LLM-agent",
+              "tool-use",
+              "retrieval-augmented",
+              "multi-agent-orchestration"
+            ],
+            "text": "No custom pretraining is described; the system wraps general-purpose Claude LLM agents with domain-specific system prompts, tools, and MCPs rather than training new model weights."
+          },
+          "training_data": {
+            "text": "Not a trained model in the conventional sense — agents query existing large-scale public biomedical resources at inference time, including Open Targets (targets/diseases/genetic evidence), CELLxGENE and Tabula Sapiens single-cell atlases, the Tahoe-100M drug-perturbation atlas, TCGA PanCancer LUAD cohort, GEO microarray datasets for five ulcerative colitis trials, and a curated set of 55,984 clinical trials.",
+            "stat": "55,984 clinical trials; 78,726 targets; 39,530 diseases; >100 million single-cell profiles"
+          },
+          "downstream_tasks": {
+            "tags": [
+              "clinical-trial-outcome-prediction",
+              "target-discovery",
+              "drug-safety-analysis",
+              "trial-failure-mechanism-inference"
+            ],
+            "text": "Applied to (1) large-scale annotation and statistical analysis of 55,984 clinical trials to link target genomic/single-cell features to trial success and safety, (2) proposing a B7-H3 antibody-drug conjugate strategy for lung cancer by integrating multimodal evidence, and (3) analyzing a terminated ulcerative colitis trial (anti-OSMRβ mAb) to infer failure mechanisms and propose biomarker-guided enrollment strategies."
+          },
+          "modalities": [
+            "text",
+            "genetics/genomics",
+            "single-cell transcriptomics",
+            "spatial transcriptomics",
+            "clinical trial records",
+            "chemoinformatics/pharmacology data"
+          ],
+          "code": null,
+          "weights": null,
+          "license": null,
+          "open": false,
+          "key_results": [
+            "Used >37,000 clinical-trialist agent instances to curate and analyze 55,984 clinical trials (Phase I n=14,237; Phase II n=22,164; Phase III n=14,911; Phase IV n=4,672).",
+            "Drugs targeting cell-type-specific genes were 40% more likely to progress from Phase I to Phase II and 48% more likely to ever reach Phase IV.",
+            "Cell-type-specific targets were associated with 32% lower adverse event rates on average across organ systems.",
+            "Lower expression bimodality scores were significantly associated with trial termination (OR=0.81), withdrawal (OR=0.88), and suspension (OR=0.70).",
+            "The full target identification/validation case study (statistical genetics, single-cell/spatial transcriptomics, clinicogenomics, modality assessment) cost $46.00 in Anthropic API credits.",
+            "System integrates over 100 custom MCPs/tools spanning 78,726 targets, 39,530 diseases, 14.5 million protein-protein interactions, and >4 billion drug perturbation-response data points."
+          ],
+          "note": "Original Science article is paywalled; entry is based on the complete open bioRxiv preprint (DOI 10.64898/2026.02.23.707551), which matches the same title/authors and reports the same key statistics as the journal press materials. No code or model weights repository was found in the preprint's data-availability statement.",
+          "headline": "Multi-agent 'Virtual Biotech' analyzed 55,984 trials, finding cell-type-specific targets 48% more likely to reach market"
+        },
+        {
+          "fit_score": 92,
+          "fit_rationale": "Paper2Agent is a framework for turning research papers into interactive AI agents that carry out scientific analyses (genomics, single-cell/spatial transcriptomics) and even prioritize a causal disease gene, squarely fitting the research-assistance/scientific-discovery scope, published in Nature.",
+          "source_access": "full_text",
+          "id": "paper2agent",
+          "date": "202609",
+          "model": "Paper2Agent",
+          "title": "Reimagining research papers as interactive and reliable AI agents",
+          "url": "https://doi.org/10.1038/s41586-026-11044-y",
+          "doi": "10.1038/s41586-026-11044-y",
+          "venue": "Nature",
+          "authors": [
+            {
+              "name": "Jiacheng Miao",
+              "url": "https://scholar.google.co.uk/scholar?as_q=&num=10&btnG=Search+Scholar&as_epq=&as_oq=&as_eq=&as_occt=any&as_sauthors=%22Jiacheng%20Miao%22&as_publication=&as_ylo=&as_yhi=&as_allsubj=all&hl=en"
+            },
+            {
+              "name": "James Zou",
+              "url": "https://scholar.google.co.uk/scholar?as_q=&num=10&btnG=Search+Scholar&as_epq=&as_oq=&as_eq=&as_occt=any&as_sauthors=%22James%20Zou%22&as_publication=&as_ylo=&as_yhi=&as_allsubj=all&hl=en"
+            }
+          ],
+          "params": "N/A — not a single trained neural network; a multi-agent orchestration framework built on an off-the-shelf LLM (claude-sonnet-4-20250514 used in evaluations)",
+          "backbone": "Multi-agent pipeline (environment agent, extraction agent, testing agent) that converts a paper's manuscript/code/data into a model context protocol (MCP) server of validated tools, then connects that MCP server to a chat agent (Claude Code, backed by claude-sonnet-4-20250514) for natural-language querying",
+          "pretraining": {
+            "tags": [
+              "no additional pretraining",
+              "relies on pretrained LLM"
+            ],
+            "text": "No model pretraining is performed; Paper2Agent orchestrates an existing pretrained LLM (Claude Sonnet 4) plus sub-agents to read a paper's manuscript and codebase and auto-generate/validate MCP tools."
+          },
+          "training_data": {
+            "text": "No training dataset is used to train a model; instead, each paper's own manuscript, supplementary materials, datasets and code repository serve as the knowledge source converted into MCP tools (case studies used AlphaGenome, Scanpy, and TISSUE papers/repos).",
+            "stat": null
+          },
+          "downstream_tasks": {
+            "tags": [
+              "genomic variant interpretation",
+              "single-cell transcriptomics",
+              "spatial transcriptomics",
+              "causal gene prioritization",
+              "multi-agent scientific reasoning"
+            ],
+            "text": "Case studies convert AlphaGenome into an agent for genomic variant effect interpretation and GWAS locus analysis, Scanpy into an agent for single-cell preprocessing/clustering, and TISSUE into an agent for spatial transcriptomics uncertainty estimation; multiple paper-agents are then combined to prioritize GPR137 as a causal gene for a psoriasis-associated variant."
+          },
+          "modalities": [
+            "text",
+            "genomic sequence/variant data",
+            "single-cell/spatial transcriptomics data",
+            "code"
+          ],
+          "code": "https://github.com/jmiao24/Paper2Agent",
+          "weights": null,
+          "license": null,
+          "open": true,
+          "key_results": [
+            "Paper2Agent generated 22 AlphaGenome MCP tools, all passing automated validation, in around 45 min at a cost of US $14 on a personal laptop.",
+            "AlphaGenome agent achieved 98.7 ± 1.3% accuracy on 15 tutorial-derived queries and 100.0 ± 0.0% on 15 novel queries, versus 82.7 ± 3.4%/78.7 ± 4.4% for Claude + Repo and 37.3 ± 4.0%/56.0 ± 3.4% for Biomni.",
+            "On 30 open-ended researcher-style queries, the AlphaGenome agent scored 82.7 ± 2.4% accuracy versus 56.7 ± 2.3% (Claude + Repo) and 72.2 ± 2.2% (Biomni).",
+            "The AlphaGenome agent reduced median query runtime by 1.9× and 3.1× versus Claude + Repo and Biomni on tutorial queries, and by 2.9× and 3.8× on novel queries.",
+            "A multi-agent collaboration across AlphaGenome, MPRA-scCRISPRi and Perturb-seq paper-agents identified GPR137 as the likely causal gene for a psoriasis-associated variant (rs887314), with knockdown signature correlating with the CRE perturbation signature (Spearman r = 0.613, P = 3.79×10⁻³ at Stim8hr; r = 0.630, P = 4.71×10⁻³ at Stim48hr, FDR < 0.05)."
+          ],
+          "note": "The framework itself is not a trained model but an agent-orchestration system wrapping existing LLMs and papers' own code; 'params'/'pretraining'/'training_data' fields reflect that it is not a conventional neural network.",
+          "headline": "Turns papers into AI agents; AlphaGenome agent hits 98.7–100% accuracy vs 37–83% for Biomni/Claude+Repo"
+        },
+        {
+          "id": "co-scientist",
+          "date": "202607",
+          "model": "Co-Scientist",
+          "title": "Accelerating scientific discovery with Co-Scientist",
+          "url": "https://www.nature.com/articles/s41586-026-10644-y",
+          "doi": "10.1038/s41586-026-10644-y",
+          "venue": "Nature",
+          "authors": [
+            {
+              "name": "Juraj Gottweis",
+              "url": null
+            },
+            {
+              "name": "Vivek Natarajan",
+              "url": null
+            }
+          ],
+          "params": "N/A — built on Gemini, size undisclosed",
+          "backbone": "Multi-agent AI system built on Gemini; agents generate, critique and refine hypotheses in a tournament-style ranking loop, scaled with test-time compute",
+          "pretraining": {
+            "tags": [
+              "multi-agent",
+              "test-time compute scaling"
+            ],
+            "text": "Orchestration layer over Gemini rather than a separately pretrained model; hypothesis quality improves with additional test-time compute."
+          },
+          "training_data": {
+            "text": "Evaluated across 203 open-ended research objectives spanning AML drug repurposing, liver fibrosis and antimicrobial resistance, rather than trained on a fixed corpus.",
+            "stat": "203 research objectives"
+          },
+          "downstream_tasks": {
+            "tags": [
+              "hypothesis generation",
+              "research prioritization"
+            ],
+            "text": "Generating and prioritising scientific hypotheses for wet-lab validation."
+          },
+          "modalities": [
+            "text"
+          ],
+          "code": null,
+          "weights": null,
+          "license": null,
+          "open": false,
+          "key_results": [
+            "Proposed AML drug-repurposing candidate KIRA6 showed an 18-fold separation between malignant and control cell lines in follow-up validation.",
+            "Independently recapitulated a previously unpublished bacterial gene-transfer resistance mechanism.",
+            "In expert evaluation across 203 objectives, hypothesis quality was rated above both human experts and leading LLM baselines."
+          ],
+          "note": "Closed system — no public code or weights; access is via Google's Gemini for Science research registration, not open source.",
+          "headline": "AML candidate KIRA6 showed an 18x separation between malignant and control cell lines"
+        },
+        {
+          "id": "era",
+          "date": "202605",
+          "model": "ERA (Empirical Research Assistance)",
+          "title": "An AI system to help scientists write expert-level empirical software",
+          "url": "https://www.nature.com/articles/s41586-026-10658-6",
+          "doi": "10.1038/s41586-026-10658-6",
+          "venue": "Nature",
+          "authors": [
+            {
+              "name": "Eser Aygün",
+              "url": "https://scholar.google.com/citations?user=mogd5nkAAAAJ&hl=en"
+            },
+            {
+              "name": "Michael Brenner",
+              "url": "https://scholar.google.com/citations?user=ZDL6ITwAAAAJ&hl=en"
+            }
+          ],
+          "params": "N/A — base LLM undisclosed",
+          "backbone": "LLM combined with tree search (TS), which systematically improves a quality metric and navigates the space of candidate programs; for some tasks combined with Gemini Deep Think",
+          "pretraining": {
+            "tags": [
+              "tree search",
+              "LLM-guided program search"
+            ],
+            "text": "Search/optimization framework over an existing LLM rather than a newly pretrained model."
+          },
+          "training_data": {
+            "text": "Applied per research task rather than trained on a fixed corpus (bioinformatics, epidemiology, geospatial, neuroscience, physics).",
+            "stat": null
+          },
+          "downstream_tasks": {
+            "tags": [
+              "scientific software generation",
+              "method discovery"
+            ],
+            "text": "Generating expert-level empirical software across domains: single-cell analysis, epidemiological forecasting, geospatial CO2 monitoring, zebrafish neural-activity prediction, numerical integration, and cosmic-string gravitational-wave theory."
+          },
+          "modalities": [
+            "text",
+            "code",
+            "scientific data"
+          ],
+          "code": "https://github.com/google-research/era",
+          "weights": null,
+          "license": null,
+          "open": true,
+          "key_results": [
+            "Discovered 40 novel single-cell data analysis methods that outperformed the top human-developed methods on a public leaderboard.",
+            "Generated 14 COVID-19 hospitalization forecasting models that outperformed the CDC ensemble and every individual model on the public leaderboard.",
+            "Reached state-of-the-art predictive performance on ZAPBench, predicting activity across more than 70,000 zebrafish neurons.",
+            "Derived six new general solutions and a closed-form asymptotic formula for cosmic-string gravitational radiation, extending beyond the previously known simplest case."
+          ],
+          "note": null,
+          "headline": "40 SOTA single-cell methods; 14 models beat the CDC's COVID-forecast ensemble"
+        },
+        {
+          "id": "ai-scientist",
+          "date": "202603",
+          "model": "The AI Scientist",
+          "title": "Towards end-to-end automation of AI research",
+          "url": "https://www.nature.com/articles/s41586-026-10265-5",
+          "doi": "10.1038/s41586-026-10265-5",
+          "venue": "Nature",
+          "authors": [
+            {
+              "name": "Yutaro Yamada",
+              "url": null
+            },
+            {
+              "name": "Jeff Clune",
+              "url": "https://scholar.google.com/citations?hl=en&user=5TZ7f5wAAAAJ&view_op=list_works&sortby=pubdate"
+            }
+          ],
+          "params": "N/A — multi-model orchestration",
+          "backbone": "Multi-agent system orchestrating foundation models for idea generation, coding, experimentation, analysis and manuscript writing, run in both a template-based focused mode and a template-free open-ended mode",
+          "pretraining": {
+            "tags": [
+              "multi-agent",
+              "agentic search"
+            ],
+            "text": "Orchestration over existing foundation models rather than a newly pretrained model."
+          },
+          "training_data": {
+            "text": "Evaluated across machine-learning research tasks in both modes rather than trained on a fixed corpus.",
+            "stat": null
+          },
+          "downstream_tasks": {
+            "tags": [
+              "idea generation",
+              "experimentation",
+              "manuscript writing",
+              "self-review"
+            ],
+            "text": "Autonomous end-to-end research: generating ideas, writing code, running experiments, analysing and plotting results, writing the full manuscript, and performing its own peer review."
+          },
+          "modalities": [
+            "text",
+            "code"
+          ],
+          "code": "https://github.com/SakanaAI/AI-Scientist",
+          "weights": null,
+          "license": null,
+          "open": true,
+          "key_results": [
+            "A fully autonomously generated manuscript passed the first round of peer review for a top-tier ML conference workshop with a 70% acceptance rate."
+          ],
+          "note": "Also on AI_agent.md, listed there as Chris Lu & Jeff Clune. The Nature author list (Yamada, Lange, Cong Lu, Chris Lu, Hu, Foerster, Ha, Clune) puts Yutaro Yamada as first author, so that's used here — worth a correction on the AI_agent.md entry too.",
+          "headline": "Autonomously written manuscript passed peer review at a 70%-acceptance ML workshop"
+        },
+        {
+          "id": "biomedagent",
+          "date": "202603",
+          "model": "BioMedAgent",
+          "title": "Empowering AI data scientists using a multi-agent LLM framework with self-evolving capabilities for autonomous, tool-aware biomedical data analyses",
+          "url": "https://www.nature.com/articles/s41551-026-01634-6",
+          "doi": "10.1038/s41551-026-01634-6",
+          "venue": "Nat. Biomed. Eng.",
+          "authors": [
+            {
+              "name": "Dechao Bu",
+              "url": "https://orcid.org/0000-0002-8833-5432"
+            },
+            {
+              "name": "Yi Zhao",
+              "url": "https://orcid.org/0000-0001-6046-8420"
+            }
+          ],
+          "params": "N/A — base model (GPT-4o-mini), size undisclosed by vendor",
+          "backbone": "Self-evolving multi-agent LLM framework that chains bioinformatics tools into executable workflows via interactive exploration and memory retrieval; evaluated against other agents using the same underlying model (GPT-4o-mini)",
+          "pretraining": {
+            "tags": [
+              "multi-agent",
+              "self-evolving",
+              "tool use"
+            ],
+            "text": "Agentic orchestration and self-evolution over an existing LLM rather than a newly pretrained model."
+          },
+          "training_data": {
+            "text": "Tool-use framework operating on user-supplied biomedical datasets rather than a fixed training corpus.",
+            "stat": null
+          },
+          "downstream_tasks": {
+            "tags": [
+              "biomedical data analysis",
+              "workflow automation"
+            ],
+            "text": "Autonomous biomedical data analysis from natural-language prompts, with tool chaining and workflow execution requiring no computational expertise from the user."
+          },
+          "modalities": [
+            "text",
+            "biomedical data"
+          ],
+          "code": "https://github.com/BOBQWERA/BioMedAgent",
+          "weights": null,
+          "license": null,
+          "open": true,
+          "key_results": [
+            "Outperformed other LLM agents built on the same base model (GPT-4o-mini), with consistent success-rate improvements across multiple task types.",
+            "Reached a 100% analysable scope using local workspace tools, versus a narrower scope for ChatGPT-4o and GPT Assistants run online."
+          ],
+          "note": "Also on AI_agent.md (Meng/Lan's page).",
+          "headline": "100% analysable scope on local tools, vs. a narrower scope for online ChatGPT-4o/GPT Assistants"
+        },
+        {
           "id": "openscholar",
           "date": "202602",
           "model": "OpenScholar",
@@ -694,223 +1104,6 @@
           "key_results": [],
           "note": "Nature Computational Science published this 2025-12-09; the arXiv preprint (2504.05559) predates it by several months, which is why the date here differs from the original catalogue entry. No numeric benchmark results were available in the fetched abstract; the full text is paywalled.",
           "headline": "Automates science-of-science analytical workflows; no benchmark numbers published"
-        },
-        {
-          "id": "co-scientist",
-          "date": "202607",
-          "model": "Co-Scientist",
-          "title": "Accelerating scientific discovery with Co-Scientist",
-          "url": "https://www.nature.com/articles/s41586-026-10644-y",
-          "doi": "10.1038/s41586-026-10644-y",
-          "venue": "Nature",
-          "authors": [
-            {
-              "name": "Juraj Gottweis",
-              "url": null
-            },
-            {
-              "name": "Vivek Natarajan",
-              "url": null
-            }
-          ],
-          "params": "N/A — built on Gemini, size undisclosed",
-          "backbone": "Multi-agent AI system built on Gemini; agents generate, critique and refine hypotheses in a tournament-style ranking loop, scaled with test-time compute",
-          "pretraining": {
-            "tags": [
-              "multi-agent",
-              "test-time compute scaling"
-            ],
-            "text": "Orchestration layer over Gemini rather than a separately pretrained model; hypothesis quality improves with additional test-time compute."
-          },
-          "training_data": {
-            "text": "Evaluated across 203 open-ended research objectives spanning AML drug repurposing, liver fibrosis and antimicrobial resistance, rather than trained on a fixed corpus.",
-            "stat": "203 research objectives"
-          },
-          "downstream_tasks": {
-            "tags": [
-              "hypothesis generation",
-              "research prioritization"
-            ],
-            "text": "Generating and prioritising scientific hypotheses for wet-lab validation."
-          },
-          "modalities": [
-            "text"
-          ],
-          "code": null,
-          "weights": null,
-          "license": null,
-          "open": false,
-          "key_results": [
-            "Proposed AML drug-repurposing candidate KIRA6 showed an 18-fold separation between malignant and control cell lines in follow-up validation.",
-            "Independently recapitulated a previously unpublished bacterial gene-transfer resistance mechanism.",
-            "In expert evaluation across 203 objectives, hypothesis quality was rated above both human experts and leading LLM baselines."
-          ],
-          "note": "Closed system — no public code or weights; access is via Google's Gemini for Science research registration, not open source.",
-          "headline": "AML candidate KIRA6 showed an 18x separation between malignant and control cell lines"
-        },
-        {
-          "id": "ai-scientist",
-          "date": "202603",
-          "model": "The AI Scientist",
-          "title": "Towards end-to-end automation of AI research",
-          "url": "https://www.nature.com/articles/s41586-026-10265-5",
-          "doi": "10.1038/s41586-026-10265-5",
-          "venue": "Nature",
-          "authors": [
-            {
-              "name": "Yutaro Yamada",
-              "url": null
-            },
-            {
-              "name": "Jeff Clune",
-              "url": "https://scholar.google.com/citations?hl=en&user=5TZ7f5wAAAAJ&view_op=list_works&sortby=pubdate"
-            }
-          ],
-          "params": "N/A — multi-model orchestration",
-          "backbone": "Multi-agent system orchestrating foundation models for idea generation, coding, experimentation, analysis and manuscript writing, run in both a template-based focused mode and a template-free open-ended mode",
-          "pretraining": {
-            "tags": [
-              "multi-agent",
-              "agentic search"
-            ],
-            "text": "Orchestration over existing foundation models rather than a newly pretrained model."
-          },
-          "training_data": {
-            "text": "Evaluated across machine-learning research tasks in both modes rather than trained on a fixed corpus.",
-            "stat": null
-          },
-          "downstream_tasks": {
-            "tags": [
-              "idea generation",
-              "experimentation",
-              "manuscript writing",
-              "self-review"
-            ],
-            "text": "Autonomous end-to-end research: generating ideas, writing code, running experiments, analysing and plotting results, writing the full manuscript, and performing its own peer review."
-          },
-          "modalities": [
-            "text",
-            "code"
-          ],
-          "code": "https://github.com/SakanaAI/AI-Scientist",
-          "weights": null,
-          "license": null,
-          "open": true,
-          "key_results": [
-            "A fully autonomously generated manuscript passed the first round of peer review for a top-tier ML conference workshop with a 70% acceptance rate."
-          ],
-          "note": "Also on AI_agent.md, listed there as Chris Lu & Jeff Clune. The Nature author list (Yamada, Lange, Cong Lu, Chris Lu, Hu, Foerster, Ha, Clune) puts Yutaro Yamada as first author, so that's used here — worth a correction on the AI_agent.md entry too.",
-          "headline": "Autonomously written manuscript passed peer review at a 70%-acceptance ML workshop"
-        },
-        {
-          "id": "era",
-          "date": "202605",
-          "model": "ERA (Empirical Research Assistance)",
-          "title": "An AI system to help scientists write expert-level empirical software",
-          "url": "https://www.nature.com/articles/s41586-026-10658-6",
-          "doi": "10.1038/s41586-026-10658-6",
-          "venue": "Nature",
-          "authors": [
-            {
-              "name": "Eser Aygün",
-              "url": "https://scholar.google.com/citations?user=mogd5nkAAAAJ&hl=en"
-            },
-            {
-              "name": "Michael Brenner",
-              "url": "https://scholar.google.com/citations?user=ZDL6ITwAAAAJ&hl=en"
-            }
-          ],
-          "params": "N/A — base LLM undisclosed",
-          "backbone": "LLM combined with tree search (TS), which systematically improves a quality metric and navigates the space of candidate programs; for some tasks combined with Gemini Deep Think",
-          "pretraining": {
-            "tags": [
-              "tree search",
-              "LLM-guided program search"
-            ],
-            "text": "Search/optimization framework over an existing LLM rather than a newly pretrained model."
-          },
-          "training_data": {
-            "text": "Applied per research task rather than trained on a fixed corpus (bioinformatics, epidemiology, geospatial, neuroscience, physics).",
-            "stat": null
-          },
-          "downstream_tasks": {
-            "tags": [
-              "scientific software generation",
-              "method discovery"
-            ],
-            "text": "Generating expert-level empirical software across domains: single-cell analysis, epidemiological forecasting, geospatial CO2 monitoring, zebrafish neural-activity prediction, numerical integration, and cosmic-string gravitational-wave theory."
-          },
-          "modalities": [
-            "text",
-            "code",
-            "scientific data"
-          ],
-          "code": "https://github.com/google-research/era",
-          "weights": null,
-          "license": null,
-          "open": true,
-          "key_results": [
-            "Discovered 40 novel single-cell data analysis methods that outperformed the top human-developed methods on a public leaderboard.",
-            "Generated 14 COVID-19 hospitalization forecasting models that outperformed the CDC ensemble and every individual model on the public leaderboard.",
-            "Reached state-of-the-art predictive performance on ZAPBench, predicting activity across more than 70,000 zebrafish neurons.",
-            "Derived six new general solutions and a closed-form asymptotic formula for cosmic-string gravitational radiation, extending beyond the previously known simplest case."
-          ],
-          "note": null,
-          "headline": "40 SOTA single-cell methods; 14 models beat the CDC's COVID-forecast ensemble"
-        },
-        {
-          "id": "biomedagent",
-          "date": "202603",
-          "model": "BioMedAgent",
-          "title": "Empowering AI data scientists using a multi-agent LLM framework with self-evolving capabilities for autonomous, tool-aware biomedical data analyses",
-          "url": "https://www.nature.com/articles/s41551-026-01634-6",
-          "doi": "10.1038/s41551-026-01634-6",
-          "venue": "Nat. Biomed. Eng.",
-          "authors": [
-            {
-              "name": "Dechao Bu",
-              "url": "https://orcid.org/0000-0002-8833-5432"
-            },
-            {
-              "name": "Yi Zhao",
-              "url": "https://orcid.org/0000-0001-6046-8420"
-            }
-          ],
-          "params": "N/A — base model (GPT-4o-mini), size undisclosed by vendor",
-          "backbone": "Self-evolving multi-agent LLM framework that chains bioinformatics tools into executable workflows via interactive exploration and memory retrieval; evaluated against other agents using the same underlying model (GPT-4o-mini)",
-          "pretraining": {
-            "tags": [
-              "multi-agent",
-              "self-evolving",
-              "tool use"
-            ],
-            "text": "Agentic orchestration and self-evolution over an existing LLM rather than a newly pretrained model."
-          },
-          "training_data": {
-            "text": "Tool-use framework operating on user-supplied biomedical datasets rather than a fixed training corpus.",
-            "stat": null
-          },
-          "downstream_tasks": {
-            "tags": [
-              "biomedical data analysis",
-              "workflow automation"
-            ],
-            "text": "Autonomous biomedical data analysis from natural-language prompts, with tool chaining and workflow execution requiring no computational expertise from the user."
-          },
-          "modalities": [
-            "text",
-            "biomedical data"
-          ],
-          "code": "https://github.com/BOBQWERA/BioMedAgent",
-          "weights": null,
-          "license": null,
-          "open": true,
-          "key_results": [
-            "Outperformed other LLM agents built on the same base model (GPT-4o-mini), with consistent success-rate improvements across multiple task types.",
-            "Reached a 100% analysable scope using local workspace tools, versus a narrower scope for ChatGPT-4o and GPT Assistants run online."
-          ],
-          "note": "Also on AI_agent.md (Meng/Lan's page).",
-          "headline": "100% analysable scope on local tools, vs. a narrower scope for online ChatGPT-4o/GPT Assistants"
         }
       ]
     }

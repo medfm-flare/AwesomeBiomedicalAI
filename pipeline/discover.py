@@ -154,9 +154,14 @@ def search_openalex(days: int = 7, max_results: int = 40) -> list[dict]:
 
 
 def search_all(days: int = 7, max_results: int = 40) -> list[dict]:
-    """Query PubMed and OpenAlex, merging and deduping by DOI/URL."""
-    combined = search_pubmed(days=days, max_results=max_results)
-    combined += search_openalex(days=days, max_results=max_results)
+    """Query PubMed and OpenAlex, merging and deduping by DOI/URL. One
+    source failing (rate limit, timeout, etc) doesn't take down the other."""
+    combined: list[dict] = []
+    for name, fn in (("pubmed", search_pubmed), ("openalex", search_openalex)):
+        try:
+            combined += fn(days=days, max_results=max_results)
+        except Exception as exc:  # noqa: BLE001
+            print(f"warning: {name} search failed ({exc}); continuing with other sources", file=sys.stderr)
 
     seen_dois, seen_urls, deduped = set(), set(), []
     for c in combined:
