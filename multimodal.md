@@ -4,7 +4,7 @@ Cross-modal health models without a single dominant biomedical domain.
 
 **Maintainer:** @Yeonwoo Seo ([Homepage](https://yws0322.github.io/) / [LinkedIn](https://www.linkedin.com/in/yeonwoo-seo-8950372bb/) / [GitHub](https://github.com/yws0322))
 
-**21 entries** · **Last updated: 202608** · [Back to index](README.md)
+**24 entries** · **Last updated: 202610** · [Back to index](README.md)
 
 ## Paper overview
 
@@ -12,6 +12,9 @@ Click a model name to jump to its expandable record. A dash (—) means the valu
 
 | Date | Model | Venue | Model Size | Modalities | Pre-training | Downstream Tasks |
 | --- | --- | --- | --- | --- | --- | --- |
+| 202610 | [B-RAD](#model-b-rad-202610) | npj Digit. Med. | — | Breast ultrasound images + clinical reports (text) | cross-modal retrieval-augmented alignment | biopsy-triage classification, BI-RADS assessment, lesion localization |
+| 202609 | [NV-Reason-CT](#model-nv-reason-ct-202609) | arXiv | ~4B+ (Qwen3.5-4B LLM plus vision encoder, total not disclosed) | Volumetric 3D CT + radiology report text | supervised fine-tuning then GRPO reinforcement learning | abnormality classification, report generation, Q&A, reasoning dialogue |
+| 202609 | [WILSON](#model-wilson-202609) | arXiv | ~133.7M | Histopathology (composite whole-slide images) + pathology report text | vision-language alignment against report text | diagnostic classification, subtyping, TIL grading, text retrieval |
 | 202608 | [oFM](#model-ofm-202608) | arXiv | 421M trained + 5.1B frozen (PRISM2) | EHR/clinical text + DNA + RNA + H&E pathology | three-stage: TSDAE reconstruction, masked/JEPA-style trajectory prediction | prognostic prediction, treatment-benefit ranking +1 |
 | 202608 | [VirTues](#model-virtues-202608) | Nature | — | Multiplex spatial proteomics + protein sequence | self-supervised, masked autoencoding | reconstruction, cell typing, niche annotation, biomarker discovery +1 |
 | 202607 | [PRISM2](#model-prism2-202607) | Nat. Med. | 4.6B | Histopathology + clinical text | contrastive, next-token prediction | detection, subtyping, grading +4 |
@@ -37,6 +40,95 @@ Click a model name to jump to its expandable record. A dash (—) means the valu
 ## Details
 
 Click a model to expand its record.
+
+<a id="model-b-rad-202610"></a>
+<details>
+<summary><b>B-RAD</b> — Interpretable multimodal retrieval augmented diagnosis for breast ultrasound with multinational clinical validation and reader study <i>(npj Digit. Med. 202610)</i></summary>
+
+**[Interpretable multimodal retrieval augmented diagnosis for breast ultrasound with multinational clinical validation and reader study](https://www.nature.com/articles/s41746-026-03272-3)**
+
+*npj Digital Medicine* · 202610 · Han Jang & Soochahn Lee, Kyu Sung Choi · [doi:10.1038/s41746-026-03272-3](https://doi.org/10.1038/s41746-026-03272-3)
+
+| | |
+| --- | --- |
+| **Parameters** | Not disclosed |
+| **Backbone** | A retrieval-augmented framework (BI-RADS-aware retrieval-augmented diagnosis, "B-RAD") that pairs an ultrasound image encoder with a cross-modal retrieval module over exemplar image-report pairs, using segmentation-guided attention for BI-RADS classification |
+| **Pre-training** | Learns image-report alignment from unpaired data by jointly minimizing cross-modal mismatch and ordinal BI-RADS prediction error, then uses the retrieved exemplars to support few-shot lesion detection at inference. |
+| **Training data** | Public breast ultrasound datasets (specific names not disclosed in accessible text); validated across 11 cohorts, 8,311 images, from 7 countries |
+| **Downstream tasks** | Biopsy-triage classification; BI-RADS category assessment; lesion localization. |
+| **Modalities** | breast ultrasound images, clinical reports (text) |
+| **Code** | Not found; no code or weights release confirmed |
+
+**Reported performance**
+
+| Benchmark | Metric | Value | Note |
+| --- | --- | --- | --- |
+| Biopsy-triage classification, institutional validation cohort | AUROC | 0.952 | without fine-tuning |
+| Four-reader study | diagnostic accuracy and inter-reader agreement | Improved | agreement moved from moderate to substantial |
+
+</details>
+
+<a id="model-nv-reason-ct-202609"></a>
+<details>
+<summary><b>NV-Reason-CT</b> — 3D Visual Language Model for CT Analysis <i>(arXiv 202609)</i></summary>
+
+**[NV-Reason-CT: 3D Visual Language Model for CT Analysis](https://arxiv.org/abs/2609.27511)**
+
+*arXiv* · 202609 · Andriy Myronenko & Daguang Xu
+
+| | |
+| --- | --- |
+| **Parameters** | Not disclosed as a single total; the language model is Qwen3.5-4B (~4B parameters), connected to a separate 3D vision encoder and projector whose combined size is not stated |
+| **Backbone** | A Primus 3D Vision Transformer encoder (initialized from COLIPRI pretrained weights; 192×192×192 voxel input, 8×8×8 patches, giving a 24×24×24 grid of 13,824 visual tokens with no spatial merging) connected via a learned projector to a Qwen3.5-4B language model, with 3D positional (depth/height/width) encoding preserved through the decoder |
+| **Pre-training** | Two-stage training: (1) supervised fine-tuning end-to-end across the vision encoder, projector, and language model, using autoregressive cross-entropy loss on curated instruction data; (2) a reinforcement-learning stage using GRPO (Group Relative Policy Optimization) with region-aware abnormality and report-structure reward signals. |
+| **Training data** | About 550,000 multimodal instruction examples drawn from 70,111 unique CT studies: CT-RATE (47,149 chest cases / 20,000 patients), an internal NIH set (15,991 cases), and CancerVerse (22,720 abdominal/pelvic cases) |
+| **Downstream tasks** | Abnormality classification across 18 CT-RATE findings; structured radiology report generation; interactive question answering (binary, location, severity); multi-turn reasoning dialogue; refusal/input-validity assessment. |
+| **Modalities** | volumetric 3D CT images (chest/abdomen), free-text radiology reports and instructions |
+| **Code** | [github.com/NVIDIA-Medtech/NV-Reason-CT](https://github.com/NVIDIA-Medtech/NV-Reason-CT) (OpenMDW-1.1 license, research-only, not a medical device) |
+| **Weights** | Hugging Face, nvidia/NV-Reason-CT (per the repository README) |
+
+**Reported performance**
+
+| Benchmark | Metric | Value | Note |
+| --- | --- | --- | --- |
+| CT-RATE abnormality classification (18 findings) | Macro-F1 / Macro-AUROC | 0.614 / 0.871 |  |
+| CT-RATE report generation | GREEN score | 0.407 |  |
+| External validation, Merlin (abdominal) | Macro-F1 | 0.551 |  |
+| External validation, RAD-ChestCT | Macro-F1 | 0.598 |  |
+| Reader study | interpretation/reporting time | ~50% reduction |  |
+
+</details>
+
+<a id="model-wilson-202609"></a>
+<details>
+<summary><b>WILSON</b> — a pathology foundation model framework for patient-level analysis and diagnostic text generation <i>(arXiv 202609)</i></summary>
+
+**[WILSON: a pathology foundation model framework for patient-level analysis and diagnostic text generation](https://arxiv.org/abs/2609.25123)**
+
+*arXiv* · 202609 · Saghir Alfasly & Hamid Tizhoosh
+
+| | |
+| --- | --- |
+| **Parameters** | ~133.7M per one secondary source; not independently confirmed from the primary paper text |
+| **Backbone** | Reported as a ConvNeXt-Base visual encoder producing a single composite, multi-magnification representation per whole slide (and per multi-slide patient case), paired with a text side for report alignment — architecture detail not independently confirmed from the primary paper text |
+| **Pre-training** | Represents each whole-slide image, and each multi-slide patient case, as one composite multi-magnification image rather than encoding thousands of tiles separately; trained using the corresponding pathology report as supervisory text (vision-language alignment), evaluated zero-shot on internal cohorts, then fine-tuned end-to-end on a smaller labeled cohort for specific subtyping/grading tasks. |
+| **Training data** | Approximately 189,000 whole slides from Mayo Clinic, spanning 42 organs and 829 diagnostic entities, with paired pathology reports; a separate fine-tuning cohort of 508 triple-negative breast cancer (TNBC) cases |
+| **Downstream tasks** | Zero-shot case-level diagnostic classification; fine-tuned histologic subtyping and stromal tumor-infiltrating-lymphocyte (TIL) grading in TNBC; diagnostic text retrieval; report/caption generation. |
+| **Modalities** | histopathology (composite whole-slide images), paired pathology report text |
+| **Code** | Not publicly available as of this preprint |
+
+**Reported performance**
+
+| Benchmark | Metric | Value | Note |
+| --- | --- | --- | --- |
+| Case-level diagnostic classification (zero-shot) | macro-F1 | 0.52 | vs. 0.38 for a dedicated case-level baseline |
+| Efficiency vs. larger slide-level foundation models | compute | 272–2,155x lower | while matching models up to 9.4x larger |
+| Diagnostic-text retrieval | recall@1 | 75.6% | vs. 58.1% for the PRISM baseline model |
+| TNBC fine-tuning, subtyping / TIL grading | macro-F1 improvement | +0.16 / +0.11 | after fine-tuning on the 508-case TNBC cohort |
+
+Note: this is an unreviewed preprint. Unlike other preprints already in this catalogue, neither author has an identified Nature-portfolio publication (their prior work is concentrated in Medical Image Analysis, IEEE journals, and Mayo Clinic Proceedings Digital Health) — included here at the maintainer's explicit request despite not clearing the track-record bar otherwise applied to preprints in this file.
+
+</details>
 
 <a id="model-ofm-202608"></a>
 <details>
@@ -515,7 +607,7 @@ Click a model to expand its record.
 
 | | |
 | --- | --- |
-| **Parameters** | ~1B (unconfirmed) |
+| **Parameters** | ~1B |
 | **Backbone** | Transformer fusing three frozen pretrained foundation encoders — Llama-3.2 (text), V-JEPA 2 (video), Wav2Vec-BERT (audio) |
 | **Pre-training** | frozen encoders, supervised fusion<br>The three backbone encoders (Llama-3.2, V-JEPA 2, Wav2Vec-BERT) are used frozen from their own independent pretraining; only TRIBE's fusion transformer is trained, via supervised regression against recorded whole-brain (1000-parcel) fMRI BOLD signal — this paper performs no new self-supervised pretraining. |
 | **Training data** | Courtois NeuroMod dataset<br>fMRI recordings across ~700 individuals |
