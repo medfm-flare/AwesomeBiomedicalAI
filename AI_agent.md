@@ -4,42 +4,64 @@ Agentic, autonomous and tool-using AI systems.
 
 **Maintainer:** @[Meng Wei](https://weimengmeng1999.github.io/meng-wei.github.io/) @[ Feng Lan](https://ai-healthcare-portfolio.hushed-dove-3131.chatgpt.site)
 
-**28 entries** · [Back to index](README.md)
+**30 entries** · [Back to index](README.md)
 
 | Date | Model | Venue | Pre-training | Data usage | Downstream tasks |
 | --- | --- | --- | --- | --- | --- |
-| 2026-09 | MutexaGPT [[details]](#model-mutexagpt-202609) [[paper card]](paper_cards/01_2026-09_MutexaGPT/paper-card.md) | Nat. Comput. Sci. | training-free multi-agent orchestration | 600 methyltransferase variants (retrospective eval); WT + 10 amylase linker variants (prospective experimental eval) | enzyme variant design, high-throughput molecular simulation, substrate-specificity engineering, cold-adaptation engineering |
-| 2026-09 | On-Premise Medical AI Agent [[details]](#model-on-premise-medical-ai-agent-202609) [[paper card]](paper_cards/02_2026-09_On-Premise_Medical_AI_Agent/paper-card.md) | Nat. Med. | training-free; open-weight LLM comparison | MIRA-v2 (551), CDM (2,400), VivaBench (990) (eval); 181 cases physician-adjudicated | simulated diagnosis, decision-time reliability estimation, selective-autonomy routing |
-| 2026-09 | AI-TEC [[details]](#model-ai-tec-202609) [[paper card]](paper_cards/03_2026-09_AI-TEC/paper-card.md) | Nat. Med. | local fine-tuning + iterative feedback | 26,839 CFPs (local tuning); 472 + 348 CFPs (prospective eval); early single-center deployment monitoring | pre-consultation, ophthalmic triage, CFP classification, workflow integration |
-| 2026-09 | MoChiAgent [[details]](#model-mochiagent-202609) [[paper card]](paper_cards/04_2026-09_MoChiAgent/paper-card.md) | Nat. Med. | self-supervised masked-feature pretraining; supervised multi-task fine-tuning | 1.46M maternal/infant participants, 4.40M visits (development); 90.2K participants (external eval); 25 cases + 6 specialists (agent pilot) | maternal and infant disease prediction, biological-age estimation, transgenerational risk stratification, evidence-grounded clinical reporting +1 |
-| 2026-07 | Multi-Agent Architectures [[details]](#model-multi-agent-architectures-202607) [[paper card]](paper_cards/05_2026-07_Multi-Agent_Architectures/paper-card.md) | Nat. Mach. Intell. | N/A | 6 benchmarks (eval) | benchmarking, agent coordination |
-| 2026-07 | AI X-ray Scientist [[details]](#model-ai-x-ray-scientist-202607) [[paper card]](paper_cards/06_2026-07_AI_X-ray_Scientist/paper-card.md) | Nat. Mach. Intell. | training-free | — | X-ray sample alignment, closed-loop experimentation |
-| 2026-06 | MIRA [[details]](#model-mira-202606) [[paper card]](paper_cards/07_2026-06_MIRA/paper-card.md) | Nature | training-free | 500+ ED cases (eval) | history-taking, diagnosis, treatment planning +2 |
-| 2026-06 | AMIE [[details]](#model-amie-202606) [[paper card]](paper_cards/08_2026-06_AMIE/paper-card.md) | Nature | training-free | RxQA + 100 cases (eval) | disease management reasoning, medication selection |
-| 2026-05 | Co-Scientist [[details]](#model-co-scientist-202605) [[paper card]](paper_cards/09_2026-05_Co-Scientist/paper-card.md) | Nature | test-time compute scaling | — | hypothesis generation, research proposals |
-| 2026-05 | Robin [[details]](#model-robin-202605) [[paper card]](paper_cards/10_2026-05_Robin/paper-card.md) | Nature | training-free | — | hypothesis generation, assay selection, candidate proposal +1 |
-| 2026-05 | ERA [[details]](#model-era-202605) [[paper card]](paper_cards/11_2026-05_ERA/paper-card.md) | Nature | tree search | — | bioinformatics method discovery, epidemiological forecasting |
-| 2026-05 | CIPHER [[details]](#model-cipher-202605) [[paper card]](paper_cards/12_2026-05_CIPHER/paper-card.md) | Nat. Commun. | N/A | — | process monitoring, autonomous machine control |
-| 2026-05 | Autonomous Interaction [[details]](#model-autonomous-interaction-202605) [[paper card]](paper_cards/13_2026-05_Autonomous_Interaction/paper-card.md) | Nat. Commun. | N/A | — | multi-robot task negotiation, dynamic team coordination |
-| 2026-04 | SPARK [[details]](#model-spark-202604) [[paper card]](paper_cards/14_2026-04_SPARK/paper-card.md) | Nat. Med. | training-free (agent); pretrained preprocessing models | 5.4K patients (eval) | biomarker discovery, risk stratification, spatial biology +2 |
-| 2026-04 | PhenoAssistant [[details]](#model-phenoassistant-202604) [[paper card]](paper_cards/15_2026-04_PhenoAssistant/paper-card.md) | Nat. Commun. | training-free | — | phenotype extraction, data visualization, model training |
-| 2026-03 | BioMedAgent [[details]](#model-biomedagent-202603) [[paper card]](paper_cards/16_2026-03_BioMedAgent/paper-card.md) | Nat. Biomed. Eng. | N/A | — | bioinformatics analysis |
-| 2026-03 | AI Scientist [[details]](#model-ai-scientist-202603) [[paper card]](paper_cards/17_2026-03_AI_Scientist/paper-card.md) | Nature | N/A | — | general research automation |
-| 2026-02 | DeepRare [[details]](#model-deeprare-202602) [[paper card]](paper_cards/18_2026-02_DeepRare/paper-card.md) | Nature | training-free | 9 datasets, 2.9K diseases (eval) | rare disease diagnosis, traceable reasoning |
-| 2026-01 | PHIA [[details]](#model-phia-202601) [[paper card]](paper_cards/19_2026-01_PHIA/paper-card.md) | Nat. Commun. | N/A | 30K users, synthetic (eval) | wearable-data QA, anomaly detection |
-| 2026-01 | BioDSA [[details]](#model-biodsa-202601) [[paper card]](paper_cards/20_2026-01_BioDSA/paper-card.md) | Nat. Biomed. Eng. | N/A | — | biomedical data science analysis |
-| 2025-12 | SciSciGPT [[details]](#model-sciscigpt-202512) [[paper card]](paper_cards/21_2025-12_SciSciGPT/paper-card.md) | Nat. Comput. Sci. | training-free | — | literature analysis, science-of-science workflows |
-| 2025-12 | CASSIA [[details]](#model-cassia-202512) [[paper card]](paper_cards/22_2025-12_CASSIA/paper-card.md) | Nat. Commun. | training-free | 970+ cell populations (eval) | cell type annotation, quality control |
-| 2025-10 | AILA [[details]](#model-aila-202510) [[paper card]](paper_cards/23_2025-10_AILA/paper-card.md) | Nat. Commun. | N/A | 100 AFM tasks (eval) | AFM calibration, mechanical property measurement +2 |
-| 2025-10 | AgentMD [[details]](#model-agentmd-202510) [[paper card]](paper_cards/24_2025-10_AgentMD/paper-card.md) | Nat. Commun. | training-free | RiskQA + 698 ED notes (eval) | clinical risk calculator curation, risk prediction |
-| 2025-09 | MAP [[details]](#model-map-202509) [[paper card]](paper_cards/25_2025-09_MAP/paper-card.md) | Nat. Commun. | training-free | PlanBench + planning tasks (eval) | multi-step planning, task decomposition |
-| 2025-08 | SciToolAgent [[details]](#model-scitoolagent-202508) [[paper card]](paper_cards/26_2025-08_SciToolAgent/paper-card.md) | Nat. Comput. Sci. | training-free | — | multi-tool scientific workflow orchestration |
-| 2025-07 | Virtual Lab [[details]](#model-virtual-lab-202507) [[paper card]](paper_cards/27_2025-07_Virtual_Lab/paper-card.md) | Nature | training-free | — | nanobody design, binding-profile evaluation |
-| 2025-06 | Oncology AI Agent [[details]](#model-oncology-ai-agent-202506) [[paper card]](paper_cards/28_2025-06_Oncology_AI_Agent/paper-card.md) | Nat. Cancer | training-free (agent); pretrained tool models | 20 patient cases (eval) | oncology decision support, tool selection +1 |
+| 2026-09 | Paper2Agent [[details]](#model-paper2agent-202609) | Nature | training-free multi-agent orchestration | AlphaGenome, Scanpy, and TISSUE case studies; original and novel query evaluations | paper-to-MCP conversion, workflow reproduction, scientific queries, cross-paper analysis |
+| 2026-09 | MutexaGPT [[details]](#model-mutexagpt-202609) | Nat. Comput. Sci. | training-free multi-agent orchestration | 600 methyltransferase variants (retrospective eval); WT + 10 amylase linker variants (prospective experimental eval) | enzyme variant design, high-throughput molecular simulation, substrate-specificity engineering, cold-adaptation engineering |
+| 2026-09 | On-Premise Medical AI Agent [[details]](#model-on-premise-medical-ai-agent-202609) | Nat. Med. | training-free; open-weight LLM comparison | MIRA-v2 (551), CDM (2,400), VivaBench (990) (eval); 181 cases physician-adjudicated | simulated diagnosis, decision-time reliability estimation, selective-autonomy routing |
+| 2026-09 | AI-TEC [[details]](#model-ai-tec-202609) | Nat. Med. | local fine-tuning + iterative feedback | 26,839 CFPs (local tuning); 472 + 348 CFPs (prospective eval); early single-center deployment monitoring | pre-consultation, ophthalmic triage, CFP classification, workflow integration |
+| 2026-09 | US-Agent [[details]](#model-us-agent-202609) | Nat. Commun. | ultrasound foundation model; task-specific VLM training | 9,189 internal cases (train/test); 1,704 and 108 external cases (eval) | ultrasound finding classification, report generation, cholecystectomy decision support |
+| 2026-09 | MoChiAgent [[details]](#model-mochiagent-202609) | Nat. Med. | self-supervised masked-feature pretraining; supervised multi-task fine-tuning | 1.46M maternal/infant participants, 4.40M visits (development); 90.2K participants (external eval); 25 cases + 6 specialists (agent pilot) | maternal and infant disease prediction, biological-age estimation, transgenerational risk stratification, evidence-grounded clinical reporting +1 |
+| 2026-07 | Multi-Agent Architectures [[details]](#model-multi-agent-architectures-202607) | Nat. Mach. Intell. | N/A | 6 benchmarks (eval) | benchmarking, agent coordination |
+| 2026-07 | AI X-ray Scientist [[details]](#model-ai-x-ray-scientist-202607) | Nat. Mach. Intell. | training-free | — | X-ray sample alignment, closed-loop experimentation |
+| 2026-06 | MIRA [[details]](#model-mira-202606) | Nature | training-free | 500+ ED cases (eval) | history-taking, diagnosis, treatment planning +2 |
+| 2026-06 | AMIE [[details]](#model-amie-202606) | Nature | training-free | RxQA + 100 cases (eval) | disease management reasoning, medication selection |
+| 2026-05 | Co-Scientist [[details]](#model-co-scientist-202605) | Nature | test-time compute scaling | — | hypothesis generation, research proposals |
+| 2026-05 | Robin [[details]](#model-robin-202605) | Nature | training-free | — | hypothesis generation, assay selection, candidate proposal +1 |
+| 2026-05 | ERA [[details]](#model-era-202605) | Nature | tree search | — | bioinformatics method discovery, epidemiological forecasting |
+| 2026-05 | CIPHER [[details]](#model-cipher-202605) | Nat. Commun. | N/A | — | process monitoring, autonomous machine control |
+| 2026-05 | Autonomous Interaction [[details]](#model-autonomous-interaction-202605) | Nat. Commun. | N/A | — | multi-robot task negotiation, dynamic team coordination |
+| 2026-04 | SPARK [[details]](#model-spark-202604) | Nat. Med. | training-free (agent); pretrained preprocessing models | 5.4K patients (eval) | biomarker discovery, risk stratification, spatial biology +2 |
+| 2026-04 | PhenoAssistant [[details]](#model-phenoassistant-202604) | Nat. Commun. | training-free | — | phenotype extraction, data visualization, model training |
+| 2026-03 | BioMedAgent [[details]](#model-biomedagent-202603) | Nat. Biomed. Eng. | N/A | — | bioinformatics analysis |
+| 2026-03 | AI Scientist [[details]](#model-ai-scientist-202603) | Nature | N/A | — | general research automation |
+| 2026-02 | DeepRare [[details]](#model-deeprare-202602) | Nature | training-free | 9 datasets, 2.9K diseases (eval) | rare disease diagnosis, traceable reasoning |
+| 2026-01 | PHIA [[details]](#model-phia-202601) | Nat. Commun. | N/A | 30K users, synthetic (eval) | wearable-data QA, anomaly detection |
+| 2026-01 | BioDSA [[details]](#model-biodsa-202601) | Nat. Biomed. Eng. | N/A | — | biomedical data science analysis |
+| 2025-12 | SciSciGPT [[details]](#model-sciscigpt-202512) | Nat. Comput. Sci. | training-free | — | literature analysis, science-of-science workflows |
+| 2025-12 | CASSIA [[details]](#model-cassia-202512) | Nat. Commun. | training-free | 970+ cell populations (eval) | cell type annotation, quality control |
+| 2025-10 | AILA [[details]](#model-aila-202510) | Nat. Commun. | N/A | 100 AFM tasks (eval) | AFM calibration, mechanical property measurement +2 |
+| 2025-10 | AgentMD [[details]](#model-agentmd-202510) | Nat. Commun. | training-free | RiskQA + 698 ED notes (eval) | clinical risk calculator curation, risk prediction |
+| 2025-09 | MAP [[details]](#model-map-202509) | Nat. Commun. | training-free | PlanBench + planning tasks (eval) | multi-step planning, task decomposition |
+| 2025-08 | SciToolAgent [[details]](#model-scitoolagent-202508) | Nat. Comput. Sci. | training-free | — | multi-tool scientific workflow orchestration |
+| 2025-07 | Virtual Lab [[details]](#model-virtual-lab-202507) | Nature | training-free | — | nanobody design, binding-profile evaluation |
+| 2025-06 | Oncology AI Agent [[details]](#model-oncology-ai-agent-202506) | Nat. Cancer | training-free (agent); pretrained tool models | 20 patient cases (eval) | oncology decision support, tool selection +1 |
 
 ## Details
 
 Click a model to expand its record.
+
+<a id="model-paper2agent-202609"></a>
+<details>
+<summary><b>Paper2Agent</b> — Reimagining research papers as interactive and reliable AI agents <i>(Nature 2026-09)</i></summary>
+
+**[Reimagining research papers as interactive and reliable AI agents](https://www.nature.com/articles/s41586-026-11044-y)**
+
+*Nature* · 2026-09 · Jiacheng Miao, Joe R. Davis, Yaohui Zhang, Jonathan K. Pritchard & James Zou
+
+| | |
+| --- | --- |
+| **Backbone** | A central agent coordinates specialist agents that inspect a paper and its code. They build and test a Model Context Protocol (MCP) server. |
+| **Pre-training** | `training-free multi-agent orchestration`<br>The paper presents a workflow. It does not train a new foundation model. |
+| **Data usage** | Case studies use AlphaGenome, Scanpy, and TISSUE. The authors test reproduction of published workflows and new scientific queries. |
+| **Downstream tasks** | `paper-to-MCP conversion`, `workflow reproduction`, `scientific queries`, `cross-paper analysis`<br>The system exposes methods as MCP tools and lets agents execute analyses through natural-language requests. |
+| **Modalities** | `paper text`, `code`, `research data` |
+| **Code** | [github.com/jmiao24/Paper2Agent](https://github.com/jmiao24/Paper2Agent) |
+| **Evaluation boundary** | Results depend on usable code and documentation. The authors report that some repositories could not be converted. Human researchers remain responsible for open-ended scientific conclusions. |
+
+</details>
 
 <a id="model-mutexagpt-202609"></a>
 <details>
@@ -97,6 +119,26 @@ Click a model to expand its record.
 | **Downstream tasks** | `pre-consultation`, `ophthalmic triage`, `CFP classification`, `workflow integration`<br>Macro-AUROC increased from 0.7996 to 0.9383 after expert-reviewed data were used, while examination-level use changed from 25.7% to 3.8% and then 23.0% across reported snapshots. |
 | **Modalities** | `text`, `color fundus photography`, `structured clinical data` |
 | **Evaluation boundary** | This is a Comment and early single-center implementation report, not a controlled end-to-end evaluation. The AUROC applies to the CFP component, only two agents are documented as deployed, and decision impact and patient outcomes are not reported. |
+
+</details>
+
+<a id="model-us-agent-202609"></a>
+<details>
+<summary><b>US-Agent</b> — A multitask framework for automated multi-frame right upper quadrant ultrasound interpretation and clinical decision support <i>(Nat. Commun. 2026-09)</i></summary>
+
+**[A multitask framework for automated multi-frame right upper quadrant ultrasound interpretation and clinical decision support](https://www.nature.com/articles/s41467-026-77498-w)**
+
+*Nature Communications* · 2026-09 · Haiman Guo, Cheng-Yi Li, Yuli Wang, Robin Wang, Yuwei Dai, et al.
+
+| | |
+| --- | --- |
+| **Backbone** | The workflow combines an ultrasound foundation model, a vision-language report model, and a decision module. It analyzes right upper quadrant ultrasound frames. |
+| **Pre-training** | `ultrasound foundation model`, `task-specific VLM training`<br>The study evaluates trained models for finding classification and report generation. |
+| **Data usage** | The internal dataset includes 9,189 cases and 594,099 images. External datasets include 1,704 cases and 108 cases. |
+| **Downstream tasks** | `16-finding classification`, `diagnostic report generation`, `cholecystectomy decision support`<br>The decision module uses imaging findings, reports, and clinical data. |
+| **Modalities** | `multi-frame ultrasound`, `radiology reports`, `clinical data` |
+| **Code** | [github.com/Mikeghm/ruq-ultrasound-vlm](https://github.com/Mikeghm/ruq-ultrasound-vlm) |
+| **Evaluation boundary** | Internal and external cohorts support an imaging workflow evaluation. The study does not assess dental surgery video recognition or prospective patient outcomes. |
 
 </details>
 
