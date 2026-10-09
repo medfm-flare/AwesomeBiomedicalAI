@@ -4,119 +4,59 @@ Agentic, autonomous and tool-using AI systems.
 
 **Maintainer:** @[Meng Wei](https://weimengmeng1999.github.io/meng-wei.github.io/) @[ Feng Lan](https://ai-healthcare-portfolio.hushed-dove-3131.chatgpt.site)
 
-**31 entries** · [Back to index](README.md)
+**28 entries** · [Back to index](README.md)
 
 | Date | Model | Venue | Pre-training | Data usage | Downstream tasks |
 | --- | --- | --- | --- | --- | --- |
-| 2026-09 | MutexaGPT [[details]](#model-mutexagpt-202609) | Nat. Comput. Sci. | training-free multi-agent orchestration | 600 methyltransferase variants (retrospective eval); WT + 10 amylase linker variants (prospective experimental eval) | enzyme variant design, high-throughput molecular simulation, substrate-specificity engineering, cold-adaptation engineering |
-| 2026-09 | MoChiAgent [[details]](#model-mochiagent-202609) [[paper card]](https://github.com/medfm-flare/AwesomeBiomedicalAI/tree/paper-cards-20260908/paper_cards/01_2026-09_MoChiAgent/paper-card.md) | Nat. Med. | self-supervised masked-feature pretraining; supervised multi-task fine-tuning | 1.46M maternal/infant participants, 4.40M visits (development); 90.2K participants (external eval); 25 cases + 6 specialists (agent pilot) | maternal and infant disease prediction, biological-age estimation, transgenerational risk stratification, evidence-grounded clinical reporting +1 |
-| 2026-08 | Co-Scientist (Real-World) [[details]](#model-co-scientist-real-world-202608) | arXiv (Google) | training-free multi-agent extension | real-world lab + HealthBench + 450 expert reviews (eval) | closed-loop scientific research, biology experiments, clinical-AI architecture discovery +2 |
-| 2026-08 | CoDaS [[details]](#model-codas-202608) | arXiv (Google Research) | training-free multi-agent orchestration | 9,279 participant-observations across 3 cohorts (eval) | digital biomarker discovery, statistical validation, wearable health analysis +2 |
-| 2026-07 | Multi-Agent Architectures [[details]](#model-multi-agent-architectures-202607) [[paper card]](https://github.com/medfm-flare/AwesomeBiomedicalAI/tree/paper-cards-20260908/paper_cards/04_2026-07_Multi-Agent_Architectures/paper-card.md) | Nat. Mach. Intell. | N/A | 6 benchmarks (eval) | benchmarking, agent coordination |
-| 2026-07 | Biomni [[details]](#model-biomni-202607) [[paper card]](https://github.com/medfm-flare/AwesomeBiomedicalAI/tree/paper-cards-20260908/paper_cards/05_2026-07_Biomni/paper-card.md) | Science | RL fine-tuning, training-free tool use | agent trajectories (train); 433 instances (eval) | CRISPR planning, scRNA-seq annotation, ADMET prediction +2 |
+| 2026-10 | G-Frame / OmniChem [[details]](#model-g-frame-202610) | Nat. Commun. | continued pretraining; full-parameter SFT; adaptive multi-agent training | 5B-token chemistry corpus; 363,045 CoT chains; 199,589 QA pairs; 3 chemistry benchmarks (eval) | scientific data synthesis, chemistry reasoning, deep research, molecular design +1 |
+| 2026-07 | Multi-Agent Architectures [[details]](#model-multi-agent-architectures-202607) [[paper card]](https://github.com/medfm-flare/AwesomeBiomedicalAI/tree/ai_agent/paper_cards/02_2026-07_Multi-Agent_Architectures/paper-card.md) | Nat. Mach. Intell. | N/A | 6 benchmarks (eval) | benchmarking, agent coordination |
+| 2026-07 | Biomni [[details]](#model-biomni-202607) [[paper card]](https://github.com/medfm-flare/AwesomeBiomedicalAI/tree/ai_agent/paper_cards/03_2026-07_Biomni/paper-card.md) | Science | RL fine-tuning, training-free tool use | agent trajectories (train); 433 instances (eval) | CRISPR planning, scRNA-seq annotation, ADMET prediction +2 |
 | 2026-07 | AI X-ray Scientist [[details]](#model-ai-x-ray-scientist-202607) | Nat. Mach. Intell. | training-free | — | X-ray sample alignment, closed-loop experimentation |
-| 2026-06 | MIRA [[details]](#model-mira-202606) [[paper card]](https://github.com/medfm-flare/AwesomeBiomedicalAI/tree/paper-cards-20260908/paper_cards/07_2026-06_MIRA/paper-card.md) | Nature | training-free | 500+ ED cases (eval) | history-taking, diagnosis, treatment planning +2 |
-| 2026-06 | AMIE [[details]](#model-amie-202606) [[paper card]](https://github.com/medfm-flare/AwesomeBiomedicalAI/tree/paper-cards-20260908/paper_cards/08_2026-06_AMIE/paper-card.md) | Nature | training-free | RxQA + 100 cases (eval) | disease management reasoning, medication selection |
-| 2026-05 | Co-Scientist [[details]](#model-co-scientist-202605) [[paper card]](https://github.com/medfm-flare/AwesomeBiomedicalAI/tree/paper-cards-20260908/paper_cards/09_2026-05_Co-Scientist/paper-card.md) | Nature | test-time compute scaling | — | hypothesis generation, research proposals |
-| 2026-05 | Robin [[details]](#model-robin-202605) [[paper card]](https://github.com/medfm-flare/AwesomeBiomedicalAI/tree/paper-cards-20260908/paper_cards/10_2026-05_Robin/paper-card.md) | Nature | training-free | — | hypothesis generation, assay selection, candidate proposal +1 |
-| 2026-05 | ERA [[details]](#model-era-202605) [[paper card]](https://github.com/medfm-flare/AwesomeBiomedicalAI/tree/paper-cards-20260908/paper_cards/11_2026-05_ERA/paper-card.md) | Nature | tree search | — | bioinformatics method discovery, epidemiological forecasting |
+| 2026-06 | MIRA [[details]](#model-mira-202606) [[paper card]](https://github.com/medfm-flare/AwesomeBiomedicalAI/tree/ai_agent/paper_cards/05_2026-06_MIRA/paper-card.md) | Nature | training-free | 500+ ED cases (eval) | history-taking, diagnosis, treatment planning +2 |
+| 2026-06 | AMIE [[details]](#model-amie-202606) [[paper card]](https://github.com/medfm-flare/AwesomeBiomedicalAI/tree/ai_agent/paper_cards/04_2026-06_AMIE/paper-card.md) | Nature | training-free | RxQA + 100 cases (eval) | disease management reasoning, medication selection |
+| 2026-05 | Co-Scientist [[details]](#model-co-scientist-202605) [[paper card]](https://github.com/medfm-flare/AwesomeBiomedicalAI/tree/ai_agent/paper_cards/07_2026-05_Co-Scientist/paper-card.md) | Nature | test-time compute scaling | — | hypothesis generation, research proposals |
+| 2026-05 | Robin [[details]](#model-robin-202605) [[paper card]](https://github.com/medfm-flare/AwesomeBiomedicalAI/tree/ai_agent/paper_cards/08_2026-05_Robin/paper-card.md) | Nature | training-free | — | hypothesis generation, assay selection, candidate proposal +1 |
+| 2026-05 | ERA [[details]](#model-era-202605) [[paper card]](https://github.com/medfm-flare/AwesomeBiomedicalAI/tree/ai_agent/paper_cards/09_2026-05_ERA/paper-card.md) | Nature | tree search | — | bioinformatics method discovery, epidemiological forecasting |
 | 2026-05 | CIPHER [[details]](#model-cipher-202605) | Nat. Commun. | N/A | — | process monitoring, autonomous machine control |
 | 2026-05 | Autonomous Interaction [[details]](#model-autonomous-interaction-202605) | Nat. Commun. | N/A | — | multi-robot task negotiation, dynamic team coordination |
-| 2026-04 | AlphaLab [[details]](#model-alphalab-202604) [[paper card]](https://github.com/medfm-flare/AwesomeBiomedicalAI/tree/paper-cards-20260908/paper_cards/14_2026-04_AlphaLab/paper-card.md) | Preprint | N/A | — | general research automation |
-| 2026-04 | SPARK [[details]](#model-spark-202604) [[paper card]](https://github.com/medfm-flare/AwesomeBiomedicalAI/tree/paper-cards-20260908/paper_cards/15_2026-04_SPARK/paper-card.md) | Nat. Med. | training-free (agent); pretrained preprocessing models | 5.4K patients (eval) | biomarker discovery, risk stratification, spatial biology +2 |
+| 2026-04 | AlphaLab [[details]](#model-alphalab-202604) [[paper card]](https://github.com/medfm-flare/AwesomeBiomedicalAI/tree/ai_agent/paper_cards/10_2026-04_AlphaLab/paper-card.md) | Preprint | N/A | — | general research automation |
+| 2026-04 | SPARK [[details]](#model-spark-202604) [[paper card]](https://github.com/medfm-flare/AwesomeBiomedicalAI/tree/ai_agent/paper_cards/13_2026-04_SPARK/paper-card.md) | Nat. Med. | training-free (agent); pretrained preprocessing models | 5.4K patients (eval) | biomarker discovery, risk stratification, spatial biology +2 |
 | 2026-04 | PhenoAssistant [[details]](#model-phenoassistant-202604) | Nat. Commun. | training-free | — | phenotype extraction, data visualization, model training |
-| 2026-03 | BioMedAgent [[details]](#model-biomedagent-202603) [[paper card]](https://github.com/medfm-flare/AwesomeBiomedicalAI/tree/paper-cards-20260908/paper_cards/17_2026-03_BioMedAgent/paper-card.md) | Nat. Biomed. Eng. | N/A | — | bioinformatics analysis |
-| 2026-03 | AI Scientist [[details]](#model-ai-scientist-202603) [[paper card]](https://github.com/medfm-flare/AwesomeBiomedicalAI/tree/paper-cards-20260908/paper_cards/18_2026-03_AI_Scientist/paper-card.md) | Nature | N/A | — | general research automation |
-| 2026-02 | PantheonOS [[details]](#model-pantheonos-202602) [[paper card]](https://github.com/medfm-flare/AwesomeBiomedicalAI/tree/paper-cards-20260908/paper_cards/19_2026-02_PantheonOS/paper-card.md) | bioRxiv | RL; integrated scFM pretraining (generative, masked gene prediction) | CELLxGENE subset (train) | gene panel design, signaling pathway mapping |
-| 2026-02 | DeepRare [[details]](#model-deeprare-202602) [[paper card]](https://github.com/medfm-flare/AwesomeBiomedicalAI/tree/paper-cards-20260908/paper_cards/20_2026-02_DeepRare/paper-card.md) | Nature | training-free | 9 datasets, 2.9K diseases (eval) | rare disease diagnosis, traceable reasoning |
-| 2026-01 | PHIA [[details]](#model-phia-202601) [[paper card]](https://github.com/medfm-flare/AwesomeBiomedicalAI/tree/paper-cards-20260908/paper_cards/21_2026-01_PHIA/paper-card.md) | Nat. Commun. | N/A | 30K users, synthetic (eval) | wearable-data QA, anomaly detection |
-| 2026-01 | BioDSA [[details]](#model-biodsa-202601) [[paper card]](https://github.com/medfm-flare/AwesomeBiomedicalAI/tree/paper-cards-20260908/paper_cards/22_2026-01_BioDSA/paper-card.md) | Nat. Biomed. Eng. | N/A | — | biomedical data science analysis |
+| 2026-03 | BioMedAgent [[details]](#model-biomedagent-202603) [[paper card]](https://github.com/medfm-flare/AwesomeBiomedicalAI/tree/ai_agent/paper_cards/15_2026-03_BioMedAgent/paper-card.md) | Nat. Biomed. Eng. | N/A | — | bioinformatics analysis |
+| 2026-03 | AI Scientist [[details]](#model-ai-scientist-202603) [[paper card]](https://github.com/medfm-flare/AwesomeBiomedicalAI/tree/ai_agent/paper_cards/16_2026-03_AI_Scientist/paper-card.md) | Nature | N/A | — | general research automation |
+| 2026-02 | PantheonOS [[details]](#model-pantheonos-202602) [[paper card]](https://github.com/medfm-flare/AwesomeBiomedicalAI/tree/ai_agent/paper_cards/19_2026-02_PantheonOS/paper-card.md) | bioRxiv | RL; integrated scFM pretraining (generative, masked gene prediction) | CELLxGENE subset (train) | gene panel design, signaling pathway mapping |
+| 2026-02 | DeepRare [[details]](#model-deeprare-202602) [[paper card]](https://github.com/medfm-flare/AwesomeBiomedicalAI/tree/ai_agent/paper_cards/20_2026-02_DeepRare/paper-card.md) | Nature | training-free | 9 datasets, 2.9K diseases (eval) | rare disease diagnosis, traceable reasoning |
+| 2026-01 | PHIA [[details]](#model-phia-202601) [[paper card]](https://github.com/medfm-flare/AwesomeBiomedicalAI/tree/ai_agent/paper_cards/23_2026-01_PHIA/paper-card.md) | Nat. Commun. | N/A | 30K users, synthetic (eval) | wearable-data QA, anomaly detection |
+| 2026-01 | BioDSA [[details]](#model-biodsa-202601) [[paper card]](https://github.com/medfm-flare/AwesomeBiomedicalAI/tree/ai_agent/paper_cards/24_2026-01_BioDSA/paper-card.md) | Nat. Biomed. Eng. | N/A | — | biomedical data science analysis |
 | 2025-12 | SciSciGPT [[details]](#model-sciscigpt-202512) | Nat. Comput. Sci. | training-free | — | literature analysis, science-of-science workflows |
 | 2025-12 | CASSIA [[details]](#model-cassia-202512) | Nat. Commun. | training-free | 970+ cell populations (eval) | cell type annotation, quality control |
-| 2025-10 | AILA [[details]](#model-aila-202510) [[paper card]](https://github.com/medfm-flare/AwesomeBiomedicalAI/tree/paper-cards-20260908/paper_cards/25_2025-10_AILA/paper-card.md) | Nat. Commun. | N/A | 100 AFM tasks (eval) | AFM calibration, mechanical property measurement +2 |
+| 2025-10 | AILA [[details]](#model-aila-202510) [[paper card]](https://github.com/medfm-flare/AwesomeBiomedicalAI/tree/ai_agent/paper_cards/27_2025-10_AILA/paper-card.md) | Nat. Commun. | N/A | 100 AFM tasks (eval) | AFM calibration, mechanical property measurement +2 |
 | 2025-10 | AgentMD [[details]](#model-agentmd-202510) | Nat. Commun. | training-free | RiskQA + 698 ED notes (eval) | clinical risk calculator curation, risk prediction |
 | 2025-09 | MAP [[details]](#model-map-202509) | Nat. Commun. | training-free | PlanBench + planning tasks (eval) | multi-step planning, task decomposition |
 | 2025-08 | SciToolAgent [[details]](#model-scitoolagent-202508) | Nat. Comput. Sci. | training-free | — | multi-tool scientific workflow orchestration |
-| 2025-07 | Virtual Lab [[details]](#model-virtual-lab-202507) [[paper card]](https://github.com/medfm-flare/AwesomeBiomedicalAI/tree/paper-cards-20260908/paper_cards/29_2025-07_Virtual_Lab/paper-card.md) | Nature | training-free | — | nanobody design, binding-profile evaluation |
+| 2025-07 | Virtual Lab [[details]](#model-virtual-lab-202507) [[paper card]](https://github.com/medfm-flare/AwesomeBiomedicalAI/tree/ai_agent/paper_cards/30_2025-07_Virtual_Lab/paper-card.md) | Nature | training-free | — | nanobody design, binding-profile evaluation |
 | 2025-06 | Oncology AI Agent [[details]](#model-oncology-ai-agent-202506) | Nat. Cancer | training-free (agent); pretrained tool models | 20 patient cases (eval) | oncology decision support, tool selection +1 |
 
 ## Details
 
 Click a model to expand its record.
 
-<a id="model-mutexagpt-202609"></a>
+<a id="model-g-frame-202610"></a>
 <details>
-<summary><b>MutexaGPT</b> — MutexaGPT: an intuition-to-design translator for physics-based enzyme engineering <i>(Nat. Comput. Sci. 2026-09)</i></summary>
+<summary><b>G-Frame / OmniChem</b> — Game theory driven multi-agent framework mitigates language model hallucination <i>(Nat. Commun. 2026-10)</i></summary>
 
-**[MutexaGPT: an intuition-to-design translator for physics-based enzyme engineering](https://www.nature.com/articles/s43588-026-01049-y)**
+**[Game theory driven multi-agent framework mitigates language model hallucination](https://www.nature.com/articles/s41467-026-78213-5)**
 
-*Nature Computational Science* · 2026-09 · Qianzhen Shao, Yinjie Zhong, Sebastian Stull, Xinchun Ran, Ning Ding, Kieran Nehil-Puleo, Ruizhe Yao, Han Xu & Zhongyue J. Yang
+*Nature Communications* · 2026-10 · Runzhe Liu, Biquan Bie, Zihao Wang, Yuchao Ma, Yexin Liu, Xinghai Li, Harry Yang, Wenbo Yang, Jinzhe Cao & Shengyang Tao
 
 | | |
 | --- | --- |
-| **Backbone** | Multi-LLM-agent system comprising QuestionAnalyzer, WorkPlanningBoard (MetricsPlanner and MutantPlanner), and ResultExplainer, integrated with EnzyHTP for autonomous high-throughput molecular modeling and simulation. |
-| **Pre-training** | `training-free multi-agent orchestration`<br>No new foundation model is trained; prompted LLM agents translate plain-English enzyme-engineering intuition into simulation plans, execute tool-backed workflows, and interpret results. |
-| **Data usage** | Retrospective cavity-engineering evaluation over a 600-variant halide methyltransferase library; prospective cold-adaptation evaluation of wild type and ten bidomain-amylase linker variants, with experimental activity assays for the two prioritized designs. Separate curated test cases evaluate the core agents. |
-| **Downstream tasks** | `enzyme variant design`, `high-throughput molecular simulation`, `substrate-specificity engineering`, `cold-adaptation engineering`<br>Clarifies underspecified design requests, maps intuition to physical metrics and mutation libraries, configures and executes molecular-dynamics workflows, ranks variants, explains limitations, and recommends follow-up experiments. The cavity campaign achieved a 40% hit rate (~4× enrichment); cold-adaptation variants improved relative activity by up to 3.7×. |
-| **Modalities** | `text`, `protein structure`, `molecular simulation data` |
-| **Code** | [github.com/ChemBioHTP/EnzyHTP-GPT](https://github.com/ChemBioHTP/EnzyHTP-GPT/) |
-| **Evaluation boundary** | Cavity-engineering validation is retrospective against a previously characterized library; prospective wet-lab testing covers two prioritized linker variants. The system is an automation and intuition-translation platform rather than a learned predictive model. |
-
-</details>
-
-<a id="model-mochiagent-202609"></a>
-<details>
-<summary><b>MoChiAgent</b> — Prediction of maternal and infant outcomes from longitudinal electronic health records with a Mother-Child AI agent <i>(Nat. Med. 2026-09)</i></summary>
-
-**[Prediction of maternal and infant outcomes from longitudinal electronic health records with a Mother-Child AI agent](https://www.nature.com/articles/s41591-026-04694-y)**
-
-*Nature Medicine* · 2026-09 · Sian Liu, Wenxin Zheng, Jin Kang, Tianyi Xu, Siming Chen, Gen Li, et al.
-
-| | |
-| --- | --- |
-| **Backbone** | Modular mother-child clinical AI agent built around MoChiFormer, which combines a visit-level Transformer encoder with a GPT-2-style causal temporal decoder. The agent exposes imputation, biological-age and disease-prediction, visual-interpretability, and knowledge-search tools through an LLM-based routing and report interface. |
-| **Pre-training** | `self-supervised masked-feature pretraining`, `supervised multi-task fine-tuning`<br>MoChiFormer is pretrained for 200 epochs by reconstructing masked categorical and numerical EHR features with a variational regularizer, then fine-tuned for 100 epochs on age, current/future disease, and disease-relation objectives. The interface layer is developed separately through prompt engineering and instruction-tuned few-shot examples. |
-| **Data usage** | Development data comprise 1,064,733 mothers (3,682,209 visits) and 393,375 infants (719,390 visits) from two Chinese hospitals, with patient-level training, tuning, and held-out internal splits. External evaluation uses 75,816 mothers (263,452 visits) and 14,418 infants (23,192 visits) from a third hospital. A separate agent-interface pilot evaluates 25 enriched unseen cases with six blinded perinatal specialists. |
-| **Downstream tasks** | `maternal and infant disease diagnosis`, `future disease prediction`, `biological and developmental age estimation`, `phenotype and trajectory discovery`, `transgenerational risk stratification`, `evidence-grounded clinical reporting`<br>The model restores missing EHR measurements, estimates fetal, gestational, and infant age, predicts current and future maternal/infant outcomes, identifies risk-associated patient clusters, and combines predictions with traceable literature and structured clinical recommendations. |
-| **Modalities** | `longitudinal EHR`, `laboratory tests`, `structured clinical events`, `text` |
-| **Code** | [github.com/peterzheng98/mochiagent](https://github.com/peterzheng98/mochiagent) |
-| **Evaluation boundary** | Large-cohort evidence primarily validates the MoChiFormer prediction engine. The complete LLM/tool interface has only a 25-case offline pilot, and the reported LLM baselines were evaluated without tool access; this is not prospective clinical validation. |
-
-</details>
-
-<a id="model-co-scientist-real-world-202608"></a>
-<details>
-<summary><b>Co-Scientist (Real-World)</b> — Accelerating Scientific Research with Gemini in the Real-World <i>(arXiv / Google 2026-08)</i></summary>
-
-**[Accelerating Scientific Research with Gemini in the Real-World](https://arxiv.org/abs/2608.26701)**
-
-*arXiv / Google* · 2026-08 · Samuel Schmidgall, Xiaokai Zhu, Marian Shaw, Lin Yang, Valentin Liévin, Jingyun Yang, Yuchen Zhuang, Tim Strother, Alex Bijamov, Min Woo Sun, Anil Palepu, Justin Chen, David Steiner, Jacqueline Shreibati, Wei-Hung Weng, Yilin Zhao, Xingjian Hu, Nicholas Zahn, Sadhya Garg, Julia Kirby, Yuxiang Gan, Jiaoli Li, Divy Thakkar, Shekoofeh Azizi, David Racz, Juraj Gottweis, Vivek Natarajan, Chenglin Wu, Tal Danino, Keran Rong, Haozhe Wang, Benoit Schillings, Yong Cheng, Quoc V. Le & Tao Tu
-
-| | |
-| --- | --- |
-| **Backbone** | Extension of Google's Gemini-based Co-Scientist multi-agent system for execution-grounded, end-to-end scientific research. The paper reports use of Gemini 3 Deep Think for rapid lab-in-the-loop execution in experimental settings. |
-| **Pre-training** | `training-free multi-agent extension`<br>The work extends and validates the existing Co-Scientist agent system rather than introducing a newly pretrained foundation model. |
-| **Data usage** | Real-world and expert-evaluation settings spanning materials science, biology, and computer science: semi-automated laboratory experiments, sparse imaging measurements for engineered *E. coli*, HealthBench Hard/Professional, and a double-blind evaluation with 30 domain experts across 450 paper reviews. |
-| **Downstream tasks** | `closed-loop scientific research`, `lab-in-the-loop experimentation`, `biology phenotype prediction`, `clinical-AI architecture discovery`, `scientific manuscript generation`<br>Co-Scientist designed and iterated real-world experimental workflows, predicted emergent swarming phenotypes of engineered *E. coli* from sparse imaging data, autonomously discovered an inference-time scaling architecture that outperformed six frontier models on HealthBench while reducing potential clinical harm, and generated full scientific papers evaluated by domain experts. |
-| **Modalities** | `text`, `code`, `scientific measurements`, `images`, `laboratory control` |
-
-</details>
-
-<a id="model-codas-202608"></a>
-<details>
-<summary><b>CoDaS</b> — AI Co-Data-Scientist for Biomarker Discovery via Wearable Sensors <i>(Google Research / arXiv 2026-08)</i></summary>
-
-**[CoDaS: AI Co-Data-Scientist for Biomarker Discovery via Wearable Sensors](https://arxiv.org/abs/2604.14615)**
-
-*Google Research / arXiv* · 2026-08 · Yubin Kim, Salman Rahman, Samuel Schmidgall, Chunjong Park, A. Ali Heydari, Ahmed A. Metwally, et al.
-
-| | |
-| --- | --- |
-| **Backbone** | Multi-agent AI co-data-scientist coordinated by an Orchestrator agent, with specialized Scout, Hypotheses, Statistical/ML, Critic, Defender, Mechanism, Novelty, Strategy, and Report agents. The system uses Gemini 3.1 Pro Preview for research-intensive reasoning and code generation and Gemini 3 Flash Preview for repeated lower-latency tasks. |
-| **Pre-training** | `training-free multi-agent orchestration`<br>No new foundation model is trained; CoDaS organizes pretrained Gemini models and deterministic statistical/ML tools into a closed-loop scientific workflow with shared memory, adversarial review, leakage controls, and human oversight. |
-| **Data usage** | Evaluated across three wearable/clinical cohorts totaling 9,279 participant-observations: Digital Wellbeing (DWB), GLOBEM, and WEAR-ME, spanning mental-health and metabolic-disease settings. |
-| **Downstream tasks** | `digital biomarker discovery`, `hypothesis generation`, `statistical validation`, `wearable health analysis`, `scientific reporting`<br>Autonomously generates and prioritizes wearable-derived biomarker hypotheses, runs statistical and ML analyses, stress-tests candidates through adversarial Critic/Defender review, grounds mechanisms in literature, and assembles expert-reviewable scientific reports. CoDaS identified 41 candidate digital biomarkers for mental health and 25 for metabolic outcomes; adding CoDaS-derived features improved cross-validated prediction by ΔR² = 0.040 for depression and 0.021 for insulin resistance. |
-| **Modalities** | `wearable time series`, `clinical labs`, `survey data`, `app data`, `text` |
+| **Backbone** | G-Frame is an adaptive multi-agent framework combining cooperative team-game task agents with a Bayesian-game decisional agent. It coordinates local or API-hosted LLMs, command-line tools and real-time system feedback to automate scientific-corpus processing, reasoning-data synthesis and adaptive model training. The framework was used to build OmniChem, a 7B chemistry reasoning model based on Qwen2.5-7B-Instruct. |
+| **Pre-training** | `continued pretraining`, `full-parameter supervised fine-tuning`, `adaptive multi-agent training`<br>A chemistry corpus is cleaned and mixed with general-domain data for continued pretraining; multi-agent pipelines generate chemistry chain-of-thought and question-answer data for full-parameter fine-tuning; a Bayesian-game agent then adjusts training policies using ChemJudge feedback. |
+| **Data usage** | A 5-billion-token pretraining corpus derived from approximately 500,000 chemistry articles and about 1,000 textbooks/monographs, plus C4 and Wikipedia; 363,045 chemistry reasoning chains and 199,589 question-answer pairs synthesized for training. Evaluation uses ChemJudge (471 expert-verified questions), ThChem 1.0/2.0 and ChemBench. |
+| **Downstream tasks** | `scientific data synthesis`, `chemistry reasoning`, `deep research`, `molecular design`, `synthesis planning`<br>Automates corpus cleaning, multi-agent reasoning-data generation and training control; supports literature-grounded reports and knowledge-graph QA; proposes molecular modifications for deep-red bioimaging and water solubility and plans a two-step lidocaine synthesis. OmniChem reduced hallucinations by 79.46% relative to its base model while approaching GPT-4o mini on chemistry benchmarks. |
+| **Modalities** | `text`, `chemical structures`, `scientific literature` |
+| **Evaluation boundary** | The strongest evidence concerns automated model construction and benchmarked chemistry reasoning. Molecular-design and synthesis-planning demonstrations are computational examples without prospective wet-lab validation, and parts of the report-quality evaluation use LLM-as-a-judge. |
 
 </details>
 
@@ -178,6 +118,7 @@ Click a model to expand its record.
 <a id="model-mira-202606"></a>
 <details>
 <summary><b>MIRA</b> — Towards autonomous medical artificial intelligence agents <i>(Nature 2026-06)</i></summary>
+
 **[Towards autonomous medical artificial intelligence agents](https://www.nature.com/articles/s41586-026-10675-5)**
 
 *Nature* · 2026-06 · [Dyke Ferber](https://scholar.google.com/citations?user=r7JtdUcAAAAJ&hl=en) & [Jakob Nikolas Kather](https://scholar.google.com/citations?user=w6-uFdEAAAAJ&hl=en)
@@ -276,7 +217,8 @@ Click a model to expand its record.
 
 *Nat. Commun.* · 2026-05 · Christos Margadji & [Sebastian W. Pattinson](https://scholar.google.com/citations?user=I8dpTJMAAAAJ&hl=en)
 
-| | || --- | --- |
+| | |
+| --- | --- |
 | **Backbone** | Vision-language-action (VLA) model (CIPHER: Control and Interpretation of Production via Hybrid Expertise and Reasoning) integrated with a process-expert regression model and retrieval-augmented generation, instantiated on a commercial-grade 3D printer |
 | **Pre-training** | `N/A`<br>Methods beyond the abstract are paywalled; training details of the process-expert regression component could not be confirmed from accessible sources. |
 | **Data usage** | —; no specific dataset confirmed from the accessible abstract. |
@@ -376,6 +318,7 @@ Click a model to expand its record.
 | **Downstream tasks** | `bioinformatics analysis`<br>Self-evolving, tool-aware biomedical data analysis. |
 | **Modalities** | `text`, `omics data` |
 | **Code** | [github.com/BOBQWERA/BioMedAgent](https://github.com/BOBQWERA/BioMedAgent) |
+
 </details>
 
 <a id="model-ai-scientist-202603"></a>
@@ -475,6 +418,7 @@ Click a model to expand its record.
 <a id="model-aila-202510"></a>
 <details>
 <summary><b>AILA</b> — Evaluating large language model agents for automation of atomic force microscopy <i>(Nat. Commun. 2025-10)</i></summary>
+
 **[Evaluating large language model agents for automation of atomic force microscopy](https://www.nature.com/articles/s41467-025-64105-7)**
 
 *Nat. Commun.* · 2025-10 · [Indrajeet Mandal](https://scholar.google.com/citations?user=v_747TcAAAAJ&hl=en) & [N. M. Anoop Krishnan](https://scholar.google.com/citations?user=fGnjHcEAAAAJ&hl=en)
@@ -573,7 +517,8 @@ Click a model to expand its record.
 *Nat. Comput. Sci.* · 2025-08 · Keyan Ding & Huajun Chen
 
 | | |
-| --- | --- || **Backbone** | LLM agent orchestrating 500+ scientific tools (web APIs, ML models, Python functions, knowledge databases) via a scientific-tool knowledge graph and graph-based retrieval-augmented generation, with a safety-checking module |
+| --- | --- |
+| **Backbone** | LLM agent orchestrating 500+ scientific tools (web APIs, ML models, Python functions, knowledge databases) via a scientific-tool knowledge graph and graph-based retrieval-augmented generation, with a safety-checking module |
 | **Pre-training** | `training-free`<br>No new model trained; tool selection and execution via knowledge-graph retrieval over an existing LLM. |
 | **Data usage** | —; tool knowledge graph spans biology, chemistry and materials science. |
 | **Downstream tasks** | `multi-tool scientific workflow orchestration`<br>Automated selection, composition and execution of hundreds of scientific tools across biology, chemistry and materials science research workflows. |
@@ -618,3 +563,4 @@ Click a model to expand its record.
 | **Modalities** | `text`, `histopathology`, `image` |
 
 </details>
+
