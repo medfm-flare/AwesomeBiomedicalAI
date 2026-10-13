@@ -4,7 +4,7 @@ CT, MRI, X-ray and fMRI foundation models.
 
 **Maintainer:** @Sumin Kim · [Judy Lyu](https://github.com/judylyu) 
 
-**33 entries** · **Last updated: 202609** · [Back to index](README.md)
+**34 entries** · **Last updated: 202610** · [Back to index](README.md)
 
 ## CT
 
@@ -12,6 +12,7 @@ Click a model to expand its record.
 
 | Date | Model | Venue | Model size | Training data | Pre-training | Downstream tasks |
 | --- | --- | --- | --- | --- | --- | --- |
+| 202609 | [nnFoundation](#model-nnfoundation-202609) | arXiv | 102M (CNN) | 2.1M volumes | MAE | segmentation, classification, report generation +2 |
 | 202609 | [RADAR](#model-radar-202609) | Science | _not published_ | none (15M anatomy–text pairs) | contrastive, vision-language | classification |
 | 202608 | [LiON](#model-lion-202608) | Nat. Med. | _n/a_ | 6.4K patients | _n/a_ | classification, segmentation |
 | 202607 | [NeuroVFM](#model-neurovfm-202607) | Nat. Med. | 85.8M | 5.24M volumes | JEPA | classification, report generation, retrieval +2 |
@@ -31,6 +32,28 @@ Click a model to expand its record.
 | 202507 | [Percival](#model-percival-202507) | medRxiv | 22M (DeiT-S enc.) | none (403K volume–report pairs) | InfoNCE, contrastive | retrieval, classification, prognosis |
 | 202501 | [CT-FM](#model-ct-fm-202501) | arXiv | 77.8M | 148K CT volumes | SimCLR | segmentation, triage, retrieval |
 | 202501 | [3DINO](#model-3dino-202501) | arXiv | 307M (ViT-L) | ~100K volumes | 3DINO, self-supervised | classification, segmentation |
+
+<a id="model-nnfoundation-202609"></a>
+<details>
+<summary><b>nnFoundation</b> — nnFoundation: 3D foundation models for radiology <i>(arXiv 202609)</i></summary>
+
+**[nnFoundation: 3D Foundation Models for Radiology](https://arxiv.org/abs/2609.26924)**
+
+*arXiv* · 202609 · [arXiv:2609.26924](https://arxiv.org/abs/2609.26924)
+
+| | |
+| --- | --- |
+| **Parameters** | 102M (CNN) |
+| **Parameter note** | 102M is the released nnFoundation CNN (ResEnc-L). The complementary nnFoundation ViT (Primus, depth 40, dim 1056) has 674M parameters. |
+| **Backbone** | Residual encoder CNN and Primus vision transformer |
+| **Pre-training** | `MAE`<br>Masked autoencoding on the full 2.1M-volume corpus; DINOv2 and contrastive objectives were compared on a 630K-volume proxy set. |
+| **Training data** | CT, MRI and PET<br>**2,100,000** volumes |
+| **Downstream tasks** | `segmentation`, `classification`, `report generation`, `retrieval`, `detection`<br>Evaluated on 108 tasks spanning CT, MRI and PET. |
+| **Modalities** | `CT`, `MRI`, `PET` |
+| **Code** | [github.com/MIC-DKFZ/nnssl](https://github.com/MIC-DKFZ/nnssl) |
+| **Weights** | [huggingface.co/MIC-DKFZ/nnFoundationCNN](https://huggingface.co/MIC-DKFZ/nnFoundationCNN) |
+
+</details>
 
 <a id="model-radar-202609"></a>
 <details>
@@ -426,6 +449,7 @@ Click a model to expand its record. Cross-modality models link to details under 
 
 | Date | Model | Venue | Model size | Training data | Pre-training | Downstream tasks |
 | --- | --- | --- | --- | --- | --- | --- |
+| 202609 | [nnFoundation](#model-nnfoundation-202609) | arXiv | 102M (CNN) | 2.1M volumes | MAE | segmentation, classification, report generation +2 |
 | 202607 | [NeuroVFM](#model-neurovfm-202607) | Nat. Med. | 85.8M | 5.24M volumes | JEPA | classification, report generation, retrieval +2 |
 | 202607 | [MARS](#model-mars-202607) | Nat. Biomed. Eng. | _not published_ | 336K volumes | MAE, contrastive learning | classification, segmentation, registration +2 |
 | 202605 | [MultitaskCognition](#model-multitaskcognition-202605) | Nat. Aging | _n/a_ | not stated (~3K studies) | supervised, transfer learning | classification, segmentation, regression +1 |
