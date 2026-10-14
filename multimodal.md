@@ -4,7 +4,7 @@ Cross-modal health models without a single dominant biomedical domain.
 
 **Maintainer:** @Yeonwoo Seo ([Homepage](https://yws0322.github.io/) / [LinkedIn](https://www.linkedin.com/in/yeonwoo-seo-8950372bb/) / [GitHub](https://github.com/yws0322))
 
-**24 entries** · **Last updated: 202610** · [Back to index](README.md)
+**25 entries** · **Last updated: 202610** · [Back to index](README.md)
 
 ## Paper overview
 
@@ -12,6 +12,7 @@ Click a model name to jump to its expandable record. A dash (—) means the valu
 
 | Date | Model | Venue | Model Size | Modalities | Pre-training | Downstream Tasks |
 | --- | --- | --- | --- | --- | --- | --- |
+| 202610 | [MedGemma](#model-medgemma-202610) | Nat. Med. | 4B / 27B (+ ~400M vision encoder) | Chest X-ray, dermatology, histopathology, retinal, CT, MRI, ultrasound + medical text | continued pretraining then post-training on medical tasks | image classification, VQA, report generation, agentic reasoning +1 |
 | 202610 | [B-RAD](#model-b-rad-202610) | npj Digit. Med. | — | Breast ultrasound images + clinical reports (text) | cross-modal retrieval-augmented alignment | biopsy-triage classification, BI-RADS assessment, lesion localization |
 | 202609 | [NV-Reason-CT](#model-nv-reason-ct-202609) | arXiv | ~4B+ (Qwen3.5-4B LLM plus vision encoder, total not disclosed) | Volumetric 3D CT + radiology report text | supervised fine-tuning then GRPO reinforcement learning | abnormality classification, report generation, Q&A, reasoning dialogue |
 | 202609 | [WILSON](#model-wilson-202609) | arXiv | ~133.7M | Histopathology (composite whole-slide images) + pathology report text | vision-language alignment against report text | diagnostic classification, subtyping, TIL grading, text retrieval |
@@ -40,6 +41,35 @@ Click a model name to jump to its expandable record. A dash (—) means the valu
 ## Details
 
 Click a model to expand its record.
+
+<a id="model-medgemma-202610"></a>
+<details>
+<summary><b>MedGemma</b> — An open vision-language model for diverse medical applications <i>(Nat. Med. 202610)</i></summary>
+
+**[An open vision-language model for diverse medical applications](https://www.nature.com/articles/s41591-026-04626-w)**
+
+*Nature Medicine* · 202610 · Andrew Sellergren & Lin Yang (Google) · [doi:10.1038/s41591-026-04626-w](https://doi.org/10.1038/s41591-026-04626-w)
+
+| | |
+| --- | --- |
+| **Parameters** | MedSigLIP vision encoder ~400M; MedGemma 4B variant 4B; MedGemma 27B / 27B-Text variants 27B |
+| **Backbone** | A Gemma 3 decoder-only language model (4B and 27B variants) paired with MedSigLIP, a SigLIP-derived vision encoder adapted for medical images |
+| **Pre-training** | Continued pretraining of the base Gemma 3 model, mixing the original general-purpose Gemma 3/SigLIP data replay with newly introduced medical image-text paired data, followed by post-training stages (supervised fine-tuning, and reinforcement learning for some evaluation tasks) on domain-specific medical tasks. |
+| **Training data** | A mixture of public datasets (including MIMIC-CXR, EyePACS, and the SCIN dermatology dataset) and private de-identified datasets (EHR-derived QA, dermatology and pathology multiple-choice QA sets, CT and MRI QA sets, internal histopathology and dermatology collections); exact patient/sample counts are not disclosed. |
+| **Downstream tasks** | Medical image classification, medical visual question answering, open-ended clinical reasoning, chest X-ray report generation, agentic clinical reasoning, anatomical localization. |
+| **Modalities** | chest X-ray, dermatology images, histopathology/digital pathology images, ophthalmology/retinal images, CT, MRI, ultrasound, medical text (clinical notes, EHR-derived QA) |
+| **Code** | [github.com/google-health/medgemma](https://github.com/google-health/medgemma) |
+| **Weights** | Hugging Face, google/medgemma-4b-it and sibling 27B / 27B-Text / MedSigLIP checkpoints |
+
+**Reported performance**
+
+| Benchmark | Metric | Value | Note |
+| --- | --- | --- | --- |
+| Medical image QA / CXR finding classification, vs. base Gemma 3 4B | relative improvement | +2.6–10% / +15.5–18.1% |  |
+| MIMIC-CXR report generation | RadGraph F1 | 30.3 | reported as state-of-the-art for this metric/dataset |
+| AgentClinic-MedQA / AgentClinic-MIMIC-IV, MedGemma 27B | agentic reasoning accuracy | Exceeded human-physician performance | +10.8% vs. base model |
+
+</details>
 
 <a id="model-b-rad-202610"></a>
 <details>
