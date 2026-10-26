@@ -4,10 +4,12 @@ Agentic, autonomous and tool-using AI systems.
 
 **Maintainer:** @[Meng Wei](https://weimengmeng1999.github.io/meng-wei.github.io/) @[ Feng Lan](https://ai-healthcare-portfolio.hushed-dove-3131.chatgpt.site)
 
-**32 entries** · [Back to index](README.md)
+**34 entries** · [Back to index](README.md)
 
 | Date | Model | Venue | Pre-training | Data usage | Downstream tasks |
 | --- | --- | --- | --- | --- | --- |
+| 2026-10 | PHA [[details]](#model-pha-202610) | Nature | training-free multi-agent orchestration over Gemini 2 | WEAR-ME participants (n=1,165); 11 benchmark tasks; >7,000 human annotations (eval) | wearable and laboratory data analysis, personalized health interpretation, interactive wellness coaching |
+| 2026-10 | Epilepsy AI Platform [[details]](#model-epilepsy-ai-platform-202610) | Nat. Med. | training-free LLM agent; feedback-based EEG detector fine-tuning | 13 inpatients in video-EEG monitoring (prospective prototype); patient-feedback adaptation tested offline | real-time EEG alerts, patient data queries, seizure feedback, adaptive detection |
 | 2026-09 | Quine [[details]](#model-quine-202609) | Microsoft Research | multimodal world-model training; agentic tool use | pancreatic-cancer cell-state and compound data; multiple wet-lab assays (eval) | cancer compound prioritization, experiment planning, closed-loop biological discovery |
 | 2026-09 | Claude ART Discovery Agents [[details]](#model-claude-art-discovery-agents-202609) | Anthropic Research | training-free multi-agent orchestration | ~1.9B protein clusters; 949 agent sessions across 119 tasks | genomic mining, reverse-transcriptase discovery, hypothesis generation |
 | 2026-09 | Paper2Agent [[details]](#model-paper2agent-202609) | Nature | training-free multi-agent orchestration | AlphaGenome, Scanpy, and TISSUE case studies; original and novel query evaluations | paper-to-MCP conversion, workflow reproduction, scientific queries, cross-paper analysis |
@@ -45,6 +47,44 @@ Agentic, autonomous and tool-using AI systems.
 
 Click a model to expand its record.
 
+
+<a id="model-pha-202610"></a>
+<details>
+<summary><b>PHA</b> — The anatomy of a personal health agent <i>(Nature 2026-10)</i></summary>
+
+**[The anatomy of a personal health agent](https://www.nature.com/articles/s41586-026-11161-8)**
+
+*Nature* · 2026-10 · A. Ali Heydari et al.
+
+| | |
+| --- | --- |
+| **Backbone** | An orchestrator coordinates data science, health domain expert and health coach agents. The system uses Gemini 2 models and tools to analyze personal data and support dialogue. |
+| **Pre-training** | `training-free multi-agent orchestration`<br>The study builds an agent system around existing models. It does not report training a new base LLM. |
+| **Data usage** | Evaluation used data from 1,165 WEAR-ME participants. Eleven benchmark tasks involved more than 7,000 human annotations and 1,350 hours of expert and end-user effort. |
+| **Downstream tasks** | `wearable and laboratory data analysis`, `personalized health interpretation`, `interactive wellness coaching`<br>The agents analyze longitudinal data, explain health information and support multi-turn goal setting. |
+| **Modalities** | `text`, `wearable time series`, `laboratory results` |
+| **Evaluation boundary** | This is a research prototype for personal health support. Benchmark and user-study results do not establish long-term health benefit or clinical safety. The system is not intended to replace healthcare providers. |
+
+</details>
+
+<a id="model-epilepsy-ai-platform-202610"></a>
+<details>
+<summary><b>Epilepsy AI Platform</b> — Human–artificial intelligence collaboration for comanaging epilepsy in real time <i>(Nat. Med. 2026-10)</i></summary>
+
+**[Human–artificial intelligence collaboration for comanaging epilepsy in real time](https://www.nature.com/articles/s41591-026-04680-4)**
+
+*Nat. Med.* · 2026-10 · Zack Goldblum et al.
+
+| | |
+| --- | --- |
+| **Backbone** | A secure LLM interface routes patient messages to general chat or a data-query agent. EEG detectors send alerts. Patients can confirm events through a smartphone app. |
+| **Pre-training** | `training-free LLM agent`; `feedback-based EEG detector fine-tuning`<br>Patient labels supported offline detector fine-tuning. This does not imply that the LLM itself was fine-tuned. |
+| **Data usage** | The inpatient prototype was tested with 13 patients during video-EEG monitoring: 11 with scalp EEG and 2 with intracranial EEG. Detector adaptation was assessed in offline, pseudoprospective analyses. |
+| **Downstream tasks** | `real-time EEG alerts`, `patient data queries`, `seizure feedback`, `adaptive detection`<br>The app reports events, answers questions about patient data and collects feedback for detector updates. |
+| **Modalities** | `text`, `EEG time series`, `patient feedback` |
+| **Evaluation boundary** | This was a small inpatient proof of concept. The improved detector results came from pseudoprospective analyses. They do not establish better clinical outcomes or safe outpatient use. |
+
+</details>
 
 <a id="model-quine-202609"></a>
 <details>
