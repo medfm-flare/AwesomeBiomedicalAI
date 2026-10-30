@@ -13,10 +13,16 @@ Requires ANTHROPIC_API_KEY (or another credential the SDK resolves
 automatically) in the environment.
 """
 import argparse
+import fcntl
 import json
+import os
 import subprocess
 import sys
+import tempfile
 import time
+import urllib.parse
+import urllib.request
+from contextlib import contextmanager
 from pathlib import Path
 
 import anthropic
@@ -219,6 +225,26 @@ class ExtractionTimeout(RuntimeError):
     pass
 
 
+def _crossref_date(doi: str) -> str | None:
+    """YYYYMM from Crossref (online date, else issue date); None if unavailable.
+
+    The model reads dates off whatever page it found, and preprint, acceptance
+    and publication dates all look alike there -- one of nine extractions in a
+    batch was months off. Crossref is the authoritative record, so check it.
+    """
+    try:
+        url = f"https://api.crossref.org/works/{urllib.parse.quote(doi)}"
+        with urllib.request.urlopen(url, timeout=15) as resp:
+            message = json.load(resp)["message"]
+    except Exception:  # noqa: BLE001 -- best effort; never block an extraction on this
+        return None
+    for key in ("published-online", "issued"):
+        parts = (message.get(key) or {}).get("date-parts", [[None]])[0]
+        if parts and parts[0] and len(parts) > 1:
+            return f"{parts[0]}{parts[1]:02d}"
+    return None
+
+
 def fetch_entry(url: str, model: str, on_progress=None, max_seconds: float = 300) -> dict:
     """Fetch and extract a catalogue entry. on_progress(str), if given, is
     called with human-readable status lines as the agentic turn runs.
@@ -296,7 +322,15 @@ def fetch_entry(url: str, model: str, on_progress=None, max_seconds: float = 300
 
     notify("Parsing the extracted entry...")
     text = next(b.text for b in response.content if b.type == "text")
-    return json.loads(text)
+    entry = json.loads(text)
+
+    official = _crossref_date(entry["doi"]) if entry.get("doi") else None
+    if official and official != entry["date"]:
+        notify(f"Date {entry['date']} disagrees with Crossref ({official}); using Crossref.")
+        correction = f"Publication date corrected from {entry['date']} to {official} using Crossref."
+        entry["note"] = f"{entry['note']} {correction}" if entry.get("note") else correction
+        entry["date"] = official
+    return entry
 
 
 WEAK_ACCESS = {"press_release_only", "abstract_only"}
@@ -319,8 +353,47 @@ def insert_entry(data: dict, entry: dict) -> str:
         raise ValueError(f"Unknown category '{category}', expected one of {CATEGORY_IDS}")
     if any(e["id"] == entry["id"] for e in cat["entries"]):
         raise ValueError(f"Entry id '{entry['id']}' already exists in category '{category}'")
+    # Papers can arrive under a different URL than the one catalogued (e.g. a
+    # Research Briefing that resolves to its primary article), so match on DOI
+    # across every category, not just the id within this one.
+    if entry.get("doi"):
+        for c in data["categories"]:
+            for e in c["entries"]:
+                if e.get("doi") == entry["doi"]:
+                    raise ValueError(f"DOI {entry['doi']} is already catalogued as '{e['id']}' in '{c['id']}'")
     cat["entries"].append(entry)
     cat["entries"].sort(key=lambda e: e["date"], reverse=True)
+    return category
+
+
+LOCK_PATH = Path(tempfile.gettempdir()) / "ai4science-data.lock"
+
+
+@contextmanager
+def _data_lock():
+    with open(LOCK_PATH, "w") as fh:
+        fcntl.flock(fh, fcntl.LOCK_EX)
+        try:
+            yield
+        finally:
+            fcntl.flock(fh, fcntl.LOCK_UN)
+
+
+def commit_entry(entry: dict) -> str:
+    """Insert an entry into data.json and regenerate the markdown.
+
+    An extraction takes minutes, so any data.json snapshot taken before it
+    starts is stale by the time it finishes. This re-reads the file under a
+    cross-process lock, so several ingest runs (or the web UI) can go at once
+    without overwriting each other's inserts.
+    """
+    with _data_lock():
+        data = load_data()
+        category = insert_entry(data, dict(entry))
+        tmp = DATA_PATH.with_suffix(".json.tmp")
+        tmp.write_text(json.dumps(data, indent=2, ensure_ascii=False) + "\n")
+        os.replace(tmp, DATA_PATH)
+        subprocess.run([sys.executable, str(GENERATE_SCRIPT), str(DATA_PATH), str(MD_PATH)], check=True)
     return category
 
 
@@ -366,10 +439,12 @@ def main():
         print("Not inserted. Re-run with --force to insert anyway.", file=sys.stderr)
         sys.exit(2)
 
-    category = insert_entry(data, dict(entry))
-    DATA_PATH.write_text(json.dumps(data, indent=2, ensure_ascii=False) + "\n")
-    print(f"\nInserted into category '{category}'. Regenerating {MD_PATH.name}...", file=sys.stderr)
-    subprocess.run([sys.executable, str(GENERATE_SCRIPT), str(DATA_PATH), str(MD_PATH)], check=True)
+    try:
+        category = commit_entry(entry)
+    except ValueError as exc:
+        print(f"Not inserted: {exc}", file=sys.stderr)
+        sys.exit(3)
+    print(f"\nInserted into category '{category}' and regenerated {MD_PATH.name}.", file=sys.stderr)
     print("Done. Review the diff before committing.", file=sys.stderr)
 
 

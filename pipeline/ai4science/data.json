@@ -12,6 +12,204 @@
       "title": "Drug & Molecule Design",
       "entries": [
         {
+          "fit_score": 93,
+          "fit_rationale": "A closed-loop active-learning + geometric deep learning workflow for predicting chemical reaction outcomes and regioselectivity, directly targeting synthetic accessibility in drug discovery/medicinal chemistry.",
+          "source_access": "full_text",
+          "id": "active-geometric-chemical-reaction-prediction",
+          "date": "202610",
+          "model": "EquiformerV2 (with coordinate-denoising auxiliary task), benchmarked against SchNet, DimeNet++, EGNN, PaiNN, Ponita, TFN, eSCN and T5Chem; XGBoost active-learning oracle",
+          "title": "Advancing chemical reaction prediction in data-scarce drug discovery with active and geometric deep learning",
+          "url": "https://doi.org/10.1038/s43588-026-01063-0",
+          "doi": "10.1038/s43588-026-01063-0",
+          "venue": "Nat. Comput. Sci.",
+          "authors": [
+            {
+              "name": "Mason Minot",
+              "url": "https://orcid.org/0000-0003-0225-9107"
+            },
+            {
+              "name": "Gisbert Schneider",
+              "url": "https://orcid.org/0000-0001-6706-1084"
+            }
+          ],
+          "params": "Not stated as a single number — the study benchmarks ten GNN architectures (SchNet, DimeNet++, EGNN, PaiNN, Ponita Point Cloud/Fiber, TFN, eSCN, EquiformerV2) plus XGBoost/CatBoost/Random Forest oracles; no parameter counts are reported for any.",
+          "backbone": "Tree-based ensemble (XGBoost/CatBoost/Random Forest on 512-bit ECFP4 fingerprints) used as active-learning oracle; geometric GNNs (invariant: SchNet, DimeNet++, invariant-EGNN; equivariant: PaiNN, Ponita, TFN, eSCN, EquiformerV2) augmented with coordinate-denoising and node-masking self-supervised auxiliary heads plus a reaction-condition mixer and two-layer MLP output head, operating on 3D RDKit-generated conformers.",
+          "pretraining": {
+            "tags": [
+              "self-supervised",
+              "coordinate-denoising",
+              "node-masking",
+              "online-auxiliary-tasks"
+            ],
+            "text": "No offline pretraining on external corpora; instead, online self-supervised auxiliary objectives (coordinate denoising via Gaussian noise on xyz atom positions, sigma=0.03, and node masking/atom-type prediction) are applied jointly with the supervised task directly on the same labeled reaction data during training."
+          },
+          "training_data": {
+            "text": "Data were generated through a three-round active-learning experimental campaign for C–H borylation, starting from an initial dataset of 626 regioselectivity and 2,044 HTE (yield/binary) data points across 518 substrates, with substrates for active learning drawn from a pool of 22,253 candidates filtered for known, purchasable, QC-verified compounds.",
+            "stat": "Final dataset after 3 active-learning rounds: 812 substrates (incl. 106 negatives) and 920 borylated species for regioselectivity, plus 6,865 HTE data points across 568 substrates for yield/binary classification."
+          },
+          "downstream_tasks": {
+            "tags": [
+              "reaction-outcome-prediction",
+              "regioselectivity-prediction",
+              "active-learning",
+              "yield-prediction",
+              "late-stage-functionalization"
+            ],
+            "text": "Binary reaction feasibility classification, regioselectivity (site-of-borylation) prediction, and yield prediction for C–H borylation (and a secondary Minisci C–H alkylation benchmark), with prospective experimental validation on ten previously unreported substrates."
+          },
+          "modalities": [
+            "molecular graphs",
+            "3D molecular conformers",
+            "chemical reaction conditions",
+            "ECFP/Morgan fingerprints"
+          ],
+          "code": "https://github.com/minotm/active-drug-discovery",
+          "weights": "https://doi.org/10.5281/zenodo.20783136",
+          "license": "GNU GPLv3",
+          "open": true,
+          "key_results": [
+            "Active learning expanded the C–H borylation dataset from an initial 626 regioselectivity/2,044 HTE data points (518 substrates) to 812 substrates (106 negatives, 920 borylated species) and 6,865 HTE data points across 568 substrates over three rounds.",
+            "On the Random split, T5Chem achieved 0.73±0.03 MCC versus 0.79±0.05 for PaiNN for condition-aware reaction outcome prediction; on the harder Scaffold and Butina splits T5Chem dropped to 0.38±0.08 and 0.36±0.08 while Ponita Fiber reached 0.59±0.05 and 0.47±0.1.",
+            "Self-supervised coordinate-denoising and node-masking auxiliary tasks provided a consistent performance benefit across GNN architectures, especially on the challenging Scaffold split.",
+            "Prospective validation with EquiformerV2 (plus coordinate denoising) on ten unreported borylation substrates: the most probable predicted borylation site matched the experimentally observed site for all ten substrates, including challenging N-heteroaryl and symmetric cases."
+          ],
+          "note": "This is primarily a methodology/benchmarking paper (active-learning oracle + benchmark of ten GNN architectures) rather than a single named model; no single parameter count or architecture is reported as 'the' model.",
+          "headline": "Active-learning-guided GNNs correctly predict borylation site for all 10 novel test substrates"
+        },
+        {
+          "fit_score": 96,
+          "fit_rationale": "A Nature paper introducing a 16B-parameter foundation model for natural-language-guided de novo protein design, with wet-lab validation of functional enzymes — squarely in the drug-design/scientific-discovery scope of this catalogue.",
+          "source_access": "open_mirror",
+          "id": "pinal",
+          "date": "202610",
+          "model": "Pinal",
+          "title": "Programmable design of functional proteins from natural language",
+          "url": "https://www.nature.com/articles/s41586-026-11205-z",
+          "doi": "10.1038/s41586-026-11205-z",
+          "venue": "Nature",
+          "authors": [
+            {
+              "name": "Fengyuan Dai",
+              "url": null
+            },
+            {
+              "name": "Fajie Yuan",
+              "url": "https://scholar.google.com/citations?user=yOiBwasAAAAJ&hl=en"
+            }
+          ],
+          "params": "16 billion (T2struct scaled up to 15.5B parameters + SaProt-T sequence designer)",
+          "backbone": "Two-stage encoder-decoder pipeline: T2struct (text-to-structure) uses a pre-trained T5 encoder plus a GPT-2-style decoder trained from scratch, linked via a text-3Di cross-attention module, autoregressively generating Foldseek 3Di structure tokens; SaProt-T (structure+text-to-sequence) is adapted from SaProt with text encoded by PubMedBERT and prepended to 3Di token embeddings, trained with a masked language modeling objective.",
+          "pretraining": {
+            "tags": [
+              "synthetic data generation",
+              "masked language modeling",
+              "autoregressive",
+              "LLM-generated annotations"
+            ],
+            "text": "Trained on a synthetic corpus of 1.7 billion protein-text pairs built from UniProt/TrEMBL and Swiss-Prot entries annotated via the ProTrek multimodal protein language model and consolidated/paraphrased with LLMs, plus ~800 million keyword-protein pairs from InterPro; structures sourced from the AlphaFold Protein Structure Database (AFDB)."
+          },
+          "training_data": {
+            "text": "1.7 billion synthetically annotated protein-text pairs spanning 135 million unique protein sequences and structures, encompassing over 100 billion word tokens; human-curated Swiss-Prot (545K proteins, 27M pairs) used for validation/ablation comparisons.",
+            "stat": "1.7 billion protein-text pairs"
+          },
+          "downstream_tasks": {
+            "tags": [
+              "de novo protein design",
+              "enzyme engineering",
+              "fluorescent protein design",
+              "plastic-degrading enzyme design",
+              "metabolic pathway engineering"
+            ],
+            "text": "Natural-language-prompted generation and experimental validation of a GFP-like fluorescent protein, a PETase, an alcohol dehydrogenase, and a metabolic H-protein incorporated into a multi-enzyme CO2-fixation pathway."
+          },
+          "modalities": [
+            "protein sequence",
+            "protein structure (3Di tokens)",
+            "natural language text"
+          ],
+          "code": "https://huggingface.co/westlake-repl/Pinal",
+          "weights": "https://huggingface.co/westlake-repl/Pinal",
+          "license": null,
+          "open": true,
+          "key_results": [
+            "Pinal achieved a mean keyword recovery rate of 77% versus approximately 12% for ESM3 in a keyword-conditioned generation comparison.",
+            "17 of 20 (85%) structurally novel Pinal designs (TM-score < 0.5 to known PDB structures) were successfully expressed in soluble form in E. coli.",
+            "Pinal-designed H-protein (pinalH02) drove glycine synthesis to a final titer of 11.1 mM, a 1.7-fold increase over the native E. coli H-protein.",
+            "14 of 20 (70%) H-protein candidates showed soluble expression, with 5 active in a reconstituted CO2-fixation assay.",
+            "In an independent benchmark, Pinal achieved the best performance on 11 of 14 metrics for sequence plausibility, structural foldability, and language alignment."
+          ],
+          "note": "Original Nature article page was not directly accessible (paywall/fetch error); entry is based on the complete bioRxiv preprint (v9, 10.1101/2024.08.01.606258), which text matches the Nature abstract and appears to be the accepted version. License for the Hugging Face weights is not stated in the fetched text.",
+          "headline": "16B-parameter Pinal designs proteins from text prompts; H-protein design beats native E. coli enzyme 1.7-fold"
+        },
+        {
+          "fit_score": 93,
+          "fit_rationale": "A generative AI model for de novo design of proteins, enzymes and nucleic-acid-binding biomolecules with atomic precision, validated by wet-lab enzyme and DNA-binder experiments — squarely in scope for scientific discovery / drug-design-adjacent molecular design, published in Science.",
+          "source_access": "open_mirror",
+          "id": "rfdiffusion3",
+          "date": "202610",
+          "model": "RFdiffusion3 (RFD3)",
+          "title": "Atomic functional site scaffolding in biopolymers with RFdiffusion3",
+          "url": "https://doi.org/10.1126/science.aeh2982",
+          "doi": "10.1126/science.aeh2982",
+          "venue": "Science",
+          "authors": [
+            {
+              "name": "Jasper Butcher",
+              "url": null
+            },
+            {
+              "name": "David Baker",
+              "url": null
+            }
+          ],
+          "params": "168M trainable parameters (final network)",
+          "backbone": "Transformer-based U-Net with atom-level diffusion: a downsampling module encoding atomic/residue features, a sparse transformer token module (Pairformer shrunk from 48 to 2 layers relative to AlphaFold3), and an upsampling module predicting coordinate updates; uses sparse cross-attention for atom\\u2194token pooling instead of triangle attention/multiplication.",
+          "pretraining": {
+            "tags": [
+              "diffusion",
+              "self-supervised",
+              "structure-denoising"
+            ],
+            "text": "Hierarchical training: the network is pre-trained on a mix of AlphaFold2 distillation structures and deposited PDB structures, then fine-tuned on a larger fraction of DNA- and protein-protein-interaction examples, using structures by denoising native structures to varying noise levels and predicting backbone/side-chain atom positions conditioned on partial constraints."
+          },
+          "training_data": {
+            "text": "All protein-protein, protein-small-molecule and protein-DNA complexes in the Protein Data Bank deposited through December 2024, plus a set of high-quality AlphaFold2 distillation structures, each annotated with potential design conditioning features (hydrogen bonds, binding partners, functional motifs).",
+            "stat": "PDB entries through December 2024 + AF2 distillation structure set"
+          },
+          "downstream_tasks": {
+            "tags": [
+              "protein-binder-design",
+              "enzyme-design",
+              "DNA-binding-protein-design",
+              "small-molecule-binder-design",
+              "RNA-structure-design"
+            ],
+            "text": "Used for unconditional protein backbone generation, protein-protein binder design, protein-DNA and protein-small-molecule interface design, atomic active-site/enzyme scaffolding, and RNA structure design, with experimental validation of designed DNA-binding proteins and enzymes (plus, per the Science abstract, de novo phosphotriesterases and transthyretin-specific zinc proteases not covered in the bioRxiv preprint text obtained)."
+          },
+          "modalities": [
+            "protein structure",
+            "small molecule",
+            "DNA",
+            "RNA"
+          ],
+          "code": "https://github.com/RosettaCommons/foundry",
+          "weights": null,
+          "license": null,
+          "open": true,
+          "key_results": [
+            "Final network has 168M trainable parameters vs ~350M for AlphaFold3",
+            "RFD3 is roughly an order of magnitude (~10x) faster than RFdiffusion2 for typical protein lengths",
+            "98% of unconditional designs (length 100-200) had at least one of 8 ProteinMPNN sequences predicted by AF3 to fold within 1.5 \\u00c5 RMSD",
+            "For protein-binder design across 5 targets, RFD3 found on average 8.2 unique successful clusters vs 1.4 for RFdiffusion1",
+            "On the Atomic Motif Enzyme benchmark, RFD3 outperformed RFdiffusion2 on 37/41 (90%) cases, and on cases with >4 residue islands achieved 15% vs 4% passing designs",
+            "Designed DNA-binding protein validated by yeast display bound with EC50 = 5.89 \\u00b1 2.15 \\u00c5\\u03bcM",
+            "Designed cysteine-hydrolase esterase achieved Kcat/Km = 3557 from 190 screened designs (35 multi-turnover hits)",
+            "Per the Science abstract (not in the fetched preprint text): de novo phosphotriesterases with a carbamylated-lysine dual-metal active site and transthyretin-specific zinc proteases were obtained as active catalysts from zero-shot 96-construct design campaigns"
+          ],
+          "note": "Full Science text is paywalled; entry is based on the open bioRxiv preprint (2025.09.18.676967v2, same model/architecture) plus the Science abstract and a EurekAlert press release for the published version's phosphotriesterase/transthyretin-protease experiments, which go beyond what the fetched preprint describes.",
+          "headline": "168M-parameter all-atom diffusion model designs functional enzymes and DNA binders, 10x faster than RFdiffusion2"
+        },
+        {
           "fit_score": 92,
           "fit_rationale": "MutexaGPT is a multi-agent LLM system that automates physics-based enzyme engineering (protein/molecular design), squarely fitting the drug-design/molecular science remit of this catalogue in a Nature-family journal.",
           "source_access": "full_text",
@@ -132,6 +330,72 @@
         },
         {
           "fit_score": 92,
+          "fit_rationale": "SynCraft directly targets a core AI-for-drug-design problem (synthesizability of generative-model outputs) using an LLM reasoning/editing framework validated against real medicinal-chemistry case studies (PLK1, RIPK1), published in Nature Machine Intelligence.",
+          "source_access": "open_mirror",
+          "id": "syncraft",
+          "date": "202609",
+          "model": "SynCraft",
+          "title": "Guiding large language models to predict edit sequences for molecular synthesizability optimization",
+          "url": "https://doi.org/10.1038/s42256-026-01304-x",
+          "doi": "10.1038/s42256-026-01304-x",
+          "venue": "Nat. Mach. Intell.",
+          "authors": [
+            {
+              "name": "Junren Li",
+              "url": "https://orcid.org/0000-0003-1411-7288"
+            },
+            {
+              "name": "Luhua Lai",
+              "url": null
+            }
+          ],
+          "params": "N/A — not a trained neural net; uses the pretrained Gemini-2.5-Pro LLM via API with retrieval-augmented few-shot prompting, no fine-tuning or disclosed parameter count",
+          "backbone": "Gemini-2.5-Pro LLM driven by Chain-of-Thought prompting and Retrieval-Augmented Generation (top-k=5 Morgan fingerprint retrieval), outputting a discrete atom-level edit action space (DEL_ATOM, MUTATE_ATOM, ADD_ATOM, ADD_BOND/DEL_BOND, CHANGE_BOND, SET_CHIRAL/SET_BOND_STEREO) deterministically executed by RDKit; optional interaction-aware module using AutoDock Vina docking + PLIP interaction profiling with graph alignment to inject 3D binding constraints into the prompt.",
+          "pretraining": {
+            "tags": [
+              "frozen pretrained LLM",
+              "no fine-tuning",
+              "retrieval-augmented generation",
+              "few-shot prompting"
+            ],
+            "text": "No model pretraining/fine-tuning is performed; SynCraft uses the off-the-shelf Gemini-2.5-Pro model purely via in-context few-shot prompting, retrieving top-5 similar exemplars (reasoning + edit sequence) from a curated 'Synthesis Cliff' reference database at inference time."
+          },
+          "training_data": {
+            "text": "A 'Synthesis Cliff Dataset' was constructed by taking unsynthesizable molecules generated by five structure-based 3D generative models (LiGAN, 3D-SBDD, Pocket2Mol, DiffSBDD, ResGen) from the GenBench3D benchmark, flagging unsynthesizable ones via the SimpRetro retrosynthesis model (USPTO-derived templates, Enamine building blocks), and pairing each with its nearest synthesizable neighbor (ECFP4 Tanimoto >0.5 and Pharm2D >0.5) from the ~23-million-compound eMolecules database; Gemini-2.5-Pro was used to generate chemical rationales for each pair, forming the few-shot reference corpus (not model training weights).",
+            "stat": "3,332 unsynthesizable-to-synthesizable cliff pairs; eMolecules database of ~23 million compounds searched"
+          },
+          "downstream_tasks": {
+            "tags": [
+              "synthesizability optimization",
+              "molecular editing",
+              "hit optimization",
+              "structure-based drug design",
+              "retrosynthesis-aware design"
+            ],
+            "text": "Evaluated on restoring synthesizability of molecules generated by Pocket2Mol and ResGen (1,725 and 1,025 test molecules respectively) while preserving structural similarity; applied retrospectively to replicate human medicinal chemist edits on PLK1 inhibitors, and prospectively to rescue 42 high-scoring but previously discarded RIPK1 inhibitor candidates using interaction-aware (docking + PLIP) constraints."
+          },
+          "modalities": [
+            "SMILES/molecular graph (atom-mapped)",
+            "natural language reasoning text",
+            "3D protein-ligand docking poses"
+          ],
+          "code": "https://github.com/catalystforyou/SynCraft-Core",
+          "weights": null,
+          "license": null,
+          "open": true,
+          "key_results": [
+            "On Pocket2Mol test set, SynCraft achieved 42.7% success rate at Tanimoto similarity >0.5 vs ~30% for best baseline (SynFormer/ReaSyn), and 28.4% at >0.6 vs 14.1–15.4% for baselines",
+            "On ResGen test set, SynCraft achieved 44.7% success at >0.5 and 29.1% at >0.6, versus 37.5%/22.0% for the strongest baseline ReaSyn",
+            "Ablation: 5-shot edit-based SynCraft reached 44.68% success at Sim>0.5 on ResGen vs only 26.44% for zero-shot direct-SMILES generation, despite the latter having a higher raw 'Total Solved' rate (72.39% vs 69.27%)",
+            "Retrospective case study: SynCraft's reasoning to remove chiral dimethylpiperazine methyl groups converged with the actual human-expert-modified synthesized PLK1 inhibitor IIP0944",
+            "Prospective RIPK1 case studies: an ether-bridge edit preserved Vina docking score (-10.7 to -10.2 kcal/mol) and a scaffold-hop edit preserved score (-10.2 to -9.9 kcal/mol) while restoring synthesizability",
+            "Estimated operational cost of ~$3–5 USD per 100 optimization runs using the Gemini-2.5-Pro API"
+          ],
+          "note": "Based on the arXiv preprint (2512.20333, posted Dec 2025) since the Nature Machine Intelligence version of record was paywalled/inaccessible; content, figures and numbers should match the published version but exact final wording may differ slightly.",
+          "headline": "LLM-guided molecular edits raise synthesizable-analog success rate to ~45% vs ~30-38% for prior methods"
+        },
+        {
+          "fit_score": 92,
           "fit_rationale": "Directly about AI-driven scientific discovery: predicting single-cell transcriptional responses to drug perturbations to enable virtual cells and in silico drug screening, published in a top-tier venue.",
           "source_access": "full_text",
           "id": "map-knowledge-driven-perturbation",
@@ -197,6 +461,70 @@
           ],
           "note": "MAP-KG dataset is openly released on Hugging Face, but model code/weights for the perturbation predictor itself were not confirmed as released in the fetched text; params count not disclosed as a single number since it combines multiple frozen/pretrained backbones.",
           "headline": "MAP predicts single-cell drug responses zero-shot, improving DEG correlation up to +12.3% over baselines"
+        },
+        {
+          "fit_score": 88,
+          "fit_rationale": "The paper introduces Dyna-1, a deep-learning model trained on curated NMR/BMRB data to predict millisecond-timescale protein dynamics linked to function (enzyme catalysis, ligand binding) — a core scientific-discovery/research-assistance application in structural biology, closely adjacent to drug design given the functional dynamics relevance.",
+          "source_access": "open_mirror",
+          "id": "dyna-1",
+          "date": "202608",
+          "model": "Dyna-1",
+          "title": "Learning millisecond protein dynamics from what is missing in NMR spectra",
+          "url": "https://doi.org/10.1038/s41586-026-10989-4",
+          "doi": "10.1038/s41586-026-10989-4",
+          "venue": "Nature",
+          "authors": [
+            {
+              "name": "Hannah K. Wayment-Steele",
+              "url": null
+            },
+            {
+              "name": "Dorothee Kern",
+              "url": null
+            }
+          ],
+          "params": "not stated (fine-tuned on top of frozen ESM-3 embeddings; full ESM-3 model size not specified in preprint)",
+          "backbone": "Classifier head on layer-22 embeddings of ESM-3 (sequence+structure), compared against ESM-2 layers, AlphaFold2 pair representation, and one-hot-amino-acid transformer baselines; binary per-residue classification task",
+          "pretraining": {
+            "tags": [
+              "ESM-3",
+              "self-supervised protein language model",
+              "transfer learning"
+            ],
+            "text": "Built on frozen embeddings from a pretrained ESM-3 model (layer 22 selected as best-performing) and also tested ESM-2 and AlphaFold2 pair representations; the protein-dynamics classifier itself was trained from scratch on curated BMRB missing-assignment data."
+          },
+          "training_data": {
+            "text": "Curated a 'missing assignment BMRB' (mBMRB) dataset from ~10,000 BMRB-deposited proteins, using ~5,906 proteins with usable structures (2,680 lacking X-ray/EM structures) to train a binary classifier predicting missing NMR peak assignments as a proxy for µs-ms exchange broadening; evaluated on RelaxDB, a hand-curated benchmark of 133 single-domain protein relaxation datasets (plus RelaxDB-CPMG) and a held-out mBMRB-Test split.",
+            "stat": "~5,906 training proteins (mBMRB), 133 proteins in RelaxDB benchmark"
+          },
+          "downstream_tasks": {
+            "tags": [
+              "protein dynamics prediction",
+              "NMR data reinterpretation",
+              "enzyme/ligand-binding site discovery",
+              "structural biology"
+            ],
+            "text": "Predicts per-residue probability of µs-ms conformational exchange from sequence/structure alone, used to reinterpret existing NMR relaxation datasets, flag likely mis-assignments, and highlight biologically relevant dynamic motifs (e.g., ligand-binding loops in flavodoxin, the mRNA-binding loop of ribonuclease toxin MqsR)."
+          },
+          "modalities": [
+            "protein sequence",
+            "protein structure (ESMFold/AlphaFold2 predicted)",
+            "NMR relaxation data"
+          ],
+          "code": "https://github.com/WaymentSteeleLab/Dyna-1",
+          "weights": "https://github.com/WaymentSteeleLab/Dyna-1",
+          "license": "noncommercial use license (per repo)",
+          "open": true,
+          "key_results": [
+            "Naïve secondary-structure-frequency baseline achieved AUROC 0.501 (near random) on the validation set",
+            "AF2-pair-representation model achieved AUROC 0.71 and last-layer ESM-2 embeddings achieved AUROC 0.75 on the validation set; one-hot-amino-acid transformer baseline achieved AUROC 0.62",
+            "Layer-22 ESM-3 embeddings (sequence+structure) achieved the best validation AUROC of 0.77, leading to selection as 'Dyna-1'",
+            "Restricting training to 30% sequence identity / 0.5 TM-score split (~2,700 proteins) only reduced validation AUROC from 0.755 to 0.74 versus the full dataset, arguing against memorization",
+            "Dyna-1 achieved AUROC of 0.92 predicting millisecond exchange in BPTI, matching known 5-state exchange kinetics from MD simulation",
+            "Dyna-1 achieved AUROC of 0.60 (improving to 0.62 after reinterpreting mis-assigned/overlapping peaks) on the NtrC receiver domain, and is generally weakest at predicting exchange in beta-sheets"
+          ],
+          "note": "Nature version is paywalled; all extracted text and numbers are from the complete open bioRxiv preprint (2025.03.19.642801), which may differ slightly from the final published version. Parameter count of underlying ESM-3 model not disclosed in the preprint.",
+          "headline": "Dyna-1 predicts millisecond protein motions from missing NMR peaks, reaching AUROC 0.92 on BPTI dynamics"
         },
         {
           "id": "lasermpnn",
@@ -424,6 +752,247 @@
       "id": "materials-science",
       "title": "Materials & Physical Science",
       "entries": [
+        {
+          "fit_score": 90,
+          "fit_rationale": "Core materials-science discovery paper where an ML classifier (Random Forest) mines crystal databases to find overlooked MXene-like materials, directly guiding experimental synthesis of 5 rediscovered and 11 new compounds — a textbook AI-for-materials-discovery case in a top venue (Science).",
+          "source_access": "open_mirror",
+          "id": "mxene-treasure-chest",
+          "date": "202610",
+          "model": "CIF-based Random Forest ml-MXene classifier (unnamed in paper)",
+          "title": "Data-driven discovery and rapid, direct synthesis of MXenes",
+          "url": "https://doi.org/10.1126/science.aeh5957",
+          "doi": "10.1126/science.aeh5957",
+          "venue": "Science",
+          "authors": [
+            {
+              "name": "Ali Saffar Shamshirgar",
+              "url": "https://orcid.org/0000-0002-0762-8058"
+            },
+            {
+              "name": "Johanna Rosen",
+              "url": "https://orcid.org/0000-0002-5173-6726"
+            }
+          ],
+          "params": "N/A — non-neural (Random Forest ensemble classifier was the best-performing of the benchmarked models)",
+          "backbone": "Random Forest classifier operating on structural descriptors parsed from CIF files (symmetry info, pair-distance statistics, density features, structural heterogeneity); benchmarked against SVM, a multilayer perceptron, and a simplified graph-based model, with Random Forest selected as best performer.",
+          "pretraining": {
+            "tags": [
+              "supervised-classification",
+              "materials-database-mining"
+            ],
+            "text": "No pretraining in the neural-network sense; the classifier was trained from scratch in a supervised manner on a balanced, labeled dataset of ml-MXene vs. non-ml-MXene crystal structures drawn from the Materials Project and OQMD."
+          },
+          "training_data": {
+            "text": "A balanced set of 1050 labeled crystal structures (525 ml-MXene, 525 non-ml-MXene) compiled from screening the Materials Project and Open Quantum Materials Database for 2:1:2 stoichiometry compounds chemically adjacent to known MXenes.",
+            "stat": "1050 labeled structures (525 positive / 525 negative)"
+          },
+          "downstream_tasks": {
+            "tags": [
+              "materials-discovery",
+              "crystal-structure-classification",
+              "synthesis-guidance"
+            ],
+            "text": "The trained classifier triaged 541 candidate CIF structures down to 270 high-probability ml-MXene candidates, which were further curated (with literature cross-checking) to a list of 50 compounds; findings guided experimental rediscovery of 5 MXenes via rapid self-propagating high-temperature synthesis and the synthesis of 11 new rare-earth M2CT2 MXenes."
+          },
+          "modalities": [
+            "crystal structure (CIF)",
+            "tabular structural descriptors"
+          ],
+          "code": null,
+          "weights": null,
+          "license": null,
+          "open": false,
+          "key_results": [
+            "Screening Materials Project and OQMD yielded 541 candidate 2:1:2 compounds",
+            "Random Forest outperformed SVM, MLP, and a simplified graph-based model on a balanced 1050-structure labeled dataset",
+            "A probability threshold of P(ml-MXene) > 0.8 narrowed candidates to 270, further curated to a 50-material 'Treasure Chest'",
+            "Guided by the ML screen, researchers experimentally rediscovered 5 MXenes using a self-propagating high-temperature synthesis completing within minutes without sustained external heating",
+            "11 previously unexplored rare-earth M2CT2 MXenes (M = Pr, Nd, Sm, Gd, Tb, Ho, Tm) were synthesized, showing semiconducting behavior and diverse magnetic states",
+            "26 additional hypothetical phases were theoretically predicted to be stable"
+          ],
+          "note": "Original Science article is paywalled; entry is based on the complete open arXiv preprint (2608.16644), which matches the Science abstract/metadata. No code or model release was found in the available text.",
+          "headline": "ML-guided database mining enabled rapid synthesis of 5 rediscovered and 11 new rare-earth MXenes"
+        },
+        {
+          "fit_score": 78,
+          "fit_rationale": "The paper introduces a deep-learning model that directly predicts molecular/quantum-chemistry Hessians to accelerate transition-state search, geometry optimization and vibrational analysis, a clear AI-for-scientific-discovery/chemistry tool, published in Nature Computational Science.",
+          "source_access": "open_mirror",
+          "id": "hip-hessian-interatomic-potentials",
+          "date": "202610",
+          "model": "HIP (Hessian Interatomic Potentials)",
+          "title": "HIP: Hessian Interatomic Potentials without derivatives",
+          "url": "https://doi.org/10.1038/s43588-026-01066-x",
+          "doi": "10.1038/s43588-026-01066-x",
+          "venue": "Nat. Comput. Sci.",
+          "authors": [
+            {
+              "name": "Andreas Burger",
+              "url": null
+            },
+            {
+              "name": "Alán Aspuru-Guzik",
+              "url": null
+            }
+          ],
+          "params": "not stated in the fetched text",
+          "backbone": "SE(3)-equivariant EquiformerV2 backbone (reused from the HORM model) with an added equivariant Hessian readout head combining node and pairwise message contributions (an extra EquiformerV2-style readout layer was added for expressivity)",
+          "pretraining": {
+            "tags": [
+              "equivariant-GNN",
+              "Hessian-supervised",
+              "fixed-backbone-finetuning"
+            ],
+            "text": "HIP keeps a fixed EquiformerV2 backbone (from the HORM molecular Hessian model) and trains only a new Hessian-prediction readout head on energies, forces and DFT Hessians, using a learning-rate warm-up over 15k steps from 0 to 5e-4 followed by cosine decay over 500k steps to 5e-5, trained on a single H100 GPU.'"
+          },
+          "training_data": {
+            "text": "Trained/evaluated using DFT reference Hessians (e.g. recomputed with GPU4PySCF v1.3.0 at ωB97X/6-31G* for a transition-state proposal subset) built on top of the HORM large-scale molecular Hessian database; model performance evaluated on a held-out validation set.",
+            "stat": "10,000 validation structures"
+          },
+          "downstream_tasks": {
+            "tags": [
+              "transition-state-search",
+              "geometry-optimization",
+              "vibrational-analysis"
+            ],
+            "text": "Direct Hessian prediction is used to accelerate transition-state searches, geometry optimization and vibrational (normal-mode) analysis compared with Hessians obtained via automatic differentiation of a learned potential."
+          },
+          "modalities": [
+            "3D molecular structure",
+            "quantum-chemical Hessian/energy/force labels"
+          ],
+          "code": "https://github.com/BurgerAndreas/hip",
+          "weights": "https://huggingface.co/andreasburger/hip",
+          "license": "Apache-2.0 (code repository)",
+          "open": true,
+          "key_results": [
+            "HIP accelerates Hessian predictions 10–70 times and reduces peak memory by a factor of 2–3 compared with automatic differentiation of the underlying potential.",
+            "HIP maintains O(N) scaling with the number of atoms, versus worse scaling for automatic-differentiation-based Hessians.",
+            "On the reported benchmark, HIP-EquiformerV2 achieves Hessian error 0.030, eigenvalue error 0.063, top-eigenvector cosine similarity 0.982 and lowest-eigenvalue error 0.031 at 38.5 (time units); an improved variant (HIP-EquiformerV2*) achieves 0.020, 0.041, 0.982 and 0.031 at 31.4."
+          ],
+          "note": "Original Nature Computational Science article (paywalled DOI) was not directly fetchable; entry is built from the openly available arXiv/OpenReview preprint 'Shoot from the HIP: Hessian Interatomic Potentials without derivatives' (arXiv:2509.21624), which appears to be the same work. Code and weights links were added after extraction by checking the repository directly: BurgerAndreas/hip is Apache-2.0, its README links this arXiv paper (2509.21624), and checkpoints are hosted on Hugging Face.",
+          "headline": "HIP predicts molecular Hessians directly, 10–70× faster than autodiff with 2–3× less peak memory"
+        },
+        {
+          "fit_score": 85,
+          "fit_rationale": "A rigorous benchmarking study of language-model vs. graph-neural-network architectures for materials property prediction, directly diagnosing an architectural limitation relevant to AI-driven materials discovery; squarely materials-science/scientific-discovery scope in a high-impact journal.",
+          "source_access": "open_mirror",
+          "id": "mattext-cc-cliff",
+          "date": "202610",
+          "model": "MatText (BERT- and Llama-based benchmarking framework)",
+          "title": "Less can be more for predicting properties with large language models",
+          "url": "https://doi.org/10.1038/s43588-026-01045-2",
+          "doi": "10.1038/s43588-026-01045-2",
+          "venue": "Nat. Comput. Sci.",
+          "authors": [
+            {
+              "name": "Nawaf Alampara",
+              "url": "https://scholar.google.com/citations?user=R7K3xFIAAAAJ&hl=en"
+            },
+            {
+              "name": "Kevin Maik Jablonka",
+              "url": "https://scholar.google.com/citations?user=R2ntI8IAAAAJ&hl=en"
+            }
+          ],
+          "params": "Multiple models benchmarked: a custom small BERT (hidden size 512, 4 layers, 8 attention heads; parameter count not stated) and Llama-2/Llama-3 models from 7B to 70B parameters fine-tuned with LoRA.",
+          "backbone": "BERT-base-uncased-style encoder (hidden size 512, 4 hidden layers, 8 attention heads, max position embedding 1024, MLM pretraining) and decoder-only Llama-2/Llama-3 (7B–70B) fine-tuned via parameter-efficient LoRA; compared against GNN baselines (CoGN, SchNet, DimeNet) and descriptor-based MODNet.",
+          "pretraining": {
+            "tags": [
+              "self-supervised",
+              "masked-language-modeling",
+              "text-representation-of-crystals",
+              "LoRA-finetuning"
+            ],
+            "text": "BERT variants were pretrained from scratch with masked language modeling (15% masking) on nine different text representations of crystal structures (e.g., CIF P1, SLICES, Z-matrix, composition, local environment) at dataset scales from 30K to 2M structures sourced from the NOMAD archive via the MatBench suite; Llama-2/Llama-3 models (7B–70B) were general-purpose pretrained LLMs subsequently parameter-efficiently fine-tuned (LoRA) on the same text representations for property regression."
+          },
+          "training_data": {
+            "text": "Crystal structures converted into nine text representations using the authors' MatText package, drawn from the NOMAD open materials archive and benchmarked via the MatBench suite, at scales ranging from 30,000 up to 2 million structures.",
+            "stat": "up to 2 x 10^6 crystal structures"
+          },
+          "downstream_tasks": {
+            "tags": [
+              "materials-property-prediction",
+              "benchmarking",
+              "shear-modulus",
+              "bulk-modulus",
+              "formation-energy"
+            ],
+            "text": "Regression of shear modulus, bulk modulus, and perovskite formation energy from text-encoded crystal structures, plus a synthetic coordinate-category probing task and comparison against the MatBench leaderboard (GNNs, descriptor-based MODNet, and other LLM-based approaches)."
+          },
+          "modalities": [
+            "text",
+            "crystal structure (tabular/coordinate-category)"
+          ],
+          "code": "https://github.com/lamalab-org/MatText",
+          "weights": "https://huggingface.co/datasets/n0w0f/MatText (datasets); example pretrained model e.g. n0w0f/MatText-cifp1-2m",
+          "license": "MIT",
+          "open": true,
+          "key_results": [
+            "Geometric blindness (LLMs failing to use coordinate information while excelling at categorical patterns) persists regardless of model size (up to 70B parameters), dataset scale (up to 2 million structures), or text representation strategy.",
+            "Scaling dataset size (30K to 2M structures) or model size (7B to 70B parameters) changed RMSE by only single digits (percent), far from closing the gap with GNNs.",
+            "On MatBench-style tasks, best BERT-based RMSE for perovskite formation energy was ~0.095 eV versus a GNN SOTA of 0.055 eV; fine-tuned Llama-3-8B-Instruct performed worse still (RMSE 0.181-0.716 eV depending on representation).",
+            "Across the MatBench leaderboard, GNN-based and language-based approaches segregate almost perfectly into a 'GNN-LM wall', with language models consistently at the high-error end across six material-property tasks."
+          ],
+          "note": "Original Nature Computational Science article (paywalled) could not be fetched directly; entry is based on the complete arXiv preprint (2406.17295v3), the authors' official project/results page (lamalab-org.github.io/MatText), and search-engine-indexed snippets of the published abstract, which together closely match the published version's stated results (e.g., up to 70B parameters, 2M structures) though some published-version experimental details (e.g., exact Llama-2 7B/13B/70B table numbers) could not be independently verified beyond the arXiv v3 Llama-3-8B results.",
+          "headline": "LLMs show a 'geometric blindness': scaling to 70B params or 2M structures barely narrows the gap with GNNs"
+        },
+        {
+          "fit_score": 90,
+          "fit_rationale": "Directly targets a core scientific-discovery problem in computational chemistry (predicting reaction transition states) and introduces a pretraining method that improves generalization to unseen catalytic chemistry, published in Nature Computational Science.",
+          "source_access": "open_mirror",
+          "id": "robust-ts-gen",
+          "date": "202608",
+          "model": "Self-supervised pretrained OAReactDiff/React-OT and AEFM generative transition-state models (RobustTSGen)",
+          "title": "Robust generative transition-state models for unseen chemistry",
+          "url": "https://doi.org/10.1038/s43588-026-01034-5",
+          "doi": "10.1038/s43588-026-01034-5",
+          "venue": "Nat. Comput. Sci.",
+          "authors": [
+            {
+              "name": "Samir Darouich",
+              "url": null
+            },
+            {
+              "name": "Heather J. Kulik",
+              "url": null
+            }
+          ],
+          "params": "not stated in the accessible text (diffusion/flow-matching generative models; size not disclosed)",
+          "backbone": "Generative transition-state models built on OAReactDiff/React-OT (SE(3)-equivariant diffusion) and AEFM (equivariant flow-matching model), fine-tuned from equilibrium-conformer self-supervised pretraining",
+          "pretraining": {
+            "tags": [
+              "self-supervised",
+              "pseudo-reaction pretraining",
+              "equilibrium conformers"
+            ],
+            "text": "A self-supervised pretraining strategy constructs pseudo-reactions from abundant equilibrium conformer structures (independent of the Transition1x TS dataset), exposing the generative model to diverse chemical environments before supervised fine-tuning on transition-state data."
+          },
+          "training_data": {
+            "text": "Fine-tuning data come from the Transition1x dataset of small-organic-molecule reactions, extended with curated benchmarks built via controlled elemental substitutions and a diverse transition-metal-complex (TMC) reaction set to probe generalization to unseen elements/chemistry.",
+            "stat": null
+          },
+          "downstream_tasks": {
+            "tags": [
+              "transition-state structure prediction",
+              "reaction barrier estimation",
+              "catalysis/transition-metal chemistry generalization"
+            ],
+            "text": "Evaluated on predicting transition-state geometries and reaction energetics for reactions involving previously unseen elements and transition-metal complexes, including out-of-distribution Rh/Pt-catalyzed reactions and low-data fine-tuning regimes."
+          },
+          "modalities": [
+            "3D molecular geometry"
+          ],
+          "code": "https://github.com/samirdarouich/RobustTSGen",
+          "weights": "https://doi.org/10.5281/zenodo.18338076",
+          "license": "MIT (code repository)",
+          "open": true,
+          "key_results": [
+            "Self-supervised pretraining lowers the median RMSD of predicted TS geometries on Transition1x-TMC reactions from 0.39 Å to 0.19 Å.",
+            "Pretraining reduces the fine-tuning data required to reach comparable accuracy by up to 75%, enabling reliable performance in low-data regimes.",
+            "Without pretraining, generative TS models produce unphysical geometries and large energetic errors on chemically novel (unseen-element/TMC) reactions despite good performance on organic reactions."
+          ],
+          "note": "Original Nature Computational Science article is paywalled; entry is based on the complete open arXiv preprint (arXiv:2601.16469, 'Beyond the Training Domain...') and the paper's public GitHub/Zenodo resources, which match the published title/DOI per cross-references.",
+          "headline": "Pretraining cuts transition-state RMSD on unseen transition-metal reactions from 0.39 Å to 0.19 Å"
+        },
         {
           "id": "discovery-learning",
           "date": "202602",

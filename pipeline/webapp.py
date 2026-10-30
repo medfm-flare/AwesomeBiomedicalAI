@@ -17,7 +17,6 @@ import argparse
 import json
 import os
 import queue
-import subprocess
 import sys
 import threading
 import uuid
@@ -409,13 +408,7 @@ class Handler(BaseHTTPRequestHandler):
             self._json(400, {"error": "job not ready"})
             return
         try:
-            data = ingest.load_data()
-            category = ingest.insert_entry(data, dict(job["entry"]))
-            ingest.DATA_PATH.write_text(json.dumps(data, indent=2, ensure_ascii=False) + "\n")
-            subprocess.run(
-                [sys.executable, str(ingest.GENERATE_SCRIPT), str(ingest.DATA_PATH), str(ingest.MD_PATH)],
-                check=True,
-            )
+            category = ingest.commit_entry(job["entry"])
         except Exception as exc:  # noqa: BLE001
             self._json(500, {"error": str(exc)})
             return
