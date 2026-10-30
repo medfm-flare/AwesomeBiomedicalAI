@@ -8,7 +8,7 @@ Scientific discovery, research assistance, chemistry and drug design.
 
 **Maintainer:** [Ryan Khalloqi](https://github.com/ryanwangk)
 
-**19 entries** across 3 categories · [Back to index](README.md)
+**28 entries** across 3 categories · [Back to index](README.md)
 
 ## Catalogue
 
@@ -16,13 +16,110 @@ Scientific discovery, research assistance, chemistry and drug design.
 
 | Date | Model | Venue | Model size | Open | Headline result |
 | --- | --- | --- | --- | --- | --- |
+| 202610 | [EquiformerV2 (with coordinate-denoising auxiliary task), benchmarked against SchNet, DimeNet++, EGNN, PaiNN, Ponita, TFN, eSCN and T5Chem; XGBoost active-learning oracle](#model-active-geometric-chemical-reaction-prediction-202610) | Nat. Comput. Sci. | Not stated as a single number — the study benchmarks ten GNN architectures (SchNet, DimeNet++, EGNN, PaiNN, Ponita Point Cloud/Fiber, TFN, eSCN, EquiformerV2) plus XGBoost/CatBoost/Random Forest oracles; no parameter counts are reported for any. | ✓ | Active-learning-guided GNNs correctly predict borylation site for all 10 novel test substrates |
+| 202610 | [Pinal](#model-pinal-202610) | Nature | 16 billion (T2struct scaled up to 15.5B parameters + SaProt-T sequence designer) | ✓ | 16B-parameter Pinal designs proteins from text prompts; H-protein design beats native E. coli enzyme 1.7-fold |
+| 202610 | [RFdiffusion3 (RFD3)](#model-rfdiffusion3-202610) | Science | 168M trainable parameters (final network) | ✓ | 168M-parameter all-atom diffusion model designs functional enzymes and DNA binders, 10x faster than RFdiffusion2 |
 | 202609 | [MutexaGPT](#model-mutexagpt-202609) | Nat. Comput. Sci. | not stated (multi-agent LLM orchestration platform, base LLM undisclosed) | — | LLM multi-agent platform (MutexaGPT) automates physics-based enzyme design, validated experimentally on two enzymes |
 | 202609 | [CARPNN (chimaeric antigen receptor-protein-mpNN)](#model-carpnn-de-novo-car-binders-202609) | Nat. Biomed. Eng. | N/A — not a single neural network; a pipeline combining several pretrained models (RFdiffusion, BindCraft/AlphaFold2-hallucination, ProteinMPNN/SolubleMPNN, Boltz-2, AlphaFold2-multimer); no new model parameter count is reported | ✓ | 1,758 AI-designed CAR-T binders screened; evolved BCMA binder achieves near-complete tumour control in mice |
+| 202609 | [SynCraft](#model-syncraft-202609) | Nat. Mach. Intell. | N/A — not a trained neural net; uses the pretrained Gemini-2.5-Pro LLM via API with retrieval-augmented few-shot prompting, no fine-tuning or disclosed parameter count | ✓ | LLM-guided molecular edits raise synthesizable-analog success rate to ~45% vs ~30-38% for prior methods |
 | 202608 | [MAP (mechanism-aware perturbation response predictor)](#model-map-knowledge-driven-perturbation-202608) | Nat. Mach. Intell. | not stated as a single total parameter count (uses frozen ESM-2 and MoleculeSTM encoders + trainable adapter MLPs + 4-layer transformer + STATE SE-600M foundation model) | — | MAP predicts single-cell drug responses zero-shot, improving DEG correlation up to +12.3% over baselines |
+| 202608 | [Dyna-1](#model-dyna-1-202608) | Nature | not stated (fine-tuned on top of frozen ESM-3 embeddings; full ESM-3 model size not specified in preprint) | ✓ | Dyna-1 predicts millisecond protein motions from missing NMR peaks, reaching AUROC 0.92 on BPTI dynamics |
 | 202606 | [LASErMPNN](#model-lasermpnn-202606) | Nature | not stated (GNN) | ✓ | 5x hit rate, 70x affinity vs. prior SOTA; zero-shot design reached Kd = 1.2 nM |
 | 202604 | [DeepDrugDiscovery](#model-deepdrugdiscovery-202604) | Nat. Biomed. Eng. | not stated (VAE+GRU) | ✓ | 2 lead BBB-permeable, mTOR-independent autophagy enhancers; restored memory in AD mouse models |
 | 202603 | [AI-guided LNP design (unnamed in paper)](#model-lnp-spatial-ai-202603) | Nat. Biomed. Eng. | N/A — non-neural (SISSO symbolic regression) | — | Lead lipid P1: 14.8x mRNA delivery efficiency vs. clinical-standard ALC-0315 |
 | 202412 | [RetroChimera](#model-retrochimera-202412) | Nature | Ensemble of two models; on the Pistachio dataset NeuralLoc has 165M parameters and R-SMILES 2 has 66.7M parameters (on USPTO-50K: 1.9M and 17.4M respectively) | ✓ | Ensembled retrosynthesis model preferred by chemists over reference reactions ~64% of the time |
+
+<a id="model-active-geometric-chemical-reaction-prediction-202610"></a>
+<details>
+<summary><b>EquiformerV2 (with coordinate-denoising auxiliary task), benchmarked against SchNet, DimeNet++, EGNN, PaiNN, Ponita, TFN, eSCN and T5Chem; XGBoost active-learning oracle</b> — Advancing chemical reaction prediction in data-scarce drug discovery with active and geometric deep learning <i>(Nat. Comput. Sci. 202610)</i></summary>
+
+**[Advancing chemical reaction prediction in data-scarce drug discovery with active and geometric deep learning](https://doi.org/10.1038/s43588-026-01063-0)**
+
+*Nat. Comput. Sci.* · 202610 · [Mason Minot](https://orcid.org/0000-0003-0225-9107) & [Gisbert Schneider](https://orcid.org/0000-0001-6706-1084) · [doi:10.1038/s43588-026-01063-0](https://doi.org/10.1038/s43588-026-01063-0)
+
+| | |
+| --- | --- |
+| **Parameters** | Not stated as a single number — the study benchmarks ten GNN architectures (SchNet, DimeNet++, EGNN, PaiNN, Ponita Point Cloud/Fiber, TFN, eSCN, EquiformerV2) plus XGBoost/CatBoost/Random Forest oracles; no parameter counts are reported for any. |
+| **Backbone** | Tree-based ensemble (XGBoost/CatBoost/Random Forest on 512-bit ECFP4 fingerprints) used as active-learning oracle; geometric GNNs (invariant: SchNet, DimeNet++, invariant-EGNN; equivariant: PaiNN, Ponita, TFN, eSCN, EquiformerV2) augmented with coordinate-denoising and node-masking self-supervised auxiliary heads plus a reaction-condition mixer and two-layer MLP output head, operating on 3D RDKit-generated conformers. |
+| **Pre-training** | `self-supervised` `coordinate-denoising` `node-masking` `online-auxiliary-tasks`<br>No offline pretraining on external corpora; instead, online self-supervised auxiliary objectives (coordinate denoising via Gaussian noise on xyz atom positions, sigma=0.03, and node masking/atom-type prediction) are applied jointly with the supervised task directly on the same labeled reaction data during training. |
+| **Training data** | Data were generated through a three-round active-learning experimental campaign for C–H borylation, starting from an initial dataset of 626 regioselectivity and 2,044 HTE (yield/binary) data points across 518 substrates, with substrates for active learning drawn from a pool of 22,253 candidates filtered for known, purchasable, QC-verified compounds.<br>**Final dataset after 3 active-learning rounds: 812 substrates (incl. 106 negatives) and 920 borylated species for regioselectivity, plus 6,865 HTE data points across 568 substrates for yield/binary classification.** |
+| **Downstream tasks** | `reaction-outcome-prediction` `regioselectivity-prediction` `active-learning` `yield-prediction` `late-stage-functionalization`<br>Binary reaction feasibility classification, regioselectivity (site-of-borylation) prediction, and yield prediction for C–H borylation (and a secondary Minisci C–H alkylation benchmark), with prospective experimental validation on ten previously unreported substrates. |
+| **Modalities** | `molecular graphs`, `3D molecular conformers`, `chemical reaction conditions`, `ECFP/Morgan fingerprints` |
+| **Code** | [github.com/minotm/active-drug-discovery](https://github.com/minotm/active-drug-discovery) |
+| **Weights** | [doi.org/10.5281/zenodo.20783136](https://doi.org/10.5281/zenodo.20783136) |
+| **License** | GNU GPLv3 |
+| **Note** | This is primarily a methodology/benchmarking paper (active-learning oracle + benchmark of ten GNN architectures) rather than a single named model; no single parameter count or architecture is reported as 'the' model. |
+
+**Key results**
+
+- Active learning expanded the C–H borylation dataset from an initial 626 regioselectivity/2,044 HTE data points (518 substrates) to 812 substrates (106 negatives, 920 borylated species) and 6,865 HTE data points across 568 substrates over three rounds.
+- On the Random split, T5Chem achieved 0.73±0.03 MCC versus 0.79±0.05 for PaiNN for condition-aware reaction outcome prediction; on the harder Scaffold and Butina splits T5Chem dropped to 0.38±0.08 and 0.36±0.08 while Ponita Fiber reached 0.59±0.05 and 0.47±0.1.
+- Self-supervised coordinate-denoising and node-masking auxiliary tasks provided a consistent performance benefit across GNN architectures, especially on the challenging Scaffold split.
+- Prospective validation with EquiformerV2 (plus coordinate denoising) on ten unreported borylation substrates: the most probable predicted borylation site matched the experimentally observed site for all ten substrates, including challenging N-heteroaryl and symmetric cases.
+
+</details>
+
+<a id="model-pinal-202610"></a>
+<details>
+<summary><b>Pinal</b> — Programmable design of functional proteins from natural language <i>(Nature 202610)</i></summary>
+
+**[Programmable design of functional proteins from natural language](https://www.nature.com/articles/s41586-026-11205-z)**
+
+*Nature* · 202610 · Fengyuan Dai & [Fajie Yuan](https://scholar.google.com/citations?user=yOiBwasAAAAJ&hl=en) · [doi:10.1038/s41586-026-11205-z](https://doi.org/10.1038/s41586-026-11205-z)
+
+| | |
+| --- | --- |
+| **Parameters** | 16 billion (T2struct scaled up to 15.5B parameters + SaProt-T sequence designer) |
+| **Backbone** | Two-stage encoder-decoder pipeline: T2struct (text-to-structure) uses a pre-trained T5 encoder plus a GPT-2-style decoder trained from scratch, linked via a text-3Di cross-attention module, autoregressively generating Foldseek 3Di structure tokens; SaProt-T (structure+text-to-sequence) is adapted from SaProt with text encoded by PubMedBERT and prepended to 3Di token embeddings, trained with a masked language modeling objective. |
+| **Pre-training** | `synthetic data generation` `masked language modeling` `autoregressive` `LLM-generated annotations`<br>Trained on a synthetic corpus of 1.7 billion protein-text pairs built from UniProt/TrEMBL and Swiss-Prot entries annotated via the ProTrek multimodal protein language model and consolidated/paraphrased with LLMs, plus ~800 million keyword-protein pairs from InterPro; structures sourced from the AlphaFold Protein Structure Database (AFDB). |
+| **Training data** | 1.7 billion synthetically annotated protein-text pairs spanning 135 million unique protein sequences and structures, encompassing over 100 billion word tokens; human-curated Swiss-Prot (545K proteins, 27M pairs) used for validation/ablation comparisons.<br>**1.7 billion protein-text pairs** |
+| **Downstream tasks** | `de novo protein design` `enzyme engineering` `fluorescent protein design` `plastic-degrading enzyme design` `metabolic pathway engineering`<br>Natural-language-prompted generation and experimental validation of a GFP-like fluorescent protein, a PETase, an alcohol dehydrogenase, and a metabolic H-protein incorporated into a multi-enzyme CO2-fixation pathway. |
+| **Modalities** | `protein sequence`, `protein structure (3Di tokens)`, `natural language text` |
+| **Code** | [huggingface.co/westlake-repl/Pinal](https://huggingface.co/westlake-repl/Pinal) |
+| **Weights** | [huggingface.co/westlake-repl/Pinal](https://huggingface.co/westlake-repl/Pinal) |
+| **Note** | Original Nature article page was not directly accessible (paywall/fetch error); entry is based on the complete bioRxiv preprint (v9, 10.1101/2024.08.01.606258), which text matches the Nature abstract and appears to be the accepted version. License for the Hugging Face weights is not stated in the fetched text. |
+
+**Key results**
+
+- Pinal achieved a mean keyword recovery rate of 77% versus approximately 12% for ESM3 in a keyword-conditioned generation comparison.
+- 17 of 20 (85%) structurally novel Pinal designs (TM-score < 0.5 to known PDB structures) were successfully expressed in soluble form in E. coli.
+- Pinal-designed H-protein (pinalH02) drove glycine synthesis to a final titer of 11.1 mM, a 1.7-fold increase over the native E. coli H-protein.
+- 14 of 20 (70%) H-protein candidates showed soluble expression, with 5 active in a reconstituted CO2-fixation assay.
+- In an independent benchmark, Pinal achieved the best performance on 11 of 14 metrics for sequence plausibility, structural foldability, and language alignment.
+
+</details>
+
+<a id="model-rfdiffusion3-202610"></a>
+<details>
+<summary><b>RFdiffusion3 (RFD3)</b> — Atomic functional site scaffolding in biopolymers with RFdiffusion3 <i>(Science 202610)</i></summary>
+
+**[Atomic functional site scaffolding in biopolymers with RFdiffusion3](https://doi.org/10.1126/science.aeh2982)**
+
+*Science* · 202610 · Jasper Butcher & David Baker · [doi:10.1126/science.aeh2982](https://doi.org/10.1126/science.aeh2982)
+
+| | |
+| --- | --- |
+| **Parameters** | 168M trainable parameters (final network) |
+| **Backbone** | Transformer-based U-Net with atom-level diffusion: a downsampling module encoding atomic/residue features, a sparse transformer token module (Pairformer shrunk from 48 to 2 layers relative to AlphaFold3), and an upsampling module predicting coordinate updates; uses sparse cross-attention for atom\u2194token pooling instead of triangle attention/multiplication. |
+| **Pre-training** | `diffusion` `self-supervised` `structure-denoising`<br>Hierarchical training: the network is pre-trained on a mix of AlphaFold2 distillation structures and deposited PDB structures, then fine-tuned on a larger fraction of DNA- and protein-protein-interaction examples, using structures by denoising native structures to varying noise levels and predicting backbone/side-chain atom positions conditioned on partial constraints. |
+| **Training data** | All protein-protein, protein-small-molecule and protein-DNA complexes in the Protein Data Bank deposited through December 2024, plus a set of high-quality AlphaFold2 distillation structures, each annotated with potential design conditioning features (hydrogen bonds, binding partners, functional motifs).<br>**PDB entries through December 2024 + AF2 distillation structure set** |
+| **Downstream tasks** | `protein-binder-design` `enzyme-design` `DNA-binding-protein-design` `small-molecule-binder-design` `RNA-structure-design`<br>Used for unconditional protein backbone generation, protein-protein binder design, protein-DNA and protein-small-molecule interface design, atomic active-site/enzyme scaffolding, and RNA structure design, with experimental validation of designed DNA-binding proteins and enzymes (plus, per the Science abstract, de novo phosphotriesterases and transthyretin-specific zinc proteases not covered in the bioRxiv preprint text obtained). |
+| **Modalities** | `protein structure`, `small molecule`, `DNA`, `RNA` |
+| **Code** | [github.com/RosettaCommons/foundry](https://github.com/RosettaCommons/foundry) |
+| **Note** | Full Science text is paywalled; entry is based on the open bioRxiv preprint (2025.09.18.676967v2, same model/architecture) plus the Science abstract and a EurekAlert press release for the published version's phosphotriesterase/transthyretin-protease experiments, which go beyond what the fetched preprint describes. |
+
+**Key results**
+
+- Final network has 168M trainable parameters vs ~350M for AlphaFold3
+- RFD3 is roughly an order of magnitude (~10x) faster than RFdiffusion2 for typical protein lengths
+- 98% of unconditional designs (length 100-200) had at least one of 8 ProteinMPNN sequences predicted by AF3 to fold within 1.5 \u00c5 RMSD
+- For protein-binder design across 5 targets, RFD3 found on average 8.2 unique successful clusters vs 1.4 for RFdiffusion1
+- On the Atomic Motif Enzyme benchmark, RFD3 outperformed RFdiffusion2 on 37/41 (90%) cases, and on cases with >4 residue islands achieved 15% vs 4% passing designs
+- Designed DNA-binding protein validated by yeast display bound with EC50 = 5.89 \u00b1 2.15 \u00c5\u03bcM
+- Designed cysteine-hydrolase esterase achieved Kcat/Km = 3557 from 190 screened designs (35 multi-turnover hits)
+- Per the Science abstract (not in the fetched preprint text): de novo phosphotriesterases with a carbamylated-lysine dual-metal active site and transthyretin-specific zinc proteases were obtained as active catalysts from zero-shot 96-construct design campaigns
+
+</details>
 
 <a id="model-mutexagpt-202609"></a>
 <details>
@@ -79,6 +176,36 @@ Scientific discovery, research assistance, chemistry and drug design.
 
 </details>
 
+<a id="model-syncraft-202609"></a>
+<details>
+<summary><b>SynCraft</b> — Guiding large language models to predict edit sequences for molecular synthesizability optimization <i>(Nat. Mach. Intell. 202609)</i></summary>
+
+**[Guiding large language models to predict edit sequences for molecular synthesizability optimization](https://doi.org/10.1038/s42256-026-01304-x)**
+
+*Nat. Mach. Intell.* · 202609 · [Junren Li](https://orcid.org/0000-0003-1411-7288) & Luhua Lai · [doi:10.1038/s42256-026-01304-x](https://doi.org/10.1038/s42256-026-01304-x)
+
+| | |
+| --- | --- |
+| **Parameters** | N/A — not a trained neural net; uses the pretrained Gemini-2.5-Pro LLM via API with retrieval-augmented few-shot prompting, no fine-tuning or disclosed parameter count |
+| **Backbone** | Gemini-2.5-Pro LLM driven by Chain-of-Thought prompting and Retrieval-Augmented Generation (top-k=5 Morgan fingerprint retrieval), outputting a discrete atom-level edit action space (DEL_ATOM, MUTATE_ATOM, ADD_ATOM, ADD_BOND/DEL_BOND, CHANGE_BOND, SET_CHIRAL/SET_BOND_STEREO) deterministically executed by RDKit; optional interaction-aware module using AutoDock Vina docking + PLIP interaction profiling with graph alignment to inject 3D binding constraints into the prompt. |
+| **Pre-training** | `frozen pretrained LLM` `no fine-tuning` `retrieval-augmented generation` `few-shot prompting`<br>No model pretraining/fine-tuning is performed; SynCraft uses the off-the-shelf Gemini-2.5-Pro model purely via in-context few-shot prompting, retrieving top-5 similar exemplars (reasoning + edit sequence) from a curated 'Synthesis Cliff' reference database at inference time. |
+| **Training data** | A 'Synthesis Cliff Dataset' was constructed by taking unsynthesizable molecules generated by five structure-based 3D generative models (LiGAN, 3D-SBDD, Pocket2Mol, DiffSBDD, ResGen) from the GenBench3D benchmark, flagging unsynthesizable ones via the SimpRetro retrosynthesis model (USPTO-derived templates, Enamine building blocks), and pairing each with its nearest synthesizable neighbor (ECFP4 Tanimoto >0.5 and Pharm2D >0.5) from the ~23-million-compound eMolecules database; Gemini-2.5-Pro was used to generate chemical rationales for each pair, forming the few-shot reference corpus (not model training weights).<br>**3,332 unsynthesizable-to-synthesizable cliff pairs; eMolecules database of ~23 million compounds searched** |
+| **Downstream tasks** | `synthesizability optimization` `molecular editing` `hit optimization` `structure-based drug design` `retrosynthesis-aware design`<br>Evaluated on restoring synthesizability of molecules generated by Pocket2Mol and ResGen (1,725 and 1,025 test molecules respectively) while preserving structural similarity; applied retrospectively to replicate human medicinal chemist edits on PLK1 inhibitors, and prospectively to rescue 42 high-scoring but previously discarded RIPK1 inhibitor candidates using interaction-aware (docking + PLIP) constraints. |
+| **Modalities** | `SMILES/molecular graph (atom-mapped)`, `natural language reasoning text`, `3D protein-ligand docking poses` |
+| **Code** | [github.com/catalystforyou/SynCraft-Core](https://github.com/catalystforyou/SynCraft-Core) |
+| **Note** | Based on the arXiv preprint (2512.20333, posted Dec 2025) since the Nature Machine Intelligence version of record was paywalled/inaccessible; content, figures and numbers should match the published version but exact final wording may differ slightly. |
+
+**Key results**
+
+- On Pocket2Mol test set, SynCraft achieved 42.7% success rate at Tanimoto similarity >0.5 vs ~30% for best baseline (SynFormer/ReaSyn), and 28.4% at >0.6 vs 14.1–15.4% for baselines
+- On ResGen test set, SynCraft achieved 44.7% success at >0.5 and 29.1% at >0.6, versus 37.5%/22.0% for the strongest baseline ReaSyn
+- Ablation: 5-shot edit-based SynCraft reached 44.68% success at Sim>0.5 on ResGen vs only 26.44% for zero-shot direct-SMILES generation, despite the latter having a higher raw 'Total Solved' rate (72.39% vs 69.27%)
+- Retrospective case study: SynCraft's reasoning to remove chiral dimethylpiperazine methyl groups converged with the actual human-expert-modified synthesized PLK1 inhibitor IIP0944
+- Prospective RIPK1 case studies: an ether-bridge edit preserved Vina docking score (-10.7 to -10.2 kcal/mol) and a scaffold-hop edit preserved score (-10.2 to -9.9 kcal/mol) while restoring synthesizability
+- Estimated operational cost of ~$3–5 USD per 100 optimization runs using the Gemini-2.5-Pro API
+
+</details>
+
 <a id="model-map-knowledge-driven-perturbation-202608"></a>
 <details>
 <summary><b>MAP (mechanism-aware perturbation response predictor)</b> — A knowledge-driven framework for predicting single-cell responses for unprofiled drugs <i>(Nat. Mach. Intell. 202608)</i></summary>
@@ -105,6 +232,38 @@ Scientific discovery, research assistance, chemistry and drug design.
 - Prioritizes four out of five approved anti-cancer drugs among top-14 of 58 held-out compounds for A-549 (NSCLC) in silico screening; adagrasib and afatinib ranked 2nd and 4th
 - MAP-KG comprises 187,089 drugs, 22,924 genes and 694,246 mechanistic relations from 14 public resources
 - Per-compound top-50 DEG Pearson delta correlation on unprofiled drugs ranged from 0.942 (sildenafil) to 0.620 (ciclopirox), highest of all baselines on all 16 test compounds
+
+</details>
+
+<a id="model-dyna-1-202608"></a>
+<details>
+<summary><b>Dyna-1</b> — Learning millisecond protein dynamics from what is missing in NMR spectra <i>(Nature 202608)</i></summary>
+
+**[Learning millisecond protein dynamics from what is missing in NMR spectra](https://doi.org/10.1038/s41586-026-10989-4)**
+
+*Nature* · 202608 · Hannah K. Wayment-Steele & Dorothee Kern · [doi:10.1038/s41586-026-10989-4](https://doi.org/10.1038/s41586-026-10989-4)
+
+| | |
+| --- | --- |
+| **Parameters** | not stated (fine-tuned on top of frozen ESM-3 embeddings; full ESM-3 model size not specified in preprint) |
+| **Backbone** | Classifier head on layer-22 embeddings of ESM-3 (sequence+structure), compared against ESM-2 layers, AlphaFold2 pair representation, and one-hot-amino-acid transformer baselines; binary per-residue classification task |
+| **Pre-training** | `ESM-3` `self-supervised protein language model` `transfer learning`<br>Built on frozen embeddings from a pretrained ESM-3 model (layer 22 selected as best-performing) and also tested ESM-2 and AlphaFold2 pair representations; the protein-dynamics classifier itself was trained from scratch on curated BMRB missing-assignment data. |
+| **Training data** | Curated a 'missing assignment BMRB' (mBMRB) dataset from ~10,000 BMRB-deposited proteins, using ~5,906 proteins with usable structures (2,680 lacking X-ray/EM structures) to train a binary classifier predicting missing NMR peak assignments as a proxy for µs-ms exchange broadening; evaluated on RelaxDB, a hand-curated benchmark of 133 single-domain protein relaxation datasets (plus RelaxDB-CPMG) and a held-out mBMRB-Test split.<br>**~5,906 training proteins (mBMRB), 133 proteins in RelaxDB benchmark** |
+| **Downstream tasks** | `protein dynamics prediction` `NMR data reinterpretation` `enzyme/ligand-binding site discovery` `structural biology`<br>Predicts per-residue probability of µs-ms conformational exchange from sequence/structure alone, used to reinterpret existing NMR relaxation datasets, flag likely mis-assignments, and highlight biologically relevant dynamic motifs (e.g., ligand-binding loops in flavodoxin, the mRNA-binding loop of ribonuclease toxin MqsR). |
+| **Modalities** | `protein sequence`, `protein structure (ESMFold/AlphaFold2 predicted)`, `NMR relaxation data` |
+| **Code** | [github.com/WaymentSteeleLab/Dyna-1](https://github.com/WaymentSteeleLab/Dyna-1) |
+| **Weights** | [github.com/WaymentSteeleLab/Dyna-1](https://github.com/WaymentSteeleLab/Dyna-1) |
+| **License** | noncommercial use license (per repo) |
+| **Note** | Nature version is paywalled; all extracted text and numbers are from the complete open bioRxiv preprint (2025.03.19.642801), which may differ slightly from the final published version. Parameter count of underlying ESM-3 model not disclosed in the preprint. |
+
+**Key results**
+
+- Naïve secondary-structure-frequency baseline achieved AUROC 0.501 (near random) on the validation set
+- AF2-pair-representation model achieved AUROC 0.71 and last-layer ESM-2 embeddings achieved AUROC 0.75 on the validation set; one-hot-amino-acid transformer baseline achieved AUROC 0.62
+- Layer-22 ESM-3 embeddings (sequence+structure) achieved the best validation AUROC of 0.77, leading to selection as 'Dyna-1'
+- Restricting training to 30% sequence identity / 0.5 TM-score split (~2,700 proteins) only reduced validation AUROC from 0.755 to 0.74 versus the full dataset, arguing against memorization
+- Dyna-1 achieved AUROC of 0.92 predicting millisecond exchange in BPTI, matching known 5-state exchange kinetics from MD simulation
+- Dyna-1 achieved AUROC of 0.60 (improving to 0.62 after reinterpreting mis-assigned/overlapping peaks) on the NtrC receiver domain, and is generally weakest at predicting exchange in beta-sheets
 
 </details>
 
@@ -220,10 +379,131 @@ Scientific discovery, research assistance, chemistry and drug design.
 
 | Date | Model | Venue | Model size | Open | Headline result |
 | --- | --- | --- | --- | --- | --- |
+| 202610 | [CIF-based Random Forest ml-MXene classifier (unnamed in paper)](#model-mxene-treasure-chest-202610) | Science | N/A — non-neural (Random Forest ensemble classifier was the best-performing of the benchmarked models) | — | ML-guided database mining enabled rapid synthesis of 5 rediscovered and 11 new rare-earth MXenes |
+| 202610 | [HIP (Hessian Interatomic Potentials)](#model-hip-hessian-interatomic-potentials-202610) | Nat. Comput. Sci. | not stated in the fetched text | ✓ | HIP predicts molecular Hessians directly, 10–70× faster than autodiff with 2–3× less peak memory |
+| 202610 | [MatText (BERT- and Llama-based benchmarking framework)](#model-mattext-cc-cliff-202610) | Nat. Comput. Sci. | Multiple models benchmarked: a custom small BERT (hidden size 512, 4 layers, 8 attention heads; parameter count not stated) and Llama-2/Llama-3 models from 7B to 70B parameters fine-tuned with LoRA. | ✓ | LLMs show a 'geometric blindness': scaling to 70B params or 2M structures barely narrows the gap with GNNs |
+| 202608 | [Self-supervised pretrained OAReactDiff/React-OT and AEFM generative transition-state models (RobustTSGen)](#model-robust-ts-gen-202608) | Nat. Comput. Sci. | not stated in the accessible text (diffusion/flow-matching generative models; size not disclosed) | ✓ | Pretraining cuts transition-state RMSD on unseen transition-metal reactions from 0.39 Å to 0.19 Å |
 | 202602 | [Discovery Learning](#model-discovery-learning-202602) | Nature | N/A — no single model (learner/interpreter/oracle loop) | ✓ | Predicts full cycle life from ~50 cycles: ~5% of the energy, ~2% of the time of full testing |
 | 202501 | [MatterGen](#model-mattergen-202501) | Nature | 46.8M | ✓ | >2x more novel/stable structures than prior baselines; one design (TaCr₂O₆) synthesized |
 | 202311 | [GNoME](#model-gnome-202311) | Nature | not stated (GNN) | ✓ | 2.2M candidate crystals, ~380K most stable; 736 independently synthesized externally |
 | 202311 | [A-Lab (with ARROWS3 active learning and XRD-AutoAnalyzer)](#model-a-lab-202311) | Nature | not stated \u2014 no single network; pipeline of an NLP similarity/precursor model, an XGBoost temperature regressor, a phase-ID CNN and an actor\u2013critic RL refinement agent, none with published parameter counts | ✓ | Self-driving lab synthesized 36 of 57 predicted inorganic targets in 17 days across 353 robotic recipes |
+
+<a id="model-mxene-treasure-chest-202610"></a>
+<details>
+<summary><b>CIF-based Random Forest ml-MXene classifier (unnamed in paper)</b> — Data-driven discovery and rapid, direct synthesis of MXenes <i>(Science 202610)</i></summary>
+
+**[Data-driven discovery and rapid, direct synthesis of MXenes](https://doi.org/10.1126/science.aeh5957)**
+
+*Science* · 202610 · [Ali Saffar Shamshirgar](https://orcid.org/0000-0002-0762-8058) & [Johanna Rosen](https://orcid.org/0000-0002-5173-6726) · [doi:10.1126/science.aeh5957](https://doi.org/10.1126/science.aeh5957)
+
+| | |
+| --- | --- |
+| **Parameters** | N/A — non-neural (Random Forest ensemble classifier was the best-performing of the benchmarked models) |
+| **Backbone** | Random Forest classifier operating on structural descriptors parsed from CIF files (symmetry info, pair-distance statistics, density features, structural heterogeneity); benchmarked against SVM, a multilayer perceptron, and a simplified graph-based model, with Random Forest selected as best performer. |
+| **Pre-training** | `supervised-classification` `materials-database-mining`<br>No pretraining in the neural-network sense; the classifier was trained from scratch in a supervised manner on a balanced, labeled dataset of ml-MXene vs. non-ml-MXene crystal structures drawn from the Materials Project and OQMD. |
+| **Training data** | A balanced set of 1050 labeled crystal structures (525 ml-MXene, 525 non-ml-MXene) compiled from screening the Materials Project and Open Quantum Materials Database for 2:1:2 stoichiometry compounds chemically adjacent to known MXenes.<br>**1050 labeled structures (525 positive / 525 negative)** |
+| **Downstream tasks** | `materials-discovery` `crystal-structure-classification` `synthesis-guidance`<br>The trained classifier triaged 541 candidate CIF structures down to 270 high-probability ml-MXene candidates, which were further curated (with literature cross-checking) to a list of 50 compounds; findings guided experimental rediscovery of 5 MXenes via rapid self-propagating high-temperature synthesis and the synthesis of 11 new rare-earth M2CT2 MXenes. |
+| **Modalities** | `crystal structure (CIF)`, `tabular structural descriptors` |
+| **Note** | Original Science article is paywalled; entry is based on the complete open arXiv preprint (2608.16644), which matches the Science abstract/metadata. No code or model release was found in the available text. |
+
+**Key results**
+
+- Screening Materials Project and OQMD yielded 541 candidate 2:1:2 compounds
+- Random Forest outperformed SVM, MLP, and a simplified graph-based model on a balanced 1050-structure labeled dataset
+- A probability threshold of P(ml-MXene) > 0.8 narrowed candidates to 270, further curated to a 50-material 'Treasure Chest'
+- Guided by the ML screen, researchers experimentally rediscovered 5 MXenes using a self-propagating high-temperature synthesis completing within minutes without sustained external heating
+- 11 previously unexplored rare-earth M2CT2 MXenes (M = Pr, Nd, Sm, Gd, Tb, Ho, Tm) were synthesized, showing semiconducting behavior and diverse magnetic states
+- 26 additional hypothetical phases were theoretically predicted to be stable
+
+</details>
+
+<a id="model-hip-hessian-interatomic-potentials-202610"></a>
+<details>
+<summary><b>HIP (Hessian Interatomic Potentials)</b> — HIP: Hessian Interatomic Potentials without derivatives <i>(Nat. Comput. Sci. 202610)</i></summary>
+
+**[HIP: Hessian Interatomic Potentials without derivatives](https://doi.org/10.1038/s43588-026-01066-x)**
+
+*Nat. Comput. Sci.* · 202610 · Andreas Burger & Alán Aspuru-Guzik · [doi:10.1038/s43588-026-01066-x](https://doi.org/10.1038/s43588-026-01066-x)
+
+| | |
+| --- | --- |
+| **Parameters** | not stated in the fetched text |
+| **Backbone** | SE(3)-equivariant EquiformerV2 backbone (reused from the HORM model) with an added equivariant Hessian readout head combining node and pairwise message contributions (an extra EquiformerV2-style readout layer was added for expressivity) |
+| **Pre-training** | `equivariant-GNN` `Hessian-supervised` `fixed-backbone-finetuning`<br>HIP keeps a fixed EquiformerV2 backbone (from the HORM molecular Hessian model) and trains only a new Hessian-prediction readout head on energies, forces and DFT Hessians, using a learning-rate warm-up over 15k steps from 0 to 5e-4 followed by cosine decay over 500k steps to 5e-5, trained on a single H100 GPU.' |
+| **Training data** | Trained/evaluated using DFT reference Hessians (e.g. recomputed with GPU4PySCF v1.3.0 at ωB97X/6-31G* for a transition-state proposal subset) built on top of the HORM large-scale molecular Hessian database; model performance evaluated on a held-out validation set.<br>**10,000 validation structures** |
+| **Downstream tasks** | `transition-state-search` `geometry-optimization` `vibrational-analysis`<br>Direct Hessian prediction is used to accelerate transition-state searches, geometry optimization and vibrational (normal-mode) analysis compared with Hessians obtained via automatic differentiation of a learned potential. |
+| **Modalities** | `3D molecular structure`, `quantum-chemical Hessian/energy/force labels` |
+| **Code** | [github.com/BurgerAndreas/hip](https://github.com/BurgerAndreas/hip) |
+| **Weights** | [huggingface.co/andreasburger/hip](https://huggingface.co/andreasburger/hip) |
+| **License** | Apache-2.0 (code repository) |
+| **Note** | Original Nature Computational Science article (paywalled DOI) was not directly fetchable; entry is built from the openly available arXiv/OpenReview preprint 'Shoot from the HIP: Hessian Interatomic Potentials without derivatives' (arXiv:2509.21624), which appears to be the same work. Code and weights links were added after extraction by checking the repository directly: BurgerAndreas/hip is Apache-2.0, its README links this arXiv paper (2509.21624), and checkpoints are hosted on Hugging Face. |
+
+**Key results**
+
+- HIP accelerates Hessian predictions 10–70 times and reduces peak memory by a factor of 2–3 compared with automatic differentiation of the underlying potential.
+- HIP maintains O(N) scaling with the number of atoms, versus worse scaling for automatic-differentiation-based Hessians.
+- On the reported benchmark, HIP-EquiformerV2 achieves Hessian error 0.030, eigenvalue error 0.063, top-eigenvector cosine similarity 0.982 and lowest-eigenvalue error 0.031 at 38.5 (time units); an improved variant (HIP-EquiformerV2*) achieves 0.020, 0.041, 0.982 and 0.031 at 31.4.
+
+</details>
+
+<a id="model-mattext-cc-cliff-202610"></a>
+<details>
+<summary><b>MatText (BERT- and Llama-based benchmarking framework)</b> — Less can be more for predicting properties with large language models <i>(Nat. Comput. Sci. 202610)</i></summary>
+
+**[Less can be more for predicting properties with large language models](https://doi.org/10.1038/s43588-026-01045-2)**
+
+*Nat. Comput. Sci.* · 202610 · [Nawaf Alampara](https://scholar.google.com/citations?user=R7K3xFIAAAAJ&hl=en) & [Kevin Maik Jablonka](https://scholar.google.com/citations?user=R2ntI8IAAAAJ&hl=en) · [doi:10.1038/s43588-026-01045-2](https://doi.org/10.1038/s43588-026-01045-2)
+
+| | |
+| --- | --- |
+| **Parameters** | Multiple models benchmarked: a custom small BERT (hidden size 512, 4 layers, 8 attention heads; parameter count not stated) and Llama-2/Llama-3 models from 7B to 70B parameters fine-tuned with LoRA. |
+| **Backbone** | BERT-base-uncased-style encoder (hidden size 512, 4 hidden layers, 8 attention heads, max position embedding 1024, MLM pretraining) and decoder-only Llama-2/Llama-3 (7B–70B) fine-tuned via parameter-efficient LoRA; compared against GNN baselines (CoGN, SchNet, DimeNet) and descriptor-based MODNet. |
+| **Pre-training** | `self-supervised` `masked-language-modeling` `text-representation-of-crystals` `LoRA-finetuning`<br>BERT variants were pretrained from scratch with masked language modeling (15% masking) on nine different text representations of crystal structures (e.g., CIF P1, SLICES, Z-matrix, composition, local environment) at dataset scales from 30K to 2M structures sourced from the NOMAD archive via the MatBench suite; Llama-2/Llama-3 models (7B–70B) were general-purpose pretrained LLMs subsequently parameter-efficiently fine-tuned (LoRA) on the same text representations for property regression. |
+| **Training data** | Crystal structures converted into nine text representations using the authors' MatText package, drawn from the NOMAD open materials archive and benchmarked via the MatBench suite, at scales ranging from 30,000 up to 2 million structures.<br>**up to 2 x 10^6 crystal structures** |
+| **Downstream tasks** | `materials-property-prediction` `benchmarking` `shear-modulus` `bulk-modulus` `formation-energy`<br>Regression of shear modulus, bulk modulus, and perovskite formation energy from text-encoded crystal structures, plus a synthetic coordinate-category probing task and comparison against the MatBench leaderboard (GNNs, descriptor-based MODNet, and other LLM-based approaches). |
+| **Modalities** | `text`, `crystal structure (tabular/coordinate-category)` |
+| **Code** | [github.com/lamalab-org/MatText](https://github.com/lamalab-org/MatText) |
+| **Weights** | [huggingface.co/datasets/n0w0f/MatText (datasets); example pretrained model e.g. n0w0f/MatText-cifp1-2m](https://huggingface.co/datasets/n0w0f/MatText (datasets); example pretrained model e.g. n0w0f/MatText-cifp1-2m) |
+| **License** | MIT |
+| **Note** | Original Nature Computational Science article (paywalled) could not be fetched directly; entry is based on the complete arXiv preprint (2406.17295v3), the authors' official project/results page (lamalab-org.github.io/MatText), and search-engine-indexed snippets of the published abstract, which together closely match the published version's stated results (e.g., up to 70B parameters, 2M structures) though some published-version experimental details (e.g., exact Llama-2 7B/13B/70B table numbers) could not be independently verified beyond the arXiv v3 Llama-3-8B results. |
+
+**Key results**
+
+- Geometric blindness (LLMs failing to use coordinate information while excelling at categorical patterns) persists regardless of model size (up to 70B parameters), dataset scale (up to 2 million structures), or text representation strategy.
+- Scaling dataset size (30K to 2M structures) or model size (7B to 70B parameters) changed RMSE by only single digits (percent), far from closing the gap with GNNs.
+- On MatBench-style tasks, best BERT-based RMSE for perovskite formation energy was ~0.095 eV versus a GNN SOTA of 0.055 eV; fine-tuned Llama-3-8B-Instruct performed worse still (RMSE 0.181-0.716 eV depending on representation).
+- Across the MatBench leaderboard, GNN-based and language-based approaches segregate almost perfectly into a 'GNN-LM wall', with language models consistently at the high-error end across six material-property tasks.
+
+</details>
+
+<a id="model-robust-ts-gen-202608"></a>
+<details>
+<summary><b>Self-supervised pretrained OAReactDiff/React-OT and AEFM generative transition-state models (RobustTSGen)</b> — Robust generative transition-state models for unseen chemistry <i>(Nat. Comput. Sci. 202608)</i></summary>
+
+**[Robust generative transition-state models for unseen chemistry](https://doi.org/10.1038/s43588-026-01034-5)**
+
+*Nat. Comput. Sci.* · 202608 · Samir Darouich & Heather J. Kulik · [doi:10.1038/s43588-026-01034-5](https://doi.org/10.1038/s43588-026-01034-5)
+
+| | |
+| --- | --- |
+| **Parameters** | not stated in the accessible text (diffusion/flow-matching generative models; size not disclosed) |
+| **Backbone** | Generative transition-state models built on OAReactDiff/React-OT (SE(3)-equivariant diffusion) and AEFM (equivariant flow-matching model), fine-tuned from equilibrium-conformer self-supervised pretraining |
+| **Pre-training** | `self-supervised` `pseudo-reaction pretraining` `equilibrium conformers`<br>A self-supervised pretraining strategy constructs pseudo-reactions from abundant equilibrium conformer structures (independent of the Transition1x TS dataset), exposing the generative model to diverse chemical environments before supervised fine-tuning on transition-state data. |
+| **Training data** | Fine-tuning data come from the Transition1x dataset of small-organic-molecule reactions, extended with curated benchmarks built via controlled elemental substitutions and a diverse transition-metal-complex (TMC) reaction set to probe generalization to unseen elements/chemistry. |
+| **Downstream tasks** | `transition-state structure prediction` `reaction barrier estimation` `catalysis/transition-metal chemistry generalization`<br>Evaluated on predicting transition-state geometries and reaction energetics for reactions involving previously unseen elements and transition-metal complexes, including out-of-distribution Rh/Pt-catalyzed reactions and low-data fine-tuning regimes. |
+| **Modalities** | `3D molecular geometry` |
+| **Code** | [github.com/samirdarouich/RobustTSGen](https://github.com/samirdarouich/RobustTSGen) |
+| **Weights** | [doi.org/10.5281/zenodo.18338076](https://doi.org/10.5281/zenodo.18338076) |
+| **License** | MIT (code repository) |
+| **Note** | Original Nature Computational Science article is paywalled; entry is based on the complete open arXiv preprint (arXiv:2601.16469, 'Beyond the Training Domain...') and the paper's public GitHub/Zenodo resources, which match the published title/DOI per cross-references. |
+
+**Key results**
+
+- Self-supervised pretraining lowers the median RMSD of predicted TS geometries on Transition1x-TMC reactions from 0.39 Å to 0.19 Å.
+- Pretraining reduces the fine-tuning data required to reach comparable accuracy by up to 75%, enabling reliable performance in low-data regimes.
+- Without pretraining, generative TS models produce unphysical geometries and large energetic errors on chemically novel (unseen-element/TMC) reactions despite good performance on organic reactions.
+
+</details>
 
 <a id="model-discovery-learning-202602"></a>
 <details>
