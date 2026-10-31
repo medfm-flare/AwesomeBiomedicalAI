@@ -4,7 +4,7 @@ CT, MRI, X-ray and fMRI foundation models.
 
 **Maintainer:** @Sumin Kim · [Judy Lyu](https://github.com/judylyu) 
 
-**49 entries** · **Last updated: 202610** · [Back to index](README.md)
+**57 entries** · **Last updated: 202610** · [Back to index](README.md)
 
 ## CT
 
@@ -13,6 +13,7 @@ Click a model to expand its record.
 | Date | Model | Venue | Model size | Training data | Pre-training | Downstream tasks |
 | --- | --- | --- | --- | --- | --- | --- |
 | 202610 | [CAPTOR](#model-captor-202610) | arXiv | _not published_ | none (25.5K volume–report pairs) | contrastive, vision-language | classification, prognosis, retrieval |
+| 202609 | [NV-Reason-CT](#model-nv-reason-ct-202609) | arXiv | 4B (LLM) | none (85.9K CT–report cases) | vision-language, SFT, RL | classification, report generation, VQA |
 | 202609 | [nnFoundation](#model-nnfoundation-202609) | arXiv | 102M (CNN) | 2.1M volumes | MAE | segmentation, classification, report generation +2 |
 | 202609 | [RADAR](#model-radar-202609) | Science | _not published_ | none (15M anatomy–text pairs) | contrastive, vision-language | classification |
 | 202608 | [LiON](#model-lion-202608) | Nat. Med. | _n/a_ | 6.4K patients | _n/a_ | classification, segmentation |
@@ -20,10 +21,12 @@ Click a model to expand its record.
 | 202607 | [NeuroVFM](#model-neurovfm-202607) | Nat. Med. | 85.8M | 5.24M volumes | JEPA | classification, report generation, retrieval +2 |
 | 202606 | [TAMP](#model-tamp-202606) | Nat. Commun. | _not published_ | none (10.8M simulated CT images) | self-supervised | enhancement |
 | 202605 | [FlexiCT](#model-flexict-202605) | arXiv | _not published_ | 266K volumes | agglomerative, DINOv3, contrastive | segmentation, classification, registration +1 |
+| 202605 | [PET/CT-FM](#model-pet-ct-fm-202605) | arXiv | 74.6M (SwinUNETR-B) | 4.8K PET/CT volumes | MAE | segmentation |
 | 202605 | [MultiMedVision](#model-multimedvision-202605) | arXiv | _not published_ | none (CXR + CT-RATE) | self-supervised | classification |
 | 202604 | [Curia-2](#model-curia-2-202604) | arXiv | 86M (ViT-B) | none (228M DICOM slices) | DINOv2 | classification, detection, regression |
 | 202604 | [VoxelFM](#model-voxelfm-202604) | arXiv | _not published_ | 137K studies | DINO | classification, segmentation, retrieval +4 |
 | 202604 | [FM-HCT](#model-fm-hct-202604) | Nat. Biomed. Eng. | 86M (ViT-B) | 362K volumes | DINO | classification, retrieval |
+| 202604 | [DeepFAN](#model-deepfan-202604) | Nat. Cancer | _n/a_ | 7.9K nodules | _n/a_ | classification |
 | 202603 | [Merlin](#model-merlin-202603) | Nature | 121M | none (25.5K volume–report pairs) | CLIP | classification, segmentation, retrieval +2 |
 | 202603 | [Thymus-IO](#model-thymus-io-202603) | Nature | _n/a_ | 5.7K CT volumes | SwAV | classification, prognosis |
 | 202603 | [Thymus-Adult](#model-thymus-adult-202603) | Nature | _n/a_ | 5.7K CT volumes | SwAV | classification |
@@ -38,6 +41,7 @@ Click a model to expand its record.
 | 202512 | [AnyMC3D](#model-anymc3d-202512) | arXiv | _n/a_ | none (frozen DINOv2/3) | DINOv2, DINOv3 | classification |
 | 202511 | [Pillar-0](#model-pillar-0-202511) | arXiv | 79M (Atlas enc.) | none (~155K volume–report pairs) | contrastive, vision-language | classification, prognosis |
 | 202511 | [SPECTRE](#model-spectre-202511) | CVPR 2026 | 339M (local enc.) | 230K CT volumes | DINOv3, SigLIP | classification, segmentation, retrieval |
+| 202510 | [COLIPRI](#model-colipri-202510) | arXiv | _not published_ | none (22.7K CT–report + ~72K CT) | CLIP, MAE, report generation | classification, retrieval, segmentation +1 |
 | 202508 | [RadFM](#model-radfm-202508) | Nat. Commun. | 14B | none (16M 2D/3D image–text) | vision-language | classification, VQA, report generation |
 | 202508 | [Curia](#model-curia-202508) | arXiv | 86M | none (228M DICOM slices) | DINOv2 | General-purpose multimodal radiology representation learning |
 | 202507 | [Percival](#model-percival-202507) | medRxiv | 22M (DeiT-S enc.) | none (403K volume–report pairs) | InfoNCE, contrastive | retrieval, classification, prognosis |
@@ -62,6 +66,28 @@ Click a model to expand its record.
 | **Modalities** | `CT`, `text` |
 | **Code** | [github.com/Guerbet-AI/CAPTOR](https://github.com/Guerbet-AI/CAPTOR) |
 | **Weights** | [huggingface.co/Guerbet-AI/CAPTOR](https://huggingface.co/Guerbet-AI/CAPTOR) |
+
+</details>
+
+<a id="model-nv-reason-ct-202609"></a>
+<details>
+<summary><b>NV-Reason-CT</b> — NV-Reason-CT: 3D visual language model for CT analysis <i>(arXiv 202609)</i></summary>
+
+**[NV-Reason-CT: 3D Visual Language Model for CT Analysis](https://arxiv.org/abs/2609.27511)**
+
+*arXiv* · 202609 · [arXiv:2609.27511](https://arxiv.org/abs/2609.27511)
+
+| | |
+| --- | --- |
+| **Parameters** | 4B (LLM) |
+| **Parameter note** | 4B is the Qwen3.5 language backbone; the full model also contains a native Primus 3D vision transformer initialized from COLIPRI and a learned projector. |
+| **Backbone** | Primus 3D vision transformer and Qwen3.5-4B with 3D MRoPE |
+| **Pre-training** | `vision-language`, `SFT`, `RL`<br>End-to-end radiologist-guided supervised fine-tuning followed by verifiable reinforcement learning; all 13,824 visual tokens retain explicit depth, height and width coordinates. |
+| **Training data** | CT-RATE, NIH internal and CancerVerse CT–report cohorts<br>**85,860** cases · approximately **550,000** multimodal instruction examples from **70,111** unique image inputs |
+| **Downstream tasks** | `classification`, `report generation`, `VQA`, `reasoning`<br>Chest and abdominal CT abnormality classification, structured reporting and interactive clinical reasoning. |
+| **Modalities** | `CT`, `text` |
+| **Code** | [github.com/NVIDIA-Medtech/NV-Reason-CT](https://github.com/NVIDIA-Medtech/NV-Reason-CT) |
+| **Weights** | [huggingface.co/nvidia/NV-Reason-CT](https://huggingface.co/nvidia/NV-Reason-CT) |
 
 </details>
 
@@ -203,6 +229,27 @@ Click a model to expand its record.
 
 </details>
 
+<a id="model-pet-ct-fm-202605"></a>
+<details>
+<summary><b>PET/CT-FM</b> — An open multi-center whole-body FDG PET/CT foundation model for tumor segmentation <i>(arXiv 202605)</i></summary>
+
+**[An Open Multi-Center Whole-Body FDG PET/CT Foundation Model for Tumor Segmentation](https://arxiv.org/abs/2605.21835)**
+
+*arXiv* · 202605 · [arXiv:2605.21835](https://arxiv.org/abs/2605.21835)
+
+| | |
+| --- | --- |
+| **Parameters** | 74.6M (SwinUNETR-B) |
+| **Parameter note** | 74.649M is the SwinUNETR-v2-Base variant. Released alternatives include 18.3M Small, 319.2M Large and 31.2M nnUNet-v2 models. |
+| **Backbone** | Hierarchical SwinUNETR-v2 with early PET/CT channel fusion |
+| **Pre-training** | `MAE`<br>Independent PET/CT masking with zero-mean imputation and a weighted global reconstruction objective. |
+| **Training data** | Multi-center whole-body FDG PET/CT from four public datasets<br>**4,797** pretraining scans, with **200** additional scans held out from the **4,997**-scan corpus |
+| **Downstream tasks** | `segmentation`<br>AutoPET tumor segmentation with data-efficient fine-tuning and five-shot linear probing. |
+| **Modalities** | `PET`, `CT` |
+| **Code** | [github.com/liu-xiaofeng/Foundation-Model-for-PET-CT](https://github.com/liu-xiaofeng/Foundation-Model-for-PET-CT) |
+
+</details>
+
 <a id="model-multimedvision-202605"></a>
 <details>
 <summary><b>MultiMedVision</b> — Multi-modal medical vision framework <i>(arXiv 202605)</i></summary>
@@ -279,6 +326,25 @@ Click a model to expand its record.
 | **Downstream tasks** | `classification`, `retrieval`<br>Generalizable disease detection in head CT. |
 | **Modalities** | `CT` |
 | **Code** | [github.com/NYUMedML/headCT_foundation](https://github.com/NYUMedML/headCT_foundation) |
+
+</details>
+
+<a id="model-deepfan-202604"></a>
+<details>
+<summary><b>DeepFAN</b> — A transformer-based model for human–artificial intelligence collaborative assessment of incidental pulmonary nodules in CT scans: a multireader, multicase trial <i>(Nat. Cancer 202604)</i></summary>
+
+**[DeepFAN, a transformer-based model for human–artificial intelligence collaborative assessment of incidental pulmonary nodules in CT scans: a multireader, multicase trial](https://www.nature.com/articles/s43018-026-01147-w)**
+
+*Nat. Cancer* · 202604 · [doi:10.1038/s43018-026-01147-w](https://doi.org/10.1038/s43018-026-01147-w)
+
+| | |
+| --- | --- |
+| **Backbone** | Vision transformer, 3D ResNet with counterfactual attention, and graph convolutional fusion |
+| **Pre-training** | `_n/a_`<br>Supervised end-to-end training for benign versus malignant pulmonary-nodule classification; not a self-supervised foundation-model pre-training recipe. |
+| **Training data** | Chest CT nodule patches (128×128×128)<br>**5,636** patients · **7,873** pathology-confirmed nodules |
+| **Downstream tasks** | `classification`<br>Incidental pulmonary-nodule malignancy assessment; multireader, multicase trial with junior-radiologist assistance (ChiCTR2400084624). |
+| **Modalities** | `CT` |
+| **Code** | [github.com/zhjtwx/DeepFAN](https://github.com/zhjtwx/DeepFAN) |
 
 </details>
 
@@ -562,6 +628,25 @@ Click a model to expand its record.
 
 </details>
 
+<a id="model-colipri-202510"></a>
+<details>
+<summary><b>COLIPRI</b> — Comprehensive language–image pre-training for 3D medical image understanding <i>(arXiv 202510)</i></summary>
+
+**[Comprehensive language–image pre-training for 3D medical image understanding](https://arxiv.org/abs/2510.15042)**
+
+*arXiv* · 202510 · [arXiv:2510.15042](https://arxiv.org/abs/2510.15042)
+
+| | |
+| --- | --- |
+| **Backbone** | Primus-M 3D vision transformer and CXR-BERT text encoder |
+| **Pre-training** | `CLIP`, `MAE`, `report generation`<br>Combines CT–report alignment, vision-only masked autoencoding, opposite-sentence discrimination and a report-generation objective. |
+| **Training data** | Chest CT<br>**22,676** paired CT-RATE volumes plus approximately **72,000** image-only NLST scans |
+| **Downstream tasks** | `classification`, `retrieval`, `segmentation`, `report generation`<br>Zero-shot classification, probing, semantic segmentation and adapted radiology-report generation. |
+| **Modalities** | `CT`, `text` |
+| **Weights** | [huggingface.co/microsoft/colipri](https://huggingface.co/microsoft/colipri) |
+
+</details>
+
 <a id="model-radfm-202508"></a>
 <details>
 <summary><b>RadFM</b> — Towards generalist foundation model for radiology by leveraging web-scale 2D&3D medical data <i>(Nat. Commun. 202508)</i></summary>
@@ -698,9 +783,11 @@ Click a model to expand its record. Cross-modality models link to details under 
 | --- | --- | --- | --- | --- | --- | --- |
 | 202610 | [A4-MR](#model-a4-mr-202610) | arXiv | _not published_ | 50K MRI studies | vision-language | classification, segmentation, localization |
 | 202609 | [nnFoundation](#model-nnfoundation-202609) | arXiv | 102M (CNN) | 2.1M volumes | MAE | segmentation, classification, report generation +2 |
+| 202608 | [MRICombo](#model-mricombo-202608) | Nat. Commun. | 118.2M | 7.4K MRI sequences | supervised, MFR | segmentation, classification |
 | 202607 | [NeuroVFM](#model-neurovfm-202607) | Nat. Med. | 85.8M | 5.24M volumes | JEPA | classification, report generation, retrieval +2 |
 | 202607 | [MARS](#model-mars-202607) | Nat. Biomed. Eng. | _not published_ | 336K volumes | MAE, contrastive learning | classification, segmentation, registration +2 |
 | 202605 | [MultitaskCognition](#model-multitaskcognition-202605) | Nat. Aging | _n/a_ | not stated (~3K studies) | supervised, transfer learning | classification, segmentation, regression +1 |
+| 202604 | [Decipher-MR](#model-decipher-mr-202604) | npj Digit. Med. | 86M (ViT-B) | 203K MRI series | DINOv2, vision-language | classification, segmentation, retrieval +2 |
 | 202604 | [Curia-2](#model-curia-2-202604) | arXiv | 86M (ViT-B) | none (228M DICOM slices) | DINOv2 | classification, detection, regression |
 | 202604 | [NeuroFM](#model-neurofm-202604) | Nat. Biomed. Eng. | _not published_ | none (8.65M fMRI frames) | MAE | regression, classification, prognosis |
 | 202603 | [TRIBEv2](#model-tribev2-202603) | arXiv | _not published_ | not stated (multimodal) | Multimodal representation learning | regression |
@@ -734,6 +821,26 @@ Click a model to expand its record. Cross-modality models link to details under 
 | **Training data** | Multi-anatomy MRI, about half paired with radiology reports<br>**50,000** studies · **491,000** series |
 | **Downstream tasks** | `classification`, `segmentation`, `localization`<br>Abnormality detection, frozen-encoder knee and abdominal organ segmentation, and 3D anatomy localization. |
 | **Modalities** | `MRI`, `text` |
+
+</details>
+
+<a id="model-mricombo-202608"></a>
+<details>
+<summary><b>MRICombo</b> — A deep-learning-based framework for universal volumetric segmentation, grading–staging and malignancy detection across heterogeneous MRI <i>(Nat. Commun. 202608)</i></summary>
+
+**[MRICombo: a deep-learning-based framework for universal volumetric segmentation, grading–staging and malignancy detection across heterogeneous MRI](https://www.nature.com/articles/s41467-026-76461-z)**
+
+*Nat. Commun.* · 202608 · [doi:10.1038/s41467-026-76461-z](https://doi.org/10.1038/s41467-026-76461-z)
+
+| | |
+| --- | --- |
+| **Parameters** | 118.2M |
+| **Backbone** | Residual 3D U-Net with prompt-reconstructed mixture-of-experts |
+| **Pre-training** | `supervised`, `MFR`<br>Joint multi-task learning with dataset and task prompts, expert routing and masked feature reconstruction across heterogeneous MRI sequences. |
+| **Training data** | Nine MRI sequence types across multiple anatomical sites<br>**7,380** sequences · **2,354** individuals |
+| **Downstream tasks** | `segmentation`, `classification`<br>Organ and tumor segmentation, tumor grading and staging, and malignancy detection. |
+| **Modalities** | `MRI` |
+| **Code** | [github.com/zhangzhuoneng/MRICombo](https://github.com/zhangzhuoneng/MRICombo) |
 
 </details>
 
@@ -772,6 +879,26 @@ Click a model to expand its record. Cross-modality models link to details under 
 | **Downstream tasks** | `classification`, `segmentation`, `regression`, `prognosis`<br>Alzheimer’s disease outcomes from a single MRI scan. |
 | **Modalities** | `MRI` |
 | **Code** | [github.com/darenma/MultitaskCognition](https://github.com/darenma/MultitaskCognition) |
+
+</details>
+
+<a id="model-decipher-mr-202604"></a>
+<details>
+<summary><b>Decipher-MR</b> — A vision-language foundation model for 3D MRI representations <i>(npj Digit. Med. 202604)</i></summary>
+
+**[Decipher-MR: a vision-language foundation model for 3D MRI representations](https://www.nature.com/articles/s41746-026-02596-4)**
+
+*npj Digit. Med.* · 202604 · [doi:10.1038/s41746-026-02596-4](https://doi.org/10.1038/s41746-026-02596-4)
+
+| | |
+| --- | --- |
+| **Parameters** | 86M (ViT-B) |
+| **Parameter note** | 86M is the 3D ViT-Base image encoder. Lightweight downstream MLP and segmentation decoders are separate. |
+| **Backbone** | 3D ViT-Base image encoder and BERT text encoder |
+| **Pre-training** | `DINOv2`, `vision-language`<br>Two-stage pretraining: DINOv2 image self-distillation and masked-language modeling, followed by image–report contrastive alignment. |
+| **Training data** | Multi-anatomy, multi-sequence MRI<br>**203,233** series · **22,594** studies, with reports for **20,658** studies |
+| **Downstream tasks** | `classification`, `segmentation`, `retrieval`, `localization`, `visual grounding`<br>Frozen-encoder evaluation across clinical and cross-modal tasks. |
+| **Modalities** | `MRI`, `text` |
 
 </details>
 
@@ -996,10 +1123,12 @@ Click a model to expand its record. Cross-modality models link to details under 
 | Date | Model | Venue | Model size | Training data | Pre-training | Downstream tasks |
 | --- | --- | --- | --- | --- | --- | --- |
 | 202607 | [CLEAR](#model-clear-202607) | Nat. Biomed. Eng. | 86M (ViT-B) | none (0.87M image–report pairs) | contrastive, vision-language | classification |
+| 202606 | [SKELEX](#model-skelex-202606) | npj Digit. Med. | 307M (ViT-L) | 1.30M radiographs | MAE | classification, localization |
 | 202605 | [MultiMedVision](#model-multimedvision-202605) | arXiv | _not published_ | none (CXR + CT-RATE) | self-supervised | classification |
 | 202602 | [CheXficient](#model-chexficient-202602) | arXiv | _not published_ | none (22.7% of 1.24M CXR–report pairs) | CLIP | classification, retrieval, segmentation +1 |
 | 202601 | [AFLoc](#model-afloc-202601) | Nat. Biomed. Eng. | _not published_ | none (MIMIC-CXR image–text) | CLIP | localization, classification |
 | 202508 | [RadFM](#model-radfm-202508) | Nat. Commun. | 14B | none (16M 2D/3D image–text) | vision-language | classification, VQA, report generation |
+| 202506 | [CheXFound](#model-chexfound-202506) | IEEE TMI | 307M (ViT-L) | 987.7K radiographs | DINOv2 | classification, regression, segmentation |
 
 <a id="model-clear-202607"></a>
 <details>
@@ -1023,6 +1152,27 @@ Click a model to expand its record. Cross-modality models link to details under 
 
 </details>
 
+<a id="model-skelex-202606"></a>
+<details>
+<summary><b>SKELEX</b> — A large-scale vision foundation model for musculoskeletal radiographs <i>(npj Digit. Med. 202606)</i></summary>
+
+**[A large-scale vision foundation model for musculoskeletal radiographs](https://www.nature.com/articles/s41746-026-02826-9)**
+
+*npj Digit. Med.* · 202606 · [doi:10.1038/s41746-026-02826-9](https://doi.org/10.1038/s41746-026-02826-9)
+
+| | |
+| --- | --- |
+| **Parameters** | 307M (ViT-L) |
+| **Parameter note** | ViT-Large encoder with 24 blocks and 1024-dimensional embeddings. |
+| **Backbone** | ViT-Large masked autoencoder |
+| **Pre-training** | `MAE`<br>ImageNet-1K MAE initialization followed by domain-specific masked autoencoding on SNUH-1M. |
+| **Training data** | Musculoskeletal radiographs spanning 15 body parts and more than 89 conditions<br>**1,296,540** images |
+| **Downstream tasks** | `classification`, `localization`<br>Twelve diagnostic tasks, including fracture detection, osteoarthritis grading and bone-tumor classification, plus unsupervised anomaly localization. |
+| **Modalities** | `X-ray` |
+| **Code** | [github.com/skhoha/SKELEX](https://github.com/skhoha/SKELEX) |
+
+</details>
+
 <a id="model-chexficient-202602"></a>
 <details>
 <summary><b>CheXficient</b> — A data- and compute-efficient chest X-ray foundation model beyond aggressive scaling <i>(arXiv 202602)</i></summary>
@@ -1039,6 +1189,27 @@ Click a model to expand its record. Cross-modality models link to details under 
 | **Downstream tasks** | `classification`, `retrieval`, `segmentation`, `report generation`<br>Zero-shot findings classification, cross-modal retrieval, disease prediction, semantic segmentation and radiology report generation. |
 | **Modalities** | `X-ray`, `text` |
 | **Code** | [github.com/cwangrun/CheXficient](https://github.com/cwangrun/CheXficient) |
+
+</details>
+
+<a id="model-chexfound-202506"></a>
+<details>
+<summary><b>CheXFound</b> — Chest X-ray foundation model with global and local representations integration <i>(IEEE TMI 202506)</i></summary>
+
+**[Chest X-Ray Foundation Model With Global and Local Representations Integration](https://doi.org/10.1109/TMI.2025.3581907)**
+
+*IEEE TMI* · 202506 · [doi:10.1109/TMI.2025.3581907](https://doi.org/10.1109/TMI.2025.3581907)
+
+| | |
+| --- | --- |
+| **Parameters** | 307M (ViT-L) |
+| **Parameter note** | ViT-Large/16 encoder; the downstream GLoRI attention head is separate. |
+| **Backbone** | ViT-Large with global and local representations integration |
+| **Pre-training** | `DINOv2`<br>Teacher–student self-distillation with masked-image modeling and CLS-token alignment. |
+| **Training data** | CXR-987K assembled from 12 public datasets<br>**987,733** radiographs |
+| **Downstream tasks** | `classification`, `regression`, `segmentation`<br>Thoracic findings, cardiovascular risk, mortality prediction, tube detection and anatomical segmentation. |
+| **Modalities** | `X-ray` |
+| **Code** | [github.com/RPIDIAL/CheXFound](https://github.com/RPIDIAL/CheXFound) |
 
 </details>
 
