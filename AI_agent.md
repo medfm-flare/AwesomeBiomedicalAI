@@ -4,10 +4,16 @@ Agentic, autonomous and tool-using AI systems.
 
 **Maintainer:** @[Meng Wei](https://weimengmeng1999.github.io/meng-wei.github.io/) @[ Feng Lan](https://ai-healthcare-portfolio.hushed-dove-3131.chatgpt.site)
 
-**34 entries** · [Back to index](README.md)
+**40 entries** · [Back to index](README.md)
 
 | Date | Model | Venue | Pre-training | Data usage | Downstream tasks |
 | --- | --- | --- | --- | --- | --- |
+| 2026-10 | AEGIS [[details]](#model-aegis-202610) | Nat. Cancer | training-free agentic LLM pipeline; self-consistency | 263 retrospective notes; 884 prospectively processed notes; 17 clinical research staff (eval) | immune-related adverse-event detection, severity grading, attribution, evidence extraction |
+| 2026-10 | MAI-DxO [[details]](#model-mai-dxo-202610) | Science | training-free multi-agent orchestration | 304 NEJM cases + 325 MIMIC-IV-ED cases (eval) | sequential diagnosis, differential diagnosis, test selection, cost-aware clinical reasoning |
+| 2026-10 | Agent-guided Epitope Excision [[details]](#model-agent-guided-epitope-excision-202610) | Google Research | training-free agentic optimization; pretrained protein-design tools | 15 targets; 3,666 in-silico designs; yeast-display wet-lab validation | de novo protein-binder design, epitope selection, compute-efficient structure prediction |
+| 2026-10 | Agentic Aptamer Sandbox [[details]](#model-agentic-aptamer-sandbox-202610) | Google Research | training-free agentic design-test-improve loop | ~4,400 constructs across 3 experimental rounds | aptamer design, wet-lab feedback analysis, specificity recovery, closed-loop molecular discovery |
+| 2026-10 | TrajOnco [[details]](#model-trajonco-202610) | npj Digit. Med. | training-free chain-of-agents with long-term memory | matched case-control EHR cohorts across 15 cancer types (eval) | multi-cancer risk prediction, temporal EHR reasoning, evidence-linked rationale generation |
+| 2026-10 | MARG [[details]](#model-marg-202610) | Commun. Med. | training-free seven-agent RAG and structured deliberation | 7 liver-disease guidelines; 137 scenarios; 60-scenario physician simulation (eval) | guideline development, evidence synthesis, recommendation generation, consensus resolution |
 | 2026-10 | PHA [[details]](#model-pha-202610) | Nature | training-free multi-agent orchestration over Gemini 2 | WEAR-ME participants (n=1,165); 11 benchmark tasks; >7,000 human annotations (eval) | wearable and laboratory data analysis, personalized health interpretation, interactive wellness coaching |
 | 2026-10 | Epilepsy AI Platform [[details]](#model-epilepsy-ai-platform-202610) | Nat. Med. | training-free LLM agent; feedback-based EEG detector fine-tuning | 13 inpatients in video-EEG monitoring (prospective prototype); patient-feedback adaptation tested offline | real-time EEG alerts, patient data queries, seizure feedback, adaptive detection |
 | 2026-09 | Quine [[details]](#model-quine-202609) | Microsoft Research | multimodal world-model training; agentic tool use | pancreatic-cancer cell-state and compound data; multiple wet-lab assays (eval) | cancer compound prioritization, experiment planning, closed-loop biological discovery |
@@ -46,6 +52,121 @@ Agentic, autonomous and tool-using AI systems.
 ## Details
 
 Click a model to expand its record.
+
+
+<a id="model-aegis-202610"></a>
+<details>
+<summary><b>AEGIS</b> — An agentic AI system enhances clinical detection of immune-related adverse events in a multi-phase validation study <i>(Nat. Cancer 2026-10)</i></summary>
+
+**[An agentic AI system enhances clinical detection of immune-related adverse events in a multi-phase validation study](https://www.nature.com/articles/s43018-026-01264-6)**
+
+*Nat. Cancer* · 2026-10 · Jack Gallifant, Shan Chen et al. & Danielle S. Bitterman
+
+| | |
+| --- | --- |
+| **Backbone** | Agentic LLM pipeline that decomposes oncology-note review into adverse-event detection, temporal classification, CTCAE severity grading, immune-checkpoint-inhibitor attribution, certainty estimation and explicit evidence extraction; self-consistency aggregates repeated runs. |
+| **Pre-training** | `training-free agentic orchestration`<br>No new foundation model was trained; agent decomposition, structured prompts and self-consistency operate over an existing LLM. |
+| **Data usage** | 263 held-out retrospective clinical notes; 884 notes processed during a three-month prospective silent deployment; randomized crossover evaluation with 17 clinical research staff. |
+| **Downstream tasks** | `irAE detection`, `severity grading`, `treatment attribution`, `evidence extraction`<br>Detects six immune-related adverse-event types and extracts temporality, grade, attribution and certainty from oncology notes. AI assistance reduced median annotation time by 43.5% and increased inter-annotator agreement. |
+| **Modalities** | `text`, `clinical notes`, `EHR data` |
+| **Evaluation boundary** | Prospective operation was silent and conducted within one healthcare system. External validation, deployment impact and evidence of improved patient outcomes remain outstanding. |
+
+</details>
+
+<a id="model-mai-dxo-202610"></a>
+<details>
+<summary><b>MAI-DxO</b> — Sequential diagnosis with language models <i>(Science 2026-10)</i></summary>
+
+**[Sequential diagnosis with language models](https://www.microsoft.com/en-us/research/publication/sequential-diagnosis-with-language-models/)**
+
+*Science* · 2026-10 · Harsha Nori, M. Daswani, Christopher Kelly et al. & Eric Horvitz
+
+| | |
+| --- | --- |
+| **Backbone** | Model-agnostic Microsoft AI Diagnostic Orchestrator that simulates a panel of virtual physicians. Agents propose and challenge differential diagnoses, request clinical information, select tests and update a shared assessment while accounting for test cost. |
+| **Pre-training** | `training-free multi-agent orchestration`<br>The method runs over existing frontier language models and generalizes across OpenAI, Gemini, Claude, Grok, DeepSeek and Llama model families. |
+| **Data usage** | Sequential Diagnosis Benchmark: 304 complex NEJM clinicopathological cases and 325 MIMIC-IV emergency-department cases (629 total retrospective cases). |
+| **Downstream tasks** | `sequential diagnosis`, `differential diagnosis`, `test selection`, `cost-aware reasoning`<br>Achieved about 83% diagnostic accuracy on complex NEJM cases and 80% on emergency-department cases while selecting diagnostic actions iteratively. |
+| **Modalities** | `text`, `EHR data`, `diagnostic tests` |
+| **Evaluation boundary** | Results derive from retrospective simulated encounters with a gatekeeper model rather than prospective clinical deployment or direct patient care. |
+
+</details>
+
+<a id="model-agent-guided-epitope-excision-202610"></a>
+<details>
+<summary><b>Agent-guided Epitope Excision</b> — Agent-guided epitope excision enables economical de novo binder design <i>(Google Research 2026-10)</i></summary>
+
+**[Agent-guided epitope excision enables economical de novo binder design](https://arxiv.org/abs/2610.33195)**
+
+*Google Research* · 2026-10 · Jun W. Kim, Artiom Myaskovsky, Oscar Donosa et al. & Annalisa Pawlosky
+
+| | |
+| --- | --- |
+| **Backbone** | LLM agent optimizes epitope windows and protein-design tactics while orchestrating RFdiffusion, sequence design, AlphaFold3 refolding and experimental yeast-display screening; evaluated in human-in-the-loop and autonomous arms. |
+| **Pre-training** | `training-free agentic optimization`, `pretrained protein-design tools`<br>The agent uses existing models and tools without reported agent fine-tuning. |
+| **Data usage** | 15 protein targets and 3,666 computational designs; wet-lab yeast-display validation against fibroblast activation protein alpha (FAP). |
+| **Downstream tasks** | `de novo binder design`, `epitope selection`, `structure prediction`<br>Epitope excision reduced relevant GPU time by about 88%; the human–agent workflow increased computational hit rate from 5.06% to 9.33%, and wet-lab testing recovered nanomolar FAP binders. |
+| **Modalities** | `text`, `protein sequences`, `protein structures`, `experimental assay data` |
+| **Evaluation boundary** | The study focuses on a limited binder-design setting, with the strongest prospective wet-lab evidence concentrated on FAP. Broader target and therapeutic validation remains necessary. |
+
+</details>
+
+<a id="model-agentic-aptamer-sandbox-202610"></a>
+<details>
+<summary><b>Agentic Aptamer Sandbox</b> — Aptamers as a sandbox for lab-in-the-loop agentic molecular discovery <i>(Google Research 2026-10)</i></summary>
+
+**[Aptamers as a sandbox for lab-in-the-loop agentic molecular discovery](https://arxiv.org/abs/2610.24806)**
+
+*Google Research* · 2026-10 · Zachary Cutts, John Coller, Rachel Chen et al. & Annalisa Pawlosky
+
+| | |
+| --- | --- |
+| **Backbone** | Agentic design–test–improve pipelines generate DNA aptamers, analyze pooled wet-lab selections and sequencing readouts, diagnose assay failure modes and revise design rules for the next experimental round. |
+| **Pre-training** | `training-free agentic closed loop`<br>No new foundation model training is reported; agents reason over literature, sequence designs and successive experimental observations. |
+| **Data usage** | Approximately 4,400 constructs against α-thrombin and myoglobin, evaluated across three design–test–improve cycles of roughly 1,000 candidates per round. |
+| **Downstream tasks** | `aptamer design`, `wet-lab feedback analysis`, `specificity recovery`<br>Confirmed on-target hit rates rose to 42.1% for α-thrombin and 33.5% for myoglobin; agents used experimental feedback to identify primer and cross-reactivity failure modes and revise designs. |
+| **Modalities** | `text`, `DNA sequences`, `sequencing data`, `binding-assay data` |
+| **Evaluation boundary** | Aptamers provide a fast, inexpensive sandbox; performance on two protein targets does not establish generality to slower or more complex therapeutic discovery pipelines. |
+
+</details>
+
+<a id="model-trajonco-202610"></a>
+<details>
+<summary><b>TrajOnco</b> — A multi-agent framework for temporal reasoning over longitudinal EHR for multi-cancer early detection <i>(npj Digit. Med. 2026-10)</i></summary>
+
+**[TrajOnco: a multi-agent framework for temporal reasoning over longitudinal EHR for multi-cancer early detection](https://www.nature.com/articles/s41746-026-03377-9)**
+
+*npj Digit. Med.* · 2026-10 · Sihang Zeng, Young Won Kim, Wilson Lau et al. & Anand Oka
+
+| | |
+| --- | --- |
+| **Backbone** | Training-free chain-of-agents architecture with long-term memory. Agents process sequential clinical events, build patient-level trajectory summaries, generate evidence-linked rationales and estimate cancer risk. |
+| **Pre-training** | `training-free`<br>No task-specific weight updates; temporal reasoning is implemented through multi-agent decomposition and memory over existing LLM backbones. |
+| **Data usage** | De-identified Truveta longitudinal EHR matched case-control cohorts across 15 cancer types; one-year cancer diagnosis prediction. |
+| **Downstream tasks** | `multi-cancer risk prediction`, `temporal EHR reasoning`, `evidence-linked rationale generation`<br>Zero-shot AUROC ranged from 0.64 to 0.80 and the framework supported interpretable aggregation of population-level risk patterns. |
+| **Modalities** | `text`, `longitudinal EHR data`, `structured clinical events` |
+| **Evaluation boundary** | Retrospective case-control evaluation does not establish prospective screening utility, calibration in real populations or improved clinical outcomes. |
+
+</details>
+
+<a id="model-marg-202610"></a>
+<details>
+<summary><b>MARG</b> — Multi-agent AI for liver disease guideline development and maintenance: a proof-of-concept study <i>(Commun. Med. 2026-10)</i></summary>
+
+**[Multi-agent AI for liver disease guideline development and maintenance: a proof-of-concept study](https://www.nature.com/articles/s43856-026-01961-4)**
+
+*Commun. Med.* · 2026-10 · Xiaoxiao Wang, Xin Wen, Tianyi Xue et al. & Zixing Wang
+
+| | |
+| --- | --- |
+| **Backbone** | Multi-Agent Retrieval-Augmented Generation system with seven specialized agents for literature retrieval, evidence summarization, evidence grading, recommendation generation and structured consensus deliberation. |
+| **Pre-training** | `training-free seven-agent RAG`<br>No new foundation model training; predefined prompts, curated evidence repositories and four rounds of agent debate coordinate the system. |
+| **Data usage** | Seven 2025 liver-disease guidelines spanning 137 clinical scenarios; additional 60-scenario physician simulation across three experience levels. |
+| **Downstream tasks** | `guideline development`, `evidence synthesis`, `recommendation generation`, `consensus resolution`<br>Achieved 77.4% overall guideline concordance, 87.8% at full consensus and resolved 95.8% of recommendation conflicts. |
+| **Modalities** | `text`, `scientific literature`, `clinical guidelines` |
+| **Evaluation boundary** | Proof-of-concept evaluation and simulated physician study; the system was not prospectively deployed for real guideline development or patient-care decisions. |
+
+</details>
 
 
 <a id="model-pha-202610"></a>
@@ -684,4 +805,5 @@ Click a model to expand its record.
 | **Modalities** | `text`, `histopathology`, `image` |
 
 </details>
+
 
