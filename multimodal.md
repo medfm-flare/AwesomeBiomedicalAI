@@ -4,7 +4,7 @@ Cross-modal health models without a single dominant biomedical domain.
 
 **Maintainer:** @Yeonwoo Seo ([Homepage](https://yws0322.github.io/) / [LinkedIn](https://www.linkedin.com/in/yeonwoo-seo-8950372bb/) / [GitHub](https://github.com/yws0322))
 
-**25 entries** · **Last updated: 202610** · [Back to index](README.md)
+**29 entries** · **Last updated: 202611** · [Back to index](README.md)
 
 ## Paper overview
 
@@ -12,7 +12,10 @@ Click a model name to jump to its expandable record. A dash (—) means the valu
 
 | Date | Model | Venue | Model Size | Modalities | Pre-training | Downstream Tasks |
 | --- | --- | --- | --- | --- | --- | --- |
+| 202610 | [MedVTok](#model-medvtok-202610) | arXiv | Not disclosed | 2D images + 3D volumes across 9 medical imaging modalities | slice differential regularization + multi-expert representation alignment | classification, retrieval, segmentation, synthesis, VQA, report generation |
+| 202610 | [EchoChat](#model-echochat-202610) | arXiv | Not disclosed | Echocardiography video + text (reports/instructions) | instruction tuning with chain-of-thought visual grounding | condition recognition, quantification, report co-generation |
 | 202610 | [MedGemma](#model-medgemma-202610) | Nat. Med. | 4B / 27B (+ ~400M vision encoder) | Chest X-ray, dermatology, histopathology, retinal, CT, MRI, ultrasound + medical text | continued pretraining then post-training on medical tasks | image classification, VQA, report generation, agentic reasoning +1 |
+| 202610 | [EVLF-FM](#model-evlf-fm-202610) | Nat. Med. | ~9B | Medical images (11 modalities, 6 specialties) + clinical text | supervised fine-tuning then GRPO reinforcement fine-tuning | diagnosis/classification, VQA, visual grounding, reasoning |
 | 202610 | [B-RAD](#model-b-rad-202610) | npj Digit. Med. | — | Breast ultrasound images + clinical reports (text) | cross-modal retrieval-augmented alignment | biopsy-triage classification, BI-RADS assessment, lesion localization |
 | 202609 | [NV-Reason-CT](#model-nv-reason-ct-202609) | arXiv | ~4B+ (Qwen3.5-4B LLM plus vision encoder, total not disclosed) | Volumetric 3D CT + radiology report text | supervised fine-tuning then GRPO reinforcement learning | abnormality classification, report generation, Q&A, reasoning dialogue |
 | 202609 | [WILSON](#model-wilson-202609) | arXiv | ~133.7M | Histopathology (composite whole-slide images) + pathology report text | vision-language alignment against report text | diagnostic classification, subtyping, TIL grading, text retrieval |
@@ -21,6 +24,7 @@ Click a model name to jump to its expandable record. A dash (—) means the valu
 | 202607 | [PRISM2](#model-prism2-202607) | Nat. Med. | 4.6B | Histopathology + clinical text | contrastive, next-token prediction | detection, subtyping, grading +4 |
 | 202607 | [RisQ](#model-risq-202607) | medRxiv | — | EHR/diagnoses + labs + lifestyle + genetics | N/A (supervised, no separate pretraining) | zero-shot disease risk prediction |
 | 202607 | [DeepComp](#model-deepcomp-202607) | Ann. Oncol. | — | Preoperative CT (tumor + peritumoral + body composition) + clinical variables | frozen foundation-model embeddings, supervised tabular fusion | complication prediction, survival prediction |
+| 202605 | [Breast Cancer Prognostication AI](#model-breast-cancer-prognostication-202605) | Nat. Commun. | — | H&E histopathology images + structured clinical variables | self-supervised (pathology encoder), supervised prognosis fusion | recurrence/death prediction |
 | 202604 | [APOLLO](#model-apollo-202604) | arXiv | — | EHR (diagnoses, meds, labs, notes) + pathology images | masked modeling | patient retrieval, disease onset, progression +3 |
 | 202602 | [MAOSS](#model-maoss-202602) | Nat. Commun. | — | Non-contrast CT + demographics + labs | — | steatosis grading, fibrosis detection, cirrhosis risk |
 | 202601 | [Emu3](#model-emu3-202601) | Nature | 8.49B | Text + image + video | next-token prediction, autoregressive | image gen, video gen, vision-language understanding |
@@ -41,6 +45,67 @@ Click a model name to jump to its expandable record. A dash (—) means the valu
 ## Details
 
 Click a model to expand its record.
+
+<a id="model-medvtok-202610"></a>
+<details>
+<summary><b>MedVTok</b> — A General-Purpose Medical Visual Tokenizer <i>(arXiv 202610)</i></summary>
+
+**[MedVTok: A General-Purpose Medical Visual Tokenizer](https://arxiv.org/abs/2610.35842)**
+
+*arXiv* · 202610 · Chenglong Ma & [Hongming Shan](https://scholar.google.com/citations?user=RYfSzKwAAAAJ)
+
+| | |
+| --- | --- |
+| **Parameters** | Not disclosed |
+| **Backbone** | Reported as a CLIP-style vision encoder with mean pooling (a "medvtok-clip-meanpool" variant is referenced in the released usage code), producing a 1152-dimensional global feature, 256 spatial patch tokens, and a 48-dimensional continuous latent per input; architecture detail beyond this is not independently confirmed. |
+| **Pre-training** | Two components reported: "slice differential regularization," which enforces inter-slice anatomical coherence between 2D and 3D representations, and "multi-expert representation alignment," which aligns the tokenizer's representations against several existing medical expert encoders to inject clinical semantics while preserving modality-specific detail. Exact loss formulations are not independently confirmed from accessible sources. |
+| **Training data** | Reported as 28 million images and 70,000+ volumes spanning 9 medical imaging modalities; specific dataset names are not disclosed in accessible sources. |
+| **Downstream tasks** | Classification, retrieval, segmentation, synthesis, visual question answering, and report generation. |
+| **Modalities** | 2D images and 3D volumes unified across 9 distinct medical imaging modalities into one shared tokenizer/latent space (note: this spans multiple imaging modalities rather than fusing imaging with a non-imaging modality such as text or omics). |
+| **Code** | [github.com/Masaaki-75/medvtok](https://github.com/Masaaki-75/medvtok) |
+| **Weights** | Hugging Face, massaki75/medvtok (MIT license) |
+
+**Reported performance**
+
+| Benchmark | Metric | Value | Note |
+| --- | --- | --- | --- |
+| 24 benchmarks across classification, retrieval, segmentation, synthesis, VQA, report generation | state of the art | Claimed across all 24 | specific metric values not independently confirmed from accessible sources |
+
+Note: this is an unreviewed preprint (reported as accepted at NeurIPS 2026 per the Hugging Face model card, not independently confirmed via an official listing). The senior author has an established Nature-portfolio record (Nature Machine Intelligence, 2019; Nature Communications, 2021), clearing this file's preprint track-record bar.
+
+</details>
+
+<a id="model-echochat-202610"></a>
+<details>
+<summary><b>EchoChat</b> — Multimodal Generative AI Assists Comprehensive Echocardiographic Interpretation <i>(arXiv 202610)</i></summary>
+
+**[Multimodal Generative AI Assists Comprehensive Echocardiographic Interpretation](https://arxiv.org/abs/2610.32880)**
+
+*arXiv* · 202610 · Yi Qin & Xiaomeng Li
+
+| | |
+| --- | --- |
+| **Parameters** | Not disclosed |
+| **Backbone** | Not disclosed in accessible sources |
+| **Pre-training** | Instruction tuning on echocardiography-instruction pairs, incorporating a chain-of-thought reasoning mechanism that grounds generated conclusions in visual evidence; further training stages are not disclosed in accessible sources. |
+| **Training data** | Echocardiography-instruction pairs derived from 46,358 examinations; external evaluation conducted across six international medical centers. |
+| **Downstream tasks** | Comprehensive echocardiographic interpretation across 33 cardiac conditions/findings (15 newly added), condition recognition, quantification, and co-generated echo reports. |
+| **Modalities** | echocardiography video/imaging, text (reports/instructions) |
+| **Code** | Not found; appears unreleased at the time of this preprint |
+| **License** | CC-BY-NC-SA-4.0 |
+
+**Reported performance**
+
+| Benchmark | Metric | Value | Note |
+| --- | --- | --- | --- |
+| 15 newly-added conditions, external evaluation | average F1 | 73.7% |  |
+| Shared recognition tasks vs. existing best foundation models | average recall | +13.54% |  |
+| Shared quantification tasks | average R² | +0.275 |  |
+| Reader study, with vs. without EchoChat co-generation | F1 | 72.78% → 82.75% |  |
+
+Note: this is an unreviewed preprint. The corresponding author is reported to have at least one Nature Communications paper (per institutional bio, not independently verified against a Scholar profile), a track record roughly comparable to other preprint authors already included in this file.
+
+</details>
 
 <a id="model-medgemma-202610"></a>
 <details>
@@ -68,6 +133,35 @@ Click a model to expand its record.
 | Medical image QA / CXR finding classification, vs. base Gemma 3 4B | relative improvement | +2.6–10% / +15.5–18.1% |  |
 | MIMIC-CXR report generation | RadGraph F1 | 30.3 | reported as state-of-the-art for this metric/dataset |
 | AgentClinic-MedQA / AgentClinic-MIMIC-IV, MedGemma 27B | agentic reasoning accuracy | Exceeded human-physician performance | +10.8% vs. base model |
+
+</details>
+
+<a id="model-evlf-fm-202610"></a>
+<details>
+<summary><b>EVLF-FM</b> — Explainable Vision Language Foundation Model for Medicine <i>(Nat. Med. 202610)</i></summary>
+
+**[EVLF-FM: Explainable Vision Language Foundation Model for Medicine](https://www.nature.com/articles/s41591-026-04655-5)**
+
+*Nature Medicine* · 202610 · Yang Bai & Daniel Shu Wei Ting · [doi:10.1038/s41591-026-04655-5](https://doi.org/10.1038/s41591-026-04655-5)
+
+| | |
+| --- | --- |
+| **Parameters** | ~9B, built on an InternVL3-8B backbone |
+| **Backbone** | InternVL3-8B vision-language foundation model, adapted for medical images and text |
+| **Pre-training** | A hybrid strategy combining supervised fine-tuning with a reinforcement fine-tuning stage (reported as using Group Relative Policy Optimization); exact stage-by-stage objectives and reward design are not disclosed in accessible sources. |
+| **Training data** | Over 1.3 million samples aggregated from 23 global public datasets for development/testing; external validation used 8,884 independent samples from 10 additional datasets |
+| **Downstream tasks** | Multi-disease diagnosis/classification, visual question answering, pixel-level visual grounding, clinical reasoning. |
+| **Modalities** | medical images across 11 imaging modalities spanning 6 specialties (dermatology, hepatology, ophthalmology, pathology, pulmonology, radiology), clinical text |
+| **Code** | [github.com/baiyang4/EVLF](https://github.com/baiyang4/EVLF) |
+| **Weights** | Hugging Face, yangbai123/EVLF-FM |
+
+**Reported performance**
+
+| Benchmark | Metric | Value | Note |
+| --- | --- | --- | --- |
+| Internal diagnosis | average accuracy / F1-score | 0.858 / 0.797 | reported higher than compared generalist/specialist models |
+| Visual grounding, 9 modalities | mean IoU / Acc@0.5 | 0.743 / 0.837 |  |
+| External validation | — | Strong zero-/few-shot performance reported | specific numbers not disclosed in accessible sources |
 
 </details>
 
@@ -307,6 +401,35 @@ Note: this is an unreviewed preprint. Unlike other preprints already in this cat
 | Overall survival, pooled non-training cohorts | C-index | 0.766 | adjusted HR 3.08 per SD (95% CI 2.91–3.25) |
 | Overall survival by DeepComp risk quintile | 5-year survival | 97.5% (Q1) to 2.4% (Q5) | trend p < 0.001 |
 | Target-trial emulation interventions | absolute CD ≥II risk reduction | 5.9% / 20.6% / 11.7% | ICU monitoring / nutritional support+delayed surgery / minimally invasive triage; all p < 0.01, E-values 1.90–5.73 |
+
+</details>
+
+<a id="model-breast-cancer-prognostication-202605"></a>
+<details>
+<summary><b>Breast Cancer Prognostication AI</b> — Multi-modal AI for comprehensive breast cancer prognostication <i>(Nat. Commun. 202605)</i></summary>
+
+**[Multi-modal AI for comprehensive breast cancer prognostication](https://doi.org/10.1038/s41467-026-73088-y)**
+
+*Nature Communications* · 202605 · Jan Witowski & Krzysztof J. Geras · [doi:10.1038/s41467-026-73088-y](https://doi.org/10.1038/s41467-026-73088-y)
+
+| | |
+| --- | --- |
+| **Model** | No single model name stated |
+| **Parameters** | Not disclosed |
+| **Backbone** | A pan-cancer histopathology foundation model (Vision Transformer) for feature extraction, fused with structured clinical variables; exact fusion architecture not disclosed |
+| **Pre-training** | The histopathology Vision Transformer is self-supervised-pretrained on pan-cancer whole-slide images; resulting features are combined with clinical variables and trained/calibrated to predict recurrence and death (the specific downstream fusion/training method, e.g. Cox model vs. MLP, is not disclosed in accessible sources). |
+| **Training data** | 8,161 female breast cancer patients across 15 cohorts from 7 countries; 3,502 patients across 5 cohorts held out for evaluation only; a subset of 858 patients used for head-to-head comparison against Oncotype DX |
+| **Downstream tasks** | Prediction of breast cancer recurrence and death (disease-free interval as the primary endpoint), including performance within the triple-negative breast cancer (TNBC) subgroup. |
+| **Modalities** | H&E-stained whole-slide histopathology images, structured clinical variables |
+| **Code** | Not found; no repository or weights link located |
+
+**Reported performance**
+
+| Benchmark | Metric | Value | Note |
+| --- | --- | --- | --- |
+| Pooled evaluation cohorts | C-index | 0.71 [0.68–0.75] | HR 3.63 [3.02–4.37], p < 0.001 |
+| Head-to-head vs. Oncotype DX (n=858) | C-index | 0.67 [0.61–0.74] vs. 0.61 [0.49–0.73] | AI vs. Oncotype DX; combined multivariate HR 3.11 [1.91–5.09], p < 0.001 |
+| TNBC subgroup | C-index | 0.71 [0.62–0.81] | HR 3.81 [2.35–6.17], p = 0.02 |
 
 </details>
 
