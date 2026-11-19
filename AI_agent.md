@@ -4,10 +4,13 @@ Agentic, autonomous and tool-using AI systems.
 
 **Maintainer:** @[Meng Wei](https://weimengmeng1999.github.io/meng-wei.github.io/) @[ Feng Lan](https://ai-healthcare-portfolio.hushed-dove-3131.chatgpt.site)
 
-**40 entries** · [Back to index](README.md)
+**43 entries** · [Back to index](README.md)
 
 | Date | Model | Venue | Pre-training | Data usage | Downstream tasks |
 | --- | --- | --- | --- | --- | --- |
+| 2026-11 | OpenScientist [[details]](#model-openscientist-202611) | Nat. Med. | agentic orchestration over existing LLMs; local models optional | 5 biomedical case studies; 93 development runs (eval) | biomedical data analysis, literature review, hypothesis generation, reproducible reporting |
+| 2026-11 | AIDE [[details]](#model-aide-202611) | Nat. Commun. | multi-agent data curation; SFT and RAG evaluated downstream | 14 biomedical and chemical tasks (eval) | scientific dataset collection, quality selection, data organization, model support |
+| 2026-11 | AutoDNA [[details]](#model-autodna-202611) | Nature | agentic laboratory orchestration; training status varies by component | >20 instrument types; >11,000 automated steps; 4 applications | DNA synthesis, protocol execution, DNA storage, mutation detection |
 | 2026-10 | AEGIS [[details]](#model-aegis-202610) | Nat. Cancer | training-free agentic LLM pipeline; self-consistency | 263 retrospective notes; 884 prospectively processed notes; 17 clinical research staff (eval) | immune-related adverse-event detection, severity grading, attribution, evidence extraction |
 | 2026-10 | MAI-DxO [[details]](#model-mai-dxo-202610) | Science | training-free multi-agent orchestration | 304 NEJM cases + 325 MIMIC-IV-ED cases (eval) | sequential diagnosis, differential diagnosis, test selection, cost-aware clinical reasoning |
 | 2026-10 | Agent-guided Epitope Excision [[details]](#model-agent-guided-epitope-excision-202610) | Google Research | training-free agentic optimization; pretrained protein-design tools | 15 targets; 3,666 in-silico designs; yeast-display wet-lab validation | de novo protein-binder design, epitope selection, compute-efficient structure prediction |
@@ -53,6 +56,66 @@ Agentic, autonomous and tool-using AI systems.
 
 Click a model to expand its record.
 
+
+<a id="model-openscientist-202611"></a>
+<details>
+<summary><b>OpenScientist</b> — An open agentic AI co-scientist for clinical and biomedical discovery <i>(Nat. Med. 2026-11)</i></summary>
+
+**[An open agentic AI co-scientist for clinical and biomedical discovery](https://www.nature.com/articles/s41591-026-04808-6)**
+
+*Nat. Med.* · 2026-11 · Kaleigh F. Roberts, Zachary B. Abrams, Luca Cappelletti et al.
+
+| | |
+| --- | --- |
+| **Backbone** | Open-source AI co-scientist. Agents use language models, literature tools and executable analysis code to investigate scientist-defined questions and produce auditable reports. |
+| **Pre-training** | `agentic orchestration over existing LLMs`<br>The platform can use local open-source models in an air-gapped environment. The paper does not present a newly pretrained foundation model for the agent. |
+| **Data usage** | Five main biomedical case studies cover Alzheimer’s biomarkers, proteomic survival, neuronal transcriptomics, multiple myeloma and a blinded proteomic comparison. Figure 2 reports 93 development runs. These runs are not independent clinical validations. |
+| **Downstream tasks** | `biomedical data analysis`, `literature review`, `hypothesis generation`, `survival modelling`, `report generation`<br>Domain experts assessed the reported analyses. |
+| **Modalities** | `scientific text`, `clinical research data`, `proteomics`, `transcriptomics` |
+| **Evaluation boundary** | The study reports research workflows and human expert review. It does not establish autonomous clinical decision-making or improved patient outcomes. The accelerated article preview may change during production. |
+| **Code** | [OpenScientist](https://github.com/openscientist-io/openscientist) |
+
+</details>
+
+<a id="model-aide-202611"></a>
+<details>
+<summary><b>AIDE</b> — Agentic intelligent data engine for scientific large language models <i>(Nat. Commun. 2026-11)</i></summary>
+
+**[Agentic intelligent data engine for scientific large language models](https://www.nature.com/articles/s41467-026-78887-x)**
+
+*Nat. Commun.* · 2026-11 · Shufang Xie, Zequn Liu, Pan Deng et al.
+
+| | |
+| --- | --- |
+| **Backbone** | Multi-agent data engine. Collection agents retrieve datasets. Selection agents screen quality. Organization agents transform selected data into task-specific formats. |
+| **Pre-training** | `multi-agent data curation`<br>AIDE prepares training and retrieval datasets. The study tests supervised fine-tuning and retrieval-augmented generation in downstream systems. |
+| **Data usage** | Fourteen benchmark tasks span biomedical and chemical domains. The study compares models built with AIDE-curated data against models built with manually curated data. |
+| **Downstream tasks** | `dataset collection`, `quality selection`, `data organization`, `SFT dataset preparation`, `RAG corpus preparation` |
+| **Modalities** | `scientific text`, `heterogeneous research datasets` |
+| **Evaluation boundary** | The reported tasks test scientific data preparation and model performance. They do not measure clinical care or patient outcomes. |
+| **Code** | [AIDE](https://github.com/bjzgcai/AIDE) |
+
+</details>
+
+<a id="model-autodna-202611"></a>
+<details>
+<summary><b>AutoDNA</b> — An AI-native experimental laboratory for autonomous biomolecular operations <i>(Nature 2026-11)</i></summary>
+
+**[An AI-native experimental laboratory for autonomous biomolecular operations](https://www.nature.com/articles/s41586-026-11228-6)**
+
+*Nature* · 2026-11 · Mingyu Wu, Zhaoguo Wang, Jiabin Wang et al.
+
+| | |
+| --- | --- |
+| **Backbone** | Multi-agent biomolecular laboratory. AI agents coordinate models, robotic instruments and experimental workflows across nucleic acid operations. |
+| **Pre-training** | `agentic laboratory orchestration`<br>The platform combines models and instruments. The paper does not give one training status for the whole platform. |
+| **Data usage** | More than 20 instrument types and 11,000 automated steps across four applications: enzymatic DNA synthesis, concurrent protocols, DNA storage and KRAS G13D detection. |
+| **Downstream tasks** | `DNA synthesis`, `protocol execution`, `DNA storage`, `mutation detection`<br>The system matched expert-optimized synthesis yields. It accelerated concurrent protocol execution by 3.2-fold in the reported setting. |
+| **Modalities** | `nucleic acid samples`, `sequencing data`, `instrument control` |
+| **Evaluation boundary** | KRAS G13D detection is a demonstration using a clinically detected mutation. It does not establish clinical diagnostic accuracy or prospective patient benefit. Human maintenance still supplies reagents and labware. |
+| **Code** | [AutoDNA](https://github.com/IPADS-X/AutoDNA) |
+
+</details>
 
 <a id="model-aegis-202610"></a>
 <details>
