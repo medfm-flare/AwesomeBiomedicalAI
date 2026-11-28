@@ -4,7 +4,7 @@ Cross-modal health models without a single dominant biomedical domain.
 
 **Maintainer:** @Yeonwoo Seo ([Homepage](https://yws0322.github.io/) / [LinkedIn](https://www.linkedin.com/in/yeonwoo-seo-8950372bb/) / [GitHub](https://github.com/yws0322))
 
-**30 entries** · **Last updated: 202611** · [Back to index](README.md)
+**29 entries** · **Last updated: 202611** · [Back to index](README.md)
 
 ## Paper overview
 
@@ -12,7 +12,6 @@ Click a model name to jump to its expandable record. A dash (—) means the valu
 
 | Date | Model | Venue | Model Size | Modalities | Pre-training | Downstream Tasks |
 | --- | --- | --- | --- | --- | --- | --- |
-| 202611 | [Persistent Fever Multimodal AI](#model-persistent-fever-multimodal-ai-202611) | Nat. Commun. | — | Structured EHR data + temperature time series + clinical notes + chest radiographs | Pretrained feature extractors; no new pre-training reported | Persistent-fever prediction at the 48–72-hour antibiotic reassessment point |
 | 202610 | [MedVTok](#model-medvtok-202610) | arXiv | Not disclosed | 2D images + 3D volumes across 9 medical imaging modalities | slice differential regularization + multi-expert representation alignment | classification, retrieval, segmentation, synthesis, VQA, report generation |
 | 202610 | [EchoChat](#model-echochat-202610) | arXiv | Not disclosed | Echocardiography video + text (reports/instructions) | instruction tuning with chain-of-thought visual grounding | condition recognition, quantification, report co-generation |
 | 202610 | [MedGemma](#model-medgemma-202610) | Nat. Med. | 4B / 27B (+ ~400M vision encoder) | Chest X-ray, dermatology, histopathology, retinal, CT, MRI, ultrasound + medical text | continued pretraining then post-training on medical tasks | image classification, VQA, report generation, agentic reasoning +1 |
@@ -46,39 +45,6 @@ Click a model name to jump to its expandable record. A dash (—) means the valu
 ## Details
 
 Click a model to expand its record.
-
-<a id="model-persistent-fever-multimodal-ai-202611"></a>
-<details>
-<summary><b>Persistent Fever Multimodal AI</b> — Development and clinical validation of a multimodal AI framework to predict persistent fever <i>(Nat. Commun. 202611)</i></summary>
-
-**[Development and clinical validation of a multimodal AI framework to predict persistent fever during antibiotic therapy in hospitalized patients with cancer](https://www.nature.com/articles/s41467-026-79499-1)**
-
-*Nature Communications* · 202611 · Gernot Pucher & Christopher M. Sauer
-
-| | |
-| --- | --- |
-| **Parameters** | Total size not reported. The framework uses pretrained models, including Qwen3-Next-80B and Qwen3-VL-30B. |
-| **Backbone** | Chronos-2 forecasts body temperature. Qwen models extract note and image features. TabPFN predicts fever persistence from the combined feature table. The study also compares transformer, early-fusion, and late-fusion models. |
-| **Pre-training** | The study reuses pretrained feature extractors and TabPFN. It reports no new pre-training stage for the combined framework. |
-| **Training data** | 1,035 hospital stays from University Medicine Essen. Evaluation used a 296-stay temporal holdout, 307 stays from two regional hospitals, and 778 MIMIC-IV ICU stays. |
-| **Downstream tasks** | Predict persistent fever 48–72 hours after intravenous antibiotic initiation. The predicted risk may support reassessment, but the model does not prescribe treatment. |
-| **Modalities** | Structured clinical variables, longitudinal measurements, clinical notes, and chest radiograph images. |
-| **Code** | [github.com/gernotpuc/multimodal-fever-prediction](https://github.com/gernotpuc/multimodal-fever-prediction) |
-
-**Reported performance**
-
-| Cohort | Metric | Value | Note |
-| --- | --- | --- | --- |
-| Essen training, repeated cross-validation | AUC | 0.84 (95% CI 0.81–0.86) | Tabularized multimodal TabPFN |
-| Essen temporal holdout | AUC | 0.82 (95% CI 0.77–0.87) | Internal validation |
-| Two pooled regional hospitals | AUC | 0.75 (95% CI 0.69–0.80) | External validation |
-| MIMIC-IV ICU | AUC | 0.78 (95% CI 0.74–0.81) | External validation |
-
-The 15-participant vignette study reported higher balanced accuracy for the model than for unaided clinicians. The trial stages used different case vignettes. Temperature dynamics drove most predictions. Chest imaging added no measurable predictive value. Prospective clinical outcomes were not tested.
-
-This record uses a descriptive label. The paper does not name a new model or agent.
-
-</details>
 
 <a id="model-medvtok-202610"></a>
 <details>
